@@ -24,3 +24,9 @@ hs_err_pid*
 # IntelliJ
 /.idea/
 *.iml
+# === Big data kept outside git ===
+pt2matsim/data/osm/*.osm
+pt2matsim/data/**/stop_times.txt
+pt2matsim/data/**/shapes.txt
+# 可選：避免巨型輸出物不小心被版控
+pt2matsim/out/**/*.geojson

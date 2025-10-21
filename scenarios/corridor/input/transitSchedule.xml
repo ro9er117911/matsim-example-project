@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE transitSchedule SYSTEM "http://www.matsim.org/files/dtd/transitSchedule_v2.dtd">
+
+<transitSchedule>
+
+	<transitStops>
+		<stopFacility id="BUS_NTU" x="303942.99652046687" y="2770550.7175544407" name="臺北科技大學(忠孝)" isBlocking="false"/>
+		<stopFacility id="BUS_ZXF" x="304762.71866601246" y="2770518.090973991" name="捷運忠孝復興站(公車)" isBlocking="false"/>
+	</transitStops>
+	<transitLine id="BL" name="BL">
+	</transitLine>
+	<transitLine id="BUS1" name="B1">
+		<transitRoute id="BUS_EB">
+			<transportMode>bus</transportMode>
+			<routeProfile>
+				<stop refId="BUS_NTU" arrivalOffset="00:00:00" departureOffset="00:00:00" awaitDeparture="true"/>
+				<stop refId="BUS_ZXF" arrivalOffset="00:06:00" departureOffset="00:00:00" awaitDeparture="true"/>
+			</routeProfile>
+			<departures>
+				<departure id="BUS_EB_08:02:00" departureTime="08:02:00" vehicleRefId="veh_0_bus"/>
+			</departures>
+		</transitRoute>
+		<transitRoute id="BUS_WB">
+			<transportMode>bus</transportMode>
+			<routeProfile>
+				<stop refId="BUS_ZXF" arrivalOffset="00:00:00" departureOffset="00:00:00" awaitDeparture="true"/>
+				<stop refId="BUS_NTU" arrivalOffset="00:06:00" departureOffset="00:00:00" awaitDeparture="true"/>
+			</routeProfile>
+			<departures>
+				<departure id="BUS_WB_08:15:00" departureTime="08:15:00" vehicleRefId="veh_1_bus"/>
+			</departures>
+		</transitRoute>
+	</transitLine>
+</transitSchedule>

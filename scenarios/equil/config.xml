@@ -21,6 +21,13 @@
                 <param name="vehiclesFile" value="transitVehicles.xml" />
         </module>
 
+        <module name="counts">
+                <param name="inputCountsFile" value="counts100.xml" />
+                <param name="outputformat" value="html" />
+                <param name="countsScaleFactor" value="10.0" />
+                <param name="writeCountsInterval" value="1" />
+        </module>
+
 	<module name="controller">
 		<param name="outputDirectory" value="./output" />
 		<param name="lastIteration" value="0" />

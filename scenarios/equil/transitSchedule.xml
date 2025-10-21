@@ -1,34 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE transitSchedule SYSTEM "http://www.matsim.org/files/dtd/transitSchedule_v2.dtd">
 
 <transitSchedule>
-
-	<transitStops>
-		<stopFacility id="BUS_NTU" x="303942.99652046687" y="2770550.7175544407" name="臺北科技大學(忠孝)" isBlocking="false"/>
-		<stopFacility id="BUS_ZXF" x="304762.71866601246" y="2770518.090973991" name="捷運忠孝復興站(公車)" isBlocking="false"/>
-	</transitStops>
-	<transitLine id="BL" name="BL">
-	</transitLine>
-	<transitLine id="BUS1" name="B1">
-		<transitRoute id="BUS_EB">
-			<transportMode>bus</transportMode>
-			<routeProfile>
-				<stop refId="BUS_NTU" arrivalOffset="00:00:00" departureOffset="00:00:00" awaitDeparture="true"/>
-				<stop refId="BUS_ZXF" arrivalOffset="00:06:00" departureOffset="00:00:00" awaitDeparture="true"/>
-			</routeProfile>
-			<departures>
-				<departure id="BUS_EB_08:02:00" departureTime="08:02:00" vehicleRefId="veh_0_bus"/>
-			</departures>
-		</transitRoute>
-		<transitRoute id="BUS_WB">
-			<transportMode>bus</transportMode>
-			<routeProfile>
-				<stop refId="BUS_ZXF" arrivalOffset="00:00:00" departureOffset="00:00:00" awaitDeparture="true"/>
-				<stop refId="BUS_NTU" arrivalOffset="00:06:00" departureOffset="00:00:00" awaitDeparture="true"/>
-			</routeProfile>
-			<departures>
-				<departure id="BUS_WB_08:15:00" departureTime="08:15:00" vehicleRefId="veh_1_bus"/>
-			</departures>
-		</transitRoute>
-	</transitLine>
+  <transitStops>
+    <stopFacility id="1" x="990.0" y="0.0" name="Adorf" linkRefId="1" isBlocking="false" />
+    <stopFacility id="2" x="1100.0" y="980.0" name="Beweiler" linkRefId="2" isBlocking="true" />
+    <stopFacility id="3" x="0.0" y="10.0" name="Cestadt" linkRefId="3" isBlocking="false" />
+  </transitStops>
+  <transitLine id="Blue_Line">
+    <transitRoute id="1">
+      <description>Just a comment.</description>
+      <transportMode>bus</transportMode>
+      <routeProfile>
+        <stop refId="1" departureOffset="00:00:00" />
+        <stop refId="2" arrivalOffset="00:02:30" departureOffset="00:03:00" awaitDeparture="true" />
+        <stop refId="3" arrivalOffset="00:05:00" awaitDeparture="true" />
+      </routeProfile>
+      <route>
+        <link refId="1" />
+        <link refId="2" />
+        <link refId="3" />
+      </route>
+      <departures>
+        <departure id="1" departureTime="07:00:00" vehicleRefId="tr_1" />
+        <departure id="2" departureTime="07:05:00" vehicleRefId="tr_2" />
+        <departure id="3" departureTime="07:10:00" vehicleRefId="tr_3" />
+      </departures>
+    </transitRoute>
+  </transitLine>
 </transitSchedule>

@@ -106,6 +106,13 @@
       <type>test-jar</type>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.matsim</groupId>
+      <artifactId>pt2matsim</artifactId>
+      <version>25.8</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/pt2matsim/work/pt2matsim-25.8-shaded.jar</systemPath>
+    </dependency>
   </dependencies>
   <properties>
     <maven.compiler.release>21</maven.compiler.release>

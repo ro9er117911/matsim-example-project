@@ -12,7 +12,9 @@
 	</module>
 
         <module name="plans">
-                <param name="inputPlansFile" value="population.xml" />
+                <param name="inputPlansFile" value="population_routed.xml" />
+                <param name="tripDurationHandling" value="ignoreDelays" />
+                <param name="handlingOfPlansWithoutRoutingMode" value="reject" />       
         </module>
 
         <module name="transit">

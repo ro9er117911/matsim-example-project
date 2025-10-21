@@ -1,32 +1,13 @@
-*.class
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
+# === MATSim / 本專案建議忽略 ===
+pt2matsim/data/**         # 原始 GTFS/OSM、任何大型來源資料
+pt2matsim/out/**          # 轉檔/模擬輸出
+output/**                 # MATSim run outputs
+*.geojson
+*.zip
+*.7z
+*.tar
+*.tar.gz
+*.tgz
 *.jar
-*.war
-*.ear
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-
-# Eclipse
-/.settings/
-/.project
-/.classpath
-
-/target/
-/output/
-/test/output/
-/bin/
-
-# IntelliJ
-/.idea/
-*.iml
-# === Big data kept outside git ===
-pt2matsim/data/osm/*.osm
-pt2matsim/data/**/stop_times.txt
-pt2matsim/data/**/shapes.txt
-# 可選：避免巨型輸出物不小心被版控
-pt2matsim/out/**/*.geojson
+# 可保留必要的小型設定檔（視情況白名單）
+# !pt2matsim/data/README.md

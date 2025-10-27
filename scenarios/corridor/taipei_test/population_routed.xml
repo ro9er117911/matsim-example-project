@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE population SYSTEM "http://www.matsim.org/files/dtd/population_v6.dtd">
+
+<population>
+
+	<attributes>
+		<attribute name="coordinateReferenceSystem" class="java.lang.String">EPSG:3826</attribute>
+	</attributes>
+
+
+<!-- ====================================================================== -->
+
+	<person id="bus_1">
+		<plan selected="yes">
+			<activity type="h" link="50002" x="303870.534" y="2770560.822" end_time="07:10:00" >
+			</activity>
+			<leg mode="walk" dep_time="07:10:00" trav_time="00:00:35">
+				<attributes>
+					<attribute name="routingMode" class="java.lang.String">pt</attribute>
+				</attributes>
+				<route type="generic" start_link="50002" end_link="50001" trav_time="00:00:35" distance="147.9"></route>
+			</leg>
+			<activity type="pt interaction" link="50001" x="303898.776" y="2770312.509" max_dur="00:00:00" >
+			</activity>
+			<leg mode="pt" dep_time="07:10:35" trav_time="00:11:25">
+				<attributes>
+					<attribute name="routingMode" class="java.lang.String">pt</attribute>
+				</attributes>
+				<route type="default_pt" start_link="50001" end_link="50007" trav_time="00:11:25" distance="918.0"></route>
+			</leg>
+			<activity type="pt interaction" link="50007" x="304840.179" y="2770264.023" max_dur="00:00:00" >
+			</activity>
+			<leg mode="walk" dep_time="07:22:00" trav_time="00:00:30">
+				<attributes>
+					<attribute name="routingMode" class="java.lang.String">pt</attribute>
+				</attributes>
+				<route type="generic" start_link="50007" end_link="50005" trav_time="00:00:30" distance="68.7"></route>
+			</leg>
+			<activity type="w" link="50005" x="304355.771" y="2770497.026" end_time="17:10:00" >
+			</activity>
+			<leg mode="walk" dep_time="17:10:00" trav_time="00:00:30">
+				<attributes>
+					<attribute name="routingMode" class="java.lang.String">pt</attribute>
+				</attributes>
+				<route type="generic" start_link="50005" end_link="50007" trav_time="00:00:30" distance="68.7"></route>
+			</leg>
+			<activity type="pt interaction" link="50007" x="304840.179" y="2770264.023" max_dur="00:00:00" >
+			</activity>
+			<leg mode="pt" dep_time="17:10:30" trav_time="00:17:00">
+				<attributes>
+					<attribute name="routingMode" class="java.lang.String">pt</attribute>
+				</attributes>
+				<route type="default_pt" start_link="50007" end_link="50001" trav_time="00:17:00" distance="918.0"></route>
+			</leg>
+			<activity type="pt interaction" link="50001" x="303898.776" y="2770312.509" max_dur="00:00:00" >
+			</activity>
+			<leg mode="walk" dep_time="17:27:30" trav_time="00:00:35">
+				<attributes>
+					<attribute name="routingMode" class="java.lang.String">pt</attribute>
+				</attributes>
+				<route type="generic" start_link="50001" end_link="50002" trav_time="00:00:35" distance="147.9"></route>
+			</leg>
+			<activity type="h" link="50002" x="303870.534" y="2770560.822" >
+			</activity>
+		</plan>
+
+	</person>
+
+<!-- ====================================================================== -->
+
+	<person id="bus_2">
+		<plan selected="yes">
+			<activity type="h" link="50003" x="304016.966" y="2770539.933" end_time="07:05:00" >
+			</activity>
+			<leg mode="walk" dep_time="07:05:00" trav_time="00:16:02">
+				<attributes>
+					<attribute name="routingMode" class="java.lang.String">pt</attribute>
+				</attributes>
+				<route type="generic" start_link="50003" end_link="50005" trav_time="00:16:02" distance="407.3"></route>
+			</leg>
+			<activity type="w" link="50005" x="304355.771" y="2770497.026" end_time="16:45:00" >
+			</activity>
+			<leg mode="walk" dep_time="16:45:00" trav_time="00:16:02">
+				<attributes>
+					<attribute name="routingMode" class="java.lang.String">pt</attribute>
+				</attributes>
+				<route type="generic" start_link="50005" end_link="50003" trav_time="00:16:02" distance="407.3"></route>
+			</leg>
+			<activity type="h" link="50003" x="304016.966" y="2770539.933" >
+			</activity>
+		</plan>
+
+	</person>
+
+<!-- ====================================================================== -->
+
+	<person id="car_1">
+		<plan selected="yes">
+			<activity type="h" link="50002" x="304010.0" y="2770330.0" end_time="07:30:00" >
+			</activity>
+			<leg mode="car" dep_time="07:30:00" trav_time="00:01:12">
+				<attributes>
+					<attribute name="routingMode" class="java.lang.String">car</attribute>
+				</attributes>
+				<route type="links" start_link="50002" end_link="50007" trav_time="00:01:12" distance="1066.9" vehicleRefId="null">50002 50001 50003 50005 50007</route>
+			</leg>
+			<activity type="w" link="50007" x="304840.179" y="2770940.0" end_time="17:00:00" >
+			</activity>
+			<leg mode="car" dep_time="17:00:00" trav_time="00:01:18">
+				<attributes>
+					<attribute name="routingMode" class="java.lang.String">car</attribute>
+				</attributes>
+				<route type="links" start_link="50007" end_link="50002" trav_time="00:01:18" distance="1066.9" vehicleRefId="null">50007 50005 50003 50001 50002</route>
+			</leg>
+			<activity type="h" link="50002" x="304010.0" y="2770330.0" >
+			</activity>
+		</plan>
+
+	</person>
+
+<!-- ====================================================================== -->
+
+	<person id="car_2">
+		<plan selected="yes">
+			<activity type="h" link="50005" x="304320.0" y="2770680.0" end_time="06:45:00" >
+			</activity>
+			<leg mode="car" dep_time="06:45:00" trav_time="00:00:50">
+				<attributes>
+					<attribute name="routingMode" class="java.lang.String">car</attribute>
+				</attributes>
+				<route type="links" start_link="50005" end_link="50002" trav_time="00:00:50" distance="771.8" vehicleRefId="null">50005 50003 50001 50002</route>
+			</leg>
+			<activity type="w" link="50002" x="303940.0" y="2770330.0" end_time="16:00:00" >
+			</activity>
+			<leg mode="car" dep_time="16:00:00" trav_time="00:00:46">
+				<attributes>
+					<attribute name="routingMode" class="java.lang.String">car</attribute>
+				</attributes>
+				<route type="links" start_link="50002" end_link="50005" trav_time="00:00:46" distance="771.8" vehicleRefId="null">50002 50001 50003 50005</route>
+			</leg>
+			<activity type="h" link="50005" x="304320.0" y="2770680.0" >
+			</activity>
+		</plan>
+
+	</person>
+
+<!-- ====================================================================== -->
+
+	<person id="metro_1">
+		<plan selected="yes">
+			<activity type="h" link="21644" x="303930.0" y="2770440.0" end_time="07:00:00" >
+			</activity>
+			<leg mode="walk" dep_time="07:00:00" trav_time="00:03:25">
+				<attributes>
+					<attribute name="routingMode" class="java.lang.String">pt</attribute>
+				</attributes>
+				<route type="generic" start_link="21644" end_link="50001" trav_time="00:03:25" distance="170.6"></route>
+			</leg>
+			<activity type="pt interaction" link="50001" x="303898.776" y="2770312.509" max_dur="00:00:00" >
+			</activity>
+			<leg mode="pt" dep_time="07:03:25" trav_time="00:18:35">
+				<attributes>
+					<attribute name="routingMode" class="java.lang.String">pt</attribute>
+				</attributes>
+				<route type="default_pt" start_link="50001" end_link="50007" trav_time="00:18:35" distance="918.0"></route>
+			</leg>
+			<activity type="pt interaction" link="50007" x="304840.179" y="2770264.023" max_dur="00:00:00" >
+			</activity>
+			<leg mode="walk" dep_time="07:22:00" trav_time="00:05:12">
+				<attributes>
+					<attribute name="routingMode" class="java.lang.String">pt</attribute>
+				</attributes>
+				<route type="generic" start_link="50007" end_link="21641" trav_time="00:05:12" distance="259.8"></route>
+			</leg>
+			<activity type="w" link="21641" x="305064.492" y="2770250.713" end_time="16:30:00" >
+			</activity>
+			<leg mode="walk" dep_time="16:30:00" trav_time="00:29:14">
+				<attributes>
+					<attribute name="routingMode" class="java.lang.String">pt</attribute>
+				</attributes>
+				<route type="generic" start_link="21641" end_link="21644" trav_time="00:29:14" distance="919.0"></route>
+			</leg>
+			<activity type="h" link="21644" x="303930.0" y="2770440.0" >
+			</activity>
+		</plan>
+
+	</person>
+
+<!-- ====================================================================== -->
+
+	<person id="metro_2">
+		<plan selected="yes">
+			<activity type="h" link="50005" x="304300.0" y="2770580.0" end_time="08:00:00" >
+			</activity>
+			<leg mode="walk" dep_time="08:00:00" trav_time="00:13:31">
+				<attributes>
+					<attribute name="routingMode" class="java.lang.String">pt</attribute>
+				</attributes>
+				<route type="generic" start_link="50005" end_link="50007" trav_time="00:13:31" distance="68.7"></route>
+			</leg>
+			<activity type="w" link="50007" x="304820.0" y="2770600.0" end_time="18:00:00" >
+			</activity>
+			<leg mode="walk" dep_time="18:00:00" trav_time="00:13:31">
+				<attributes>
+					<attribute name="routingMode" class="java.lang.String">pt</attribute>
+				</attributes>
+				<route type="generic" start_link="50007" end_link="50005" trav_time="00:13:31" distance="68.7"></route>
+			</leg>
+			<activity type="h" link="50005" x="304300.0" y="2770580.0" >
+			</activity>
+		</plan>
+
+	</person>
+
+<!-- ====================================================================== -->
+
+</population>

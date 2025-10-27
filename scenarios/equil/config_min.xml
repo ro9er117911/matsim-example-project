@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
+<config>
+
+    <!--
+      Minimal configuration for a test simulation based on the Taipei
+      "equil" scenario.  This configuration drops transit and counts
+      modules and only keeps a small road network with a single car
+      driver.  It is intended for quick verification that the MATSim
+      installation works and that the core components of your Taipei
+      model are wired up correctly.
+    -->
+
+    <module name="global">
+        <!-- fixed random seed for reproducibility -->
+        <param name="randomSeed" value="4711" />
+        <param name="coordinateSystem" value="EPSG:3826" />
+    </module>
+
+    <module name="network">
+        <!-- load the reduced network with only three nodes and four links -->
+        <param name="inputNetworkFile" value="network_min.xml" />
+    </module>
+
+    <module name="plans">
+        <!-- use a simple plan with one person travelling by car -->
+        <param name="inputPlansFile" value="population_min.xml" />
+        <!-- fallback to the main mode when routing mode is missing -->
+        <param name="handlingOfPlansWithoutRoutingMode" value="useMainModeIdentifier" />
+    </module>
+
+    <module name="controller">
+        <!-- write output into a local folder; will be overwritten if it exists -->
+        <param name="outputDirectory" value="./output" />
+        <!-- only run one iteration -->
+        <param name="lastIteration" value="0" />
+        <!-- write events every iteration (there is only one) -->
+        <param name="writeEventsInterval" value="1" />
+        <param name="overwriteFiles" value="deleteDirectoryIfExists" />
+    </module>
+
+    <module name="qsim">
+        <!-- only the car mode is simulated -->
+        <param name="mainMode" value="car" />
+        <!-- keep default capacities to avoid artificial congestion in the tiny network -->
+        <param name="flowCapacityFactor" value="1.0" />
+        <param name="storageCapacityFactor" value="1.0" />
+    </module>
+
+    <module name="scoring">
+        <!-- basic scoring parameters; same as equil config -->
+        <param name="lateArrival" value="-18" />
+        <param name="performing" value="+6" />
+        <parameterset type="activityParams">
+            <param name="activityType" value="home" />
+            <param name="typicalDuration" value="12:00:00" />
+        </parameterset>
+        <parameterset type="activityParams">
+            <param name="activityType" value="school" />
+            <param name="typicalDuration" value="04:00:00" />
+            <param name="openingTime" value="07:00:00" />
+            <param name="closingTime" value="12:00:00" />
+        </parameterset>
+        <parameterset type="activityParams">
+            <param name="activityType" value="work" />
+            <param name="typicalDuration" value="04:00:00" />
+            <param name="openingTime" value="07:00:00" />
+            <param name="closingTime" value="18:00:00" />
+        </parameterset>
+    </module>
+
+</config>

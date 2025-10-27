@@ -3,12 +3,12 @@
 
 <transitSchedule>
   <transitStops>
-    <stopFacility id="BUS_ZXS" x="303898.776" y="2770312.509" name="捷運忠孝新生站(公車)" linkRefId="L_N_W_S_N_C_S" isBlocking="false" />
-    <stopFacility id="BUS_NTU" x="304054.844" y="2770341.644" name="臺北科技大學(忠孝)" linkRefId="L_N_W_S_N_C_S" isBlocking="false" />
-    <stopFacility id="BUS_GH" x="303909.274" y="2770996.136" name="光華商場" linkRefId="L_N_C_N_N_W_N" isBlocking="false" />
-    <stopFacility id="BUS_ZXF" x="304840.179" y="2770264.023" name="捷運忠孝復興站(公車)" linkRefId="L_N_E_N_N_E_S" isBlocking="false" />
-    <stopFacility id="MRT_BL14" x="303921.859" y="2770436.792" name="忠孝新生" linkRefId="L_BL14_NODE_BL15_NODE" isBlocking="false" />
-    <stopFacility id="MRT_BL15" x="305064.492" y="2770250.713" name="忠孝復興" linkRefId="L_BL15_NODE_BL14_NODE" isBlocking="false" />
+    <stopFacility id="BUS_ZXS" x="303870.5335961778" y="2770560.821526394" name="捷運忠孝新生站(公車)" linkRefId="50001" isBlocking="false" />
+    <stopFacility id="BUS_NTU" x="304016.9658124588" y="2770539.933164831" name="臺北科技大學(忠孝)" linkRefId="50003" isBlocking="false" />
+    <stopFacility id="BUS_GH" x="304423.16580240155" y="2770510.420042672" name="光華商場" linkRefId="50005" isBlocking="false" />
+    <stopFacility id="BUS_ZXF" x="304355.77063324593" y="2770497.025738433" name="捷運忠孝復興站(公車)" linkRefId="50007" isBlocking="false" />
+    <stopFacility id="MRT_BL14" x="303870.5335961778" y="2770560.821526394" name="忠孝新生" linkRefId="21643" isBlocking="false" />
+    <stopFacility id="MRT_BL15" x="304650.86438900826" y="2770494.182424794" name="忠孝復興" linkRefId="21641" isBlocking="false" />
   </transitStops>
 
   <transitLine id="BUS_BLUE">
@@ -22,13 +22,10 @@
         <stop refId="BUS_ZXF" arrivalOffset="00:07:00" awaitDeparture="true" />
       </routeProfile>
       <route>
-        <link refId="L_N_W_S_N_C_S" />
-        <link refId="L_N_C_S_N_C_M" />
-        <link refId="L_N_C_M_N_C_N" />
-        <link refId="L_N_C_N_N_W_N" />
-        <link refId="L_N_W_N_N_C_N" />
-        <link refId="L_N_C_N_N_E_N" />
-        <link refId="L_N_E_N_N_E_S" />
+        <link refId="50001" />
+        <link refId="50003" />
+        <link refId="50005" />
+        <link refId="50007" />
       </route>
       <departures>
         <departure id="BUS_EB_07:00" departureTime="07:00:00" vehicleRefId="bus_1" />
@@ -47,13 +44,10 @@
         <stop refId="BUS_ZXS" arrivalOffset="00:06:30" awaitDeparture="true" />
       </routeProfile>
       <route>
-        <link refId="L_N_E_S_N_E_N" />
-        <link refId="L_N_E_N_N_C_N" />
-        <link refId="L_N_C_N_N_W_N" />
-        <link refId="L_N_W_N_N_C_N" />
-        <link refId="L_N_C_N_N_C_M" />
-        <link refId="L_N_C_M_N_C_S" />
-        <link refId="L_N_C_S_N_W_S" />
+        <link refId="50008" />
+        <link refId="50006" />
+        <link refId="50004" />
+        <link refId="50002" />
       </route>
       <departures>
         <departure id="BUS_WB_07:10" departureTime="07:10:00" vehicleRefId="bus_1" />
@@ -64,36 +58,4 @@
     </transitRoute>
   </transitLine>
 
-  <transitLine id="MRT_BL">
-    <transitRoute id="BL_EB">
-      <description>Blue Line metro eastbound.</description>
-      <transportMode>subway</transportMode>
-      <routeProfile>
-        <stop refId="MRT_BL14" departureOffset="00:00:00" awaitDeparture="true" />
-        <stop refId="MRT_BL15" arrivalOffset="00:02:00" awaitDeparture="true" />
-      </routeProfile>
-      <route>
-        <link refId="L_BL14_NODE_BL15_NODE" />
-      </route>
-      <departures>
-        <departure id="BL_EB_07:00" departureTime="07:00:00" vehicleRefId="metro_1" />
-        <departure id="BL_EB_17:00" departureTime="17:00:00" vehicleRefId="metro_2" />
-      </departures>
-    </transitRoute>
-    <transitRoute id="BL_WB">
-      <description>Blue Line metro westbound.</description>
-      <transportMode>subway</transportMode>
-      <routeProfile>
-        <stop refId="MRT_BL15" departureOffset="00:00:00" awaitDeparture="true" />
-        <stop refId="MRT_BL14" arrivalOffset="00:02:00" awaitDeparture="true" />
-      </routeProfile>
-      <route>
-        <link refId="L_BL15_NODE_BL14_NODE" />
-      </route>
-      <departures>
-        <departure id="BL_WB_07:05" departureTime="07:05:00" vehicleRefId="metro_1" />
-        <departure id="BL_WB_17:05" departureTime="17:05:00" vehicleRefId="metro_2" />
-      </departures>
-    </transitRoute>
-  </transitLine>
 </transitSchedule>

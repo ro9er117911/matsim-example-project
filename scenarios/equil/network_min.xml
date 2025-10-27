@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE network SYSTEM "http://www.matsim.org/files/dtd/network_v2.dtd">
+<network name="taipei-min">
+    <!--
+      A pared-down representation of the Taipei corridor used in the
+      equil scenario.  This network retains only three nodes and four
+      bidirectional links connecting them.  The link attributes are
+      taken verbatim from the original equil network so that the
+      minimal example remains realistic while still running quickly.
+    -->
+    <nodes>
+        <node id="269201070" x="303870.5335961778" y="2770560.821526394" />
+        <node id="2444664369" x="304016.9658124588" y="2770539.933164831" />
+        <node id="2083636114" x="304423.16580240155" y="2770510.420042672" />
+    </nodes>
+    <links capperiod="01:00:00">
+        <!-- link between home (269201070) and an intermediate intersection (2444664369) -->
+        <link id="1" from="269201070" to="2444664369" length="147.91456187190417"
+              freespeed="13.9" capacity="2000.0" permlanes="1.0" modes="car,ride,pt" />
+        <!-- reverse direction -->
+        <link id="2" from="2444664369" to="269201070" length="147.91456187190417"
+              freespeed="13.9" capacity="2000.0" permlanes="1.0" modes="car,ride,pt" />
+        <!-- link from the intersection to the work location (2083636114) -->
+        <link id="3" from="2444664369" to="2083636114" length="407.2707406738899"
+              freespeed="13.9" capacity="2000.0" permlanes="1.0" modes="car,ride,pt" />
+        <!-- reverse direction -->
+        <link id="4" from="2083636114" to="2444664369" length="407.2707406738899"
+              freespeed="13.9" capacity="2000.0" permlanes="1.0" modes="car,ride,pt" />
+    </links>
+</network>

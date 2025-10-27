@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <counts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://matsim.org/files/dtd/counts_v1.xsd" name="localCounts" desc="Synthetic counts for corridor test" year="2025" layer="0">
-  <count loc_id="L_N_W_S_N_C_S" cs_id="west_screenline">
+  <count loc_id="50001" cs_id="west_screenline">
     <volume h="1" val="0.0" />
     <volume h="2" val="0.0" />
     <volume h="3" val="0.0" />
@@ -18,7 +18,7 @@
     <volume h="14" val="0.0" />
     <volume h="15" val="0.0" />
     <volume h="16" val="0.0" />
-    <volume h="17" val="2.0" />
+    <volume h="17" val="22.0" />
     <volume h="18" val="0.0" />
     <volume h="19" val="0.0" />
     <volume h="20" val="0.0" />
@@ -27,7 +27,7 @@
     <volume h="23" val="0.0" />
     <volume h="24" val="0.0" />
   </count>
-  <count loc_id="L_N_C_M_N_C_N" cs_id="north_screenline">
+  <count loc_id="50003" cs_id="north_screenline">
     <volume h="1" val="0.0" />
     <volume h="2" val="0.0" />
     <volume h="3" val="0.0" />
@@ -35,7 +35,7 @@
     <volume h="5" val="0.0" />
     <volume h="6" val="0.0" />
     <volume h="7" val="0.0" />
-    <volume h="8" val="1.0" />
+    <volume h="8" val="11.0" />
     <volume h="9" val="0.0" />
     <volume h="10" val="0.0" />
     <volume h="11" val="0.0" />

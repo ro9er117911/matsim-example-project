@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE network SYSTEM "http://www.matsim.org/files/dtd/network_v2.dtd">
+
+<network name="local-corridor">
+	<nodes>
+		<node id="2083636112" x="304355.77063324593" y="2770497.025738433"/>
+		<node id="2083636109" x="304650.86438900826" y="2770494.182424794"/>
+		<node id="269201070" x="303870.5335961778" y="2770560.821526394"/>
+		<node id="2083636114" x="304423.16580240155" y="2770510.420042672"/>
+		<node id="2444664369" x="304016.9658124588" y="2770539.933164831"/>
+		<node id="5372642442" x="303774.711022167" y="2770578.3992927717"/>
+	</nodes>
+	<links capperiod="01:00:00">
+		<link id="21641" from="2083636112" to="2083636109" length="295.1077520379761" freespeed="22.22222222222222" capacity="9999.0" permlanes="1.0" oneway="1" modes="pt,subway">
+			<attributes>
+				<attribute name="osm:relation:route" class="java.lang.String">subway</attribute>
+				<attribute name="osm:way:id" class="java.lang.Long">198199193</attribute>
+				<attribute name="osm:way:name" class="java.lang.String">捷運板南線</attribute>
+				<attribute name="osm:way:network" class="java.lang.String">台北捷運</attribute>
+				<attribute name="osm:way:railway" class="java.lang.String">subway</attribute>
+				<attribute name="osm:way:tunnel" class="java.lang.String">yes</attribute>
+			</attributes>
+		</link>
+		<link id="21642" from="2083636109" to="2083636112" length="295.1077520379761" freespeed="22.22222222222222" capacity="9999.0" permlanes="1.0" oneway="1" modes="pt,subway">
+			<attributes>
+				<attribute name="osm:relation:route" class="java.lang.String">subway</attribute>
+				<attribute name="osm:way:id" class="java.lang.Long">198199193</attribute>
+				<attribute name="osm:way:name" class="java.lang.String">捷運板南線</attribute>
+				<attribute name="osm:way:network" class="java.lang.String">台北捷運</attribute>
+				<attribute name="osm:way:railway" class="java.lang.String">subway</attribute>
+				<attribute name="osm:way:tunnel" class="java.lang.String">yes</attribute>
+			</attributes>
+		</link>
+		<link id="21643" from="269201070" to="2083636114" length="556.2259403724408" freespeed="22.22222222222222" capacity="9999.0" permlanes="1.0" oneway="1" modes="pt,subway">
+			<attributes>
+				<attribute name="osm:relation:route" class="java.lang.String">subway</attribute>
+				<attribute name="osm:way:id" class="java.lang.Long">198199194</attribute>
+				<attribute name="osm:way:name" class="java.lang.String">捷運板南線</attribute>
+				<attribute name="osm:way:network" class="java.lang.String">台北捷運</attribute>
+				<attribute name="osm:way:railway" class="java.lang.String">subway</attribute>
+				<attribute name="osm:way:tunnel" class="java.lang.String">yes</attribute>
+			</attributes>
+		</link>
+		<link id="21644" from="2083636114" to="269201070" length="556.2259403724408" freespeed="22.22222222222222" capacity="9999.0" permlanes="1.0" oneway="1" modes="pt,subway">
+			<attributes>
+				<attribute name="osm:relation:route" class="java.lang.String">subway</attribute>
+				<attribute name="osm:way:id" class="java.lang.Long">198199194</attribute>
+				<attribute name="osm:way:name" class="java.lang.String">捷運板南線</attribute>
+				<attribute name="osm:way:network" class="java.lang.String">台北捷運</attribute>
+				<attribute name="osm:way:railway" class="java.lang.String">subway</attribute>
+				<attribute name="osm:way:tunnel" class="java.lang.String">yes</attribute>
+			</attributes>
+		</link>
+		<link id="21645" from="2083636114" to="2083636112" length="68.7132899195333" freespeed="22.22222222222222" capacity="9999.0" permlanes="1.0" oneway="1" modes="pt,subway"/>
+		<link id="21646" from="2083636112" to="2083636114" length="68.7132899195333" freespeed="22.22222222222222" capacity="9999.0" permlanes="1.0" oneway="1" modes="pt,subway"/>
+		<link id="50001" from="269201070" to="2444664369" length="147.91456187190417" freespeed="13.9" capacity="2000.0" permlanes="1.0" modes="car,ride,pt"/>
+		<link id="50002" from="2444664369" to="269201070" length="147.91456187190417" freespeed="13.9" capacity="2000.0" permlanes="1.0" modes="car,ride,pt"/>
+		<link id="50003" from="2444664369" to="2083636114" length="407.2707406738899" freespeed="13.9" capacity="2000.0" permlanes="1.0" modes="car,ride,pt"/>
+		<link id="50004" from="2083636114" to="2444664369" length="407.2707406738899" freespeed="13.9" capacity="2000.0" permlanes="1.0" modes="car,ride,pt"/>
+		<link id="50005" from="2083636114" to="2083636112" length="68.7132899195333" freespeed="13.9" capacity="2000.0" permlanes="1.0" modes="car,ride,pt"/>
+		<link id="50006" from="2083636112" to="2083636114" length="68.7132899195333" freespeed="13.9" capacity="2000.0" permlanes="1.0" modes="car,ride,pt"/>
+		<link id="50007" from="2083636112" to="2083636109" length="295.1077520379761" freespeed="13.9" capacity="2000.0" permlanes="1.0" modes="car,ride,pt"/>
+		<link id="50008" from="2083636109" to="2083636112" length="295.1077520379761" freespeed="13.9" capacity="2000.0" permlanes="1.0" modes="car,ride,pt"/>
+		<link id="50009" from="5372642442" to="2444664369" length="245.32354683387356" freespeed="22.22222222222222" capacity="4500.0" permlanes="3.0" oneway="1" modes="bus,car,pt"/>
+		<link id="38695" from="2444664369" to="5372642442" length="245.32354683387356" freespeed="22.22222222222222" capacity="4500.0" permlanes="3.0" oneway="1" modes="bus,car,pt">
+			<attributes>
+				<attribute name="osm:relation:route" class="java.lang.String">bus,road</attribute>
+				<attribute name="osm:way:highway" class="java.lang.String">primary</attribute>
+				<attribute name="osm:way:id" class="java.lang.Long">506322854</attribute>
+				<attribute name="osm:way:lanes" class="java.lang.String">3</attribute>
+				<attribute name="osm:way:name" class="java.lang.String">忠孝東路三段</attribute>
+				<attribute name="osm:way:oneway" class="java.lang.String">yes</attribute>
+			</attributes>
+		</link>
+	</links>
+</network>

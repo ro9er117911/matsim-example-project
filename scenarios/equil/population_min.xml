@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE population SYSTEM "http://www.matsim.org/files/dtd/population_v6.dtd">
+<population>
+
+    <!--
+      A single-agent population used for fast testing and validation of
+      the Taipei traffic model. 
+      Start from home (node 269201070) at 07:00, using link 1.
+       Stay at school (node 2444664369) until after noon (12:00),
+        using link 3. Then go to work (node 2083636114) and 
+        return home at 17:00, using links 4 and 2. 
+        The route explicitly lists the
+      links in the order they are traversed, making the plan
+      deterministic and easy to check.
+    -->
+
+    <person id="1">
+        <plan selected="yes">
+            <activity type="home" link="1" x="303870.5335961778" y="2770560.821526394" end_time="07:00:00" />
+            <leg mode="car">
+                <!-- home (node 269201070) to school (node 2444664369) -->
+                <route type="links" start_link="1" end_link="1">1</route>
+            </leg>
+            <activity type="school" link="1" x="304016.9658124588" y="2770539.933164831" end_time="12:00:00" />
+            <leg mode="car">
+                <!-- school (node 2444664369) to work (node 2083636114) -->
+                <route type="links" start_link="1" end_link="3">1 3</route>
+            </leg>
+            <activity type="work" link="3" x="304423.16580240155" y="2770510.420042672" end_time="17:00:00" />
+            <leg mode="car">
+                <!-- work back to home -->
+                <route type="links" start_link="3" end_link="2">3 4 2</route>
+            </leg>
+            <activity type="home" link="2" x="303870.5335961778" y="2770560.821526394" />
+        </plan>
+    </person>
+
+</population>

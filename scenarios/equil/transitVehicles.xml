@@ -6,16 +6,8 @@
     <length meter="12.0" />
     <passengerCarEquivalents pce="2.0" />
   </vehicleType>
-  <vehicleType id="metro">
-    <description>Two-car metro train</description>
-    <capacity seats="80" standingRoomInPersons="160" />
-    <length meter="60.0" />
-    <passengerCarEquivalents pce="4.0" />
-  </vehicleType>
   <vehicle id="bus_1" type="bus" />
   <vehicle id="bus_2" type="bus" />
   <vehicle id="bus_3" type="bus" />
   <vehicle id="bus_4" type="bus" />
-  <vehicle id="metro_1" type="metro" />
-  <vehicle id="metro_2" type="metro" />
 </vehicleDefinitions>

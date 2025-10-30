@@ -22,7 +22,11 @@
       "Bash(cat:*)",
       "Bash(jar:*)",
       "Bash(timeout 120 java:*)",
-      "Bash(./mvnw:*)"
+      "Bash(./mvnw:*)",
+      "Bash(unzip:*)",
+      "Bash(tree:*)",
+      "Bash(mkdir:*)",
+      "Bash(find:*)"
     ],
     "deny": [],
     "ask": []

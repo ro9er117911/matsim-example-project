@@ -1,7 +1,4 @@
-2025-10-22T18:35:07,242  WARN PrepareForSimImpl:265 'usePersonIdForMissingVehicleId' is deprecated. It will be removed soon.
-2025-10-22T18:35:07,268  WARN RandomizingTimeDistanceTravelDisutilityFactory:113 There will be no routing randomness. The randomization of the travel disutility requires the monetary distance rate to be different than zero. Continuing anyway.
-2025-10-22T18:35:07,268  WARN RandomizingTimeDistanceTravelDisutilityFactory:118 There will be no routing randomness. The randomization of the travel disutility requires the travel time cost rate to be different than zero. Continuing anyway.
-2025-10-22T18:35:07,270  WARN NetworkRoutingProvider:137 [mode: car; routingMode: car] Using deprecated routing module without access/egress. Consider using AccessEgressNetworkRouter instead.
-2025-10-22T18:35:07,273  WARN NetworkRoutingProvider:137 [mode: car; routingMode: car] Using deprecated routing module without access/egress. Consider using AccessEgressNetworkRouter instead.
-2025-10-22T18:35:07,327  WARN NetworkRoutingProvider:137 [mode: car; routingMode: car] Using deprecated routing module without access/egress. Consider using AccessEgressNetworkRouter instead.
-2025-10-22T18:35:07,327  WARN NetworkRoutingProvider:137 [mode: car; routingMode: car] Using deprecated routing module without access/egress. Consider using AccessEgressNetworkRouter instead.
+2025-10-29T13:27:11,649  WARN PrepareForSimImpl:265 'usePersonIdForMissingVehicleId' is deprecated. It will be removed soon.
+2025-10-29T13:27:11,660  WARN RandomizingTimeDistanceTravelDisutilityFactory:118 There will be no routing randomness. The randomization of the travel disutility requires the travel time cost rate to be different than zero. Continuing anyway.
+2025-10-29T13:27:11,781 ERROR TransitAgentImpl:99 pt-leg has no TransitRoute. Removing agent from simulation. Agent mrt_commuter
+2025-10-29T13:27:11,782 ERROR TransitQSimEngine:183 pt-agent doesn't know to what transit stop to go. Removing agent from simulation. Agent mrt_commuter

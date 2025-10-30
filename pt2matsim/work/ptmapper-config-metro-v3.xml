@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
+<config>
+	<module name="PublicTransitMapping" >
+		<!-- ==================== 改進策略：應對大量網路連接錯誤 ==================== -->
+
+		<!-- 策略 1: 增加候選連結搜索範圍 -->
+		<param name="candidateDistanceMultiplier" value="3.0" />
+
+		<!-- 策略 2: 大幅增加最大搜索距離 (從 90m → 300m) -->
+		<param name="maxLinkCandidateDistance" value="300.0" />
+
+		<!-- 策略 3: 增加允許的旅行成本倍數 (從 5.0 → 15.0) -->
+		<!-- 這允許更多的迂迴路徑，減少需要 artificial links 的情況 -->
+		<param name="maxTravelCostFactor" value="15.0" />
+
+		<!-- 策略 4: 啟用模式特定規則 -->
+		<param name="modeSpecificRules" value="true" />
+
+		<!-- 策略 5: 使用 AStarLandmarks 路由器（更穩健） -->
+		<param name="networkRouter" value="AStarLandmarks" />
+
+		<!-- 策略 6: 增加並行線程數 (從 2 → 6) -->
+		<param name="numOfThreads" value="6" />
+
+		<!-- 策略 7: 減小處理區塊大小以更好地平衡負載 -->
+		<param name="threadChunkSize" value="50" />
+
+		<!-- ==================== 標準參數 ==================== -->
+
+		<param name="modesToKeepOnCleanUp" value="car" />
+		<param name="nLinkThreshold" value="10" />
+		<param name="removeNotUsedStopFacilities" value="true" />
+		<param name="routingWithCandidateDistance" value="true" />
+		<param name="scheduleFreespeedModes" value="artificial" />
+		<param name="travelCostType" value="linkLength" />
+
+		<!-- ==================== 輸入/輸出檔案 ==================== -->
+
+		<!-- 使用準備好的清理網路 -->
+		<param name="inputNetworkFile" value="/Users/ro9air/matsim-example-project/pt2matsim/out/tp_metro_gtfs_small/osm/network-subway-ready.xml.gz" />
+
+		<!-- 使用新的 transitSchedule（包含綠線） -->
+		<param name="inputScheduleFile" value="/Users/ro9air/matsim-example-project/pt2matsim/out/tp_metro_gtfs_small/transitSchedule.xml" />
+
+		<!-- 輸出檔案 -->
+		<param name="outputNetworkFile" value="/Users/ro9air/matsim-example-project/pt2matsim/out/tp_metro_gtfs_small/network-with-pt-v3.xml.gz" />
+		<param name="outputScheduleFile" value="/Users/ro9air/matsim-example-project/pt2matsim/out/tp_metro_gtfs_small/transitSchedule-mapped-v3.xml.gz" />
+		<param name="outputStreetNetworkFile" value="/Users/ro9air/matsim-example-project/pt2matsim/out/tp_metro_gtfs_small/network-street-v3.xml.gz" />
+
+		<!-- ==================== 模式特定參數 ==================== -->
+
+		<!-- Subway/Metro: 最寬鬆的參數 -->
+		<parameterset type="transportModeAssignment" >
+			<param name="scheduleMode" value="subway" />
+			<param name="networkModes" value="pt,subway" />
+			<param name="maxLinkCandidateDistance" value="300.0" />
+			<param name="nLinkThreshold" value="12" />
+			<param name="strictLinkRule" value="false" />
+		</parameterset>
+
+		<!-- Rail: 寬鬆參數 -->
+		<parameterset type="transportModeAssignment" >
+			<param name="scheduleMode" value="rail" />
+			<param name="networkModes" value="pt,rail" />
+			<param name="maxLinkCandidateDistance" value="250.0" />
+			<param name="nLinkThreshold" value="10" />
+			<param name="strictLinkRule" value="false" />
+		</parameterset>
+
+		<!-- Tram: 中等參數 -->
+		<parameterset type="transportModeAssignment" >
+			<param name="scheduleMode" value="tram" />
+			<param name="networkModes" value="pt,tram" />
+			<param name="maxLinkCandidateDistance" value="150.0" />
+			<param name="nLinkThreshold" value="8" />
+			<param name="strictLinkRule" value="false" />
+		</parameterset>
+
+		<!-- Bus: 標準參數 -->
+		<parameterset type="transportModeAssignment" >
+			<param name="scheduleMode" value="bus" />
+			<param name="networkModes" value="car,bus" />
+			<param name="maxLinkCandidateDistance" value="100.0" />
+			<param name="nLinkThreshold" value="6" />
+			<param name="strictLinkRule" value="false" />
+		</parameterset>
+
+	</module>
+
+</config>

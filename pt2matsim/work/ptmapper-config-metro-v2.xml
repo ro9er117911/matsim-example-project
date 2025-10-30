@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
+<config>
+	<module name="PublicTransitMapping" >
+		<!-- After nLinkThreshold link candidates have been found, additional link
+		candidates within [candidateDistanceMultiplier] * [distance to the Nth link] are added to the set.
+		Must be >= 1. -->
+		<param name="candidateDistanceMultiplier" value="2.0" />
+
+		<!-- Path to the input network file -->
+		<param name="inputNetworkFile" value="/Users/ro9air/matsim-example-project/pt2matsim/out/tp_metro_gtfs_small/osm/network-subway-ready.xml.gz" />
+
+		<!-- Path to the input schedule file -->
+		<param name="inputScheduleFile" value="/Users/ro9air/matsim-example-project/pt2matsim/out/tp_metro_gtfs_small/transitSchedule.xml" />
+
+		<!-- The maximal distance [meter] a link candidate is allowed to have from the stop facility -->
+		<param name="maxLinkCandidateDistance" value="200.0" />
+
+		<!-- If all paths between two stops have a [travelCost] > [maxTravelCostFactor] * [minTravelCost],
+		an artificial link is created. -->
+		<param name="maxTravelCostFactor" value="10.0" />
+
+		<!-- Use mode specific rules -->
+		<param name="modeSpecificRules" value="true" />
+
+		<!-- All links that do not have a transit route on them are removed, except the ones
+		listed in this set (typically only car). Separated by comma. -->
+		<param name="modesToKeepOnCleanUp" value="car" />
+
+		<!-- Number of link candidates considered for all stops -->
+		<param name="nLinkThreshold" value="10" />
+
+		<!-- The router that should be used. Possible options are: [SpeedyALT, AStarLandmarks] -->
+		<param name="networkRouter" value="AStarLandmarks" />
+
+		<!-- Defines the number of numOfThreads that should be used for pseudoRouting -->
+		<param name="numOfThreads" value="4" />
+
+		<!-- Path to the output network file -->
+		<param name="outputNetworkFile" value="/Users/ro9air/matsim-example-project/pt2matsim/out/tp_metro_gtfs_small/network-with-pt-v2.xml.gz" />
+
+		<!-- Path to the output schedule file -->
+		<param name="outputScheduleFile" value="/Users/ro9air/matsim-example-project/pt2matsim/out/tp_metro_gtfs_small/transitSchedule-mapped-v2.xml.gz" />
+
+		<!-- Path to the output car only network file -->
+		<param name="outputStreetNetworkFile" value="/Users/ro9air/matsim-example-project/pt2matsim/out/tp_metro_gtfs_small/network-street-v2.xml.gz" />
+
+		<!-- If true, stop facilities that are not used by any transit route are removed from the schedule -->
+		<param name="removeNotUsedStopFacilities" value="true" />
+
+		<!-- The travel cost of a link candidate can be increased according to its distance to the
+		stop facility. This tends to give more accurate results. -->
+		<param name="routingWithCandidateDistance" value="true" />
+
+		<!-- After the schedule has been mapped, the free speed of links can be set according to the necessary travel
+		times given by the transit schedule. -->
+		<param name="scheduleFreespeedModes" value="artificial" />
+
+		<!-- The size of the chunk that is sent to the pt mapper thread at the time -->
+		<param name="threadChunkSize" value="50" />
+
+		<!-- Defines which link attribute should be used for routing -->
+		<param name="travelCostType" value="linkLength" />
+
+		<!-- Transport mode assignment for subway/metro -->
+		<parameterset type="transportModeAssignment" >
+			<param name="maxLinkCandidateDistance" value="200.0" />
+			<param name="nLinkThreshold" value="10" />
+			<param name="networkModes" value="pt,subway" />
+			<param name="scheduleMode" value="subway" />
+			<param name="strictLinkRule" value="false" />
+		</parameterset>
+
+		<!-- Transport mode assignment for rail -->
+		<parameterset type="transportModeAssignment" >
+			<param name="maxLinkCandidateDistance" value="150.0" />
+			<param name="nLinkThreshold" value="10" />
+			<param name="networkModes" value="pt,rail" />
+			<param name="scheduleMode" value="rail" />
+			<param name="strictLinkRule" value="false" />
+		</parameterset>
+
+		<!-- Transport mode assignment for tram -->
+		<parameterset type="transportModeAssignment" >
+			<param name="maxLinkCandidateDistance" value="120.0" />
+			<param name="nLinkThreshold" value="8" />
+			<param name="networkModes" value="pt,tram" />
+			<param name="scheduleMode" value="tram" />
+			<param name="strictLinkRule" value="false" />
+		</parameterset>
+	</module>
+
+</config>

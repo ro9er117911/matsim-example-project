@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
+<config>
+	<module name="PublicTransitMapping" >
+		<!-- After nLinkThreshold link candidates have been found, additional link
+		candidates within [candidateDistanceMultiplier] * [distance to the Nth link] are added to the set.
+		Must be >= 1. -->
+		<param name="candidateDistanceMultiplier" value="1.6" />
+		<!-- Path to the input network file. Not needed if PTMapper is called within another class. -->
+		<param name="inputNetworkFile" value="/Users/ro9air/matsim-example-project/pt2matsim/out/tp_metro_gtfs_small/osm/network-subway-clean.xml.gz" />
+		<!-- Path to the input schedule file. Not needed if PTMapper is called within another class. -->
+		<param name="inputScheduleFile" value="/Users/ro9air/matsim-example-project/pt2matsim/out/tp_metro_gtfs_small/transitSchedule.xml" />
+		<!-- The maximal distance [meter] a link candidate is allowed to have from the stop facility.
+		No link candidates beyond this distance are added. -->
+		<param name="maxLinkCandidateDistance" value="150.0" />
+		<!-- If all paths between two stops have a [travelCost] > [maxTravelCostFactor] * [minTravelCost],
+		an artificial link is created. If travelCostType is travelTime, minTravelCost is the travel time
+		between stops from the schedule. If travelCostType is
+		linkLength minTravel cost is the beeline distance. -->
+		<param name="maxTravelCostFactor" value="5.0" />
+		<!-- Instead of using general number of links and maximum search distance rule, use the schedule mode specific rules to be defined within the parameter sets. For those that no information is provided the general values will be used. Options: [false, true]. Default: false. -->
+		<param name="modeSpecificRules" value="true" />
+		<!-- All links that do not have a transit route on them are removed, except the ones
+		listed in this set (typically only car). Separated by comma. -->
+		<param name="modesToKeepOnCleanUp" value="car" />
+		<!-- Number of link candidates considered for all stops, depends on accuracy of stops and desired
+		performance. Somewhere between 4 and 10 seems reasonable for bus stops, depending on the
+		accuracy of the stop facility coordinates and performance desires. Default: 6 -->
+		<param name="nLinkThreshold" value="8" />
+		<!-- The router that should be used. Possible options are: [SpeedyALT, AStarLandmarks] -->
+		<param name="networkRouter" value="SpeedyALT" />
+		<!-- Defines the number of numOfThreads that should be used for pseudoRouting. Default: 2. -->
+		<param name="numOfThreads" value="4" />
+		<!-- Path to the output network file. Not needed if PTMapper is used within another class. -->
+		<param name="outputNetworkFile" value="/Users/ro9air/matsim-example-project/pt2matsim/out/tp_metro_gtfs_small/network-with-pt.xml.gz" />
+		<!-- Path to the output schedule file. Not needed if PTMapper is used within another class. -->
+		<param name="outputScheduleFile" value="/Users/ro9air/matsim-example-project/pt2matsim/out/tp_metro_gtfs_small/transitSchedule-mapped.xml.gz" />
+		<!-- Path to the output car only network file. The input multimodal map is filtered.
+		Not needed if PTMapper is used within another class. -->
+		<param name="outputStreetNetworkFile" value="/Users/ro9air/matsim-example-project/pt2matsim/out/tp_metro_gtfs_small/network-street.xml.gz" />
+		<!-- If true, stop facilities that are not used by any transit route are removed from the schedule. Default: true -->
+		<param name="removeNotUsedStopFacilities" value="true" />
+		<!-- The travel cost of a link candidate can be increased according to its distance to the
+		stop facility x2. This tends to give more accurate results. If travelCostType is travelTime, freespeed on
+		the link is applied to the beeline distance. -->
+		<param name="routingWithCandidateDistance" value="true" />
+		<!-- After the schedule has been mapped, the free speed of links can be set according to the necessary travel
+		times given by the transit schedule. The freespeed of a link is set to the minimal value needed by all
+		transit routes passing using it. This is recommended for "artificial", additional
+		modes (especially "rail", if used) can be added, separated by commas. -->
+		<param name="scheduleFreespeedModes" value="artificial" />
+		<!-- The size of the chunk that is sent to the pt mapper thread at the time to buildfacilities and links. Default: 100. -->
+		<param name="threadChunkSize" value="100" />
+		<!-- Defines which link attribute should be used for routing. Possible values "linkLength" (default)
+		and "travelTime". -->
+		<param name="travelCostType" value="linkLength" />
+		<!-- Transport mode assignment for subway/metro -->
+		<parameterset type="transportModeAssignment" >
+			<param name="maxLinkCandidateDistance" value="150.0" />
+			<param name="nLinkThreshold" value="8" />
+			<param name="networkModes" value="pt,subway" />
+			<param name="scheduleMode" value="subway" />
+			<param name="strictLinkRule" value="false" />
+		</parameterset>
+		<!-- Transport mode assignment for rail -->
+		<parameterset type="transportModeAssignment" >
+			<param name="maxLinkCandidateDistance" value="120.0" />
+			<param name="nLinkThreshold" value="8" />
+			<param name="networkModes" value="rail" />
+			<param name="scheduleMode" value="rail" />
+			<param name="strictLinkRule" value="false" />
+		</parameterset>
+		<!-- Transport mode assignment for tram -->
+		<parameterset type="transportModeAssignment" >
+			<param name="maxLinkCandidateDistance" value="100.0" />
+			<param name="nLinkThreshold" value="6" />
+			<param name="networkModes" value="pt,tram" />
+			<param name="scheduleMode" value="tram" />
+			<param name="strictLinkRule" value="false" />
+		</parameterset>
+	</module>
+
+</config>

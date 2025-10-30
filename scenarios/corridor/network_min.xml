@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE network SYSTEM "http://www.matsim.org/files/dtd/network_v2.dtd">
+<network name="taipei-min">
+
+  <nodes>
+    <node id="6248940575" x="303537.56651007535" y="2770644.4707569494" />
+    <node id="269201070" x="303870.5335961778" y="2770560.821526394" />
+    <node id="2038168688" x="303553.1135823282" y="2770627.2298692777" />
+    <node id="1973482489" x="303692.39573366614" y="2770584.355952213" />
+    <node id="631668981" x="303760.28293284646" y="2770565.072577682" />
+    <node id="631669076" x="303774.46070022107" y="2770562.525359938" />
+    <node id="2690921409" x="303954.8903236744" y="2770533.7174492883" />
+    <node id="2877022366" x="304016.8035213896" y="2770524.8349412833" />
+    <node id="2444664369" x="304016.9658124588" y="2770539.933164831" />
+    <node id="5372642442" x="303774.711022167" y="2770578.3992927717" />
+    <node id="631668976" x="303760.983564608" y="2770581.911957529" />
+    <node id="655375573" x="303556.72601968725" y="2770640.1262622313" />
+  </nodes>
+
+  <links capperiod="01:00:00">
+    <link id="21719" from="6248940575" to="269201070" length="343.4038599835522" freespeed="22.22222222222222" capacity="9999.0" permlanes="1.0" oneway="1" modes="pt" />
+    <link id="21720" from="269201070" to="6248940575" length="343.4038599835522" freespeed="22.22222222222222" capacity="9999.0" permlanes="1.0" oneway="1" modes="pt" />
+    <link id="38702" from="2038168688" to="1973482489" length="145.7329965127862" freespeed="22.22222222222222" capacity="6000.0" permlanes="4.0" oneway="1" modes="car,pt" />
+    <link id="38703" from="1973482489" to="631668981" length="70.61312086920833" freespeed="22.22222222222222" capacity="6000.0" permlanes="4.0" oneway="1" modes="car,pt" />
+    <link id="42721" from="631668981" to="631669076" length="14.404770250289001" freespeed="22.22222222222222" capacity="4500.0" permlanes="3.0" oneway="1" modes="car,pt" />
+    <link id="38698" from="631669076" to="2690921409" length="182.72030702823318" freespeed="13.88888888888889" capacity="4500.0" permlanes="3.0" oneway="1" modes="car,pt" />
+    <link id="38699" from="2690921409" to="2877022366" length="62.54712623117637" freespeed="13.88888888888889" capacity="4500.0" permlanes="3.0" oneway="1" modes="car,pt" />
+    <link id="90001" from="2877022366" to="2444664369" length="120.0" freespeed="13.88888888888889" capacity="3000.0" permlanes="2.0" oneway="1" modes="car,pt" />
+
+    <link id="38695" from="2444664369" to="5372642442" length="245.32354683387356" freespeed="22.22222222222222" capacity="4500.0" permlanes="3.0" oneway="1" modes="car,pt" />
+    <link id="26985" from="5372642442" to="631668976" length="14.169753164095427" freespeed="22.22222222222222" capacity="4500.0" permlanes="3.0" oneway="1" modes="car,pt" />
+    <link id="42674" from="631668976" to="655375573" length="212.40640409756455" freespeed="22.22222222222222" capacity="4500.0" permlanes="3.0" oneway="1" modes="car,pt" />
+
+    <link id="38706" from="655375573" to="2038168688" length="13.392783686982913" freespeed="4.166666666666667" capacity="600.0" permlanes="1.0" oneway="1" modes="car,pt" />
+    <link id="38707" from="2038168688" to="655375573" length="13.392783686982913" freespeed="4.166666666666667" capacity="600.0" permlanes="1.0" oneway="1" modes="car,pt" />
+  </links>
+
+</network>

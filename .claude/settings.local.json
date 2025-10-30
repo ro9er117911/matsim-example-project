@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(./mvnw clean:*)",
+      "Bash(java -jar matsim-example-project-0.0.1-SNAPSHOT.jar:*)",
+      "Bash(java:*)",
+      "Bash(./mvnw exec:java:*)",
+      "Bash(tee:*)",
+      "Read(//private/tmp/**)",
+      "Bash(pkill:*)",
+      "Bash(zcat:*)",
+      "Bash(gunzip:*)",
+      "Bash(while read node)",
+      "Bash(do gunzip -c pt2matsim/out/tp_metro_gtfs_small/osm/network.xml.gz)",
+      "Bash(done)",
+      "Bash(awk:*)",
+      "Bash(xargs kill:*)",
+      "Bash(./mvnw compile:*)",
+      "Bash(while ps aux)",
+      "Bash(do sleep 30)",
+      "Bash(do sleep 5)",
+      "Bash(cat:*)",
+      "Bash(jar:*)",
+      "Bash(timeout 120 java:*)",
+      "Bash(./mvnw:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

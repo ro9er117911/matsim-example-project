@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE transitSchedule SYSTEM "http://www.matsim.org/files/dtd/transitSchedule_v2.dtd">
+
+<transitSchedule>
+  <transitStops>
+    <stopFacility id="MRT_BL14" x="303804.189" y="2770590.711" name="忠孝新生" linkRefId="21719" isBlocking="false" />
+    <stopFacility id="MRT_BL15" x="304996.853" y="2770512.496" name="忠孝復興" linkRefId="21720" isBlocking="false" />
+  </transitStops>
+
+  <transitLine id="MRT_BL">
+    <transitRoute id="MRT_BL14">
+      <description>板南線：忠孝新生 → 忠孝復興 (上行)</description>
+      <transportMode>subway</transportMode>
+      <routeProfile>
+        <stop refId="MRT_BL14" departureOffset="00:00:00" awaitDeparture="true" />
+        <stop refId="MRT_BL15" arrivalOffset="00:01:24" departureOffset="00:01:54" awaitDeparture="true" />
+      </routeProfile>
+      <route>
+        <link refId="21720" />
+      </route>
+      <departures>
+        <departure id="MRT_BL14_08:06:42" departureTime="08:06:42" vehicleRefId="MRT_BL14_train" />
+      </departures>
+    </transitRoute>
+    <transitRoute id="MRT_BL15">
+      <description>板南線：忠孝復興 → 忠孝新生 (下行)</description>
+      <transportMode>subway</transportMode>
+      <routeProfile>
+        <stop refId="MRT_BL15" departureOffset="00:00:00" awaitDeparture="true" />
+        <stop refId="MRT_BL14" arrivalOffset="00:01:36" departureOffset="00:02:06" awaitDeparture="true" />
+      </routeProfile>
+      <route>
+        <link refId="21719" />
+      </route>
+      <departures>
+        <departure id="MRT_BL15_09:18:07" departureTime="09:18:07" vehicleRefId="MRT_BL15_train" />
+      </departures>
+    </transitRoute>
+  </transitLine>
+
+</transitSchedule>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
+<config>
+	<module name="PublicTransitMapping" >
+		<!-- ==================== Plan B: SpeedyALT with Improved Parameters ==================== -->
+		<!-- This config uses SpeedyALT router (fast, ~1 hour) with improved tolerance parameters -->
+
+		<!-- Strategy 1: Increased candidate search range -->
+		<param name="candidateDistanceMultiplier" value="3.0" />
+
+		<!-- Strategy 2: Increased max search distance (90m → 300m) -->
+		<param name="maxLinkCandidateDistance" value="300.0" />
+
+		<!-- Strategy 3: Increased travel cost tolerance (5.0 → 15.0) -->
+		<param name="maxTravelCostFactor" value="15.0" />
+
+		<!-- Strategy 4: Enable mode-specific rules -->
+		<param name="modeSpecificRules" value="true" />
+
+		<!-- Strategy 5: Use SpeedyALT router (FAST - estimated ~1 hour) -->
+		<param name="networkRouter" value="SpeedyALT" />
+
+		<!-- Strategy 6: Increased thread count (2 → 6) -->
+		<param name="numOfThreads" value="6" />
+
+		<!-- Strategy 7: Reduced chunk size for better load balancing -->
+		<param name="threadChunkSize" value="50" />
+
+		<!-- ==================== Standard Parameters ==================== -->
+
+		<param name="modesToKeepOnCleanUp" value="car" />
+		<param name="nLinkThreshold" value="10" />
+		<param name="removeNotUsedStopFacilities" value="true" />
+		<param name="routingWithCandidateDistance" value="true" />
+		<param name="scheduleFreespeedModes" value="artificial" />
+		<param name="travelCostType" value="linkLength" />
+
+		<!-- ==================== Input/Output Files ==================== -->
+
+		<param name="inputNetworkFile" value="/Users/ro9air/matsim-example-project/pt2matsim/out/tp_metro_gtfs_small/osm/network-subway-ready.xml.gz" />
+		<param name="inputScheduleFile" value="/Users/ro9air/matsim-example-project/pt2matsim/out/tp_metro_gtfs_small/transitSchedule.xml" />
+
+		<param name="outputNetworkFile" value="/Users/ro9air/matsim-example-project/pt2matsim/out/tp_metro_gtfs_small/network-with-pt-v4.xml.gz" />
+		<param name="outputScheduleFile" value="/Users/ro9air/matsim-example-project/pt2matsim/out/tp_metro_gtfs_small/transitSchedule-mapped-v4.xml.gz" />
+		<param name="outputStreetNetworkFile" value="/Users/ro9air/matsim-example-project/pt2matsim/out/tp_metro_gtfs_small/network-street-v4.xml.gz" />
+
+		<!-- ==================== Mode-Specific Parameters ==================== -->
+
+		<!-- Subway/Metro: Most lenient parameters -->
+		<parameterset type="transportModeAssignment" >
+			<param name="scheduleMode" value="subway" />
+			<param name="networkModes" value="pt,subway" />
+			<param name="maxLinkCandidateDistance" value="300.0" />
+			<param name="nLinkThreshold" value="12" />
+			<param name="strictLinkRule" value="false" />
+		</parameterset>
+
+		<!-- Rail: Lenient parameters -->
+		<parameterset type="transportModeAssignment" >
+			<param name="scheduleMode" value="rail" />
+			<param name="networkModes" value="pt,rail" />
+			<param name="maxLinkCandidateDistance" value="250.0" />
+			<param name="nLinkThreshold" value="10" />
+			<param name="strictLinkRule" value="false" />
+		</parameterset>
+
+		<!-- Tram: Medium parameters -->
+		<parameterset type="transportModeAssignment" >
+			<param name="scheduleMode" value="tram" />
+			<param name="networkModes" value="pt,tram" />
+			<param name="maxLinkCandidateDistance" value="150.0" />
+			<param name="nLinkThreshold" value="8" />
+			<param name="strictLinkRule" value="false" />
+		</parameterset>
+
+		<!-- Bus: Standard parameters -->
+		<parameterset type="transportModeAssignment" >
+			<param name="scheduleMode" value="bus" />
+			<param name="networkModes" value="car,bus" />
+			<param name="maxLinkCandidateDistance" value="100.0" />
+			<param name="nLinkThreshold" value="6" />
+			<param name="strictLinkRule" value="false" />
+		</parameterset>
+
+	</module>
+
+</config>

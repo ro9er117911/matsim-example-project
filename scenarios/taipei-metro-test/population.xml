@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE population SYSTEM "http://www.matsim.org/files/dtd/population_v6.dtd">
+<population>
+
+  <!-- Test Agent 1: Blue Line commuter (板橋 → 台北車站) -->
+  <person id="pt_commuter_bl_01">
+    <plan selected="yes">
+      <activity type="home" link="pt_BL07_UP" x="296660.1690383145" y="2767388.4471152932" end_time="07:30:00" />
+      <leg mode="pt" />
+      <activity type="work" link="81226" x="302208.73284823" y="2771006.7627904457" end_time="17:00:00" />
+      <leg mode="pt" />
+      <activity type="home" link="pt_BL07_UP" x="296660.1690383145" y="2767388.4471152932" />
+    </plan>
+  </person>
+
+  <!-- Test Agent 2: Blue Line commuter (永寧 → 忠孝新生) -->
+  <person id="pt_commuter_bl_02">
+    <plan selected="yes">
+      <activity type="home" link="pt_BL02_UP" x="294035.0508794822" y="2762173.23895046" end_time="08:00:00" />
+      <leg mode="pt" />
+      <activity type="work" link="81294" x="303804.1887079433" y="2770590.710859173" end_time="17:30:00" />
+      <leg mode="pt" />
+      <activity type="home" link="pt_BL02_UP" x="294035.0508794822" y="2762173.23895046" />
+    </plan>
+  </person>
+
+  <!-- Test Agent 3: Blue Line commuter (龍山寺 → 市政府) -->
+  <person id="pt_commuter_bl_03">
+    <plan selected="yes">
+      <activity type="home" link="81354" x="300488.7872939309" y="2769778.5391352274" end_time="08:30:00" />
+      <leg mode="pt" />
+      <activity type="work" link="30040" x="307081.8149554937" y="2770453.0393493082" end_time="18:00:00" />
+      <leg mode="pt" />
+      <activity type="home" link="81354" x="300488.7872939309" y="2769778.5391352274" />
+    </plan>
+  </person>
+
+  <!-- Test Agent 4: Blue Line commuter (土城 → 忠孝復興) -->
+  <person id="pt_commuter_bl_04">
+    <plan selected="yes">
+      <activity type="home" link="pt_BL03_UP" x="294859.6990734095" y="2762874.8386587347" end_time="07:45:00" />
+      <leg mode="pt" />
+      <activity type="work" link="74346" x="304996.8532790921" y="2770512.496446124" end_time="17:15:00" />
+      <leg mode="pt" />
+      <activity type="home" link="pt_BL03_UP" x="294859.6990734095" y="2762874.8386587347" />
+    </plan>
+  </person>
+
+  <!-- Test Agent 5: Blue Line commuter (江子翠 → 善導寺) -->
+  <person id="pt_commuter_bl_05">
+    <plan selected="yes">
+      <activity type="home" link="pt_BL09_UP" x="297689.8716625933" y="2769212.9908094765" end_time="08:15:00" />
+      <leg mode="pt" />
+      <activity type="work" link="81266" x="302862.28591230744" y="2770828.7266682894" end_time="17:45:00" />
+      <leg mode="pt" />
+      <activity type="home" link="pt_BL09_UP" x="297689.8716625933" y="2769212.9908094765" />
+    </plan>
+  </person>
+
+</population>

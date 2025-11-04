@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE population SYSTEM "http://www.matsim.org/files/dtd/population_v6.dtd">
+
+<!--
+  Agent Journey Templates for MATSim (已修正版本)
+  這個文件包含幾個預定義的 agent 旅程模板
+  可以直接複製粘貼到 population.xml 中使用
+
+  修正日期: 2025-11-03
+  
+  主要修正項目:
+  1. 添加所有 leg 的 routingMode 屬性
+  2. 添加所有 route 的 trav_time 屬性
+  3. 完善 PT route 的 JSON 格式（包含 accessFacilityId 和 egressFacilityId）
+  4. 添加 car 的 vehicleRefId 屬性
+  5. 添加 car person 的 carAvail 屬性
+-->
+
+<population>
+
+  <!-- ============================================================ -->
+  <!-- 模板 1: 簡單的 PT 通勤者 (Home → PT → Work → PT → Home) -->
+  <!-- ============================================================ -->
+  <person id="pt_commuter_template_01">
+    <plan selected="yes">
+      <!-- 早上在家 (靠近 PT 站點) -->
+      <activity type="home"
+                link="pt_BL02_UP"
+                x="294035.05"
+                y="2762173.24"
+                end_time="07:15:00" />
+
+      <!-- 步行到站點 -->
+      <leg mode="walk" dep_time="07:15:00" trav_time="00:01:00">
+        <attributes>
+          <attribute name="routingMode" class="java.lang.String">pt</attribute>
+        </attributes>
+        <route type="generic" start_link="pt_BL02_UP" end_link="pt_BL02_UP" trav_time="00:01:00" distance="50.0"></route>
+      </leg>
+
+      <!-- 在出發站等待 -->
+      <activity type="pt interaction"
+                link="pt_BL02_UP"
+                x="294035.05"
+                y="2762173.24"
+                max_dur="00:00:00" />
+
+      <!-- 乘坐 PT 前往目的地 -->
+      <leg mode="pt" dep_time="07:16:00" trav_time="00:27:55">
+        <attributes>
+          <attribute name="routingMode" class="java.lang.String">pt</attribute>
+        </attributes>
+        <route type="default_pt" start_link="pt_BL02_UP" end_link="pt_BL14_UP" trav_time="00:27:55" distance="7646.14">{"transitRouteId":"403_1438_UP","boardingTime":"07:16:08","transitLineId":"Blue","accessFacilityId":"BL02_UP.link:pt_BL02_UP","egressFacilityId":"BL14_UP.link:pt_BL14_UP"}</route>
+      </leg>
+
+      <!-- 在到達站等待 -->
+      <activity type="pt interaction"
+                link="pt_BL14_UP"
+                x="303804.19"
+                y="2770590.71"
+                max_dur="00:00:00" />
+
+      <!-- 步行到工作地點 -->
+      <leg mode="walk" dep_time="07:43:55" trav_time="00:01:00">
+        <attributes>
+          <attribute name="routingMode" class="java.lang.String">pt</attribute>
+        </attributes>
+        <route type="generic" start_link="pt_BL14_UP" end_link="pt_BL14_UP" trav_time="00:01:00" distance="50.0"></route>
+      </leg>
+
+      <!-- 工作 -->
+      <activity type="work"
+                link="pt_BL14_UP"
+                x="303804.19"
+                y="2770590.71"
+                end_time="17:00:00" />
+
+      <!-- 步行回到站點 -->
+      <leg mode="walk" dep_time="17:00:00" trav_time="00:01:00">
+        <attributes>
+          <attribute name="routingMode" class="java.lang.String">pt</attribute>
+        </attributes>
+        <route type="generic" start_link="pt_BL14_UP" end_link="pt_BL14_UP" trav_time="00:01:00" distance="50.0"></route>
+      </leg>
+
+      <!-- 在出發站等待 (回程) -->
+      <activity type="pt interaction"
+                link="pt_BL14_UP"
+                x="303804.19"
+                y="2770590.71"
+                max_dur="00:00:00" />
+
+      <!-- 乘坐 PT 回家 -->
+      <leg mode="pt" dep_time="17:01:00" trav_time="00:27:55">
+        <attributes>
+          <attribute name="routingMode" class="java.lang.String">pt</attribute>
+        </attributes>
+        <route type="default_pt" start_link="pt_BL14_UP" end_link="pt_BL02_UP" trav_time="00:27:55" distance="7646.14">{"transitRouteId":"403_1438_UP","boardingTime":"17:01:00","transitLineId":"Blue","accessFacilityId":"BL14_UP.link:pt_BL14_UP","egressFacilityId":"BL02_UP.link:pt_BL02_UP"}</route>
+      </leg>
+
+      <!-- 在抵達站等待 (回程) -->
+      <activity type="pt interaction"
+                link="pt_BL02_UP"
+                x="294035.05"
+                y="2762173.24"
+                max_dur="00:00:00" />
+
+      <!-- 步行回家 -->
+      <leg mode="walk" dep_time="17:28:55" trav_time="00:01:00">
+        <attributes>
+          <attribute name="routingMode" class="java.lang.String">pt</attribute>
+        </attributes>
+        <route type="generic" start_link="pt_BL02_UP" end_link="pt_BL02_UP" trav_time="00:01:00" distance="50.0"></route>
+      </leg>
+
+      <!-- 晚上在家 -->
+      <activity type="home"
+                link="pt_BL02_UP"
+                x="294035.05"
+                y="2762173.24" />
+    </plan>
+  </person>
+
+  <!-- ============================================================ -->
+  <!-- 模板 2: 汽車通勤者 (Home → Car → Work → Car → Home) -->
+  <!-- ============================================================ -->
+  <person id="car_commuter_template_01">
+    <attributes>
+      <attribute name="carAvail" class="java.lang.String">always</attribute>
+    </attributes>
+    <plan selected="yes">
+      <!-- 早上在家 -->
+      <activity type="home"
+                link="10000"
+                x="300488.79"
+                y="2769778.54"
+                end_time="07:30:00" />
+
+      <!-- 駕車到工作地點 -->
+      <leg mode="car" dep_time="07:30:00" trav_time="00:06:15">
+        <attributes>
+          <attribute name="routingMode" class="java.lang.String">car</attribute>
+        </attributes>
+        <route type="links" start_link="10000" end_link="100000" trav_time="00:06:21" distance="7201.46" vehicleRefId="car_commuter_template_01">10000 119735 52071 52072 52073 52074 52075 80735 80736 80737 80738 80739 50424 50425 50426 50427 50428 132500 75234 75235 75236 167981 167982 167983 21804 87133 87134 21834 21835 130518 130519 130520 82064 82065 82066 17994 17995 17996 48891 48892 48893 85701 85702 85703 48894 48895 48896 37254 37256 49569 49570 49571 49572 49573 49574 89290 89291 89292 89293 89294 89295 89296 89297 89298 89299 11757 11759 11708 11707 11627 10814 11650 11649 38561 11629 11630 105193 105194 105195 105196 105197 13964 13965 13966 41071 41072 41073 159143 159144 159145 75003 75004 75005 75006 42176 42177 42178 51174 51175 51176 51177 51178 51179 51180 150641 150642 150643 82414 82415 82416 82417 130828 130829 130830 130901 130902 130903 130904 150737 130886 130887 130888 130882 130883 130884 131578 75604 131594 34394 34395 34396 34397 34398 34399 34400 16106 16107 16108 16109 150666 82105 82106 82107 131619 131620 131621 82102 82103 82104 131622 131628 131572 98034 98035 98036 98037 101570 62783 62784 62785</route>
+      </leg>
+
+      <!-- 工作 -->
+      <activity type="work"
+                link="100000"
+                x="305544.29"
+                y="2770487.68"
+                end_time="18:30:00" />
+
+      <!-- 駕車回家 -->
+      <leg mode="car" dep_time="18:30:00" trav_time="00:07:15">
+        <attributes>
+          <attribute name="routingMode" class="java.lang.String">car</attribute>
+        </attributes>
+        <route type="links" start_link="100000" end_link="10000" trav_time="00:07:21" distance="6339.25" vehicleRefId="car_commuter_template_01">100000 131643 131634 98968 29803 29804 29805 131545 131546 131547 131548 131549 131550 40950 16147 16148 16149 16150 81199 81200 81201 81202 81203 81204 81205 151101 69072 151086 80711 131579 131580 131581 131582 131583 131584 131585 23939 23940 147143 147144 147145 147146 147147 105721 37711 37712 37713 37714 37715 37716 37701 37702 37703 37704 37705 37709 48166 48167 48168 14819 14820 14821 14816 14817 14818 138437 138438 138439 11762 11650 11649 99746 11759 65887 11709 11710 11711 11712 11713 11714 130481 130482 130483 130484 130485 130486 130487 21938 21939 21940 40971 40972 40973 40974 40975 40976 21802 107084 107085 21912 21913 21914 21915 161390 161391 161392 161393 161394 161395 161396 161300 161301 161302 161303 52166 52167 52168 168029 157663 43746 159492 159493 10000</route>
+      </leg>
+
+      <!-- 晚上在家 -->
+      <activity type="home"
+                link="10000"
+                x="300488.79"
+                y="2769778.54" />
+    </plan>
+  </person>
+
+  <!-- ============================================================ -->
+  <!-- 模板 3: 步行通勤者 (Home → Walk → Work → Walk → Home) -->
+  <!-- ============================================================ -->
+  <person id="walk_commuter_template_01">
+    <plan selected="yes">
+      <!-- 早上在家 -->
+      <activity type="home"
+                link="pt_BL02_UP"
+                x="294035.05"
+                y="2762173.24"
+                end_time="07:45:00" />
+
+      <!-- 步行到工作地點 (近距離) -->
+      <leg mode="walk" dep_time="07:45:00" trav_time="00:20:00">
+        <attributes>
+          <attribute name="routingMode" class="java.lang.String">walk</attribute>
+        </attributes>
+        <route type="generic" start_link="pt_BL02_UP" end_link="pt_BL03_UP" trav_time="00:20:00" distance="1500.0"></route>
+      </leg>
+
+      <!-- 工作 -->
+      <activity type="work"
+                link="pt_BL03_UP"
+                x="295000.0"
+                y="2763500.0"
+                end_time="17:00:00" />
+
+      <!-- 步行回家 -->
+      <leg mode="walk" dep_time="17:00:00" trav_time="00:20:00">
+        <attributes>
+          <attribute name="routingMode" class="java.lang.String">walk</attribute>
+        </attributes>
+        <route type="generic" start_link="pt_BL03_UP" end_link="pt_BL02_UP" trav_time="00:20:00" distance="1500.0"></route>
+      </leg>
+
+      <!-- 晚上在家 -->
+      <activity type="home"
+                link="pt_BL02_UP"
+                x="294035.05"
+                y="2762173.24" />
+    </plan>
+  </person>
+
+  <!-- ============================================================ -->
+  <!-- 模板 4: 多活動通勤者 (Home → PT → Work → Shopping → Home) -->
+  <!-- ============================================================ -->
+  <person id="multi_activity_template_01">
+    <plan selected="yes">
+      <!-- 早上在家 -->
+      <activity type="home"
+                link="pt_BL02_UP"
+                x="294035.05"
+                y="2762173.24"
+                end_time="07:15:00" />
+
+      <!-- 步行到站點 -->
+      <leg mode="walk" dep_time="07:15:00" trav_time="00:01:00">
+        <attributes>
+          <attribute name="routingMode" class="java.lang.String">pt</attribute>
+        </attributes>
+        <route type="generic" start_link="pt_BL02_UP" end_link="pt_BL02_UP" trav_time="00:01:00" distance="50.0"></route>
+      </leg>
+
+      <!-- 在出發站等待 -->
+      <activity type="pt interaction"
+                link="pt_BL02_UP"
+                x="294035.05"
+                y="2762173.24"
+                max_dur="00:00:00" />
+
+      <!-- 乘坐 PT 前往工作地點 -->
+      <leg mode="pt" dep_time="07:16:00" trav_time="00:27:55">
+        <attributes>
+          <attribute name="routingMode" class="java.lang.String">pt</attribute>
+        </attributes>
+        <route type="default_pt" start_link="pt_BL02_UP" end_link="pt_BL14_UP" trav_time="00:27:55" distance="7646.14">{"transitRouteId":"403_1438_UP","boardingTime":"07:16:08","transitLineId":"Blue","accessFacilityId":"BL02_UP.link:pt_BL02_UP","egressFacilityId":"BL14_UP.link:pt_BL14_UP"}</route>
+      </leg>
+
+      <!-- 在到達站等待 -->
+      <activity type="pt interaction"
+                link="pt_BL14_UP"
+                x="303804.19"
+                y="2770590.71"
+                max_dur="00:00:00" />
+
+      <!-- 步行到工作地點 -->
+      <leg mode="walk" dep_time="07:43:55" trav_time="00:01:00">
+        <attributes>
+          <attribute name="routingMode" class="java.lang.String">pt</attribute>
+        </attributes>
+        <route type="generic" start_link="pt_BL14_UP" end_link="pt_BL14_UP" trav_time="00:01:00" distance="50.0"></route>
+      </leg>
+
+      <!-- 工作 -->
+      <activity type="work"
+                link="pt_BL14_UP"
+                x="303804.19"
+                y="2770590.71"
+                end_time="17:00:00" />
+
+      <!-- 步行到購物中心 -->
+      <leg mode="walk" dep_time="17:00:00" trav_time="00:10:00">
+        <attributes>
+          <attribute name="routingMode" class="java.lang.String">walk</attribute>
+        </attributes>
+        <route type="generic" start_link="pt_BL14_UP" end_link="shopping_01" trav_time="00:10:00" distance="800.0"></route>
+      </leg>
+
+      <!-- 購物 -->
+      <activity type="shopping"
+                link="shopping_01"
+                x="304500.0"
+                y="2770600.0"
+                end_time="19:00:00" />
+
+      <!-- 步行回到 PT 站點 -->
+      <leg mode="walk" dep_time="19:00:00" trav_time="00:10:00">
+        <attributes>
+          <attribute name="routingMode" class="java.lang.String">walk</attribute>
+        </attributes>
+        <route type="generic" start_link="shopping_01" end_link="pt_BL14_UP" trav_time="00:10:00" distance="800.0"></route>
+      </leg>
+
+      <!-- 在站點等待 (回家) -->
+      <activity type="pt interaction"
+                link="pt_BL14_UP"
+                x="303804.19"
+                y="2770590.71"
+                max_dur="00:00:00" />
+
+      <!-- 乘坐 PT 回家 -->
+      <leg mode="pt" dep_time="19:01:00" trav_time="00:27:55">
+        <attributes>
+          <attribute name="routingMode" class="java.lang.String">pt</attribute>
+        </attributes>
+        <route type="default_pt" start_link="pt_BL14_UP" end_link="pt_BL02_UP" trav_time="00:27:55" distance="7646.14">{"transitRouteId":"403_1438_UP","boardingTime":"19:01:00","transitLineId":"Blue","accessFacilityId":"BL14_UP.link:pt_BL14_UP","egressFacilityId":"BL02_UP.link:pt_BL02_UP"}</route>
+      </leg>
+
+      <!-- 在到達站等待 (回家) -->
+      <activity type="pt interaction"
+                link="pt_BL02_UP"
+                x="294035.05"
+                y="2762173.24"
+                max_dur="00:00:00" />
+
+      <!-- 步行回家 -->
+      <leg mode="walk" dep_time="19:28:55" trav_time="00:01:00">
+        <attributes>
+          <attribute name="routingMode" class="java.lang.String">pt</attribute>
+        </attributes>
+        <route type="generic" start_link="pt_BL02_UP" end_link="pt_BL02_UP" trav_time="00:01:00" distance="50.0"></route>
+      </leg>
+
+      <!-- 晚上在家 -->
+      <activity type="home"
+                link="pt_BL02_UP"
+                x="294035.05"
+                y="2762173.24" />
+    </plan>
+  </person>
+
+  <!-- ============================================================ -->
+  <!-- 模板 5: 綠線 PT 通勤者 (G01 ↔ G19) -->
+  <!-- ============================================================ -->
+  <person id="green_line_commuter_template_01">
+    <plan selected="yes">
+      <!-- 早上在 G01 附近 -->
+      <activity type="home"
+                link="pt_G01_UP"
+                x="304270.32"
+                y="2761189.79"
+                end_time="07:00:00" />
+
+      <!-- 步行到 G01 站 -->
+      <leg mode="walk" dep_time="07:00:00" trav_time="00:01:00">
+        <attributes>
+          <attribute name="routingMode" class="java.lang.String">pt</attribute>
+        </attributes>
+        <route type="generic" start_link="pt_G01_UP" end_link="pt_G01_UP" trav_time="00:01:00" distance="50.0"></route>
+      </leg>
+
+      <!-- 在 G01 等待 -->
+      <activity type="pt interaction"
+                link="pt_G01_UP"
+                x="304270.32"
+                y="2761189.79"
+                max_dur="00:00:00" />
+
+      <!-- 乘坐綠線到 G19 -->
+      <leg mode="pt" dep_time="07:01:00" trav_time="00:37:26">
+        <attributes>
+          <attribute name="routingMode" class="java.lang.String">pt</attribute>
+        </attributes>
+        <route type="default_pt" start_link="pt_G01_UP" end_link="pt_G19_UP" trav_time="00:37:26" distance="16752.50">{"transitRouteId":"183_6466_UP","boardingTime":"07:01:00","transitLineId":"Green","accessFacilityId":"G01_UP.link:pt_G01_UP","egressFacilityId":"G19_UP.link:pt_G19_UP"}</route>
+      </leg>
+
+      <!-- 在 G19 等待 -->
+      <activity type="pt interaction"
+                link="pt_G19_UP"
+                x="308290.60"
+                y="2771453.17"
+                max_dur="00:00:00" />
+
+      <!-- 步行到工作地點 -->
+      <leg mode="walk" dep_time="07:38:26" trav_time="00:01:00">
+        <attributes>
+          <attribute name="routingMode" class="java.lang.String">pt</attribute>
+        </attributes>
+        <route type="generic" start_link="pt_G19_UP" end_link="pt_G19_UP" trav_time="00:01:00" distance="50.0"></route>
+      </leg>
+
+      <!-- 工作 -->
+      <activity type="work"
+                link="pt_G19_UP"
+                x="308290.60"
+                y="2771453.17"
+                end_time="17:00:00" />
+
+      <!-- 回程 -->
+      <leg mode="walk" dep_time="17:00:00" trav_time="00:01:00">
+        <attributes>
+          <attribute name="routingMode" class="java.lang.String">pt</attribute>
+        </attributes>
+        <route type="generic" start_link="pt_G19_UP" end_link="pt_G19_UP" trav_time="00:01:00" distance="50.0"></route>
+      </leg>
+
+      <activity type="pt interaction"
+                link="pt_G19_UP"
+                x="308290.60"
+                y="2771453.17"
+                max_dur="00:00:00" />
+
+      <leg mode="pt" dep_time="17:01:00" trav_time="00:37:26">
+        <attributes>
+          <attribute name="routingMode" class="java.lang.String">pt</attribute>
+        </attributes>
+        <route type="default_pt" start_link="pt_G19_UP" end_link="pt_G01_UP" trav_time="00:37:26" distance="16752.50">{"transitRouteId":"183_6466_UP","boardingTime":"17:01:00","transitLineId":"Green","accessFacilityId":"G19_UP.link:pt_G19_UP","egressFacilityId":"G01_UP.link:pt_G01_UP"}</route>
+      </leg>
+
+      <activity type="pt interaction"
+                link="pt_G01_UP"
+                x="304270.32"
+                y="2761189.79"
+                max_dur="00:00:00" />
+
+      <leg mode="walk" dep_time="17:38:26" trav_time="00:01:00">
+        <attributes>
+          <attribute name="routingMode" class="java.lang.String">pt</attribute>
+        </attributes>
+        <route type="generic" start_link="pt_G01_UP" end_link="pt_G01_UP" trav_time="00:01:00" distance="50.0"></route>
+      </leg>
+
+      <!-- 晚上在家 -->
+      <activity type="home"
+                link="pt_G01_UP"
+                x="304270.32"
+                y="2761189.79" />
+    </plan>
+  </person>
+
+  <!-- ============================================================ -->
+  <!-- 模板 6: 下行方向的 PT 通勤者 (BL14 → BL02) -->
+  <!-- ============================================================ -->
+  <person id="pt_commuter_template_02_DN">
+    <plan selected="yes">
+      <!-- 早上在家 (BL14 下行站) -->
+      <activity type="home"
+                link="pt_BL14_DN"
+                x="303804.19"
+                y="2770590.71"
+                end_time="07:30:00" />
+
+      <!-- 步行到站點 -->
+      <leg mode="walk" dep_time="07:30:00" trav_time="00:01:00">
+        <attributes>
+          <attribute name="routingMode" class="java.lang.String">pt</attribute>
+        </attributes>
+        <route type="generic" start_link="pt_BL14_DN" end_link="pt_BL14_DN" trav_time="00:01:00" distance="50.0"></route>
+      </leg>
+
+      <!-- 在出發站等待 -->
+      <activity type="pt interaction"
+                link="pt_BL14_DN"
+                x="303804.19"
+                y="2770590.71"
+                max_dur="00:00:00" />
+
+      <!-- 乘坐 PT 前往 BL02 (下行方向) -->
+      <leg mode="pt" dep_time="07:31:00" trav_time="00:27:36">
+        <attributes>
+          <attribute name="routingMode" class="java.lang.String">pt</attribute>
+        </attributes>
+        <route type="default_pt" start_link="pt_BL14_DN" end_link="pt_BL02_DN" trav_time="00:27:36" distance="7646.14">{"transitRouteId":"403_2021_DN","boardingTime":"07:31:00","transitLineId":"Blue","accessFacilityId":"BL14_DN.link:pt_BL14_DN","egressFacilityId":"BL02_DN.link:pt_BL02_DN"}</route>
+      </leg>
+
+      <!-- 在到達站等待 -->
+      <activity type="pt interaction"
+                link="pt_BL02_DN"
+                x="294035.05"
+                y="2762173.24"
+                max_dur="00:00:00" />
+
+      <!-- 步行到工作地點 -->
+      <leg mode="walk" dep_time="07:58:36" trav_time="00:01:00">
+        <attributes>
+          <attribute name="routingMode" class="java.lang.String">pt</attribute>
+        </attributes>
+        <route type="generic" start_link="pt_BL02_DN" end_link="pt_BL02_DN" trav_time="00:01:00" distance="50.0"></route>
+      </leg>
+
+      <!-- 工作 -->
+      <activity type="work"
+                link="pt_BL02_DN"
+                x="294035.05"
+                y="2762173.24"
+                end_time="17:00:00" />
+
+      <!-- 回程步行 -->
+      <leg mode="walk" dep_time="17:00:00" trav_time="00:01:00">
+        <attributes>
+          <attribute name="routingMode" class="java.lang.String">pt</attribute>
+        </attributes>
+        <route type="generic" start_link="pt_BL02_DN" end_link="pt_BL02_DN" trav_time="00:01:00" distance="50.0"></route>
+      </leg>
+
+      <activity type="pt interaction"
+                link="pt_BL02_DN"
+                x="294035.05"
+                y="2762173.24"
+                max_dur="00:00:00" />
+
+      <!-- 回程 PT -->
+      <leg mode="pt" dep_time="17:01:00" trav_time="00:27:36">
+        <attributes>
+          <attribute name="routingMode" class="java.lang.String">pt</attribute>
+        </attributes>
+        <route type="default_pt" start_link="pt_BL02_DN" end_link="pt_BL14_DN" trav_time="00:27:36" distance="7646.14">{"transitRouteId":"403_2021_DN","boardingTime":"17:01:00","transitLineId":"Blue","accessFacilityId":"BL02_DN.link:pt_BL02_DN","egressFacilityId":"BL14_DN.link:pt_BL14_DN"}</route>
+      </leg>
+
+      <activity type="pt interaction"
+                link="pt_BL14_DN"
+                x="303804.19"
+                y="2770590.71"
+                max_dur="00:00:00" />
+
+      <leg mode="walk" dep_time="17:28:36" trav_time="00:01:00">
+        <attributes>
+          <attribute name="routingMode" class="java.lang.String">pt</attribute>
+        </attributes>
+        <route type="generic" start_link="pt_BL14_DN" end_link="pt_BL14_DN" trav_time="00:01:00" distance="50.0"></route>
+      </leg>
+
+      <!-- 晚上在家 -->
+      <activity type="home"
+                link="pt_BL14_DN"
+                x="303804.19"
+                y="2770590.71" />
+    </plan>
+  </person>
+
+</population>
+
+<!--
+使用說明:
+
+1. 主要修正項目:
+   ✓ 所有 leg 添加了 <attributes> 標籤和 routingMode 屬性
+   ✓ 所有 route 添加了 trav_time 屬性
+   ✓ PT route 的 JSON 包含完整資訊（accessFacilityId 和 egressFacilityId）
+   ✓ Car route 添加了 vehicleRefId 屬性和正確的 end_link
+   ✓ Car person 添加了 carAvail 屬性
+   ✓ Walk legs 添加了 routingMode 屬性
+
+2. 使用方法:
+   - 複製上面的模板到你的 population.xml 中
+   - 根據需要修改:
+     • person id: 改成唯一的代理人 ID
+     • link: 改成你的網路中實際存在的 link ID
+     • x, y: 改成準確的座標
+     • end_time: 改成你需要的時間
+     • transitLineId, transitRouteId: 改成你的時刻表中的線路 ID
+     • vehicleRefId: 改成與 person id 一致（或其他唯一ID）
+
+3. 關鍵格式要求:
+   - 所有時間必須是 HH:MM:SS 格式
+   - 所有 link ID 必須在網路文件中存在
+   - PT 腿必須有 pt interaction activities
+   - route 標籤必須包含 trav_time 屬性
+   - JSON 格式必須在同一行
+
+4. PT Route JSON 格式範例:
+   {"transitRouteId":"403_1438_UP","boardingTime":"07:16:08","transitLineId":"Blue","accessFacilityId":"BL02_UP.link:pt_BL02_UP","egressFacilityId":"BL14_UP.link:pt_BL14_UP"}
+
+5. 注意事項:
+   - routingMode 對於 pt 的 walk legs 應該是 "pt"
+   - routingMode 對於純 walk 應該是 "walk"
+   - routingMode 對於 car 應該是 "car"
+   - 上行(UP)和下行(DN)路線要使用不同的 link
+-->

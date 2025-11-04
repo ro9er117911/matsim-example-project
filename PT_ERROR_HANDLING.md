@@ -5,6 +5,9 @@
 
 ---
 
+## 執行日期更新
+2025-11-03: 新增 PT Sequential Routing 錯誤診斷與修復
+
 ## 目錄
 1. [模擬測試流程](#模擬測試流程)
 2. [常見錯誤和解決方案](#常見錯誤和解決方案)
@@ -171,7 +174,118 @@ grep mainMode config.xml
 
 ---
 
-### 5. 內存錯誤
+### 5. PT 代理人直線傳輸錯誤（2025-11-03 新增）
+
+#### Problem: "PT Agents Using Straight-Line Transmission"
+**症狀**:
+- PT 代理人從出發站直接傳輸到目的地，不訪問任何中間站點
+- 模擬可以運行，但代理人的路由不符合時刻表
+- 事件日誌中看不到中間站點的 `VehicleArrivesAtFacility` 事件
+
+**根本原因**:
+```xml
+<!-- 錯誤配置：PT 被設定為 teleportedModeParameters -->
+<module name="routing">
+  <parameterset type="teleportedModeParameters">
+    <param name="mode" value="pt"/>
+    <param name="teleportedModeSpeed" value="20.0"/>
+  </parameterset>
+</module>
+```
+
+這導致 SwissRailRaptor 路由引擎無法啟用，代理人使用直線傳輸而不是真實的 PT 網路路由。
+
+**診斷步驟**:
+```bash
+# 1. 檢查 config.xml 中是否有 PT 的 teleportedModeParameters
+grep -A3 "teleportedModeParameters" config.xml | grep -i "pt"
+
+# 2. 驗證虛擬 PT 網路是否存在
+gunzip -c network-with-pt.xml.gz | grep -c "link id=\"pt_"
+# 應該有數百個 pt_ 開頭的 links
+
+# 3. 檢查時刻表中的停靠點
+gunzip -c transitSchedule-mapped.xml.gz | grep "arrivalOffset\|departureOffset" | head -20
+
+# 4. 驗證模擬事件
+gunzip -c output/ITERS/it.0/0.events.xml.gz | \
+  grep "VehicleArrivesAtFacility.*pt_BL0[2-9]\|pt_BL1[0-4]" | head -20
+
+# 如果沒有輸出，說明代理人沒有訪問中間站點
+```
+
+**解決方案**:
+
+**第 1 步**: 移除 PT 的 teleportedModeParameters
+```xml
+<!-- ❌ 刪除此區塊（如果存在） -->
+<!--
+<parameterset type="teleportedModeParameters">
+  <param name="mode" value="pt"/>
+  <param name="teleportedModeSpeed" value="20.0"/>
+</parameterset>
+-->
+
+<!-- ✅ 只保留 walk 相關的 teleportedModeParameters -->
+<parameterset type="teleportedModeParameters">
+  <param name="mode" value="walk" />
+  <param name="teleportedModeSpeed" value="1.388888888" />
+  <param name="beelineDistanceFactor" value="1.3" />
+</parameterset>
+```
+
+**第 2 步**: 確保 SwissRailRaptor 模組配置正確
+```xml
+<module name="swissRailRaptor">
+  <!-- 禁用 intermodal access/egress（除非 population 計畫支持） -->
+  <param name="useIntermodalAccessEgress" value="false" />
+
+  <!-- 零轉乘成本確保選擇最短路線 -->
+  <param name="transferPenaltyBaseCost" value="0.0" />
+  <param name="transferPenaltyCostPerTravelTimeHour" value="0.0" />
+
+  <!-- 不使用模式映射 -->
+  <param name="useModeMappingForPassengers" value="false" />
+</module>
+```
+
+**第 3 步**: 驗證配置正確
+```bash
+# 確認檢查清單
+# - [ ] PT NOT in routing.networkModes
+# - [ ] PT NOT in qsim.mainMode
+# - [ ] PT NOT in teleportedModeParameters
+# - [ ] transit.useTransit = true
+# - [ ] transit.usingTransitInMobsim = true
+
+grep -E "networkModes|mainMode|useTransit|usingTransit" config.xml
+```
+
+**第 4 步**: 重新運行模擬並驗證
+```bash
+# 重新構建和運行
+./mvnw clean package
+./mvnw exec:java -Dexec.mainClass="org.matsim.project.RunMatsim" \
+  -Dexec.args="scenarios/equil/config.xml"
+
+# 驗證結果（應該看到所有中間站點）
+gunzip -c output/ITERS/it.0/0.events.xml.gz | \
+  grep "VehicleArrivesAtFacility" | grep "pt_BL" | \
+  awk -F'facility=' '{print $2}' | cut -d'"' -f2 | sort
+# 預期輸出: BL01_UP, BL02_UP, BL03_UP, ..., BL23_UP (完整序列)
+```
+
+**成功標誌**:
+```
+✅ 事件日誌顯示所有中間站點
+✅ VehicleArrivesAtFacility 按照時刻表順序出現
+✅ PersonEntersVehicle 和 PersonLeavesVehicle 正確匹配
+✅ 模擬完成，無 "direct transmission" 報告
+```
+
+---
+
+### 6. 內存錯誤
 
 #### Error: `OutOfMemoryError: Java heap space`
 **症狀**:

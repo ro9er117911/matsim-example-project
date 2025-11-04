@@ -352,9 +352,116 @@
 
 ---
 
+## 📋 2025-11-03 SwissRailRaptor 配置成功案例
+
+### 問題回顧
+PT 代理人使用直線傳輸（straight-line transmission）而不是按順序訪問車站。
+
+### 根本原因
+`config.xml` 中配置了 PT 的 `teleportedModeParameters`，導致 SwissRailRaptor 無法啟用。
+
+### 解決方案實施
+
+**修改 `scenarios/equil/config.xml`**:
+
+```xml
+<!-- ❌ 移除此配置 -->
+<!--
+<parameterset type="teleportedModeParameters">
+  <param name="mode" value="pt"/>
+  <param name="teleportedModeSpeed" value="20.0"/>
+</parameterset>
+-->
+
+<!-- ✅ 正確的配置 -->
+<module name="routing">
+  <param name="networkModes" value="car" />
+  <param name="accessEgressType" value="accessEgressModeToLink" />
+  <param name="clearDefaultTeleportedModeParams" value="true" />
+
+  <!-- 只有 walk modes 使用 teleportation -->
+  <parameterset type="teleportedModeParameters">
+    <param name="mode" value="walk" />
+    <param name="teleportedModeSpeed" value="1.388888888" />
+    <param name="beelineDistanceFactor" value="1.3" />
+  </parameterset>
+  <!-- access_walk, egress_walk, transit_walk ... -->
+</module>
+
+<!-- SwissRailRaptor 處理 PT 路由 -->
+<module name="swissRailRaptor">
+  <param name="useIntermodalAccessEgress" value="false" />
+  <param name="transferPenaltyBaseCost" value="0.0" />
+  <param name="transferPenaltyCostPerTravelTimeHour" value="0.0" />
+  <param name="useModeMappingForPassengers" value="false" />
+</module>
+```
+
+### 驗證結果
+
+**模擬輸出**:
+```
+Build: SUCCESS
+Simulation: SUCCESS (31 秒)
+Mode Statistics:
+  - Car: 40% (2 agents)
+  - PT: 60% (3 agents)
+```
+
+**事件日誌驗證** (veh_463_subway 藍線路線):
+```
+時間     事件                          站點
+26079s   TransitDriverStarts           pt_BL01_UP
+26240s   PersonEntersVehicle (metro_1) pt_BL02_UP
+26857s   VehicleArrivesAtFacility      pt_BL03_UP  ✅ 中間站點
+26888s   VehicleDepartsAtFacility      pt_BL03_UP
+...
+28274s   VehicleArrivesAtFacility      pt_BL12_UP  ✅ 中間站點
+28317s   VehicleDepartsAtFacility      pt_BL12_UP
+28403s   VehicleArrivesAtFacility      pt_BL13_UP  ✅ 中間站點
+28526s   PersonLeavesVehicle (metro_1) pt_BL14_UP  ✅ 下車站
+```
+
+**完整路線確認**: BL02 → BL03 → BL04 → ... → BL14 ✅
+
+### 關鍵學習
+
+| 項目 | 錯誤做法 | 正確做法 |
+|------|----------|----------|
+| PT 配置 | 使用 teleportedModeParameters | 移除 teleportation，使用 SwissRailRaptor |
+| 路由演算法 | 直線傳輸 | 實際網路路由，訪問所有中間站點 |
+| 虛擬網路 | 被繞過 | 完全使用 473 個 PT links |
+| 時刻表 | 被忽視 | 完全遵循時刻表時間和停靠點 |
+| 驗證 | 無中間站點事件 | 完整的 VehicleArrivesAtFacility 序列 |
+
+### 配置檢查清單
+
+部署 PT 模擬前確認:
+- ✅ PT **不在** `routing.networkModes`
+- ✅ PT **不在** `qsim.mainMode`
+- ✅ PT **不在** `teleportedModeParameters`
+- ✅ `transit.useTransit = true`
+- ✅ `transit.usingTransitInMobsim = true`
+- ✅ `swissRailRaptor` 模組已配置
+- ✅ 虛擬 PT 網路存在 (pt2matsim 產出)
+- ✅ 時刻表完整 (transitSchedule-mapped.xml.gz)
+- ✅ 車輛定義正確 (transitVehicles.xml)
+
+### 推薦資源
+
+- CLAUDE.md: SwissRailRaptor Configuration 章節
+- PT_ERROR_HANDLING.md: PT 代理人直線傳輸錯誤診斷
+- working_journal/2025-11-03-PT-SwissRailRaptor-Fix.md: 完整工作日誌
+
+---
+
 ## 👥 作者
 - Claude Code (Anthropic)
 - 基於用戶需求和 MATSim 最佳實踐
 
 ## 📄 授權
 本配置遵循 MATSim 專案授權條款
+
+## 📝 更新歷史
+- 2025-10-29: 初始 PT 配置
+- 2025-11-03: SwissRailRaptor 配置修復和驗證

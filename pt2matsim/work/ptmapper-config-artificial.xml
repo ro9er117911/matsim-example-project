@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
+<config>
+	<module name="PublicTransitMapping">
+		<!-- Input files -->
+		<param name="inputNetworkFile" value="/Users/ro9air/matsim-example-project/pt2matsim/out/tp_metro_gtfs_small/network-multimodal.xml.gz"/>
+		<param name="inputScheduleFile" value="/Users/ro9air/matsim-example-project/pt2matsim/out/tp_metro_gtfs_small/transitSchedule.xml"/>
+
+		<!-- Output files -->
+		<param name="outputNetworkFile" value="/Users/ro9air/matsim-example-project/pt2matsim/out/tp_metro_gtfs_small/network-with-pt.xml.gz"/>
+		<param name="outputScheduleFile" value="/Users/ro9air/matsim-example-project/pt2matsim/out/tp_metro_gtfs_small/transitSchedule-mapped.xml.gz"/>
+		<param name="outputStreetNetworkFile" value="/Users/ro9air/matsim-example-project/pt2matsim/out/tp_metro_gtfs_small/network-street.xml"/>
+
+		<!-- Use artificial links: Set maxLinkCandidateDistance to 0 -->
+		<!-- This creates independent PT network with dummy loop links (pt_ prefix) -->
+		<param name="maxLinkCandidateDistance" value="0.0"/>
+
+		<!-- Number of link candidates per stop -->
+		<param name="nLinkThreshold" value="1"/>
+
+		<!-- Network router algorithm -->
+		<param name="networkRouter" value="SpeedyALT"/>
+
+		<!-- Number of threads for mapping -->
+		<param name="numOfThreads" value="4"/>
+
+		<!-- Modes to keep when cleaning up network -->
+		<!-- This ensures car/bus/walk links are NOT removed -->
+		<param name="modesToKeepOnCleanUp" value="car,bus,walk"/>
+
+		<!-- Schedule freespeed modes -->
+		<param name="scheduleFreespeedModes" value="rail,subway,metro,pt"/>
+
+		<!-- Transport mode assignment for MRT/Metro -->
+		<parameterset type="transportModeAssignment">
+			<param name="scheduleMode" value="subway"/>
+			<param name="networkModes" value="rail,subway,pt"/>
+		</parameterset>
+		<parameterset type="transportModeAssignment">
+			<param name="scheduleMode" value="rail"/>
+			<param name="networkModes" value="rail,pt"/>
+		</parameterset>
+		<parameterset type="transportModeAssignment">
+			<param name="scheduleMode" value="metro"/>
+			<param name="networkModes" value="rail,subway,pt"/>
+		</parameterset>
+		<parameterset type="transportModeAssignment">
+			<param name="scheduleMode" value="light_rail"/>
+			<param name="networkModes" value="light_rail,pt"/>
+		</parameterset>
+		<parameterset type="transportModeAssignment">
+			<param name="scheduleMode" value="tram"/>
+			<param name="networkModes" value="tram,pt"/>
+		</parameterset>
+		<parameterset type="transportModeAssignment">
+			<param name="scheduleMode" value="bus"/>
+			<param name="networkModes" value="bus,car"/>
+		</parameterset>
+	</module>
+</config>

@@ -182,6 +182,48 @@ config.controller().setOverwriteFileSetting(OverwriteFileSetting.deleteDirectory
 
 Default CRS for this project: `EPSG:3826` (TWD97 / TM2 zone 121, Taiwan).
 
+## Configuration Reference
+
+**IMPORTANT: Before modifying any scenario config files, always consult `defaultConfig.xml` first.**
+
+The `defaultConfig.xml` file at the project root is the **complete reference** for all MATSim configuration options. It contains:
+- All available configuration modules with their parameters
+- Default values for each parameter
+- Possible values and options (documented in comments)
+- Parameter descriptions and usage notes
+
+### Key Configuration Modules in defaultConfig.xml
+
+1. **changeMode** - Mode choice behavior (car/pt switching)
+2. **controller** - Simulation control (iterations: line 31, output settings: line 42-58, routing algorithm: line 46)
+3. **global** - Global settings (coordinate system: line 106, threads: line 110, random seed: line 111)
+4. **qsim** - Queue-based simulation engine (main congested modes: line 180, threads: line 186, stuck time: line 203)
+5. **routing** - Routing configuration (network modes: line 242, teleported modes: lines 247-278)
+6. **scoring** - Agent scoring parameters (travel time utilities: lines 401-460, activity types: lines 303-400)
+7. **transit** - Public transport (routing algorithm: line 494, transit modes: line 498, schedule file: line 500)
+8. **transitRouter** - PT routing (transfer time: line 511, max walk distance: line 517, search radius: line 519)
+
+### Critical Parameters to Check Before Runs
+
+When creating or modifying scenarios, verify these settings:
+- **controller.lastIteration** (line 31) - Default: 1000 (very long for testing)
+- **controller.outputDirectory** (line 42) - Avoid overwriting results
+- **controller.overwriteFiles** (line 44) - Set to `deleteDirectoryIfExists` for iterative testing
+- **global.coordinateSystem** (line 106) - Must match network/population CRS
+- **routing.networkModes** (line 242) - Must include all simulated modes (car, pt, subway, etc.)
+- **transit.useTransit** (line 504) - Must be `true` for PT scenarios
+- **transit.transitModes** (line 498) - Define which modes are treated as transit
+
+### Usage Pattern
+
+```bash
+# 1. Check defaultConfig.xml for available options
+cat defaultConfig.xml | grep -A 5 "module name=\"controller\""
+
+# 2. Create minimal scenario config with only required overrides
+# 3. Reference defaultConfig.xml when troubleshooting parameters
+```
+
 ## Common Modifications
 
 ### Enable Visualization
@@ -198,3 +240,239 @@ Or CLI: `--config:controller.lastIteration 10`
 
 ### Change Output Directory
 Always use `OverwriteFileSetting.deleteDirectoryIfExists` in code, or set via config.
+
+## Common Issues & Best Practices
+
+### Public Transit Simulation Errors
+
+#### ClassCastException: TransitPassengerRoute cannot be cast to NetworkRoute
+
+**Root Cause**: Code attempts to cast transit passenger routes to network routes (incompatible types).
+
+**Why This Happens**:
+- MATSim was originally designed for car-only simulations
+- Activities (home, work) must be linked to network links
+- PT agents still need access/egress trips (walking/driving to/from stations)
+- **Missing ground network** causes routing failures even for PT-only scenarios
+
+**Solutions**:
+
+1. **Build Complete Multimodal Network** (Recommended)
+   ```bash
+   # Use Osm2MultimodalNetwork to create network with car, walk, rail modes
+   java -cp pt2matsim/work/pt2matsim-25.8-shaded.jar \
+     org.matsim.pt2matsim.run.Osm2MultimodalNetwork \
+     input.osm output_network.xml config.xml
+   ```
+
+2. **Use Artificial Links** (PT-only network)
+   ```xml
+   <!-- In PT mapper config -->
+   <module name="ptmapper">
+     <param name="maxLinkCandidateDistance" value="0.0"/>
+   </module>
+   ```
+   Creates independent PT network with dummy loop links (pt_ prefix).
+
+3. **Configure Car as Teleported Mode** (if agents have car legs but network lacks car links)
+   ```xml
+   <module name="routing">
+     <parameterset type="teleportedModeParameters">
+       <param name="mode" value="car"/>
+       <param name="teleportedModeSpeed" value="10.0"/>
+       <param name="beelineDistanceFactor" value="1.3"/>
+     </parameterset>
+   </module>
+   ```
+
+### Network Mode Configuration
+
+**Critical**: Ensure `routing.networkModes` matches actual network link modes:
+
+```xml
+<module name="routing">
+  <!-- Must include ALL simulated network modes -->
+  <param name="networkModes" value="car,bus,subway,pt"/>
+</module>
+```
+
+Verify network contains these modes:
+```bash
+grep -o 'modes="[^"]*"' network.xml | sort | uniq -c
+```
+
+### Transit Configuration Checklist
+
+Before running PT simulations, verify:
+
+```xml
+<module name="transit">
+  <param name="useTransit" value="true"/>
+  <param name="transitModes" value="pt"/>
+  <param name="transitScheduleFile" value="transitSchedule.xml"/>
+  <param name="vehiclesFile" value="transitVehicles.xml"/>
+  <param name="routingAlgorithmType" value="SwissRailRaptor"/>
+</module>
+
+<module name="qsim">
+  <param name="mainMode" value="car,pt"/>
+  <param name="usingTransitInMobsim" value="true"/>
+</module>
+```
+
+### Link Validation
+
+Common warnings to fix:
+
+1. **Zero-length links**:
+   ```
+   WARN LinkImpl:130 length=0.0 of link id pt_BL01_DN
+   ```
+   Fix: Set minimum length (e.g., 1.0m) for all links
+
+2. **Insufficient capacity**:
+   ```
+   WARN QueueWithBuffer:504 Link too small: enlarge storage capacity
+   ```
+   Fix: Increase `capacity` attribute in network.xml or use `storageCapacityFactor` in config
+
+### Population Plans Validation
+
+Ensure all activity locations reference valid network links:
+
+```xml
+<person id="agent_01">
+  <plan selected="yes">
+    <!-- Link must exist in network.xml -->
+    <activity type="home" link="81226" x="..." y="..." end_time="07:15:00"/>
+    <leg mode="pt"/>
+    <!-- Link must exist in network.xml -->
+    <activity type="work" link="81226" x="..." y="..." end_time="17:30:00"/>
+  </plan>
+</person>
+```
+
+Validate with:
+```bash
+# Extract all link IDs from plans
+grep -o 'link="[^"]*"' population.xml | sort -u > plan_links.txt
+# Extract all link IDs from network
+grep '<link id=' network.xml | grep -o 'id="[^"]*"' | sort -u > network_links.txt
+# Compare
+comm -23 plan_links.txt network_links.txt  # Links in plans but not in network
+```
+
+### Best Practices Summary
+
+✅ **Always build multimodal networks** (car, walk, rail) even for PT-only scenarios
+✅ **Check link modes** match routing configuration
+✅ **Enable transit modules** (useTransit=true, usingTransitInMobsim=true)
+✅ **Use teleportation** for non-critical modes to avoid routing failures
+✅ **Validate link references** in population plans
+✅ **Set realistic iterations** for testing (10-50, not 1000)
+✅ **Use deleteDirectoryIfExists** to avoid output conflicts
+
+❌ **Never import only rail tracks** without ground roads
+❌ **Never force-cast route types** without type checking
+❌ **Never forget transitVehicles.xml** when using PT
+❌ **Never skip network mode validation**
+❌ **Never use zero-length links**
+
+## SwissRailRaptor Configuration for Sequential PT Routing
+
+### Problem: PT Agents Using Straight-Line Transmission
+
+**Symptom**: PT agents teleport directly from origin to destination, ignoring intermediate stops on the virtual PT network.
+
+**Root Cause**: PT mode configured with `teleportedModeParameters` in routing module instead of using SwissRailRaptor algorithm.
+
+### Solution: Remove PT from Teleported Modes
+
+**❌ WRONG** - PT configured as teleported mode:
+```xml
+<module name="routing">
+  <parameterset type="teleportedModeParameters">
+    <param name="mode" value="pt"/>
+    <param name="teleportedModeSpeed" value="20.0"/>
+  </parameterset>
+</module>
+```
+Result: Direct transmission, no intermediate stops visited.
+
+**✅ CORRECT** - PT routed through SwissRailRaptor:
+```xml
+<module name="routing">
+  <!-- networkModes must NOT include "pt" -->
+  <param name="networkModes" value="car" />
+  <param name="accessEgressType" value="accessEgressModeToLink" />
+  <param name="clearDefaultTeleportedModeParams" value="true" />
+
+  <!-- Only walk modes use teleportation -->
+  <parameterset type="teleportedModeParameters">
+    <param name="mode" value="walk" />
+    <param name="teleportedModeSpeed" value="1.388888888" />
+    <param name="beelineDistanceFactor" value="1.3" />
+  </parameterset>
+  <!-- access_walk, egress_walk, transit_walk follow -->
+</module>
+
+<!-- SwissRailRaptor handles PT routing -->
+<module name="swissRailRaptor">
+  <!-- Disable intermodal unless population plans support it -->
+  <param name="useIntermodalAccessEgress" value="false" />
+
+  <!-- Zero transfer penalties for direct path selection -->
+  <param name="transferPenaltyBaseCost" value="0.0" />
+  <param name="transferPenaltyCostPerTravelTimeHour" value="0.0" />
+
+  <!-- No mode mapping for simple passenger routing -->
+  <param name="useModeMappingForPassengers" value="false" />
+</module>
+```
+
+### SwissRailRaptor Configuration Checklist
+
+Before running simulations with PT:
+
+- [ ] **PT NOT in routing.networkModes** → routing will use SwissRailRaptor
+- [ ] **PT NOT in qsim.mainMode** → allows PT-only scenarios without network congestion
+- [ ] **PT NOT in teleportedModeParameters** → critical to enable routing
+- [ ] **transit.useTransit = true** → enables transit simulation
+- [ ] **transit.usingTransitInMobsim = true** → PT vehicles operate in simulation
+- [ ] **transit.routingAlgorithmType = "SwissRailRaptor"** → correct routing algorithm
+- [ ] **Virtual network exists** → pt2matsim-generated network with links like `pt_STATION_UP`
+- [ ] **Transit schedule complete** → all stops and departures defined
+- [ ] **transitVehicles.xml** → capacity and vehicle definitions
+
+### How SwissRailRaptor Works
+
+1. **Input**: Agent wants to travel from stop A to stop B at time T
+2. **Algorithm**: Finds shortest path considering:
+   - Real departure/arrival times from schedule
+   - Transfer penalties (configurable)
+   - Multiple route options
+3. **Output**: Agent uses actual transit route links, visiting every intermediate stop
+4. **Validation**: Events show `PersonEntersVehicle` and `PersonLeavesVehicle` with stop facility IDs
+
+### Verification
+
+**Check event logs for correct PT routing**:
+```bash
+# Should see stops being visited in sequence
+gunzip -c output/ITERS/it.0/0.events.xml.gz | \
+  grep "VehicleArrivesAtFacility\|VehicleDepartsAtFacility" | \
+  grep "BL0[2-9]\|BL1[0-4]" | head -50
+
+# Expected output (sequential):
+# VehicleArrivesAtFacility at BL02_UP
+# VehicleDepartsAtFacility from BL02_UP
+# VehicleArrivesAtFacility at BL03_UP  ← intermediate stop
+# VehicleDepartsAtFacility from BL03_UP
+# VehicleArrivesAtFacility at BL04_UP  ← intermediate stop
+# ...
+# VehicleArrivesAtFacility at BL14_UP
+# VehicleDepartsAtFacility from BL14_UP
+```
+
+✅ **Success**: All intermediate stops appear in sequence
+❌ **Failure**: Only origin and destination appear, no intermediate stops

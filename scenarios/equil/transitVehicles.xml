@@ -2,6 +2,7 @@
 
 <vehicleDefinitions xmlns="http://www.matsim.org/files/dtd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.matsim.org/files/dtd http://www.matsim.org/files/dtd/vehicleDefinitions_v2.0.xsd">
 
+	<!-- Subway vehicle type for PT transit -->
 	<vehicleType id="Subway">
 		<attributes>
 			<attribute name="accessTimeInSecondsPerPerson" class="java.lang.Double">0.1</attribute>
@@ -18,6 +19,26 @@
 		</costInformation>
 		<passengerCarEquivalents pce="4.4"/>
 		<networkMode networkMode="subway"/>
+		<flowEfficiencyFactor factor="1.0"/>
+	</vehicleType>
+
+	<!-- PT vehicle type for public transit passengers -->
+	<vehicleType id="pt">
+		<capacity seats="1" standingRoomInPersons="0"/>
+		<length meter="7.5"/>
+		<width meter="1.0"/>
+		<passengerCarEquivalents pce="1.0"/>
+		<networkMode networkMode="pt"/>
+		<flowEfficiencyFactor factor="1.0"/>
+	</vehicleType>
+
+	<!-- Car vehicle type for private cars -->
+	<vehicleType id="car">
+		<capacity seats="5" standingRoomInPersons="0"/>
+		<length meter="7.5"/>
+		<width meter="1.0"/>
+		<passengerCarEquivalents pce="1.0"/>
+		<networkMode networkMode="car"/>
 		<flowEfficiencyFactor factor="1.0"/>
 	</vehicleType>
 

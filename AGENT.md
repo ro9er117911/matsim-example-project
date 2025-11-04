@@ -1,5 +1,13 @@
 # MATSim Example Project – Agent Guide
 
+## Recent Progress (2025-11-03)
+
+### ✅ PT Sequential Routing Fixed
+- **Issue**: PT agents using straight-line transmission instead of sequential station visits
+- **Solution**: Removed PT from `teleportedModeParameters`, enabled SwissRailRaptor routing
+- **Result**: Agents now correctly visit all intermediate stops (BL02→BL03→...→BL14, G01→...→G19)
+- **Documentation**: Updated CLAUDE.md with SwissRailRaptor configuration best practices
+
 ## Project Snapshot
 - Java 21 project built with Maven; main entry points sit in `src/main/java/org/matsim/project`, with helpers under `src/main/java/org/matsim/project/tools`.
 - Tests live in `src/test/java/org/matsim/project`, driven by JUnit 5 (JUnit Jupiter).

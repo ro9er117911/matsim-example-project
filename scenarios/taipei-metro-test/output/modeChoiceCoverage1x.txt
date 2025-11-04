@@ -1,2 +1,0 @@
-Iteration	pt
-0	1.0

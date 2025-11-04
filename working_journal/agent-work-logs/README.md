@@ -29,6 +29,7 @@
 - `development-guide.md` - 開發者指南
 - `entry-points-guide.md` - 應用程式入口點說明
 - `pt-tools-implementation.md` - PT 工具實作細節
+- `build_agent_tracks_refactoring.md` - Build Agent Tracks 模組化拆分與 Activity 匹配功能實現 (✅ 2025-11-04 完成)
 
 ### 3. test-assistant
 **責任範圍**: 測試框架、測試案例、品質保證
@@ -64,6 +65,13 @@
 
 ## 最後更新
 
-**日期**: 2025-10-30
-**更新者**: Explore Agents (初始化)
-**狀態**: 初始版本，基於專案全面分析
+**日期**: 2025-11-04
+**更新者**: Claude Code (dev-master)
+**狀態**: 新增 Build Agent Tracks 重構工作日誌
+
+### 近期重要更新
+
+| 日期 | 工作 | 狀態 | 位置 |
+|------|------|------|------|
+| 2025-11-04 | Build Agent Tracks 模組化拆分 + Activity 匹配功能 | ✅ 完成 | dev-master/build_agent_tracks_refactoring.md |
+| 2025-10-30 | 初始化工作日誌系統 | ✅ 完成 | 各 Agent 目錄 |

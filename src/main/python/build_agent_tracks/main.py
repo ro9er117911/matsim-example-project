@@ -1,0 +1,216 @@
+"""
+Main entry point for the build_agent_tracks pipeline.
+
+Orchestrates: parse plans → build legs table → build tracks → match activities → write outputs.
+"""
+from __future__ import annotations
+
+import argparse
+import typing as T
+from pathlib import Path
+
+import pandas as pd
+
+from .activity_matcher import (
+    add_activity_summaries,
+    extract_activities_by_person,
+    match_activity_to_tracks,
+)
+from .legs_builder import build_legs_table
+from .parsers import (
+    load_actively_used_vehicles,
+    load_transit_mode_lookup,
+    load_transit_route_stops,
+    parse_population_or_plans,
+)
+from .tracks_builder import DEFAULT_INCLUDED_MODES, build_tracks_from_legs
+from .vehicle_filter import create_vehicle_usage_report, write_filtered_vehicles_csv
+
+
+def run_pipeline(
+    plans_path: str,
+    population_fallback: str | None,
+    events_path: str | None,
+    outdir: str,
+    dt: int = 5,
+    schedule_path: str | None = None,
+    include_modes: T.Collection[str] | None = None,
+    add_activity_matching: bool = True,
+) -> dict[str, str]:
+    """
+    Orchestrate: parse plans (or population), build legs table, build tracks,
+    match activities, write CSVs.
+
+    Args:
+        plans_path: Path to plans.xml(.gz)
+        population_fallback: Fallback to population.xml(.gz) if plans not found
+        events_path: Optional events.xml(.gz) for vehicle filtering
+        outdir: Output directory for generated CSVs
+        dt: Sampling interval in seconds for tracks
+        schedule_path: Optional transitSchedule.xml(.gz) for PT enrichment
+        include_modes: Modes to include in tracks (defaults to walk + transit)
+        add_activity_matching: Whether to match activities to tracks (default: True)
+
+    Returns:
+        Dict of output file paths
+    """
+    Path(outdir).mkdir(parents=True, exist_ok=True)
+
+    # Load plans/population
+    src = plans_path if (plans_path and Path(plans_path).exists()) else (population_fallback or "")
+    if not src or not Path(src).exists():
+        raise FileNotFoundError("Neither plans nor population file could be found.")
+
+    print(f"Loading plans from: {src}")
+    plans = parse_population_or_plans(src)
+    print(f"  Loaded {len(plans)} agents")
+
+    # Load transit schedule info (optional)
+    route_modes, line_modes = load_transit_mode_lookup(schedule_path)
+    stop_coords, route_stops = load_transit_route_stops(schedule_path)
+
+    # Build legs table
+    print("Building legs table...")
+    legs_df = build_legs_table(
+        plans,
+        route_modes=route_modes,
+        line_modes=line_modes,
+        stop_coords=stop_coords,
+        route_stops=route_stops,
+    )
+    print(f"  Created {len(legs_df)} leg entries")
+
+    # Save legs table
+    legs_csv = str(Path(outdir) / "legs_table.csv")
+    legs_df.to_csv(legs_csv, index=False)
+    outputs = {"legs_csv": legs_csv}
+
+    # Build tracks
+    print(f"Building tracks (sampling every {dt}s)...")
+    tracks_df = build_tracks_from_legs(legs_df, dt=dt, include_modes=include_modes)
+    print(f"  Created {len(tracks_df)} track points")
+
+    # Match activities to tracks
+    if add_activity_matching:
+        print("Matching activities to tracks...")
+        activities_by_person = extract_activities_by_person(plans)
+        tracks_df = match_activity_to_tracks(tracks_df, activities_by_person)
+        tracks_df = add_activity_summaries(tracks_df)
+        print(f"  Matched activities for {len(activities_by_person)} agents")
+
+    # Save tracks (CSV)
+    tracks_csv = str(Path(outdir) / f"tracks_dt{dt}s.csv")
+    tracks_df.to_csv(tracks_csv, index=False)
+    outputs["tracks_csv"] = tracks_csv
+
+    # Save tracks (Parquet, optional)
+    try:
+        tracks_parquet = str(Path(outdir) / f"tracks_dt{dt}s.parquet")
+        tracks_df.to_parquet(tracks_parquet, index=False)
+        outputs["tracks_parquet"] = tracks_parquet
+    except Exception as e:
+        print(f"Warning: Could not write Parquet: {e}")
+
+    # Vehicle filtering (optional)
+    if events_path and Path(str(events_path)).exists():
+        try:
+            print("Processing vehicle usage...")
+            used_vehicles = load_actively_used_vehicles(events_path)
+            if used_vehicles:
+                filtered_vehicles_csv = write_filtered_vehicles_csv(used_vehicles, outdir)
+                outputs["filtered_vehicles_csv"] = filtered_vehicles_csv
+
+                # Estimate total vehicles (for this project)
+                total_vehicles = 2791
+                report_path = create_vehicle_usage_report(total_vehicles, used_vehicles, outdir)
+                outputs["vehicle_usage_report"] = report_path
+
+                print(f"\nVehicle filtering complete:")
+                print(f"  Total vehicles: {total_vehicles}")
+                print(f"  Agent-used vehicles: {len(used_vehicles)}")
+                print(f"  Compression: {100.0 * (1.0 - len(used_vehicles)/total_vehicles):.1f}%")
+        except Exception as e:
+            print(f"Warning: Vehicle filtering failed: {e}")
+
+    return outputs
+
+
+def build_arg_parser() -> argparse.ArgumentParser:
+    """Build command-line argument parser."""
+    parser = argparse.ArgumentParser(
+        description="Extract MATSim agent legs and build time-sampled tracks for visualization."
+    )
+    parser.add_argument(
+        "--plans",
+        help="Path to plans.xml(.gz) (defaults to population if missing).",
+        default="",
+    )
+    parser.add_argument(
+        "--population",
+        help="Fallback population.xml(.gz) if plans not provided.",
+        default="",
+    )
+    parser.add_argument(
+        "--events",
+        help="Optional events.xml(.gz) for vehicle usage filtering.",
+        default="",
+    )
+    parser.add_argument(
+        "--schedule",
+        help="Transit schedule XML(.gz) to enrich PT legs with transportMode.",
+        default="",
+    )
+    parser.add_argument(
+        "--out",
+        help="Output directory for generated CSV/Parquet files.",
+        required=True,
+    )
+    parser.add_argument(
+        "--dt",
+        type=int,
+        default=5,
+        help="Sampling interval in seconds for generated tracks.",
+    )
+    parser.add_argument(
+        "--include-mode",
+        dest="include_modes",
+        action="append",
+        help="Leg modes to include in the sampled tracks. Can be specified multiple times. "
+        f"Default: {sorted(DEFAULT_INCLUDED_MODES)}",
+    )
+    parser.add_argument(
+        "--skip-activity-matching",
+        action="store_true",
+        help="Skip activity matching (faster for large datasets).",
+    )
+    return parser
+
+
+def main(argv: T.Sequence[str] | None = None) -> None:
+    """CLI entry point."""
+    parser = build_arg_parser()
+    args = parser.parse_args(argv)
+
+    include_modes = args.include_modes if args.include_modes else DEFAULT_INCLUDED_MODES
+    outputs = run_pipeline(
+        plans_path=args.plans,
+        population_fallback=args.population or None,
+        events_path=args.events or None,
+        outdir=args.out,
+        dt=args.dt,
+        schedule_path=args.schedule or None,
+        include_modes=include_modes,
+        add_activity_matching=not args.skip_activity_matching,
+    )
+
+    print("\n" + "=" * 70)
+    print("Generated output files:")
+    print("=" * 70)
+    for key, value in outputs.items():
+        if value:
+            print(f"  {key}: {value}")
+    print("=" * 70)
+
+
+if __name__ == "__main__":
+    main()

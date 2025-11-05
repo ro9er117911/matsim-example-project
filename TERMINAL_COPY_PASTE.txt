@@ -1,0 +1,124 @@
+================================================================================
+                        直接複製貼上到終端機
+                    Copy & Paste Ready for Terminal
+================================================================================
+
+🎯 選擇一個方式執行 Via 導出 (Choose One Method Below)
+
+================================================================================
+1️⃣  最簡單方式：一行命令 (Easiest: Single Line)
+================================================================================
+
+cd /Users/ro9air/matsim-example-project && python src/main/python/build_agent_tracks.py --plans scenarios/equil/output/output_plans.xml.gz --events scenarios/equil/output/output_events.xml.gz --schedule scenarios/equil/output/output_transitSchedule.xml.gz --vehicles scenarios/equil/output/output_transitVehicles.xml.gz --network scenarios/equil/output/output_network.xml.gz --export-filtered-events --out scenarios/equil/forVia --dt 5
+
+
+================================================================================
+2️⃣  推薦方式：多行命令 (Recommended: Multi-Line)
+================================================================================
+
+cd /Users/ro9air/matsim-example-project && \
+python src/main/python/build_agent_tracks.py \
+  --plans scenarios/equil/output/output_plans.xml.gz \
+  --events scenarios/equil/output/output_events.xml.gz \
+  --schedule scenarios/equil/output/output_transitSchedule.xml.gz \
+  --vehicles scenarios/equil/output/output_transitVehicles.xml.gz \
+  --network scenarios/equil/output/output_network.xml.gz \
+  --export-filtered-events \
+  --out scenarios/equil/forVia \
+  --dt 5
+
+
+================================================================================
+3️⃣  使用 Shell 腳本 (Using Shell Script)
+================================================================================
+
+./EXPORT_VIA_COMMAND.sh
+
+
+================================================================================
+📊 執行結果驗證 (Verify Execution Result)
+================================================================================
+
+命令執行完畢後，檢查輸出文件：
+
+ls -lh scenarios/equil/forVia/
+
+應該看到以下文件：
+  ✓ output_events.xml           (1-2 MB)
+  ✓ output_network.xml.gz       (3-4 MB)
+  ✓ tracks_dt5s.csv
+  ✓ legs_table.csv
+  ✓ filtered_vehicles.csv
+  ✓ vehicle_usage_report.txt
+
+
+================================================================================
+⏱️  預期運行時間 (Expected Duration)
+================================================================================
+
+30 秒 ~ 2 分鐘 (Depends on event file size)
+
+提示：進度信息會實時顯示，耐心等待...
+
+
+================================================================================
+✨ 命令參數說明 (What Each Parameter Does)
+================================================================================
+
+--plans                          : 代理最終計劃
+--events                         : 完整模擬事件
+--schedule                       : 公交時間表
+--vehicles                       : 車輛定義
+--network                        : 網絡拓樸
+--export-filtered-events         : 生成 Via 友好的事件
+--out scenarios/equil/forVia     : 輸出到隔離的 forVia 文件夾
+--dt 5                           : 每 5 秒採樣軌跡
+
+
+================================================================================
+❓ 如果有問題 (If Something Goes Wrong)
+================================================================================
+
+檢查：
+1. 確認在項目根目錄
+2. 確認所有輸入文件存在：
+   ls -lh scenarios/equil/output/output_*.xml.gz
+
+3. 如果有 Python 錯誤，檢查：
+   python --version
+   python -c "import pandas; print('pandas OK')"
+
+4. 重新運行同一命令即可（會覆蓋舊的 forVia/）
+
+
+================================================================================
+🎯 接下來做什麼 (Next Steps)
+================================================================================
+
+✓ 導出完成後：
+  1. 在 Via 平台導入 scenarios/equil/forVia/output_events.xml
+  2. 導入 scenarios/equil/forVia/output_network.xml.gz
+  3. 播放可視化動畫
+
+✓ 查看數據：
+  cat scenarios/equil/forVia/vehicle_usage_report.txt
+  head scenarios/equil/forVia/tracks_dt5s.csv
+
+
+================================================================================
+📝 參考文件 (Reference)
+================================================================================
+
+詳細說明：
+  - VIA_EXPORT_WORKFLOW.md            (完整工作流)
+  - SIMULATION_GUIDE_IMPROVED_POPULATION.md (模擬指南)
+  - VIA_EXPORT_QUICK_COMMAND.txt      (所有命令選項)
+
+快速執行：
+  - ./EXPORT_VIA_COMMAND.sh           (Shell 腳本)
+
+================================================================================
+
+祝您導出順利! Happy exporting! ✨
+
+================================================================================

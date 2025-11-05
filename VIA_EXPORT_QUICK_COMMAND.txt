@@ -1,0 +1,134 @@
+================================================================================
+                    Via Platform Export - Copy & Paste Ready
+================================================================================
+
+📋 OPTION 1: Single-Line Command (Easy Copy-Paste)
+================================================================================
+
+Run this single command in your terminal:
+
+cd /Users/ro9air/matsim-example-project && python src/main/python/build_agent_tracks.py --plans scenarios/equil/output/output_plans.xml.gz --events scenarios/equil/output/output_events.xml.gz --schedule scenarios/equil/output/output_transitSchedule.xml.gz --vehicles scenarios/equil/output/output_transitVehicles.xml.gz --network scenarios/equil/output/output_network.xml.gz --export-filtered-events --out scenarios/equil/forVia --dt 5
+
+================================================================================
+
+📋 OPTION 2: Multi-Line Command (Cleaner, Better for Terminals)
+================================================================================
+
+Run this command (copy all lines together):
+
+cd /Users/ro9air/matsim-example-project && \
+python src/main/python/build_agent_tracks.py \
+  --plans scenarios/equil/output/output_plans.xml.gz \
+  --events scenarios/equil/output/output_events.xml.gz \
+  --schedule scenarios/equil/output/output_transitSchedule.xml.gz \
+  --vehicles scenarios/equil/output/output_transitVehicles.xml.gz \
+  --network scenarios/equil/output/output_network.xml.gz \
+  --export-filtered-events \
+  --out scenarios/equil/forVia \
+  --dt 5
+
+================================================================================
+
+📋 OPTION 3: Using Shell Script
+================================================================================
+
+Make script executable:
+chmod +x EXPORT_VIA_COMMAND.sh
+
+Run script:
+./EXPORT_VIA_COMMAND.sh
+
+Or:
+bash EXPORT_VIA_COMMAND.sh
+
+================================================================================
+
+✨ What Each Option Does:
+
+✓ Reads filtered plans from: scenarios/equil/output/output_plans.xml.gz
+✓ Reads simulation events from: scenarios/equil/output/output_events.xml.gz
+✓ Includes transit schedule: scenarios/equil/output/output_transitSchedule.xml.gz
+✓ Includes vehicle data: scenarios/equil/output/output_transitVehicles.xml.gz
+✓ Includes network topology: scenarios/equil/output/output_network.xml.gz
+✓ Exports filtered events to: scenarios/equil/forVia/output_events.xml
+✓ Exports network to: scenarios/equil/forVia/output_network.xml.gz
+✓ Samples agent trajectories every 5 seconds (--dt 5)
+
+================================================================================
+
+📊 Expected Output Files in scenarios/equil/forVia/:
+
+  output_events.xml              (filtered events, ~1-2MB)
+  output_network.xml.gz          (network topology, ~3.5MB)
+  tracks_dt5s.csv                (agent trajectories, sampled at 5s intervals)
+  legs_table.csv                 (trip segments)
+  filtered_vehicles.csv          (active vehicles in simulation)
+  vehicle_usage_report.txt       (statistics summary)
+
+================================================================================
+
+⏱️ Expected Runtime:
+
+Typical duration: 30 seconds to 2 minutes (depending on event file size)
+
+Progress output:
+  [Stage 1] Parsing plans...
+  [Stage 2] Parsing events...
+  [Stage 3] Filtering events...
+  [Stage 4] Building tracks...
+  [Complete] Export finished
+
+================================================================================
+
+🎯 Next Steps After Export:
+
+1. Import to Via Platform:
+   - Open Via dashboard
+   - Create new visualization
+   - Load: scenarios/equil/forVia/output_events.xml
+   - Load: scenarios/equil/forVia/output_network.xml.gz
+   - Click Play to visualize agent movements
+
+2. Analyze Results:
+   - View tracks_dt5s.csv for agent trajectories
+   - View vehicle_usage_report.txt for statistics
+   - Check filtered_vehicles.csv for active vehicle list
+
+3. Archive Results:
+   - Keep scenarios/equil/forVia/ folder (protected from overwrites)
+   - Safe to run new simulations (they won't affect forVia/)
+
+================================================================================
+
+💡 Tips:
+
+• If terminal shows errors, check:
+  - File paths are correct (all files should exist in scenarios/equil/output/)
+  - Python environment has required libraries (pandas, lxml, numpy)
+  - You're in the project root directory
+
+• If export takes too long:
+  - Large event files (>5GB) may need more time
+  - Progress is shown with status messages
+  - Can't be interrupted mid-export (let it finish)
+
+• To re-run export:
+  - Just run the command again
+  - Existing forVia/ files will be overwritten
+  - Previous forVia/ contents will be lost (backup if needed)
+
+================================================================================
+
+📚 Reference:
+
+Full documentation: SIMULATION_GUIDE_IMPROVED_POPULATION.md
+Quick start guide: working_journal/Via-Export-Quick-Start.md
+Setup details: VIA_EXPORT_SETUP.md
+Implementation: src/main/python/build_agent_tracks.py
+
+================================================================================
+
+Generated: 2025-11-05
+Ready for immediate execution! ✓
+
+================================================================================

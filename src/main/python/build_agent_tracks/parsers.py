@@ -195,6 +195,43 @@ def load_transit_route_stops(schedule_path: T.Union[str, Path, None]) -> tuple[d
     return stop_coords, route_stops
 
 
+def count_total_vehicles_from_xml(vehicles_xml_path: T.Union[str, Path, None]) -> int:
+    """
+    Count total vehicles defined in transitVehicles.xml.
+
+    Handles both namespaced and non-namespaced XML formats.
+    Returns the count of <vehicle> elements. If file doesn't exist or can't be parsed,
+    returns 0 and prints a warning.
+    """
+    if not vehicles_xml_path:
+        return 0
+
+    vehicles_path = str(vehicles_xml_path)
+    if not Path(vehicles_path).exists():
+        print(f"Warning: Vehicle count file not found: {vehicles_path}")
+        return 0
+
+    try:
+        with open_maybe_gz(vehicles_path) as f:
+            tree = ET.parse(f)
+        root = tree.getroot()
+
+        # Handle both namespaced and non-namespaced XML
+        # First try with namespace (MATSim files typically have namespace)
+        namespaces = {"ns": "http://www.matsim.org/files/dtd"}
+        vehicles = root.findall(".//ns:vehicle", namespaces)
+
+        # If no vehicles found with namespace, try without namespace
+        if not vehicles:
+            vehicles = root.findall(".//vehicle")
+
+        vehicle_count = len(vehicles)
+        return vehicle_count
+    except Exception as e:
+        print(f"Warning: Could not count vehicles from {vehicles_path}: {e}")
+        return 0
+
+
 def load_actively_used_vehicles(events_path: T.Union[str, Path, None], agent_ids: set[str] | None = None) -> dict[str, dict]:
     """
     Parse events.xml(.gz) to extract vehicles used by specific agents.
@@ -212,7 +249,10 @@ def load_actively_used_vehicles(events_path: T.Union[str, Path, None], agent_ids
         return used_vehicles
 
     if agent_ids is None:
-        agent_ids = {"metro_up_01", "metro_down_01", "car_commuter_01"}
+        # Instead of hardcoding agent_ids, we warn the user and process all events.
+        # This allows the function to work flexibly with any set of agents.
+        print("Warning: agent_ids not provided. Will process all PersonEntersVehicle events.")
+        agent_ids = None  # Will process all agents in events file
 
     events_path = str(events_path)
 
@@ -229,7 +269,10 @@ def load_actively_used_vehicles(events_path: T.Union[str, Path, None], agent_ids
                         vehicle = elem.get("vehicle")
                         time_str = elem.get("time")
 
-                        if person and vehicle and person in agent_ids:
+                        # Filter by agent_ids if provided, otherwise include all
+                        agent_filter_passed = (agent_ids is None) or (person in agent_ids)
+
+                        if person and vehicle and agent_filter_passed:
                             time_s = int(float(time_str)) if time_str else 0
 
                             if vehicle not in used_vehicles:
@@ -264,3 +307,85 @@ def load_actively_used_vehicles(events_path: T.Union[str, Path, None], agent_ids
         print(f"Warning: Could not parse events file: {e}")
 
     return used_vehicles
+
+
+def extract_agent_vehicle_timeranges(
+    events_path: T.Union[str, Path, None],
+    agent_ids: set[str] | None = None,
+) -> dict[tuple[str, str], list[tuple[int, int]]]:
+    """
+    Extract time ranges when each agent uses each vehicle from events.xml.
+
+    Scans PersonEntersVehicle and PersonLeavesVehicle events to build
+    a mapping of (agent_id, vehicle_id) -> [(enter_time, leave_time), ...].
+
+    Handles multiple boarding/alighting for the same agent-vehicle pair.
+
+    Args:
+        events_path: Path to events.xml(.gz)
+        agent_ids: Set of agent IDs to track (if None, track all agents)
+
+    Returns:
+        Dict: {(agent_id, vehicle_id): [(enter_s, leave_s), ...]}
+        Example: {('metro_up_01', 'veh_663_subway'): [(22927, 24487)]}
+    """
+    agent_vehicle_times: dict[tuple[str, str], list[tuple[int, int]]] = {}
+
+    if not events_path or not Path(str(events_path)).exists():
+        return agent_vehicle_times
+
+    events_path = str(events_path)
+    person_vehicle_boarding: dict[str, dict[str, int | None]] = {}  # {person: {vehicle: enter_time}}
+
+    try:
+        with open_maybe_gz(events_path) as f:
+            context = ET.iterparse(f, events=("start", "end"))
+            _, root = next(context)
+
+            for event, elem in context:
+                if event == "end" and elem.tag == "event":
+                    event_type = elem.get("type")
+                    person = elem.get("person")
+                    vehicle = elem.get("vehicle")
+                    time_str = elem.get("time")
+
+                    if not (person and vehicle and time_str):
+                        root.clear()
+                        continue
+
+                    # Apply agent filter if provided
+                    if agent_ids is not None and person not in agent_ids:
+                        root.clear()
+                        continue
+
+                    time_s = int(float(time_str))
+
+                    # Handle PersonEntersVehicle
+                    if event_type == "PersonEntersVehicle":
+                        if person not in person_vehicle_boarding:
+                            person_vehicle_boarding[person] = {}
+                        person_vehicle_boarding[person][vehicle] = time_s
+
+                    # Handle PersonLeavesVehicle
+                    elif event_type == "PersonLeavesVehicle":
+                        if person in person_vehicle_boarding and vehicle in person_vehicle_boarding[person]:
+                            enter_time = person_vehicle_boarding[person][vehicle]
+                            if enter_time is not None:
+                                key = (person, vehicle)
+                                if key not in agent_vehicle_times:
+                                    agent_vehicle_times[key] = []
+                                agent_vehicle_times[key].append((enter_time, time_s))
+                                # Clean up
+                                del person_vehicle_boarding[person][vehicle]
+
+                    root.clear()
+
+        # Log summary
+        if agent_vehicle_times:
+            total_segments = sum(len(times) for times in agent_vehicle_times.values())
+            print(f"Extracted {len(agent_vehicle_times)} agent-vehicle combinations with {total_segments} boarding segments")
+
+    except Exception as e:
+        print(f"Warning: Could not extract vehicle timeranges: {e}")
+
+    return agent_vehicle_times

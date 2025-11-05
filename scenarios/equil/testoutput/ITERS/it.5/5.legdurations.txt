@@ -1,0 +1,15 @@
+pattern	0+	5+	10+	15+	20+	25+	30+	35+	40+	45+	50+	55+	60+
+car interaction---car interaction	4	21	5	0	0	0	0	0	0	0	0	0	0
+car interaction---home	5	1	1	0	1	0	1	1	1	0	0	2	1
+car interaction---work	15	0	0	0	0	0	0	0	0	0	0	1	0
+home---car interaction	7	1	1	0	1	0	1	1	1	0	0	2	1
+home---pt interaction	11	0	0	0	0	0	0	0	0	0	0	0	0
+home---work	0	1	2	3	0	0	0	1	1	0	0	1	14
+pt interaction---home	11	0	0	0	0	0	0	0	0	0	0	0	0
+pt interaction---pt interaction	5	3	6	9	1	1	2	2	1	0	0	0	0
+pt interaction---work	11	0	0	0	0	0	0	0	0	0	0	0	0
+work---car interaction	15	0	0	0	0	0	0	0	0	0	0	1	0
+work---home	0	1	2	3	0	0	0	1	1	0	0	1	14
+work---pt interaction	11	0	0	0	0	0	0	0	0	0	0	0	0
+
+average leg duration: 1489.4811320754718 seconds = 00:24:49

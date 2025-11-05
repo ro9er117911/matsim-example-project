@@ -61,29 +61,36 @@ public class PrepareNetworkForPTMapping {
         System.out.println("  - Links with 'subway' mode: " + subwayLinkCount);
         System.out.println("  - All modes found: " + allModes);
 
-        // Ensure all subway links also have pt mode
+        // Ensure all PT related links include the generic 'pt' mode
         System.out.println("\n" + "=".repeat(80));
-        System.out.println("Step 1: Ensuring all subway links have 'pt' mode...");
+        System.out.println("Step 1: Ensuring PT-relevant modes include 'pt'...");
         System.out.println("=".repeat(80));
 
         int linksUpdated = 0;
+        Set<String> ptRelatedModes = Set.of("subway", "rail", "tram", "light_rail", "bus");
         for (Link link : network.getLinks().values()) {
             Set<String> modes = new HashSet<>(link.getAllowedModes());
-            if (modes.contains("subway") && !modes.contains("pt")) {
+            if (!modes.contains("pt") && modes.stream().anyMatch(ptRelatedModes::contains)) {
                 modes.add("pt");
                 link.setAllowedModes(modes);
                 linksUpdated++;
             }
         }
+        long remainingWithoutPt = network.getLinks().values().stream()
+                .filter(link -> {
+                    Set<String> modes = link.getAllowedModes();
+                    return modes.stream().anyMatch(ptRelatedModes::contains) && !modes.contains("pt");
+                })
+                .count();
         System.out.println("Updated " + linksUpdated + " links to include 'pt' mode");
+        System.out.println("Links still missing 'pt' after update: " + remainingWithoutPt);
 
         // Clean network for PT connectivity
         System.out.println("\n" + "=".repeat(80));
         System.out.println("Step 2: Cleaning network for 'pt' mode connectivity...");
         System.out.println("=".repeat(80));
 
-        Set<String> modesToClean = new HashSet<>();
-        modesToClean.add("pt");
+        Set<String> modesToClean = new HashSet<>(Set.of("pt", "bus"));
 
         System.out.println("Running NetworkUtils.cleanNetwork() for modes: " + modesToClean);
         NetworkUtils.cleanNetwork(network, modesToClean);
@@ -91,6 +98,20 @@ public class PrepareNetworkForPTMapping {
         System.out.println("\nAfter cleaning:");
         System.out.println("  - Links: " + network.getLinks().size());
         System.out.println("  - Nodes: " + network.getNodes().size());
+
+        // Re-assert that PT related modes keep the 'pt' flag after cleaning
+        linksUpdated = 0;
+        for (Link link : network.getLinks().values()) {
+            Set<String> modes = new HashSet<>(link.getAllowedModes());
+            if (!modes.contains("pt") && modes.stream().anyMatch(ptRelatedModes::contains)) {
+                modes.add("pt");
+                link.setAllowedModes(modes);
+                linksUpdated++;
+            }
+        }
+        if (linksUpdated > 0) {
+            System.out.println("Restored 'pt' mode on " + linksUpdated + " links after cleaning.");
+        }
 
         // Recount PT links
         ptLinkCount = 0;

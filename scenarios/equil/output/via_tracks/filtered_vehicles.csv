@@ -1,6 +1,0 @@
-vehicle_id,mode,first_use_time_s,last_use_time_s,first_use_time,last_use_time,agent_count
-car_commuter_01,car,27008,61205,7:30:08,17:00:05,1
-veh_465_subway,subway,24468,24468,6:47:48,6:47:48,1
-veh_604_subway,subway,61747,61747,17:09:07,17:09:07,1
-veh_663_subway,subway,22927,22927,6:22:07,6:22:07,1
-veh_756_subway,subway,62031,62031,17:13:51,17:13:51,1

@@ -20,7 +20,7 @@
 	<module name="plans" >
 		<!-- Possible values: reject,useMainModeIdentifier -->
 		<param name="handlingOfPlansWithoutRoutingMode" value="useMainModeIdentifier" />
-		<param name="inputPlansFile" value="population.xml" />
+		<param name="inputPlansFile" value="test_population_50.xml" />
 	</module>
 	<module name="qsim" >
 		<param name="endTime" value="30:00:00" />

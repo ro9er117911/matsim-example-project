@@ -1,0 +1,93 @@
+================================================================================
+Preparing Network for PT Mapping
+================================================================================
+
+Loading network from: pt2matsim/output_v1/network.xml.gz
+2025-11-05T13:38:39,086  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
+2025-11-05T13:38:39,190  INFO Version:21 HV000001: Hibernate Validator 0.0.1-SNAPSHOT
+2025-11-05T13:38:39,297  INFO MatsimXmlParser:153 starting to parse xml from file pt2matsim/output_v1/network.xml.gz ...
+2025-11-05T13:38:39,300  INFO IOUtils:224 Resolved pt2matsim/output_v1/network.xml.gz to pt2matsim/output_v1/network.xml.gz
+2025-11-05T13:38:39,456  INFO MatsimNetworkReader:122 using network_v2-reader.
+2025-11-05T13:38:39,456  INFO MatsimXmlParser:296 Trying to load http://www.matsim.org/files/dtd/network_v2.dtd. In some cases (e.g. network interface up but no connection), this may take a bit.
+2025-11-05T13:38:40,032  INFO NetworkImpl:165  node # 1
+2025-11-05T13:38:40,032  INFO NetworkImpl:165  node # 4
+2025-11-05T13:38:40,033  INFO NetworkImpl:165  node # 16
+2025-11-05T13:38:40,035  INFO NetworkImpl:165  node # 64
+2025-11-05T13:38:40,047  INFO NetworkImpl:165  node # 256
+2025-11-05T13:38:40,059  INFO NetworkImpl:165  node # 1024
+2025-11-05T13:38:40,084  INFO NetworkImpl:165  node # 4096
+2025-11-05T13:38:40,123  INFO NetworkImpl:165  node # 16384
+2025-11-05T13:38:40,215  INFO NetworkImpl:161  link # 1
+2025-11-05T13:38:40,217  INFO NetworkImpl:161  link # 4
+2025-11-05T13:38:40,218  INFO NetworkImpl:161  link # 16
+2025-11-05T13:38:40,227  INFO NetworkImpl:161  link # 64
+2025-11-05T13:38:40,243  INFO NetworkImpl:161  link # 256
+2025-11-05T13:38:40,327  WARN DisallowedNextLinks:67 Considering DisallowedNextLinks in routing is only implemented by SpeedyDijkstra and SpeedyALT!
+2025-11-05T13:38:40,373  INFO NetworkImpl:161  link # 1024
+2025-11-05T13:38:40,398  WARN LinkImpl:102 capacity=0.0 of link id 101874 may cause problems
+2025-11-05T13:38:40,399  WARN LinkImpl:104  Future occurences of this logging statement are suppressed.
+2025-11-05T13:38:40,399  WARN LinkImpl:121 permlanes=0.0 of link id 101874 may cause problems
+2025-11-05T13:38:40,399  WARN LinkImpl:123  Future occurences of this logging statement are suppressed.
+2025-11-05T13:38:40,488  INFO NetworkImpl:161  link # 4096
+2025-11-05T13:38:40,830  INFO NetworkImpl:161  link # 16384
+2025-11-05T13:38:40,871  WARN LinkImpl:130 length=0.0 of link id 12436 may cause problems
+2025-11-05T13:38:40,871  WARN LinkImpl:132  Future occurences of this logging statement are suppressed.
+2025-11-05T13:38:41,450  INFO NetworkImpl:161  link # 65536
+Original network:
+  - Links: 105455
+  - Nodes: 44995
+
+Mode statistics:
+  - Links with 'pt' mode: 21872
+  - Links with 'subway' mode: 1220
+  - All modes found: [bus, subway, pt, car, rail, taxi, light_rail, walk, train]
+
+================================================================================
+Step 1: Ensuring PT-relevant modes include 'pt'...
+================================================================================
+Updated 43548 links to include 'pt' mode
+Links still missing 'pt' after update: 0
+
+================================================================================
+Step 2: Cleaning network for 'pt' mode connectivity...
+================================================================================
+Running NetworkUtils.cleanNetwork() for modes: [bus, pt]
+2025-11-05T13:38:42,331  INFO MultimodalNetworkCleaner:104 running org.matsim.core.network.algorithms.MultimodalNetworkCleaner algorithm for modes [bus] with connectivity modes []...
+2025-11-05T13:38:42,332  INFO MultimodalNetworkCleaner:108   checking 45826 nodes and 107330 links for dead-ends...
+2025-11-05T13:38:42,552  INFO MultimodalNetworkCleaner:126     The biggest cluster consists of 62785 links.
+2025-11-05T13:38:42,552  INFO MultimodalNetworkCleaner:127   done.
+2025-11-05T13:38:42,638  INFO MultimodalNetworkCleaner:151   resulting network contains 45826 nodes and 107330 links.
+2025-11-05T13:38:42,638  INFO MultimodalNetworkCleaner:153 done.
+2025-11-05T13:38:42,705  INFO MultimodalNetworkCleaner:104 running org.matsim.core.network.algorithms.MultimodalNetworkCleaner algorithm for modes [pt] with connectivity modes []...
+2025-11-05T13:38:42,706  INFO MultimodalNetworkCleaner:108   checking 44995 nodes and 105455 links for dead-ends...
+2025-11-05T13:38:42,865  INFO MultimodalNetworkCleaner:126     The biggest cluster consists of 62994 links.
+2025-11-05T13:38:42,866  INFO MultimodalNetworkCleaner:127   done.
+2025-11-05T13:38:42,944  INFO MultimodalNetworkCleaner:151   resulting network contains 44995 nodes and 105454 links.
+2025-11-05T13:38:42,944  INFO MultimodalNetworkCleaner:153 done.
+2025-11-05T13:38:42,996  INFO DisallowedNextLinksUtils:114 Link 27666: Removed 1 disallowed next link sequences for mode car
+2025-11-05T13:38:43,004  INFO DisallowedNextLinksUtils:114 Link 59678: Removed 1 disallowed next link sequences for mode car
+2025-11-05T13:38:43,008  INFO DisallowedNextLinksUtils:114 Link 92925: Removed 1 disallowed next link sequences for mode car
+
+After cleaning:
+  - Links: 105454
+  - Nodes: 44995
+Restored 'pt' mode on 1633 links after cleaning.
+
+Final mode statistics:
+  - Links with 'pt' mode: 64627
+  - Links with 'subway' mode: 1220
+
+================================================================================
+Step 3: Writing cleaned network...
+================================================================================
+Output file: pt2matsim/output_v1/network-prepared.xml.gz
+
+================================================================================
+✓ Network preparation completed successfully!
+================================================================================
+
+Next step: Run PT mapping with the cleaned network:
+  java -Xmx8g -cp pt2matsim/work/pt2matsim-25.8-shaded.jar \
+    org.matsim.pt2matsim.run.PublicTransitMapper \
+    pt2matsim/work/ptmapper-config-metro-v2.xml
+

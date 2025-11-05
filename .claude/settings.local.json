@@ -37,7 +37,8 @@
       "Bash(python3:*)",
       "Bash(timeout 900 java:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(POPULATION_OUTPUT_PATH='scenarios/equil/test_population_50.xml' python:*)"
     ],
     "deny": [],
     "ask": []

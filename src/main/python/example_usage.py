@@ -27,7 +27,7 @@ from build_agent_tracks.activity_matcher import (
 
 code_example_1 = '''
 # Parse population file
-plans = parse_population_or_plans("scenarios/equil/output/plans.xml.gz")
+plans = parse_population_or_plans("scenarios/equil/forVia/plans.xml.gz")
 print(f"Loaded {len(plans)} agents")
 
 # Build legs table
@@ -179,9 +179,9 @@ from build_agent_tracks.main import run_pipeline
 
 # Process multiple scenario outputs
 scenarios = [
-    "scenarios/equil/output",
-    "scenarios/taipei/output",
-    "scenarios/test/output",
+    "scenarios/equil/forVia",  # Via export folder (isolated from MATSim GUI output)
+    "scenarios/taipei/forVia",
+    "scenarios/test/forVia",
 ]
 
 for scenario_dir in scenarios:

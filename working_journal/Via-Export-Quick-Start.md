@@ -22,12 +22,12 @@ python src/main/python/build_agent_tracks.py \
   --vehicles output/output_transitVehicles.xml.gz \
   --network output/output_network.xml.gz \
   --export-filtered-events \
-  --out scenarios/equil/output/via_tracks
+  --out scenarios/equil/forVia
 
 # Then import to Via:
 # 1. Open Via platform
-# 2. Load: scenarios/equil/output/via_tracks/output_events.xml
-# 3. Load: scenarios/equil/output/via_tracks/output_network.xml.gz
+# 2. Load: scenarios/equil/forVia/output_events.xml
+# 3. Load: scenarios/equil/forVia/output_network.xml.gz
 ```
 
 ---
@@ -103,7 +103,7 @@ Result: 99.6% event compression, 99.8% vehicle compression
 ## Output File Structure
 
 ```
-scenarios/equil/output/via_tracks/
+scenarios/equil/forVia/
 ├── output_events.xml          ← Import to Via
 ├── output_network.xml.gz      ← Import to Via
 ├── tracks_dt5s.csv
@@ -111,6 +111,8 @@ scenarios/equil/output/via_tracks/
 ├── filtered_vehicles.csv
 └── vehicle_usage_report.txt
 ```
+
+**Note**: Using `forVia` folder instead of `output/` to prevent MATSim GUI from overwriting files
 
 ---
 
@@ -146,7 +148,7 @@ python src/main/python/build_agent_tracks.py \
   --plans output/output_plans.xml.gz \
   --events output/output_events.xml.gz \
   --export-filtered-events \
-  --out output/via_filtered
+  --out scenarios/equil/forVia
 ```
 
 ### With Custom Sampling
@@ -156,7 +158,7 @@ python src/main/python/build_agent_tracks.py \
   --events output/output_events.xml.gz \
   --network output/output_network.xml.gz \
   --export-filtered-events \
-  --out output/via_export \
+  --out scenarios/equil/forVia \
   --dt 10  # 10-second intervals instead of 5
 ```
 
@@ -169,7 +171,7 @@ python src/main/python/build_agent_tracks.py \
   --vehicles output/output_transitVehicles.xml.gz \
   --network output/output_network.xml.gz \
   --export-filtered-events \
-  --out scenarios/equil/output/via_tracks
+  --out scenarios/equil/forVia
 ```
 
 ---

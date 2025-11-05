@@ -1,0 +1,80 @@
+================================================================================
+                        Via Platform Export - Quick Reference
+================================================================================
+
+📁 FOLDER LAYOUT:
+  output/        ← MATSim GUI output (large, overwritten each run)
+  forVia/        ← Via export (preserved, safe from overwrites)
+
+================================================================================
+
+🚀 STEP-BY-STEP WORKFLOW:
+
+  [1] Run MATSim GUI
+      $ java -jar matsim-example-project-0.0.1-SNAPSHOT.jar config.xml
+      ✓ Creates: output/output_plans.xml.gz, output_events.xml.gz, etc.
+
+  [2] Export to Via (from scenarios/equil/)
+      $ python ../../src/main/python/build_agent_tracks.py \
+          --plans output/output_plans.xml.gz \
+          --events output/output_events.xml.gz \
+          --network output/output_network.xml.gz \
+          --export-filtered-events \
+          --out forVia
+      ✓ Creates: forVia/output_events.xml, forVia/output_network.xml.gz, etc.
+
+  [3] Import to Via Platform
+      1. Open Via dashboard
+      2. Select forVia folder
+      3. Load: output_events.xml
+      4. Load: output_network.xml.gz
+      5. Play!
+
+================================================================================
+
+⚡ QUICK COMMANDS:
+
+  Export to forVia (full):
+  $ python ../../src/main/python/build_agent_tracks.py \
+    --plans output/output_plans.xml.gz \
+    --events output/output_events.xml.gz \
+    --schedule output/output_transitSchedule.xml.gz \
+    --vehicles output/output_transitVehicles.xml.gz \
+    --network output/output_network.xml.gz \
+    --export-filtered-events --out forVia
+
+  Export to forVia (minimal):
+  $ python ../../src/main/python/build_agent_tracks.py \
+    --plans output/output_plans.xml.gz --out forVia
+
+  List forVia contents:
+  $ ls -lh forVia/
+
+  Clean old data:
+  $ rm -rf output/ITERS/*  # Keep .xml* files!
+
+================================================================================
+
+⚠️  IMPORTANT:
+
+  ❌ DON'T use: --out output/
+  ✅ DO use:    --out forVia
+
+  WHY? MATSim GUI overwrites output/ folder on each run!
+
+================================================================================
+
+📊 FILES IN forVia/
+
+  output_events.xml       ← For Via (filtered)
+  output_network.xml.gz   ← For Via (network)
+  tracks_dt5s.csv         ← Agent trajectories
+  filtered_vehicles.csv   ← Used vehicles
+  vehicle_usage_report.txt← Statistics
+
+================================================================================
+
+📝 FULL DOCUMENTATION: ../../VIA_EXPORT_SETUP.md
+🚀 QUICK START:        ../../working_journal/Via-Export-Quick-Start.md
+
+================================================================================

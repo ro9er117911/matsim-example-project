@@ -74,6 +74,15 @@ class PopulationValidator:
         print("Checking spatial constraints...")
         self._validate_spatial()
 
+        print("Checking mode consistency...")
+        self._validate_mode_consistency()
+
+        print("Checking leg durations...")
+        self._validate_leg_duration()
+
+        print("Checking PT transfer agents...")
+        self._validate_transfer_agents()
+
         print("Checking temporal constraints...")
         self._validate_temporal()
 
@@ -184,6 +193,76 @@ class PopulationValidator:
                             f"({activity['x']}, {activity['y']}) is OUTSIDE OSM bounds"
                         )
 
+    def _validate_mode_consistency(self):
+        """Check that agent ID prefix matches actual leg modes."""
+        mode_consistency_errors = []
+        for agent_id, agent_data in self.agents.items():
+            inferred_mode = agent_data['mode']
+
+            # Extract agent type from ID
+            if agent_id.startswith('car_agent_'):
+                expected_mode = 'car'
+            elif agent_id.startswith('pt_transfer_agent_'):
+                expected_mode = 'pt'
+            elif agent_id.startswith('pt_agent_'):
+                expected_mode = 'pt'
+            elif agent_id.startswith('walk_agent_'):
+                expected_mode = 'walk'
+            else:
+                continue
+
+            # Check if inferred mode matches expected mode
+            if inferred_mode != expected_mode:
+                mode_consistency_errors.append(agent_id)
+                self.errors.append(
+                    f"Mode consistency: {agent_id} (ID says '{expected_mode}' but uses '{inferred_mode}')"
+                )
+
+        return mode_consistency_errors
+
+    def _validate_leg_duration(self):
+        """Check for excessive walk leg durations in car and PT agents."""
+        excessive_walk_legs = []
+        MAX_WALK_LEG_DURATION_MIN = 30  # Car agents shouldn't walk >30 minutes
+
+        for agent_id, agent_data in self.agents.items():
+            inferred_mode = agent_data['mode']
+
+            # Skip pure walk agents
+            if inferred_mode == 'walk':
+                continue
+
+            # Check walk legs for car and PT agents
+            for leg in agent_data['legs']:
+                if leg.get('mode') == 'walk' and leg.get('trav_time_s') is not None:
+                    walk_duration_min = leg['trav_time_s'] / 60
+                    if walk_duration_min > MAX_WALK_LEG_DURATION_MIN:
+                        excessive_walk_legs.append((agent_id, walk_duration_min))
+                        self.warnings.append(
+                            f"Agent {agent_id}: Excessive walk leg {walk_duration_min:.1f} min "
+                            f"(expected <{MAX_WALK_LEG_DURATION_MIN} min for {inferred_mode} agent)"
+                        )
+
+        return excessive_walk_legs
+
+    def _validate_transfer_agents(self):
+        """Verify PT transfer agents have proper boarding sequences."""
+        transfer_validation = []
+
+        for agent_id, agent_data in self.agents.items():
+            if not agent_id.startswith('pt_transfer_agent_'):
+                continue
+
+            legs = agent_data['legs']
+            pt_legs = [leg for leg in legs if leg.get('mode') == 'pt']
+
+            # Transfer agents should have 4 PT legs (2 for morning outbound, 2 for evening return)
+            if len(pt_legs) != 4:
+                transfer_validation.append((agent_id, f"Expected 4 PT legs (2 morning + 2 evening), got {len(pt_legs)}"))
+                self.warnings.append(
+                    f"PT transfer agent {agent_id}: Expected 4 PT legs (2 morning + 2 evening) but has {len(pt_legs)}"
+                )
+
     def _validate_temporal(self):
         """Check temporal constraints (trip durations)."""
         for agent_id, agent_data in self.agents.items():
@@ -255,6 +334,17 @@ class PopulationValidator:
         print(f"  PT agents: {pt_count}")
         print(f"  Walk agents: {walk_count}")
         print(f"  Unknown: {unknown_count}")
+
+        print(f"\nAgent Type Breakdown:")
+        pt_single_count = sum(1 for id in self.agents.keys() if id.startswith('pt_agent_'))
+        pt_transfer_count = sum(1 for id in self.agents.keys() if id.startswith('pt_transfer_agent_'))
+        car_agent_count = sum(1 for id in self.agents.keys() if id.startswith('car_agent_'))
+        walk_agent_count = sum(1 for id in self.agents.keys() if id.startswith('walk_agent_'))
+
+        print(f"  PT single-line agents: {pt_single_count}")
+        print(f"  PT transfer agents: {pt_transfer_count}")
+        print(f"  Car agents: {car_agent_count}")
+        print(f"  Walk agents: {walk_agent_count}")
 
         print(f"\nSpatial Validation:")
         if self.statistics['car_agents_out_of_bounds']:

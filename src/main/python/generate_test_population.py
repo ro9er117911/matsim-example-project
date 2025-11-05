@@ -230,7 +230,40 @@ def filter_valid_stations(mode):
 
     return valid_stations
 
-# ========== END VALIDATION FUNCTIONS ==========
+# ========== PT TRANSFER SUPPORT ==========
+
+# PT transfer stations: stations where line transfers are possible
+PT_TRANSFER_STATIONS = {
+    'BL12': ['G12'],      # 西門 - BL ↔ G transfer
+    'BL14': ['O07'],      # 忠孝新生 - BL ↔ O transfer
+    'G10': ['R08'],       # 中正紀念堂 - G ↔ R transfer
+    'G14': ['R11'],       # 中山 - G ↔ R transfer
+    'G15': ['O08'],       # 松江南京 - G ↔ O transfer
+    'R05': ['BR09'],      # 大安 - R ↔ BR transfer
+    'R07': ['O06'],       # 東門 - R ↔ O transfer
+}
+
+# PT transfer routes: (home_line1, transfer_line1, transfer_line2, work_line2)
+# These create agents that need to transfer between metro lines
+PT_TRANSFER_ROUTES = [
+    ('BL02', 'BL12', 'G12', 'G19'),      # BL → G transfer
+    ('BL06', 'BL12', 'G12', 'G14'),      # BL → G transfer
+    ('G02', 'G10', 'R08', 'R28'),        # G → R transfer (淡水線)
+    ('G05', 'G10', 'R08', 'R15'),        # G → R transfer
+    ('O02', 'O07', 'BL14', 'BL22'),      # O → BL transfer
+    ('O04', 'O08', 'G15', 'G19'),        # O → G transfer
+    ('R02', 'R05', 'BR09', 'BR12'),      # R → BR transfer
+    ('R03', 'R11', 'G14', 'G02'),        # R → G transfer
+    ('BR03', 'BR10', 'BL15', 'BL16'),    # BR → BL transfer
+    ('BR05', 'BR11', 'G16', 'G19'),      # BR → G transfer
+]
+
+# Car trip validation constraints
+MIN_CAR_TRIP_DISTANCE_M = 1000      # Car trips should be >1km (not too short)
+MAX_WALK_TRIP_DISTANCE_M = 2000     # Walk trips should be <2km
+MAX_WALK_DURATION_MIN = 30          # Car agents shouldn't have walk leg > 30 min
+
+# ========== END PT TRANSFER SUPPORT ==========
 
 
 # Define route pairs for PT agents (home -> work)
@@ -328,6 +361,85 @@ def generate_pt_agent(agent_id, home_station, work_station, departure_hour, depa
 '''
     return xml
 
+def generate_transfer_pt_agent(agent_id, home_station, transfer_station_1, transfer_station_2, work_station, departure_hour, departure_min):
+    """Generate a PT agent that transfers between two metro lines"""
+    home_name, home_x, home_y = STATIONS[home_station]
+    transfer1_name, transfer1_x, transfer1_y = STATIONS[transfer_station_1]
+    transfer2_name, transfer2_x, transfer2_y = STATIONS[transfer_station_2]
+    work_name, work_x, work_y = STATIONS[work_station]
+
+    # Morning departure time
+    morning_depart = format_time(departure_hour, departure_min)
+
+    # Leg 1: home to first transfer station
+    leg1_distance = euclidean_distance_m(home_x, home_y, transfer1_x, transfer1_y)
+    leg1_travel = int(leg1_distance / MODE_SPEEDS_M_PER_MIN['pt'])  # minutes
+    leg1_wait = 5  # 5 min wait for first PT
+
+    # Transfer time at station (5 min walk + 3 min wait for next train)
+    transfer_time = 8
+
+    # Leg 2: second station to work
+    leg2_distance = euclidean_distance_m(transfer2_x, transfer2_y, work_x, work_y)
+    leg2_travel = int(leg2_distance / MODE_SPEEDS_M_PER_MIN['pt'])  # minutes
+    leg2_wait = 5  # 5 min wait for second PT
+
+    # Calculate arrival time at work
+    total_travel_min = leg1_wait + leg1_travel + transfer_time + leg2_wait + leg2_travel
+    arrival_hour = departure_hour
+    arrival_min = departure_min + total_travel_min
+    if arrival_min >= 60:
+        arrival_hour += arrival_min // 60
+        arrival_min = arrival_min % 60
+
+    # Work 8 hours
+    evening_hour = arrival_hour + 8
+    evening_min = arrival_min
+    if evening_hour >= 24:
+        evening_hour = 23
+        evening_min = 59
+
+    evening_depart = format_time(evening_hour, evening_min)
+
+    xml = f'''	<!-- PT Transfer Agent {agent_id}: {home_station}({home_name}) -> {transfer_station_1}({transfer1_name}) -> {transfer_station_2}({transfer2_name}) -> {work_station}({work_name}) -->
+	<person id="pt_transfer_agent_{agent_id:02d}">
+		<plan selected="yes">
+			<!-- Morning trip: home to work with transfer -->
+			<activity type="home" x="{home_x:.2f}" y="{home_y:.2f}" end_time="{morning_depart}" />
+			<leg mode="walk" />
+			<activity type="pt interaction" x="{home_x:.2f}" y="{home_y:.2f}" max_dur="00:05:00" />
+			<!-- First PT leg: home to transfer station -->
+			<leg mode="pt" />
+			<activity type="pt interaction" x="{transfer1_x:.2f}" y="{transfer1_y:.2f}" max_dur="00:08:00" />
+			<!-- Transfer: walk between stations -->
+			<leg mode="walk" />
+			<activity type="pt interaction" x="{transfer2_x:.2f}" y="{transfer2_y:.2f}" max_dur="00:05:00" />
+			<!-- Second PT leg: transfer to work -->
+			<leg mode="pt" />
+			<activity type="pt interaction" x="{work_x:.2f}" y="{work_y:.2f}" max_dur="00:05:00" />
+			<leg mode="walk" />
+			<activity type="work" x="{work_x:.2f}" y="{work_y:.2f}" end_time="{evening_depart}" />
+			<!-- Evening trip: work to home (reverse) -->
+			<leg mode="walk" />
+			<activity type="pt interaction" x="{work_x:.2f}" y="{work_y:.2f}" max_dur="00:05:00" />
+			<leg mode="pt" />
+			<activity type="pt interaction" x="{transfer2_x:.2f}" y="{transfer2_y:.2f}" max_dur="00:08:00" />
+			<leg mode="walk" />
+			<activity type="pt interaction" x="{transfer1_x:.2f}" y="{transfer1_y:.2f}" max_dur="00:05:00" />
+			<leg mode="pt" />
+			<activity type="pt interaction" x="{home_x:.2f}" y="{home_y:.2f}" max_dur="00:05:00" />
+			<leg mode="walk" />
+			<activity type="home" x="{home_x:.2f}" y="{home_y:.2f}" />
+		</plan>
+	</person>
+'''
+    return xml
+
+def is_valid_car_trip(home_station, work_station):
+    """Check if a car trip meets minimum distance requirement"""
+    distance_m = get_station_distance_m(home_station, work_station)
+    return distance_m >= MIN_CAR_TRIP_DISTANCE_M
+
 def generate_car_agent(agent_id, home_station, work_station, departure_hour, departure_min):
     """Generate a car agent"""
     home_name, home_x, home_y = STATIONS[home_station]
@@ -406,13 +518,13 @@ xml_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <population>
 '''
 
-# Generate 30 PT agents
-print("Generating 30 PT agents...")
+# Generate 20 single-line PT agents
+print("Generating 20 single-line PT agents...")
 pt_agents_created = 0
 pt_agents_skipped = 0
 pt_skipped_list = []
 
-for i in range(30):
+for i in range(20):
     max_attempts = 10
     attempts = 0
 
@@ -437,9 +549,9 @@ for i in range(30):
         continue
 
     # Mix peak and off-peak
-    if i < 20:  # 20 peak hour agents
+    if i < 15:  # 15 peak hour agents
         hour, minute = random.choice(PEAK_MORNING)
-    else:  # 10 off-peak agents
+    else:  # 5 off-peak agents
         hour, minute = random.choice(OFF_PEAK_MORNING)
 
     distance_m = get_station_distance_m(home_station, work_station)
@@ -448,6 +560,44 @@ for i in range(30):
     xml_content += generate_pt_agent(i + 1, home_station, work_station, hour, minute)
     xml_content += '\n'
     pt_agents_created += 1
+
+# Generate 10 PT transfer agents (multi-line routes)
+print("Generating 10 PT transfer agents...")
+pt_transfer_agents_created = 0
+pt_transfer_agents_skipped = 0
+pt_transfer_skipped_list = []
+
+for i in range(10):
+    if i < len(PT_TRANSFER_ROUTES):
+        home_station, transfer_station_1, transfer_station_2, work_station = PT_TRANSFER_ROUTES[i]
+    else:
+        # If we run out of predefined routes, skip
+        pt_transfer_agents_skipped += 1
+        pt_transfer_skipped_list.append(f"pt_transfer_agent_{i+1:02d}")
+        print(f"  ⚠ Skipped pt_transfer_agent_{i+1:02d}: No more predefined transfer routes")
+        continue
+
+    # Validate the transfer trip
+    total_distance = (get_station_distance_m(home_station, transfer_station_1) +
+                      get_station_distance_m(transfer_station_1, transfer_station_2) +
+                      get_station_distance_m(transfer_station_2, work_station))
+    total_time = estimate_trip_time_minutes(total_distance, 'pt') + 8  # Add 8 min for transfer wait
+
+    if total_time > MAX_TRIP_TIME_MINUTES:
+        pt_transfer_agents_skipped += 1
+        pt_transfer_skipped_list.append(f"pt_transfer_agent_{i+1:02d}")
+        print(f"  ⚠ Skipped pt_transfer_agent_{i+1:02d}: Trip exceeds {MAX_TRIP_TIME_MINUTES} minutes ({total_time:.1f} min)")
+        continue
+
+    # Mix peak and off-peak
+    if i < 7:  # 7 peak hour agents
+        hour, minute = random.choice(PEAK_MORNING)
+    else:  # 3 off-peak agents
+        hour, minute = random.choice(OFF_PEAK_MORNING)
+
+    xml_content += generate_transfer_pt_agent(i + 1, home_station, transfer_station_1, transfer_station_2, work_station, hour, minute)
+    xml_content += '\n'
+    pt_transfer_agents_created += 1
 
 # Generate 15 car agents
 print("Generating 15 car agents...")
@@ -468,8 +618,8 @@ for i in range(15):
         home_station = random.choice(car_valid_stations)
         work_station = random.choice(car_valid_stations)
 
-        # Validate the trip
-        if is_valid_trip(home_station, work_station, 'car'):
+        # Validate the trip: within bounds, valid distance, and minimum trip distance
+        if is_valid_trip(home_station, work_station, 'car') and is_valid_car_trip(home_station, work_station):
             break
         attempts += 1
 
@@ -477,7 +627,7 @@ for i in range(15):
         # Trip validation failed
         car_agents_skipped += 1
         car_skipped_list.append(f"car_agent_{i+1:02d}")
-        print(f"  ⚠ Skipped car_agent_{i+1:02d}: Could not find valid route within bounds")
+        print(f"  ⚠ Skipped car_agent_{i+1:02d}: Could not find valid route within bounds (>1km)")
         continue
 
     # Mix peak and off-peak
@@ -534,19 +684,25 @@ with open(output_file, 'w', encoding='utf-8') as f:
     f.write(xml_content)
 
 # Calculate total agents
-total_agents_created = pt_agents_created + car_agents_created + walk_agents_created
-total_agents_skipped = pt_agents_skipped + car_agents_skipped + walk_agents_skipped
+total_agents_created = pt_agents_created + pt_transfer_agents_created + car_agents_created + walk_agents_created
+total_agents_skipped = pt_agents_skipped + pt_transfer_agents_skipped + car_agents_skipped + walk_agents_skipped
 
 print(f"\n" + "=" * 70)
 print(f"POPULATION GENERATION COMPLETE")
 print(f"=" * 70)
 print(f"\n✓ Output file: {output_file}")
 print(f"\nAgent Generation Summary:")
-print(f"  PT agents:")
-print(f"    - Created: {pt_agents_created}/30")
+print(f"  PT single-line agents:")
+print(f"    - Created: {pt_agents_created}/20")
 print(f"    - Skipped: {pt_agents_skipped}")
 if pt_skipped_list:
     print(f"    - Skipped list: {', '.join(pt_skipped_list)}")
+
+print(f"  PT transfer agents (multi-line):")
+print(f"    - Created: {pt_transfer_agents_created}/10")
+print(f"    - Skipped: {pt_transfer_agents_skipped}")
+if pt_transfer_skipped_list:
+    print(f"    - Skipped list: {', '.join(pt_transfer_skipped_list)}")
 
 print(f"  Car agents:")
 print(f"    - Created: {car_agents_created}/15")
@@ -561,8 +717,11 @@ print(f"    - Skipped: {walk_agents_skipped}")
 if walk_skipped_list:
     print(f"    - Skipped list: {', '.join(walk_skipped_list)}")
 
-print(f"\n  TOTAL AGENTS:")
-print(f"    - Created: {total_agents_created}")
+print(f"\n  TOTAL AGENTS (Target: 50):")
+print(f"    - PT single-line + PT transfer: {pt_agents_created + pt_transfer_agents_created}/30")
+print(f"    - Car: {car_agents_created}/15")
+print(f"    - Walk: {walk_agents_created}/5")
+print(f"    - Created: {total_agents_created}/50")
 print(f"    - Skipped: {total_agents_skipped}")
 
 print(f"\nSpatial Constraints Applied:")

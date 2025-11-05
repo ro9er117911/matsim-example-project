@@ -476,3 +476,144 @@ gunzip -c output/ITERS/it.0/0.events.xml.gz | \
 
 ✅ **Success**: All intermediate stops appear in sequence
 ❌ **Failure**: Only origin and destination appear, no intermediate stops
+
+## Via Platform Export Pipeline
+
+### Overview
+
+The Via platform export pipeline generates lightweight visualization data for the Via transportation simulation platform. It filters MATSim output to contain only relevant agents and vehicles, dramatically reducing file sizes while maintaining complete person-vehicle interaction data.
+
+**Key Feature**: Dual-filtering system that preserves both agent activity events AND vehicle trajectory events, enabling Via to display real-time vehicle movement in addition to agent trajectories.
+
+### Workflow
+
+```
+MATSim Simulation Output
+├─ output_plans.xml.gz (agents and trips)
+├─ output_events.xml.gz (310K+ events)
+├─ output_transitVehicles.xml.gz (2791 vehicles)
+├─ output_transitSchedule.xml.gz (schedule info)
+└─ output_network.xml.gz (network topology)
+
+        ↓ build_agent_tracks.py --export-filtered-events
+
+Via Export Package
+├─ output_events.xml (1,212 filtered events)
+│  ├─ 104 agent-related events (activities, boarding)
+│  └─ 1,108 vehicle trajectory events (movement, stops)
+├─ output_network.xml.gz (network topology)
+├─ tracks_dt5s.csv (agent trajectories at 5s intervals)
+├─ legs_table.csv (trip segments)
+├─ filtered_vehicles.csv (vehicle summary)
+└─ vehicle_usage_report.txt (statistics)
+```
+
+### Command Usage
+
+#### Basic Via Export with All Features
+```bash
+python src/main/python/build_agent_tracks.py \
+  --plans output/output_plans.xml.gz \
+  --events output/output_events.xml.gz \
+  --schedule output/output_transitSchedule.xml.gz \
+  --vehicles output/output_transitVehicles.xml.gz \
+  --network output/output_network.xml.gz \
+  --export-filtered-events \
+  --out scenarios/equil/output/via_tracks \
+  --dt 5
+```
+
+#### Minimal Via Export (events only)
+```bash
+python src/main/python/build_agent_tracks.py \
+  --plans output/output_plans.xml.gz \
+  --events output/output_events.xml.gz \
+  --export-filtered-events \
+  --out scenarios/equil/output/via_tracks
+```
+
+### Command Line Parameters
+
+| Parameter | Type | Required | Purpose |
+|-----------|------|----------|---------|
+| `--plans` | path | Yes | MATSim output_plans.xml.gz |
+| `--events` | path | No | output_events.xml.gz for vehicle filtering |
+| `--schedule` | path | No | transitSchedule.xml.gz for PT enrichment |
+| `--vehicles` | path | No | transitVehicles.xml.gz for vehicle count |
+| `--network` | path | No | output_network.xml.gz to copy to output |
+| `--export-filtered-events` | flag | No | Generate filtered events.xml for Via |
+| `--out` | path | Yes | Output directory |
+| `--dt` | int | No | Track sampling interval (default: 5s) |
+
+### Output Files for Via Import
+
+**Required for Via visualization:**
+1. `output_events.xml` - 1,212 person-vehicle interaction events
+2. `output_network.xml.gz` - Network topology for visualization
+
+**Optional supporting files:**
+- `tracks_dt5s.csv` - Agent trajectories
+- `filtered_vehicles.csv` - Vehicle summary
+- `vehicle_usage_report.txt` - Statistics
+
+### Filtering Statistics
+
+The pipeline dramatically reduces data size while preserving all relevant information:
+
+```
+Original MATSim Events:      310,743
+Filtered for 3 agents:         1,212
+Compression ratio:             99.6%
+
+Original Vehicle Definitions: 2,791
+Agent-used vehicles:              5
+Vehicle compression:          99.8%
+```
+
+### Technical Implementation
+
+**Core Components:**
+- `filter_events.py` - Event XML filtering with dual-filter support and time-range constraints
+- `parsers.py` - Vehicle counting, event parsing, and time-range extraction
+- `main.py` - Pipeline orchestration with 3-checkpoint progress reporting
+
+### Time-Range Filtering (Advanced Feature)
+
+The pipeline supports fine-grained time-range filtering to show vehicles only during time windows when agents actually use them:
+
+**Use Case**: A bus operates all day (06:00-22:00), but an agent only travels 17:20-17:35. Filter shows only vehicle events in that time window.
+
+**How It Works**:
+1. **Checkpoint 1**: Extract boarding/alighting times from PersonEntersVehicle and PersonLeavesVehicle events
+2. **Checkpoint 2**: Confirm parameters before executing (prevents hang-ups on large datasets)
+3. **Checkpoint 3**: Filter vehicle trajectory events to only those time windows
+
+**Example Output**:
+```
+[1/3] 提取 agent-vehicle 使用時間範圍...
+  ✓ 發現 42 個 agent-vehicle 組合
+    car_agent_01 × car_agent_01: (07:04:42-07:14:45), (14:48:40-14:58:22)
+    veh_517_subway × subway: (15:36:12-15:48:54)
+    ...
+
+[2/3] 準備事件過濾參數...
+  原始事件檔案: output/output_events.xml.gz
+  輸出目錄: scenarios/equil/output/via_tracks_refined
+  Agent 數量: 50
+  Vehicle 數量: 41
+  時間範圍數: 56
+
+[3/3] 執行精細過濾...
+  ✓ 過濾完成: scenarios/equil/output/via_tracks_refined/output_events.xml
+```
+
+**Performance**: 310,743 events → 8,372 events (97.4% compression) on 50-agent dataset
+
+### Checkpoint Mechanism
+
+Prevents long silent processing and provides feedback:
+- **[1/3]**: Displays extracted time ranges in HH:MM:SS format
+- **[2/3]**: Shows parameters before major operation
+- **[3/3]**: Reports completion and file location
+
+See `working_journal/2025-11-05-Via-Export-Enhancement.md` for detailed Phase 1-4 implementation notes.

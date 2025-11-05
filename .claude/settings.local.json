@@ -31,7 +31,9 @@
       "Bash(/tmp/matsim_run.log)",
       "Bash(timeout 300 ./mvnw clean:*)",
       "Bash(chmod:*)",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(git remote add:*)",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []

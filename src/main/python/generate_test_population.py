@@ -678,8 +678,11 @@ for i in range(5):
 
 xml_content += '</population>\n'
 
-# Write to file
-output_file = 'scenarios/corridor/taipei_test/test_population_50.xml'
+# Write to file - support custom output path via environment variable or use default
+import os
+output_file = os.getenv('POPULATION_OUTPUT_PATH', 'scenarios/corridor/taipei_test/test_population_50.xml')
+# Create parent directories if they don't exist
+os.makedirs(os.path.dirname(output_file), exist_ok=True)
 with open(output_file, 'w', encoding='utf-8') as f:
     f.write(xml_content)
 

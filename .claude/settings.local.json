@@ -39,7 +39,8 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(POPULATION_OUTPUT_PATH='scenarios/equil/test_population_50.xml' python:*)",
-      "Bash(mvn --version:*)"
+      "Bash(mvn --version:*)",
+      "Bash(git stash:*)"
     ],
     "deny": [],
     "ask": []

@@ -1,0 +1,229 @@
+2025-11-06T12:10:11,454  INFO IOUtils:212 Resolved pt2matsim/work/ptmapper-config-artificial.xml to pt2matsim/work/ptmapper-config-artificial.xml
+2025-11-06T12:10:11,458  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
+2025-11-06T12:10:11,492  INFO Version:18 HV000001: Hibernate Validator 9.0.1.Final
+2025-11-06T12:10:11,538  INFO MatsimXmlParser:172 starting to parse xml from url file:/Users/ro9air/matsim-example-project/pt2matsim/work/ptmapper-config-artificial.xml ...
+2025-11-06T12:10:11,555  INFO ConfigReader:105 using config_v2-reader
+2025-11-06T12:10:11,555  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/config_v2.dtd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-11-06T12:10:16,286  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/pt2matsim/work/ptmapper-config-artificial.xml]
+2025-11-06T12:10:16,287  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
+2025-11-06T12:10:16,304  INFO MatsimXmlParser:155 starting to parse xml from file /Users/ro9air/matsim-example-project/pt2matsim/output_v2/transitSchedule_original.xml ...
+2025-11-06T12:10:16,305  INFO IOUtils:212 Resolved /Users/ro9air/matsim-example-project/pt2matsim/output_v2/transitSchedule_original.xml to /Users/ro9air/matsim-example-project/pt2matsim/output_v2/transitSchedule_original.xml
+2025-11-06T12:10:16,343  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/transitSchedule_v2.dtd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-11-06T12:10:16,914  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
+2025-11-06T12:10:16,916  INFO MatsimXmlParser:155 starting to parse xml from file /Users/ro9air/matsim-example-project/pt2matsim/output_v1/network-prepared.xml.gz ...
+2025-11-06T12:10:16,916  INFO IOUtils:212 Resolved /Users/ro9air/matsim-example-project/pt2matsim/output_v1/network-prepared.xml.gz to /Users/ro9air/matsim-example-project/pt2matsim/output_v1/network-prepared.xml.gz
+2025-11-06T12:10:16,917  INFO MatsimNetworkReader:122 using network_v2-reader.
+2025-11-06T12:10:16,917  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/network_v2.dtd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-11-06T12:10:17,787  INFO NetworkImpl:165  node # 1
+2025-11-06T12:10:17,788  INFO NetworkImpl:165  node # 4
+2025-11-06T12:10:17,788  INFO NetworkImpl:165  node # 16
+2025-11-06T12:10:17,789  INFO NetworkImpl:165  node # 64
+2025-11-06T12:10:17,791  INFO NetworkImpl:165  node # 256
+2025-11-06T12:10:17,799  INFO NetworkImpl:165  node # 1024
+2025-11-06T12:10:17,809  INFO NetworkImpl:165  node # 4096
+2025-11-06T12:10:17,837  INFO NetworkImpl:165  node # 16384
+2025-11-06T12:10:17,890  INFO NetworkImpl:161  link # 1
+2025-11-06T12:10:17,891  INFO NetworkImpl:161  link # 4
+2025-11-06T12:10:17,891  INFO NetworkImpl:161  link # 16
+2025-11-06T12:10:17,893  INFO NetworkImpl:161  link # 64
+2025-11-06T12:10:17,897  INFO NetworkImpl:161  link # 256
+2025-11-06T12:10:17,911  WARN DisallowedNextLinks:67 Considering DisallowedNextLinks in routing is only implemented by SpeedyDijkstra and SpeedyALT!
+2025-11-06T12:10:17,916  INFO NetworkImpl:161  link # 1024
+2025-11-06T12:10:17,922  WARN LinkImpl:102 capacity=0.0 of link id 101874 may cause problems
+2025-11-06T12:10:17,922  WARN LinkImpl:104  Future occurences of this logging statement are suppressed.
+2025-11-06T12:10:17,922  WARN LinkImpl:121 permlanes=0.0 of link id 101874 may cause problems
+2025-11-06T12:10:17,922  WARN LinkImpl:123  Future occurences of this logging statement are suppressed.
+2025-11-06T12:10:17,952  INFO NetworkImpl:161  link # 4096
+2025-11-06T12:10:18,079  INFO NetworkImpl:161  link # 16384
+2025-11-06T12:10:18,093  WARN LinkImpl:130 length=0.0 of link id 12436 may cause problems
+2025-11-06T12:10:18,093  WARN LinkImpl:132  Future occurences of this logging statement are suppressed.
+2025-11-06T12:10:18,364  INFO NetworkImpl:161  link # 65536
+2025-11-06T12:10:18,554  WARN PTMapper:78 The input network file set in PublicTransitMappingConfigGroup is ignored
+2025-11-06T12:10:18,554  WARN PTMapper:81 The input schedule file set in PublicTransitMappingConfigGroup is ignored
+2025-11-06T12:10:18,555  INFO LinkCandidateCreatorStandard:82 ===========================
+2025-11-06T12:10:18,555  INFO LinkCandidateCreatorStandard:83 Creating link candidates...
+2025-11-06T12:10:18,555  INFO LinkCandidateCreatorStandard:85    Note: loop links for stop facilities are created if no link candidate can be found.
+2025-11-06T12:10:18,559  INFO Progress:40 Getting closest links ... 0/1309 (0.00%)
+2025-11-06T12:10:18,560  WARN LinkCandidateCreatorStandard:109 No transportModeAssignment found for schedule mode subway
+2025-11-06T12:10:18,570  INFO NetworkImpl:419 building QuadTree for nodes: xrange(287374.583775674,314554.3486333067); yrange(2768838.5736453226,2784457.2255338933)
+2025-11-06T12:10:18,592  INFO NetworkImpl:428 Building QuadTree took 0.03 seconds.
+2025-11-06T12:10:18,764  INFO Progress:40 Getting closest links ... 1309/1309 (100.00%)
+2025-11-06T12:10:18,766  INFO Progress:40 Creating link candidates ... 0/26152 (0.00%)
+2025-11-06T12:10:18,797  INFO Progress:40 Creating link candidates ... 26152/26152 (100.00%)
+2025-11-06T12:10:18,797  INFO Progress:40 Setting candidate priorities ... 0/26152 (0.00%)
+2025-11-06T12:10:18,803  INFO LinkCandidateCreatorStandard:233 Average number of link candidates: 1
+2025-11-06T12:10:18,807  INFO PTMapper:153 ======================================
+2025-11-06T12:10:18,807  INFO PTMapper:154 Mapping transit schedule to network...
+2025-11-06T12:10:18,808  INFO PTMapper:170 ==================================
+2025-11-06T12:10:18,808  INFO PTMapper:171 Calculating pseudoTransitRoutes... (1309 transit routes in 9602 transit lines)
+2025-11-06T12:10:18,809  INFO Progress:40 Calculating pseudoTransitRoutes ... 0/1309 (0.00%)
+2025-11-06T12:10:18,809  INFO ScheduleRoutersStandard:85 ==============================================
+2025-11-06T12:10:18,809  INFO ScheduleRoutersStandard:86 Creating network routers for transit routes...
+2025-11-06T12:10:18,809  INFO ScheduleRoutersStandard:87 Initiating network and router for transit routes...
+2025-11-06T12:10:18,809  INFO ScheduleRoutersStandard:106 New router for schedule mode subway
+2025-11-06T12:10:18,810  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
+2025-11-06T12:10:18,811  INFO NetworkImpl:165  node # 1
+2025-11-06T12:10:18,811  INFO NetworkImpl:165  node # 4
+2025-11-06T12:10:18,811  INFO NetworkImpl:165  node # 16
+2025-11-06T12:10:18,811  INFO NetworkImpl:165  node # 64
+2025-11-06T12:10:18,811  INFO NetworkImpl:165  node # 256
+2025-11-06T12:10:18,812  INFO NetworkImpl:165  node # 1024
+2025-11-06T12:10:18,812  INFO NetworkImpl:165  node # 4096
+2025-11-06T12:10:18,814  INFO NetworkImpl:165  node # 16384
+2025-11-06T12:10:18,864  INFO SpeedyALTData:51 find dead ends...
+2025-11-06T12:10:18,866  INFO SpeedyALTData:132 calculate landmarks...
+2025-11-06T12:10:18,867  WARN SpeedyALTData:141 Network does not contain any nodes!
+2025-11-06T12:10:18,867  INFO SpeedyALTData:173 calculate min travelcost...
+2025-11-06T12:10:18,871  INFO ScheduleRoutersStandard:85 ==============================================
+2025-11-06T12:10:18,871  INFO ScheduleRoutersStandard:86 Creating network routers for transit routes...
+2025-11-06T12:10:18,871  INFO ScheduleRoutersStandard:87 Initiating network and router for transit routes...
+2025-11-06T12:10:18,871  INFO ScheduleRoutersStandard:106 New router for schedule mode subway
+2025-11-06T12:10:18,871  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
+2025-11-06T12:10:18,872  INFO NetworkImpl:165  node # 1
+2025-11-06T12:10:18,872  INFO NetworkImpl:165  node # 4
+2025-11-06T12:10:18,872  INFO NetworkImpl:165  node # 16
+2025-11-06T12:10:18,872  INFO NetworkImpl:165  node # 64
+2025-11-06T12:10:18,872  INFO NetworkImpl:165  node # 256
+2025-11-06T12:10:18,872  INFO NetworkImpl:165  node # 1024
+2025-11-06T12:10:18,873  INFO NetworkImpl:165  node # 4096
+2025-11-06T12:10:18,884  INFO NetworkImpl:165  node # 16384
+2025-11-06T12:10:18,911  INFO SpeedyALTData:51 find dead ends...
+2025-11-06T12:10:18,912  INFO SpeedyALTData:132 calculate landmarks...
+2025-11-06T12:10:18,913  WARN SpeedyALTData:141 Network does not contain any nodes!
+2025-11-06T12:10:18,913  INFO SpeedyALTData:173 calculate min travelcost...
+2025-11-06T12:10:18,915  INFO ScheduleRoutersStandard:85 ==============================================
+2025-11-06T12:10:18,915  INFO ScheduleRoutersStandard:86 Creating network routers for transit routes...
+2025-11-06T12:10:18,915  INFO ScheduleRoutersStandard:87 Initiating network and router for transit routes...
+2025-11-06T12:10:18,915  INFO ScheduleRoutersStandard:106 New router for schedule mode subway
+2025-11-06T12:10:18,915  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
+2025-11-06T12:10:18,916  INFO NetworkImpl:165  node # 1
+2025-11-06T12:10:18,916  INFO NetworkImpl:165  node # 4
+2025-11-06T12:10:18,916  INFO NetworkImpl:165  node # 16
+2025-11-06T12:10:18,916  INFO NetworkImpl:165  node # 64
+2025-11-06T12:10:18,916  INFO NetworkImpl:165  node # 256
+2025-11-06T12:10:18,916  INFO NetworkImpl:165  node # 1024
+2025-11-06T12:10:18,916  INFO NetworkImpl:165  node # 4096
+2025-11-06T12:10:18,917  INFO NetworkImpl:165  node # 16384
+2025-11-06T12:10:18,956  INFO SpeedyALTData:51 find dead ends...
+2025-11-06T12:10:18,957  INFO SpeedyALTData:132 calculate landmarks...
+2025-11-06T12:10:18,957  WARN SpeedyALTData:141 Network does not contain any nodes!
+2025-11-06T12:10:18,957  INFO SpeedyALTData:173 calculate min travelcost...
+2025-11-06T12:10:18,959  INFO ScheduleRoutersStandard:85 ==============================================
+2025-11-06T12:10:18,959  INFO ScheduleRoutersStandard:86 Creating network routers for transit routes...
+2025-11-06T12:10:18,959  INFO ScheduleRoutersStandard:87 Initiating network and router for transit routes...
+2025-11-06T12:10:18,959  INFO ScheduleRoutersStandard:106 New router for schedule mode subway
+2025-11-06T12:10:18,959  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
+2025-11-06T12:10:18,960  INFO NetworkImpl:165  node # 1
+2025-11-06T12:10:18,960  INFO NetworkImpl:165  node # 4
+2025-11-06T12:10:18,961  INFO NetworkImpl:165  node # 16
+2025-11-06T12:10:18,961  INFO NetworkImpl:165  node # 64
+2025-11-06T12:10:18,961  INFO NetworkImpl:165  node # 256
+2025-11-06T12:10:18,961  INFO NetworkImpl:165  node # 1024
+2025-11-06T12:10:18,961  INFO NetworkImpl:165  node # 4096
+2025-11-06T12:10:18,962  INFO NetworkImpl:165  node # 16384
+2025-11-06T12:10:18,973  INFO SpeedyALTData:51 find dead ends...
+2025-11-06T12:10:18,973  INFO SpeedyALTData:132 calculate landmarks...
+2025-11-06T12:10:18,974  WARN SpeedyALTData:141 Network does not contain any nodes!
+2025-11-06T12:10:18,974  INFO SpeedyALTData:173 calculate min travelcost...
+2025-11-06T12:10:18,976  INFO ScheduleRoutersStandard:85 ==============================================
+2025-11-06T12:10:18,976  INFO ScheduleRoutersStandard:86 Creating network routers for transit routes...
+2025-11-06T12:10:18,976  INFO ScheduleRoutersStandard:87 Initiating network and router for transit routes...
+2025-11-06T12:10:18,976  INFO ScheduleRoutersStandard:106 New router for schedule mode subway
+2025-11-06T12:10:18,976  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
+2025-11-06T12:10:18,977  INFO NetworkImpl:165  node # 1
+2025-11-06T12:10:18,977  INFO NetworkImpl:165  node # 4
+2025-11-06T12:10:18,977  INFO NetworkImpl:165  node # 16
+2025-11-06T12:10:18,977  INFO NetworkImpl:165  node # 64
+2025-11-06T12:10:18,977  INFO NetworkImpl:165  node # 256
+2025-11-06T12:10:18,977  INFO NetworkImpl:165  node # 1024
+2025-11-06T12:10:18,977  INFO NetworkImpl:165  node # 4096
+2025-11-06T12:10:18,978  INFO NetworkImpl:165  node # 16384
+2025-11-06T12:10:18,989  INFO SpeedyALTData:51 find dead ends...
+2025-11-06T12:10:18,989  INFO SpeedyALTData:132 calculate landmarks...
+2025-11-06T12:10:18,990  WARN SpeedyALTData:141 Network does not contain any nodes!
+2025-11-06T12:10:18,990  INFO SpeedyALTData:173 calculate min travelcost...
+2025-11-06T12:10:18,991  INFO ScheduleRoutersStandard:85 ==============================================
+2025-11-06T12:10:18,992  INFO ScheduleRoutersStandard:86 Creating network routers for transit routes...
+2025-11-06T12:10:18,992  INFO ScheduleRoutersStandard:87 Initiating network and router for transit routes...
+2025-11-06T12:10:18,992  INFO ScheduleRoutersStandard:106 New router for schedule mode subway
+2025-11-06T12:10:18,992  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
+2025-11-06T12:10:18,992  INFO NetworkImpl:165  node # 1
+2025-11-06T12:10:18,992  INFO NetworkImpl:165  node # 4
+2025-11-06T12:10:18,992  INFO NetworkImpl:165  node # 16
+2025-11-06T12:10:18,993  INFO NetworkImpl:165  node # 64
+2025-11-06T12:10:18,993  INFO NetworkImpl:165  node # 256
+2025-11-06T12:10:18,993  INFO NetworkImpl:165  node # 1024
+2025-11-06T12:10:18,993  INFO NetworkImpl:165  node # 4096
+2025-11-06T12:10:18,994  INFO NetworkImpl:165  node # 16384
+2025-11-06T12:10:19,005  INFO SpeedyALTData:51 find dead ends...
+2025-11-06T12:10:19,005  INFO SpeedyALTData:132 calculate landmarks...
+2025-11-06T12:10:19,006  WARN SpeedyALTData:141 Network does not contain any nodes!
+2025-11-06T12:10:19,006  INFO SpeedyALTData:173 calculate min travelcost...
+2025-11-06T12:10:19,114  INFO Progress:40 Calculating pseudoTransitRoutes ... 1309/1309 (100.00%)
+2025-11-06T12:10:19,115  INFO PTMapper:206 =====================================
+2025-11-06T12:10:19,115  INFO PTMapper:207 Adding artificial links to network...
+2025-11-06T12:10:19,115  INFO PTMapper:218 ==========================================================================================
+2025-11-06T12:10:19,115  INFO PTMapper:219 Replacing parent StopFacilities in schedule, creating link sequences for transit routes...
+2025-11-06T12:10:19,134  INFO PseudoScheduleImpl:229 createFacilitiesAndLinkSequences done.
+2025-11-06T12:10:19,134  INFO PTMapper:226 ================================
+2025-11-06T12:10:19,134  INFO PTMapper:227 Pulling child stop facilities...
+2025-11-06T12:10:19,177  INFO PTMapper:234 ==========================================
+2025-11-06T12:10:19,177  INFO PTMapper:235 Add transfers for child stop facilities...
+2025-11-06T12:10:19,179  INFO PTMapper:243 =============================
+2025-11-06T12:10:19,179  INFO PTMapper:244 Clean schedule and network...
+2025-11-06T12:10:19,235  INFO ScheduleCleaner:188 ... Removing links that are not used by public transit
+2025-11-06T12:10:19,450  INFO ScheduleCleaner:227     42431 links removed
+2025-11-06T12:10:19,450  INFO ScheduleCleaner:89 ... Removing not used stop facilities
+2025-11-06T12:10:19,455  INFO ScheduleCleaner:117    241 stop facilities removed
+2025-11-06T12:10:19,455  INFO ScheduleCleaner:126 ... Removing not used minimal transfer times
+2025-11-06T12:10:19,455  INFO ScheduleCleaner:142     482 not used minimal transfer times facilities removed
+2025-11-06T12:10:19,455  INFO ScheduleTools:336 ... Assigning schedule transport mode to network
+2025-11-06T12:10:19,467  INFO PTMapper:250 ======================
+2025-11-06T12:10:19,468  INFO PTMapper:251 Validating schedule...
+2025-11-06T12:10:19,531  INFO PTMapper:290 Schedule appears valid!
+2025-11-06T12:10:19,531  INFO PTMapper:254 ==================================================
+2025-11-06T12:10:19,531  INFO PTMapper:255 = Mapping transit schedule to network completed! =
+2025-11-06T12:10:19,531  INFO PTMapper:256 ==================================================
+2025-11-06T12:10:19,546  INFO PTMapper:338 
+2025-11-06T12:10:19,546  INFO PTMapper:339     Artificial Links:
+2025-11-06T12:10:19,546  INFO PTMapper:340        created  473
+2025-11-06T12:10:19,546  INFO PTMapper:341     Stop Facilities:
+2025-11-06T12:10:19,546  INFO PTMapper:342        total input   241
+2025-11-06T12:10:19,546  INFO PTMapper:343        total output  241
+2025-11-06T12:10:19,546  INFO PTMapper:344        diff.         0
+2025-11-06T12:10:19,546  INFO PTMapper:345     Child Stop Facilities:
+2025-11-06T12:10:19,546  INFO PTMapper:346        median nr created   1
+2025-11-06T12:10:19,547  INFO PTMapper:347        average nr created  1.00
+2025-11-06T12:10:19,547  INFO PTMapper:348        max nr created      1
+2025-11-06T12:10:19,547  INFO PTMapper:349     Transit Routes:
+2025-11-06T12:10:19,547  INFO PTMapper:350        total routes in schedule         1309
+2025-11-06T12:10:19,547  INFO PTMapper:351        routes without artificial links  0
+2025-11-06T12:10:19,547  INFO PTMapper:352 
+2025-11-06T12:10:19,547  INFO PTMapper:353     Run PlausibilityCheck for further analysis
+2025-11-06T12:10:19,547  INFO PTMapper:354 
+2025-11-06T12:10:19,547  INFO PTMapper:355 ==================================================
+2025-11-06T12:10:19,547  INFO PublicTransitMapper:95 Writing schedule and network to file...
+2025-11-06T12:10:19,547  INFO ScheduleTools:78 Writing transit schedule to file /Users/ro9air/matsim-example-project/pt2matsim/output_v2/transitSchedule-mapped.xml.gz
+2025-11-06T12:10:19,547  INFO TransitScheduleWriter:89 about to write transit schedule to: /Users/ro9air/matsim-example-project/pt2matsim/output_v2/transitSchedule-mapped.xml.gz
+2025-11-06T12:10:19,664  INFO ScheduleTools:80 done.
+2025-11-06T12:10:19,666  INFO NetworkWriter:70 Writing network to file: /Users/ro9air/matsim-example-project/pt2matsim/output_v2/network-with-pt.xml.gz...
+2025-11-06T12:10:20,153  INFO NetworkWriter:73 done.
+2025-11-06T12:10:20,154  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
+2025-11-06T12:10:20,154  INFO NetworkImpl:165  node # 1
+2025-11-06T12:10:20,154  INFO NetworkImpl:165  node # 4
+2025-11-06T12:10:20,154  INFO NetworkImpl:165  node # 16
+2025-11-06T12:10:20,155  INFO NetworkImpl:165  node # 64
+2025-11-06T12:10:20,155  INFO NetworkImpl:165  node # 256
+2025-11-06T12:10:20,155  INFO NetworkImpl:165  node # 1024
+2025-11-06T12:10:20,155  INFO NetworkImpl:165  node # 4096
+2025-11-06T12:10:20,156  INFO NetworkImpl:165  node # 16384
+2025-11-06T12:10:20,157  INFO NetworkImpl:161  link # 1
+2025-11-06T12:10:20,157  INFO NetworkImpl:161  link # 4
+2025-11-06T12:10:20,158  INFO NetworkImpl:161  link # 16
+2025-11-06T12:10:20,158  INFO NetworkImpl:161  link # 64
+2025-11-06T12:10:20,158  INFO NetworkImpl:161  link # 256
+2025-11-06T12:10:20,159  INFO NetworkImpl:161  link # 1024
+2025-11-06T12:10:20,164  INFO NetworkImpl:161  link # 4096
+2025-11-06T12:10:20,181  INFO NetworkImpl:161  link # 16384
+2025-11-06T12:10:20,267  INFO NetworkWriter:70 Writing network to file: /Users/ro9air/matsim-example-project/pt2matsim/output_v2/network-street.xml.gz...
+2025-11-06T12:10:20,689  INFO NetworkWriter:73 done.

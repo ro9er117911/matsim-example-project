@@ -1,7 +1,0 @@
-Iteration;car_travel;car_wait;pt_travel;pt_wait;stageActivity_travel;stageActivity_wait;walk_travel;walk_wait
-0;3;0;0;0;0;0;116;0
-1;4;0;2;0;0;0;103;0
-2;4;0;3;1;0;0;96;0
-3;5;0;5;1;0;0;72;0
-4;5;0;6;1;0;0;70;0
-5;4;0;7;1;0;0;76;0

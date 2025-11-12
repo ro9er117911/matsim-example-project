@@ -40,7 +40,17 @@
       "Bash(git commit:*)",
       "Bash(POPULATION_OUTPUT_PATH='scenarios/equil/test_population_50.xml' python:*)",
       "Bash(mvn --version:*)",
-      "Bash(git stash:*)"
+      "Bash(git stash:*)",
+      "Bash(xmllint:*)",
+      "Bash(/dev/null)",
+      "Bash(paste:*)",
+      "Bash(gzip:*)",
+      "Bash(scenarios/equil/config_test.xml)",
+      "Bash(for file in scenarios/equil/output/*.csv)",
+      "Bash(do)",
+      "Bash(head:*)",
+      "Bash(for file in ph_modestats.csv pkm_modestats.csv stopwatch.csv traveldistancestats.csv)",
+      "Bash(echo:*)"
     ],
     "deny": [],
     "ask": []

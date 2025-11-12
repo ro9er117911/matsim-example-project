@@ -1,0 +1,219 @@
+<?xml version="1.0"?>
+<!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
+<config>
+
+  <module name="global">
+    <param name="randomSeed" value="4711" />
+    <param name="coordinateSystem" value="EPSG:3826" />
+  </module>
+
+  <module name="network">
+    <param name="inputNetworkFile" value="network-with-pt.xml.gz" />
+  </module>
+
+  <module name="plans">
+    <param name="inputPlansFile" value="population.xml" />
+    <param name="handlingOfPlansWithoutRoutingMode" value="reject" />
+  </module>
+
+  <module name="transit">
+    <param name="useTransit" value="true" />
+    <param name="transitScheduleFile" value="transitSchedule-mapped.xml.gz" />
+    <param name="vehiclesFile" value="transitVehicles.xml" />
+    <param name="transitModes" value="pt" />
+    <param name="usingTransitInMobsim" value="true" />
+  </module>
+
+  <module name="controller">
+    <param name="outputDirectory" value="./output" />
+    <param name="lastIteration" value="0" />
+    <param name="writeEventsInterval" value="1" />
+    <param name="overwriteFiles" value="deleteDirectoryIfExists" />
+    <param name="snapshotFormat" value="otfvis" />
+    <param name="writeSnapshotsInterval" value="1" />
+  </module>
+
+  <module name="qsim">
+    <!-- 重要：只有 car 在 mainMode，PT 不應該在這裡 -->
+    <param name="mainMode" value="car" />
+    <param name="vehiclesSource" value="defaultVehicle" />
+    <param name="linkDynamics" value="PassingQ" />
+    <param name="flowCapacityFactor" value="1.0" />
+    <param name="storageCapacityFactor" value="1.0" />
+    <param name="simStarttimeInterpretation" value="onlyUseStarttime" />
+    <param name="startTime" value="00:00:00" />
+    <param name="endTime" value="30:00:00" />
+    <param name="stuckTime" value="10.0" />
+    <param name="removeStuckVehicles" value="false" />
+  </module>
+
+  <module name="vehicles">
+    <param name="vehiclesFile" value="transitVehicles.xml" />
+  </module>
+
+  <module name="routing">
+    <param name="networkModes" value="car" />
+    <param name="accessEgressType" value="accessEgressModeToLink" />
+    <param name="clearDefaultTeleportedModeParams" value="true" />
+    <!-- 重要：移除 PT 的 teleportedModeParameters！ -->
+    <!-- PT 路由由 SwissRailRaptor 處理，不是 teleportation -->
+    <parameterset type="teleportedModeParameters">
+      <param name="mode" value="walk" />
+      <param name="teleportedModeSpeed" value="1.388888888" />
+      <param name="beelineDistanceFactor" value="1.3" />
+    </parameterset>
+    <parameterset type="teleportedModeParameters">
+      <param name="mode" value="access_walk" />
+      <param name="teleportedModeSpeed" value="1.388888888" />
+      <param name="beelineDistanceFactor" value="1.3" />
+    </parameterset>
+    <parameterset type="teleportedModeParameters">
+      <param name="mode" value="egress_walk" />
+      <param name="teleportedModeSpeed" value="1.388888888" />
+      <param name="beelineDistanceFactor" value="1.3" />
+    </parameterset>
+    <parameterset type="teleportedModeParameters">
+      <param name="mode" value="transit_walk" />
+      <param name="teleportedModeSpeed" value="1.388888888" />
+      <param name="beelineDistanceFactor" value="1.3" />
+    </parameterset>
+  </module>
+
+  <!-- SwissRailRaptor 處理 PT 路由 -->
+  <!-- 按照 CLAUDE.md 標準配置進行 -->
+  <module name="swissRailRaptor">
+    <!-- 禁用 intermodal：人口計畫中沒有 access_walk/egress_walk legs -->
+    <param name="useIntermodalAccessEgress" value="false" />
+
+    <!-- 轉乘成本參數（零成本確保 SwissRailRaptor 選擇最短路線） -->
+    <param name="transferPenaltyBaseCost" value="0.0" />
+    <param name="transferPenaltyCostPerTravelTimeHour" value="0.0" />
+
+    <!-- 不使用模式映射：簡單乘客路由不需要 -->
+    <param name="useModeMappingForPassengers" value="false" />
+  </module>
+
+  <module name="transitRouter">
+    <!-- 轉乘時多保留 15 分鐘餘裕 -->
+    <param name="additionalTransferTime" value="900.0" />
+  </module>
+
+  <module name="replanning">
+    <param name="maxAgentPlanMemorySize" value="5" />
+    <param name="planSelectorForRemoval" value="WorstPlanSelector" />
+    <parameterset type="strategysettings">
+      <param name="strategyName" value="ChangeExpBeta" />
+      <param name="weight" value="0.85" />
+    </parameterset>
+    <parameterset type="strategysettings">
+      <param name="strategyName" value="ReRoute" />
+      <param name="weight" value="0.15" />
+    </parameterset>
+    <!-- DISABLED: SubtourModeChoice to force agents to use their assigned mode -->
+    <!--
+    <parameterset type="strategysettings">
+      <param name="strategyName" value="SubtourModeChoice" />
+      <param name="weight" value="0.0" />
+    </parameterset>
+    -->
+  </module>
+
+  <module name="subtourModeChoice">
+    <param name="modes" value="car,pt,walk" />
+    <param name="chainBasedModes" value="car" />
+    <param name="considerCarAvailability" value="true" />
+  </module>
+
+  <module name="scoring">
+    <param name="lateArrival" value="-18" />
+    <param name="performing" value="+6" />
+    <parameterset type="scoringParameters">
+      <param name="marginalUtilityOfMoney" value="1.0" />
+      <param name="utilityOfLineSwitch" value="-1.0" />
+      <parameterset type="modeParams">
+        <param name="mode" value="car" />
+        <!-- 降低 car 吸引力: constant penalty + 更高的负效用 -->
+        <param name="constant" value="-2.0" />
+        <param name="marginalUtilityOfTraveling_util_hr" value="-12.0" />
+        <param name="monetaryDistanceRate" value="-0.0004" />
+      </parameterset>
+      <parameterset type="modeParams">
+        <param name="mode" value="pt" />
+        <!-- 增加 PT 竞争力: 减少旅行时间负效用 -->
+        <param name="constant" value="0.0" />
+        <param name="marginalUtilityOfTraveling_util_hr" value="-2.0" />
+        <param name="marginalUtilityOfDistance_util_m" value="0.0" />
+        <param name="monetaryDistanceRate" value="0.0" />
+      </parameterset>
+      <parameterset type="activityParams">
+        <param name="activityType" value="pt interaction" />
+        <param name="typicalDuration" value="00:00:01" />
+        <param name="scoringThisActivityAtAll" value="false" />
+      </parameterset>
+      <parameterset type="modeParams">
+        <param name="mode" value="walk" />
+        <param name="constant" value="0.0" />
+        <param name="marginalUtilityOfTraveling_util_hr" value="-8.0" />
+      </parameterset>
+      <parameterset type="modeParams">
+        <param name="mode" value="access_walk" />
+        <param name="constant" value="0.0" />
+        <param name="marginalUtilityOfTraveling_util_hr" value="-8.0" />
+      </parameterset>
+      <parameterset type="modeParams">
+        <param name="mode" value="egress_walk" />
+        <param name="constant" value="0.0" />
+        <param name="marginalUtilityOfTraveling_util_hr" value="-8.0" />
+      </parameterset>
+      <parameterset type="modeParams">
+        <param name="mode" value="transit_walk" />
+        <param name="constant" value="0.0" />
+        <param name="marginalUtilityOfTraveling_util_hr" value="-8.0" />
+      </parameterset>
+      <parameterset type="activityParams">
+        <param name="activityType" value="home" />
+        <param name="typicalDuration" value="12:00:00" />
+      </parameterset>
+      <parameterset type="activityParams">
+        <param name="activityType" value="work" />
+        <param name="typicalDuration" value="08:00:00" />
+        <param name="openingTime" value="07:00:00" />
+        <param name="closingTime" value="18:00:00" />
+      </parameterset>
+      <parameterset type="activityParams">
+        <param name="activityType" value="leisure" />
+        <param name="typicalDuration" value="02:00:00" />
+        <param name="openingTime" value="13:00:00" />
+        <param name="closingTime" value="23:00:00" />
+      </parameterset>
+      <parameterset type="activityParams">
+        <param name="activityType" value="education" />
+        <param name="typicalDuration" value="06:00:00" />
+        <param name="openingTime" value="07:00:00" />
+        <param name="closingTime" value="20:00:00" />
+      </parameterset>
+      <parameterset type="activityParams">
+        <param name="activityType" value="shop" />
+        <param name="typicalDuration" value="01:30:00" />
+        <param name="openingTime" value="10:00:00" />
+        <param name="closingTime" value="21:00:00" />
+      </parameterset>
+    </parameterset>
+  </module>
+
+  <!-- OTFVis 視覺化設定 (disabled for headless mode) -->
+  <!-- Uncomment to enable visualization:
+  <module name="otfvis">
+    <param name="coloringScheme" value="standard" />
+    <param name="drawTransitFacilities" value="true" />
+    <param name="drawTransitFacilityIds" value="false" />
+    <param name="showTeleportedAgents" value="false" />
+    <param name="drawLinkIds" value="false" />
+    <param name="drawTime" value="true" />
+    <param name="agentSize" value="120.0" />
+    <param name="linkWidthIsProportionalToCapacity" value="false" />
+    <param name="renderSpeedFactor" value="1.0" />
+  </module>
+  -->
+
+</config>

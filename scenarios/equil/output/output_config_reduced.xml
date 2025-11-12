@@ -3,7 +3,7 @@
 <config>
 	<module name="controller" >
 		<!-- Default=1000. Last Iteration of a simulation. -->
-		<param name="lastIteration" value="5" />
+		<param name="lastIteration" value="15" />
 		<!-- Possible values: failIfDirectoryExists,overwriteExistingFiles,deleteDirectoryIfExists -->
 		<param name="overwriteFiles" value="deleteDirectoryIfExists" />
 		<!-- Comma-separated list of visualizer output file formats. `transims' and `otfvis'. -->
@@ -18,9 +18,7 @@
 		<param name="inputNetworkFile" value="network-with-pt.xml.gz" />
 	</module>
 	<module name="plans" >
-		<!-- Possible values: reject,useMainModeIdentifier -->
-		<param name="handlingOfPlansWithoutRoutingMode" value="useMainModeIdentifier" />
-		<param name="inputPlansFile" value="test_population_50.xml" />
+		<param name="inputPlansFile" value="population.xml" />
 	</module>
 	<module name="qsim" >
 		<param name="endTime" value="30:00:00" />
@@ -31,19 +29,25 @@
 		<param name="startTime" value="00:00:00" />
 	</module>
 	<module name="replanning" >
+		<!-- maximum number of plans per agent.  ``0'' means ``infinity''.  Currently (2010), ``5'' is a good number -->
+		<param name="maxAgentPlanMemorySize" value="15" />
 		<parameterset type="strategysettings" >
 			<!-- strategyName of strategy.  Possible default names: SelectRandom BestScore KeepLastSelected ChangeExpBeta SelectExpBeta SelectPathSizeLogit      (selectors), ReRouteTimeAllocationMutatorTimeAllocationMutator_ReRouteChangeSingleTripModeChangeTripModeSubtourModeChoice (innovative strategies). -->
 			<param name="strategyName" value="ChangeExpBeta" />
 			<!-- weight of a strategy: for each agent, a strategy will be selected with a probability proportional to its weight -->
-			<param name="weight" value="0.7" />
+			<param name="weight" value="0.5" />
 		</parameterset>
 		<parameterset type="strategysettings" >
 			<param name="strategyName" value="ReRoute" />
-			<param name="weight" value="0.15" />
+			<param name="weight" value="0.2" />
 		</parameterset>
 		<parameterset type="strategysettings" >
 			<param name="strategyName" value="SubtourModeChoice" />
-			<param name="weight" value="0.15" />
+			<param name="weight" value="0.2" />
+		</parameterset>
+		<parameterset type="strategysettings" >
+			<param name="strategyName" value="ChangeExpBeta" />
+			<param name="weight" value="0.1" />
 		</parameterset>
 	</module>
 	<module name="routing" >
@@ -71,7 +75,8 @@
 	</module>
 	<module name="scoring" >
 		<parameterset type="scoringParameters" >
-			<param name="waitingPt" value="-7.0" />
+			<param name="utilityOfLineSwitch" value="0.0" />
+			<param name="waitingPt" value="-2.0" />
 			<parameterset type="activityParams" >
 				<param name="activityType" value="pt interaction" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -86,6 +91,24 @@
 				<param name="closingTime" value="18:00:00" />
 				<param name="openingTime" value="07:00:00" />
 				<param name="typicalDuration" value="08:00:00" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="leisure" />
+				<param name="closingTime" value="23:00:00" />
+				<param name="openingTime" value="13:00:00" />
+				<param name="typicalDuration" value="02:00:00" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="education" />
+				<param name="closingTime" value="20:00:00" />
+				<param name="openingTime" value="07:00:00" />
+				<param name="typicalDuration" value="06:00:00" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="shop" />
+				<param name="closingTime" value="21:00:00" />
+				<param name="openingTime" value="10:00:00" />
+				<param name="typicalDuration" value="01:30:00" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="car interaction" />
@@ -111,29 +134,32 @@
 				<param name="typicalDuration" value="undefined" />
 			</parameterset>
 			<parameterset type="modeParams" >
+				<!-- [utils] alternative-specific constant.  Normally per trip, but that is probably buggy for multi-leg trips. -->
+				<param name="constant" value="-2.0" />
+				<!-- [utils/hr] additional marginal utility of traveling.  normally negative.  this comes on top of the opportunity cost of time -->
+				<param name="marginalUtilityOfTraveling_util_hr" value="-12.0" />
 				<param name="mode" value="car" />
 				<!-- [unit_of_money/m] conversion of distance into money. Normally negative. -->
-				<param name="monetaryDistanceRate" value="-2.0E-4" />
+				<param name="monetaryDistanceRate" value="-4.0E-4" />
 			</parameterset>
 			<parameterset type="modeParams" >
-				<!-- [utils/hr] additional marginal utility of traveling.  normally negative.  this comes on top of the opportunity cost of time -->
-				<param name="marginalUtilityOfTraveling_util_hr" value="-7.0" />
+				<param name="marginalUtilityOfTraveling_util_hr" value="-2.0" />
 				<param name="mode" value="pt" />
 			</parameterset>
 			<parameterset type="modeParams" >
-				<param name="marginalUtilityOfTraveling_util_hr" value="-12.0" />
+				<param name="marginalUtilityOfTraveling_util_hr" value="-8.0" />
 				<param name="mode" value="walk" />
 			</parameterset>
 			<parameterset type="modeParams" >
-				<param name="marginalUtilityOfTraveling_util_hr" value="-12.0" />
+				<param name="marginalUtilityOfTraveling_util_hr" value="-8.0" />
 				<param name="mode" value="access_walk" />
 			</parameterset>
 			<parameterset type="modeParams" >
-				<param name="marginalUtilityOfTraveling_util_hr" value="-12.0" />
+				<param name="marginalUtilityOfTraveling_util_hr" value="-8.0" />
 				<param name="mode" value="egress_walk" />
 			</parameterset>
 			<parameterset type="modeParams" >
-				<param name="marginalUtilityOfTraveling_util_hr" value="-12.0" />
+				<param name="marginalUtilityOfTraveling_util_hr" value="-8.0" />
 				<param name="mode" value="transit_walk" />
 			</parameterset>
 		</parameterset>
@@ -173,6 +199,10 @@
 		<param name="useTransit" value="true" />
 		<!-- Input file containing the vehicles used by the departures in the transit schedule. -->
 		<param name="vehiclesFile" value="transitVehicles.xml" />
+	</module>
+	<module name="transitRouter" >
+		<!-- additional time the router allocates when a line switch happens. Can be interpreted as a 'safety' time that agents need to safely transfer from one line to another -->
+		<param name="additionalTransferTime" value="900.0" />
 	</module>
 	<module name="vehicles" >
 		<param name="vehiclesFile" value="transitVehicles.xml" />

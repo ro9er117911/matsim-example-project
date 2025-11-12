@@ -1,0 +1,44 @@
+pattern	0+	5+	10+	15+	20+	25+	30+	35+	40+	45+	50+	55+	60+
+car interaction---car interaction	29	28	12	8	2	0	0	0	0	0	0	0	0
+car interaction---education	15	0	0	0	0	0	1	0	0	0	0	0	0
+car interaction---home	20	0	0	0	0	0	2	0	0	0	0	0	1
+car interaction---leisure	12	0	0	0	0	0	1	0	0	0	0	0	1
+car interaction---shop	12	0	0	0	0	0	1	0	0	0	0	0	2
+car interaction---work	10	0	0	0	0	0	1	0	0	0	0	0	0
+education---car interaction	14	0	0	0	0	0	0	0	0	0	0	0	0
+education---home	2	0	0	0	0	1	0	0	0	0	0	0	0
+education---leisure	0	0	0	1	0	0	0	0	0	0	0	0	1
+education---pt interaction	24	2	2	0	0	0	0	0	0	0	0	0	0
+education---shop	0	0	0	0	0	0	1	0	0	0	0	0	1
+education---work	2	0	0	0	0	0	0	0	0	0	0	0	1
+home---car interaction	25	0	0	0	0	0	3	0	0	0	0	0	1
+home---education	0	0	0	0	0	0	0	0	0	0	0	0	1
+home---leisure	3	0	0	0	1	0	1	0	1	0	0	0	2
+home---pt interaction	45	9	1	0	0	0	0	0	0	0	0	0	0
+home---shop	1	0	0	0	1	0	0	0	0	0	1	0	1
+home---work	0	0	0	0	0	0	0	1	0	1	0	1	0
+leisure---car interaction	12	0	0	0	0	0	1	0	0	0	0	0	1
+leisure---education	0	0	0	0	0	1	0	0	0	0	0	0	0
+leisure---home	0	0	0	1	0	0	0	0	1	0	0	0	2
+leisure---pt interaction	23	3	6	0	0	0	0	0	0	0	0	0	0
+leisure---shop	3	0	0	0	1	0	0	0	0	0	0	0	1
+leisure---work	0	0	0	0	1	0	0	0	0	0	1	0	0
+pt interaction---education	28	3	2	0	0	0	0	0	0	0	0	0	0
+pt interaction---home	43	13	2	0	0	0	0	0	0	0	0	0	0
+pt interaction---leisure	23	3	2	0	0	0	0	0	0	0	0	0	0
+pt interaction---pt interaction	46	60	110	22	15	13	10	8	4	1	2	0	0
+pt interaction---shop	28	5	2	0	0	0	0	0	0	0	0	0	0
+pt interaction---work	34	4	1	0	0	0	0	0	0	0	0	0	0
+shop---car interaction	13	0	0	0	0	0	1	0	0	0	0	0	2
+shop---education	1	0	0	0	0	0	0	0	0	0	0	0	0
+shop---home	0	0	0	1	0	0	0	0	0	0	0	0	3
+shop---leisure	1	0	0	0	0	0	0	2	0	0	0	0	1
+shop---pt interaction	31	7	3	0	0	0	0	0	0	0	0	0	0
+shop---work	0	0	0	0	0	1	0	0	0	0	0	0	0
+work---car interaction	10	0	0	0	0	0	1	0	0	0	0	0	0
+work---home	0	0	0	0	0	1	0	1	1	0	0	0	0
+work---leisure	0	0	1	0	0	0	0	0	0	0	0	0	1
+work---pt interaction	33	4	0	0	0	0	0	0	0	0	0	0	0
+work---shop	2	1	0	1	0	0	0	0	0	0	0	0	2
+
+average leg duration: 602.8006134969326 seconds = 00:10:02

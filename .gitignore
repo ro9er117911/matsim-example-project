@@ -3,7 +3,14 @@ pt2matsim/data/**         # 原始 GTFS/OSM、任何大型來源資料
 pt2matsim/out/**          # 轉檔/模擬輸出
 pt2matsim/out_v0/**       # 舊版輸出
 pt2matsim/output_v1/**    # pt2matsim 輸出日誌
+pt2matsim/output_v2/**    # pt2matsim 輸出 v2
 output/**                 # MATSim run outputs
+output_transfer/**        # Transfer outputs
+test_output_pt_only/**    # Test outputs
+scenarios/*/output/**     # Scenario-specific outputs
+scenarios/equil/forVia/** # Via export outputs
+scenarios/equil/forVia_filtered/** # Filtered Via exports
+test/output/**            # Test outputs
 *.geojson
 *.zip
 *.7z
@@ -13,6 +20,8 @@ output/**                 # MATSim run outputs
 *.jar
 *.osm                     # OSM XML 檔案通常很大
 *.log                     # 日誌檔案
+*.pyc                     # Python compiled files
+__pycache__/              # Python cache
 # 可保留必要的小型設定檔（視情況白名單）
 # !pt2matsim/data/README.md
 !pt2matsim/work/pt2matsim-25.8-shaded.jar  # 保留這個必要的工具

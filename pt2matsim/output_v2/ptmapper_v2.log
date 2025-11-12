@@ -1,0 +1,39 @@
+2025-11-06T11:22:20,347  INFO IOUtils:212 Resolved pt2matsim/work/ptmapper-config-v2.xml to pt2matsim/work/ptmapper-config-v2.xml
+2025-11-06T11:22:20,349  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
+2025-11-06T11:22:20,382  INFO Version:18 HV000001: Hibernate Validator 9.0.1.Final
+2025-11-06T11:22:20,425  INFO MatsimXmlParser:172 starting to parse xml from url file:/Users/ro9air/matsim-example-project/pt2matsim/work/ptmapper-config-v2.xml ...
+2025-11-06T11:22:20,440  INFO ConfigReader:105 using config_v2-reader
+2025-11-06T11:22:20,440  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/config_v2.dtd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-11-06T11:22:25,359  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/pt2matsim/work/ptmapper-config-v2.xml]
+2025-11-06T11:22:25,360  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
+2025-11-06T11:22:25,374  INFO MatsimXmlParser:155 starting to parse xml from file /Users/ro9air/matsim-example-project/pt2matsim/output_v2/transitSchedule.xml ...
+2025-11-06T11:22:25,375  INFO IOUtils:212 Resolved /Users/ro9air/matsim-example-project/pt2matsim/output_v2/transitSchedule.xml to /Users/ro9air/matsim-example-project/pt2matsim/output_v2/transitSchedule.xml
+null
+null
+Cannot invoke "org.matsim.core.utils.io.MatsimXmlParser.startTag(String, org.xml.sax.Attributes, java.util.Stack)" because "this.delegate" is null
+Cannot invoke "org.matsim.core.utils.io.MatsimXmlParser.startTag(String, org.xml.sax.Attributes, java.util.Stack)" because "this.delegate" is null
+Cannot invoke "org.matsim.core.utils.io.MatsimXmlParser.startTag(String, org.xml.sax.Attributes, java.util.Stack)" because "this.delegate" is null
+XML-FATAL: /Users/ro9air/matsim-example-project/pt2matsim/output_v2/transitSchedule.xml, line 2, column 1:
+org.xml.sax.SAXParseException; lineNumber: 2; columnNumber: 1; Cannot invoke "org.matsim.core.utils.io.MatsimXmlParser.startTag(String, org.xml.sax.Attributes, java.util.Stack)" because "this.delegate" is null
+Exception in thread "main" java.io.UncheckedIOException: java.io.IOException: org.xml.sax.SAXParseException; lineNumber: 2; columnNumber: 1; Cannot invoke "org.matsim.core.utils.io.MatsimXmlParser.startTag(String, org.xml.sax.Attributes, java.util.Stack)" because "this.delegate" is null
+	at org.matsim.core.utils.io.MatsimXmlParser.parse(MatsimXmlParser.java:234)
+	at org.matsim.core.utils.io.MatsimXmlParser.readFile(MatsimXmlParser.java:157)
+	at org.matsim.pt.transitSchedule.api.TransitScheduleReader.readFile(TransitScheduleReader.java:73)
+	at org.matsim.pt2matsim.tools.ScheduleTools.readTransitSchedule(ScheduleTools.java:62)
+	at org.matsim.pt2matsim.run.PublicTransitMapper.run(PublicTransitMapper.java:86)
+	at org.matsim.pt2matsim.run.PublicTransitMapper.main(PublicTransitMapper.java:65)
+Caused by: java.io.IOException: org.xml.sax.SAXParseException; lineNumber: 2; columnNumber: 1; Cannot invoke "org.matsim.core.utils.io.MatsimXmlParser.startTag(String, org.xml.sax.Attributes, java.util.Stack)" because "this.delegate" is null
+	... 6 more
+Caused by: org.xml.sax.SAXParseException; lineNumber: 2; columnNumber: 1; Cannot invoke "org.matsim.core.utils.io.MatsimXmlParser.startTag(String, org.xml.sax.Attributes, java.util.Stack)" because "this.delegate" is null
+	at com.ctc.wstx.sax.WstxSAXParser.throwSaxException(WstxSAXParser.java:1294)
+	at com.ctc.wstx.sax.WstxSAXParser.parse(WstxSAXParser.java:625)
+	at org.matsim.core.utils.io.MatsimXmlParser.parse(MatsimXmlParser.java:203)
+	... 5 more
+Caused by: java.lang.NullPointerException: Cannot invoke "org.matsim.core.utils.io.MatsimXmlParser.startTag(String, org.xml.sax.Attributes, java.util.Stack)" because "this.delegate" is null
+	at org.matsim.pt.transitSchedule.api.TransitScheduleReader$XmlScheduleReader.startTag(TransitScheduleReader.java:100)
+	at org.matsim.core.utils.io.MatsimXmlParser.startElement(MatsimXmlParser.java:370)
+	at com.ctc.wstx.sr.BasicStreamReader.fireSaxStartElement(BasicStreamReader.java:1787)
+	at com.ctc.wstx.sax.WstxSAXParser.fireStartTag(WstxSAXParser.java:812)
+	at com.ctc.wstx.sax.WstxSAXParser.fireEvents(WstxSAXParser.java:692)
+	at com.ctc.wstx.sax.WstxSAXParser.parse(WstxSAXParser.java:623)
+	... 6 more

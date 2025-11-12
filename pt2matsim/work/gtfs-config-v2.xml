@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
+<config>
+	<module name="CreatePT2MATSimMapping">
+		<param name="gtfsFile" value="pt2matsim/data/gtfs/tp_metro_gtfs_osm_filtered" />
+		<param name="coordinateSystem" value="EPSG:3826" />
+		<param name="outputNetworkFile" value="pt2matsim/output_v2/network.xml.gz" />
+		<param name="outputScheduleFile" value="pt2matsim/output_v2/transitSchedule.xml" />
+		<param name="outputVehicleFile" value="pt2matsim/output_v2/transitVehicles.xml" />
+		<param name="dayWithMostServices" value="20240101" />
+		<param name="extractDay" value="20240101" />
+	</module>
+</config>

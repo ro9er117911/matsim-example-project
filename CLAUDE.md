@@ -6,6 +6,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a MATSim (Multi-Agent Transport Simulation) project for modeling urban transportation systems. It uses Java 21 with Maven and MATSim version 2025.0.
 
+## Claude Code Skills
+
+This project includes specialized skills in `.claude/skills/matsim-skill/` that provide automated workflows for common MATSim tasks:
+
+1. **SwissRailRaptor Configuration** (`1-swissrailraptor/`) - PT routing setup and transfer troubleshooting
+2. **PT Network Mapping** (`2-pt-mapping/`) - Map transit schedules to networks with pt2matsim
+3. **Network Validation** (`3-network-validation/`) - Validate and prepare networks
+4. **Simulation Execution** (`4-simulation/`) - Configure and run simulations
+5. **GTFS Conversion** (`5-gtfs-conversion/`) - Import transit data from GTFS
+6. **Via Export** (`6-via-export/`) - Generate lightweight visualization data
+
+**Skills activate automatically** when you mention trigger phrases like "PT agents not boarding", "mapping stuck", or "export for Via". Each skill provides step-by-step workflows with validation commands and troubleshooting guides.
+
+See `.claude/skills/matsim-skill/README.md` for complete documentation.
+
 ## Build & Test Commands
 
 ```bash
@@ -20,6 +35,142 @@ This is a MATSim (Multi-Agent Transport Simulation) project for modeling urban t
 
 # Clean build artifacts
 ./mvnw clean
+```
+
+## Shell Tools and Search Guidelines
+
+### Primary Rule: Syntax-Aware Search
+
+**Default to `ast-grep` for structural/syntax-aware searching**
+- When searching requires understanding code structure, always use `ast-grep`
+- Syntax: `ast-grep --lang <language> -p '<pattern>'`
+- For Java code: `ast-grep --lang java -p '<pattern>'` to find class definitions, method signatures, etc.
+- Only fall back to text-based tools (`rg`, `grep`) when explicitly requested or for plain-text searches
+
+### Required Modern Tools
+
+**Use these specialized tools instead of traditional Unix commands:**
+
+| Task | Required Tool | ❌ Never Use | Example |
+|------|---------------|-------------|---------|
+| Find Files | `fd` | `find`, `ls -R` | `fd -e java src/` |
+| Search Text | `rg` (ripgrep) | `grep`, `ag` | `rg 'class RunMatsim' src/` |
+| Code Structure Analysis | `ast-grep` | `grep`, `sed` | `ast-grep --lang java -p 'class $NAME { $$$ }'` |
+| Interactive Selection | `fzf` | Manual filtering | `fd -e java \| fzf` |
+| JSON Processing | `jq` | `python -m json.tool` | `jq '.modules[]' config.json` |
+| YAML/XML Processing | `yq` | Manual parsing | `yq eval '.transit' config.xml` |
+
+### Java/Maven-Specific Guidelines
+
+For this MATSim project (Java 21 + Maven + XML configs):
+
+**Finding Java classes and methods:**
+```bash
+# ✅ Correct: Use ast-grep for structural search (find all class definitions)
+ast-grep --lang java -p 'class $NAME { $$$ }'
+
+# ✅ Correct: Use ast-grep to find method implementations
+ast-grep --lang java -p 'public $RET $METHOD($ARGS) { $$$ }'
+
+# ✅ Correct: Use rg for simple text search
+rg 'class RunMatsim' src/
+
+# ❌ Wrong: Don't use grep for Java code
+grep 'class RunMatsim' src/
+```
+
+**Finding configuration patterns in XML/YAML:**
+```bash
+# ✅ Correct: Use rg for XML pattern search
+rg '<module name="swissRailRaptor">' scenarios/
+
+# ✅ Correct: Use yq for extracting XML/YAML values
+yq eval '.modules[] | select(.name=="transit")' scenarios/equil/config.xml
+
+# ❌ Wrong: Don't manually parse XML with grep
+grep 'module name' scenarios/equil/config.xml
+```
+
+**Finding test files and test classes:**
+```bash
+# ✅ Correct: Use fd for file discovery (faster than find)
+fd -e java -p '*Test\.java' src/test/
+
+# ✅ Correct: Use ast-grep to find all test methods
+ast-grep --lang java -p '@Test $RET $METHOD() { $$$ }'
+
+# ❌ Wrong: Don't use find for file discovery
+find src/test -name '*Test.java'
+```
+
+**Searching across large scenarios (compressed files):**
+```bash
+# ✅ Correct: Search in compressed XML files
+rg 'stopAreaId' scenarios/equil/transitSchedule-mapped.xml.gz
+
+# ✅ Correct: Extract specific patterns from compressed files
+gunzip -c scenarios/equil/transitSchedule-mapped.xml.gz | \
+  rg 'BL11|G12' | rg 'stopAreaId'
+```
+
+### Installation Check
+
+Before using any tool, verify availability:
+```bash
+# Check if tools are installed
+command -v ast-grep || echo "ast-grep not found - install with: cargo install ast-grep"
+command -v rg || echo "ripgrep not found - install with: brew install ripgrep"
+command -v fd || echo "fd not found - install with: brew install fd"
+command -v yq || echo "yq not found - install with: brew install yq"
+command -v jq || echo "jq not found - install with: brew install jq"
+command -v fzf || echo "fzf not found - install with: brew install fzf"
+```
+
+### Key Principles
+
+1. **Structural/syntax-aware searches** (understanding code context) → `ast-grep`
+2. **Text/pattern searches** (simple text matching) → `rg` (ripgrep)
+3. **File discovery** (finding files by name/pattern) → `fd`
+4. **Interactive selection** (filtering results interactively) → `fzf`
+5. **Data transformation** (extracting/transforming structured data) → `jq` / `yq`
+
+**Rule of thumb**: Always prefer modern tools over legacy alternatives (`grep`, `find`, `sed`, etc.)
+
+### Performance Notes
+
+- `ast-grep` is slower but precise for code structure analysis (use when semantics matter)
+- `rg` (ripgrep) is very fast for text searching (10-100x faster than grep)
+- `fd` is much faster than traditional `find` command
+- For large files (MATSim XML output): pipe to `rg` instead of loading entire file into memory
+- Combine tools efficiently: e.g., `fd -e java | xargs rg 'pattern'`
+
+### Common Search Patterns for This Project
+
+**Find all places where SwissRailRaptor is configured:**
+```bash
+rg 'swissRailRaptor' scenarios/ CLAUDE.md
+```
+
+**Find all PT-related configuration parameters:**
+```bash
+rg '<param name="[^"]*transit' scenarios/
+```
+
+**Find all Java test classes in this project:**
+```bash
+fd -e java 'Test\.java' src/test/ | head -20
+```
+
+**Analyze population structure (find activity types used):**
+```bash
+gunzip -c scenarios/equil/test_population_50.xml.gz | \
+  rg -o 'type="[^"]*"' | sort | uniq -c
+```
+
+**Check how many transfer stations are in the transit schedule:**
+```bash
+gunzip -c scenarios/equil/transitSchedule-mapped.xml.gz | \
+  rg 'stopAreaId' | rg -o 'stopAreaId="[^"]*"' | sort -u | wc -l
 ```
 
 ## Running Simulations
@@ -430,6 +581,44 @@ Result: Direct transmission, no intermediate stops visited.
 </module>
 ```
 
+### Understanding useIntermodalAccessEgress Parameter
+
+**Critical Setting**: `swissRailRaptor.useIntermodalAccessEgress`
+
+This parameter controls how SwissRailRaptor interprets population plans:
+
+#### ❌ When useIntermodalAccessEgress = true
+- SwissRailRaptor **expects** population plans to have **explicit leg segments**:
+  ```xml
+  <activity type="home" x="..." y="..."/>
+  <leg mode="access_walk">...</leg>      ← Walk to nearest PT station
+  <leg mode="pt">...</leg>               ← First PT segment
+  <leg mode="transit_walk">...</leg>     ← Walk between transfer stations
+  <leg mode="pt">...</leg>               ← Second PT segment
+  <leg mode="egress_walk">...</leg>      ← Walk from station to destination
+  <activity type="work" x="..." y="..."/>
+  ```
+- If population plans only have `<leg mode="pt">` **without access/egress legs**, routing will fail or produce incorrect results
+- **Result**: Transfers may not work correctly; agents might not board vehicles at all
+
+#### ✅ When useIntermodalAccessEgress = false (RECOMMENDED)
+- SwissRailRaptor works directly with **activity coordinates**:
+  ```xml
+  <activity type="home" x="296356.46" y="2766793.71"/>
+  <leg mode="pt">...</leg>                ← SwissRailRaptor fills in details during routing
+  <activity type="work" x="302503.61" y="2771706.94"/>
+  ```
+- Router **automatically determines**:
+  1. Nearest PT station to home activity (access point)
+  2. Shortest PT path with transfers if needed
+  3. Nearest PT station to work activity (egress point)
+- Router then expands the single `<leg mode="pt">` into actual vehicle boardings
+- **Result**: Transfers work correctly; agents produce multiple `PersonEntersVehicle` events
+
+**Rule of Thumb**:
+- Use `useIntermodalAccessEgress = false` unless you are explicitly creating population plans with access_walk/egress_walk/transit_walk legs
+- For simple PT-only scenarios, always use `false`
+
 ### SwissRailRaptor Configuration Checklist
 
 Before running simulations with PT:
@@ -440,6 +629,7 @@ Before running simulations with PT:
 - [ ] **transit.useTransit = true** → enables transit simulation
 - [ ] **transit.usingTransitInMobsim = true** → PT vehicles operate in simulation
 - [ ] **transit.routingAlgorithmType = "SwissRailRaptor"** → correct routing algorithm
+- [ ] **useIntermodalAccessEgress = false** → unless population plans explicitly support intermodal
 - [ ] **Virtual network exists** → pt2matsim-generated network with links like `pt_STATION_UP`
 - [ ] **Transit schedule complete** → all stops and departures defined
 - [ ] **transitVehicles.xml** → capacity and vehicle definitions

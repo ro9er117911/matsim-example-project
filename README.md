@@ -44,16 +44,25 @@ matsim-example-project/
 
 📚 **Comprehensive guides in [`docs/`](docs/)**:
 
+### Getting Started
 1. [Quick Start Guide](docs/1-quick-start.md) - Installation and first run
 2. [Architecture Overview](docs/2-architecture.md) - System design
-3. [Public Transit Guide](docs/3-public-transit.md) - GTFS-to-MATSim workflow
-4. [Agent Development](docs/4-agent-development.md) - Creating populations
-5. [Configuration Reference](docs/5-configuration.md) - All config options
-6. [Troubleshooting](docs/6-troubleshooting.md) - Common issues
+3. [Configuration Reference](docs/5-configuration.md) - All config options
+4. [Troubleshooting](docs/6-troubleshooting.md) - Common issues
+
+### Specialized Guides
+- [Simulation Guide](docs/simulation-guide.md) - Running simulations with 46/100 agents
+- [Via Export Guide](docs/via-export.md) - Exporting to Via visualization platform
+- [Public Transit Guide](docs/3-public-transit.md) - GTFS-to-MATSim workflow
+- [Agent Development](docs/4-agent-development.md) - Creating populations
+- [Agent Generation](docs/agent-generation.md) - Population generation scripts
+- [Output Analysis](docs/output-analysis.md) - Analyzing simulation results
+- [Early Stop Strategy](docs/early-stop-strategy.md) - Early termination patterns
+- [Agent Journey Guide](docs/agent-journey-guide.md) - Building agent journeys
 
 📝 **For AI Assistants**: See [`CLAUDE.md`](CLAUDE.md) for project-specific guidance
 
-📅 **Changelog**: See [`changelog/`](changelog/) for recent changes
+📅 **Changelog**: See [`CHANGELOG.md`](CHANGELOG.md) for recent changes
 
 ## Features
 
@@ -154,11 +163,12 @@ After simulation, check:
 
 ## Recent Updates
 
-See [`changelog/2025-11.md`](changelog/2025-11.md) for:
-- Documentation restructure (2025-11-05)
-- Test population generator (2025-11-05)
-- PT SwissRailRaptor fix (2025-11-03)
-- Vehicle filtering implementation (2025-11-04)
+See [`CHANGELOG.md`](CHANGELOG.md) for complete project history, including:
+- **2025-11-17**: Documentation consolidation and reorganization
+- **2025-11-12**: 100-agent population with 30 transfer agents
+- **2025-11-05**: Via export enhancement with dual-filtering
+- **2025-11-05**: Improved 46-agent population with PT transfers
+- **2025-11-03**: PT SwissRailRaptor configuration fixes
 
 ---
 

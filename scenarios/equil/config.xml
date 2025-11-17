@@ -26,7 +26,7 @@
 
   <module name="controller">
     <param name="outputDirectory" value="./output" />
-    <param name="lastIteration" value="15" />
+    <param name="lastIteration" value="50" />
     <param name="writeEventsInterval" value="1" />
     <param name="overwriteFiles" value="deleteDirectoryIfExists" />
     <param name="snapshotFormat" value="otfvis" />
@@ -34,8 +34,8 @@
   </module>
 
   <module name="qsim">
-    <!-- 重要：只有 car 在 mainMode，PT 不應該在這裡 -->
-    <param name="mainMode" value="car" />
+    <!-- 重要：只有 car 和 motorcycle 在 mainMode，PT 不應該在這裡 -->
+    <param name="mainMode" value="car,motorcycle" />
     <param name="vehiclesSource" value="defaultVehicle" />
     <param name="linkDynamics" value="PassingQ" />
     <param name="flowCapacityFactor" value="1.0" />
@@ -52,7 +52,7 @@
   </module>
 
   <module name="routing">
-    <param name="networkModes" value="car" />
+    <param name="networkModes" value="car,motorcycle" />
     <param name="accessEgressType" value="accessEgressModeToLink" />
     <param name="clearDefaultTeleportedModeParams" value="true" />
     <!-- 重要：移除 PT 的 teleportedModeParameters！ -->
@@ -130,8 +130,8 @@
   </module>
 
   <module name="subtourModeChoice">
-    <param name="modes" value="car,pt,walk" />
-    <param name="chainBasedModes" value="car" />
+    <param name="modes" value="car,pt,motorcycle,walk" />
+    <param name="chainBasedModes" value="car,motorcycle" />
     <param name="considerCarAvailability" value="true" />
   </module>
 
@@ -155,6 +155,13 @@
         <param name="marginalUtilityOfTraveling_util_hr" value="-2.0" />
         <param name="marginalUtilityOfDistance_util_m" value="0.0" />
         <param name="monetaryDistanceRate" value="0.0" />
+      </parameterset>
+      <parameterset type="modeParams">
+        <param name="mode" value="motorcycle" />
+        <!-- 机车：介於車和步行之間。速度快，成本低，舒適度中等 -->
+        <param name="constant" value="-0.5" />
+        <param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
+        <param name="monetaryDistanceRate" value="-0.0002" />
       </parameterset>
       <parameterset type="activityParams">
         <param name="activityType" value="pt interaction" />

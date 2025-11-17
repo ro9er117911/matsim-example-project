@@ -199,6 +199,20 @@ curl -X GET "https://ptx.transportdata.tw/MOTC/v2/Bus/GTFS/City/Taipei" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -o taipei_bus_gtfs.zip
 
+## 2025-11-17 追加记录：PT 映射排查（今天的工作）
+
+### 今日产出
+- 复习 `PT_MAPPING_QUICK_START.md`、`docs/GTFS_MAPPING_GUIDE.md`、`docs/PT_MAPPING_STRATEGY.md` 与 `docs/early-stop-strategy.md`，整理执行顺序与资源要求。
+- 重新验证 `pt2matsim/data/gtfs/gtfs_taipei_filtered_with_tra`：共 8,375 条路线、6,513 个 trips、100,015 笔 stop_times，但只有 **87.9%** trips 出现在 stop_times 中，缺少 791 条（全是 TRA 行程，见 `pt2matsim/output_v1/gtfs_validation_summary.txt`）。已记录命令与结果供后续修复。
+- 检查 Phase 2 输出 (`pt2matsim/output_v1/transitSchedule.xml`)：`ScheduleCleaner` 合并后仅剩 1,309 条 `<transitRoute>` 与 26,152 个 `<stop refId>`，远低于目标 2,000+/40,000+，需注意这会限制后续映射。
+- 两次以 `ptmapper-config-merged.xml` 运行 `PublicTransitMapper`（`java -Xmx12g …`），均因 CLI 10 分钟限制被迫中断，日志显示 mapper 正常启动、开始计算 pseudoTransitRoutes。确认需要更长 timeout 才能完成。
+- 整理「放宽标准」的执行手册：先以 `ptmapper-config-metro-v4.xml` 在 `tp_metro_gtfs_small` 上做 5 分钟烟囱测试，确认 mapper 正常；然后再用 `timeout 3h` + `-Xmx12g` 跑正式的 `ptmapper-config-merged.xml`，并提醒用 `tail -f` 监控。
+
+### 建议的下一步
+1. 修补或移除缺少 stop_times 的 791 条 TRA 行程，让验证脚本回到 >90% 覆盖，避免 mapper 中途反复报错。
+2. 完成烟囱测试后，以较大的 timeout/内存跑正式映射，生成 `transitSchedule-mapped.xml.gz` 与 `network-with-pt.xml.gz`。
+3. 映射完成后执行 `CheckMappedSchedulePlausibility` 并重新统计 `<transitRoute>`/`<stop refId>`，确认放宽后的流程仍能达到可运行的 PT 网络。
+
 # 验证
 python src/main/python/validate_gtfs.py taipei_bus/
 

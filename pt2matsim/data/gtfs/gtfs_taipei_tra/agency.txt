@@ -1,2 +1,0 @@
-agency_id,agency_name,agency_url,agency_timezone
-TRA,交通部臺灣鐵路管理局,http://twtraffic.tra.gov.tw/twrail/,Asia/Taipei

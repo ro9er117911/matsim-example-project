@@ -1,5 +1,0 @@
-route_id,service_id,trip_id,trip_headsign,direction_id
-BL,WEEKDAY,BL_EB,忠孝復興,0
-BL,WEEKDAY,BL_WB,忠孝新生,1
-BUS1,WEEKDAY,BUS_EB,忠孝復興(公車),0
-BUS1,WEEKDAY,BUS_WB,忠孝新生(公車),1

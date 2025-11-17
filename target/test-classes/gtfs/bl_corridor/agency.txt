@@ -1,2 +1,0 @@
-agency_id,agency_name,agency_url,agency_timezone
-MRT,Taipei Metro,https://www.metro.taipei,Asia/Taipei

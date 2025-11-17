@@ -30,6 +30,23 @@ Complete documentation for the MATSim Example Project.
 - Configuration checklist
 - Validation and best practices
 
+### Running Simulations
+
+**[Simulation Guide](simulation-guide.md)** ⭐ **Complete Simulation Walkthrough**
+- Running simulations with 46 or 100 agents
+- Population composition and features
+- Step-by-step execution
+- Validation and verification
+- Expected results and metrics
+- Troubleshooting simulation issues
+
+**[Via Export Guide](via-export.md)**
+- Exporting simulation results to Via platform
+- Lightweight visualization data
+- File isolation and workflow
+- Command reference and parameters
+- Verification and troubleshooting
+
 ### Creating Populations
 
 **[4. Agent Development](4-agent-development.md)**
@@ -39,6 +56,30 @@ Complete documentation for the MATSim Example Project.
 - Time specification
 - Python generation examples
 - Validation techniques
+
+**[Agent Generation](agent-generation.md)**
+- Population generation scripts
+- Station and route configuration
+- Constraint validation
+- Generation patterns
+
+**[Agent Journey Guide](agent-journey-guide.md)**
+- Building agent journeys
+- Journey templates
+- Multi-leg trip planning
+
+### Analysis and Output
+
+**[Output Analysis](output-analysis.md)**
+- Analyzing simulation results
+- Score and mode statistics
+- Event log analysis
+- Performance metrics
+
+**[Early Stop Strategy](early-stop-strategy.md)**
+- Early termination patterns
+- Convergence detection
+- Optimization strategies
 
 ### Configuration
 
@@ -68,7 +109,11 @@ Complete documentation for the MATSim Example Project.
 | Set up the project | [Quick Start](1-quick-start.md) |
 | Understand how MATSim works | [Architecture](2-architecture.md) |
 | Work with public transit | [PT Guide](3-public-transit.md) ⭐ |
+| Run a simulation | [Simulation Guide](simulation-guide.md) ⭐ |
+| Export to Via platform | [Via Export Guide](via-export.md) |
 | Create custom populations | [Agent Development](4-agent-development.md) |
+| Generate agent populations | [Agent Generation](agent-generation.md) |
+| Analyze simulation results | [Output Analysis](output-analysis.md) |
 | Configure a scenario | [Configuration](5-configuration.md) |
 | Fix an error | [Troubleshooting](6-troubleshooting.md) ⭐ |
 
@@ -148,9 +193,9 @@ grep -n "lastIteration" ../defaultConfig.xml
 
 - **README**: [`../README.md`](../README.md) - Project overview
 - **CLAUDE.md**: [`../CLAUDE.md`](../CLAUDE.md) - AI assistant guidance
-- **Changelog**: [`../changelog/2025-11.md`](../changelog/2025-11.md) - Recent changes
+- **Changelog**: [`../CHANGELOG.md`](../CHANGELOG.md) - Complete project history
 - **Examples**: `../scenarios/corridor/taipei_test/` - Test scenarios
-- **Archive**: [`../archive/`](../archive/) - Old documentation
+- **Archive**: [`../archive/`](../archive/) - Historical documentation and summaries
 
 ## 🌐 External Resources
 
@@ -160,4 +205,4 @@ grep -n "lastIteration" ../defaultConfig.xml
 
 ---
 
-**Last Updated**: 2025-11-05 | **Documentation Version**: 1.0
+**Last Updated**: 2025-11-17 | **Documentation Version**: 2.0

@@ -1,5 +1,8 @@
 # GTFS 数据合并分析报告
 
+> **📝 Note**: This is a summary version. For the most detailed and up-to-date analysis, see:
+> **[working_journal/2025-11-17-GTFS-Merge-Analysis.md](working_journal/2025-11-17-GTFS-Merge-Analysis.md)**
+
 **日期**: 2025-11-17
 **任务**: 合并 gtfs_tw_v5 与 tp_metro_gtfs
 **状态**: ⚠️ **发现关键问题 - 需要调整策略**

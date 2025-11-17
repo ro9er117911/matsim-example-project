@@ -9,6 +9,7 @@ copied to `../output/merged_gtfs` with an additional ZIP archive
 
 from __future__ import annotations
 
+import argparse
 import csv
 import shutil
 from pathlib import Path
@@ -241,21 +242,41 @@ def filter_invalid_trips(base_dir: Path) -> None:
             write_csv(freq_path, freq_header, freq_rows)
             print(f"Filtered frequencies.txt: kept {len(freq_rows)} rows.")
 
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Merge multiple GTFS feeds into a single folder + ZIP.")
+    parser.add_argument(
+        "--feeds",
+        nargs="+",
+        default=["input/gtfs_tw_v5", "input/tp_metro_gtfs"],
+        help="Feed directories (absolute or relative to pt2matsim/combine). Defaults to the two main inputs.",
+    )
+    parser.add_argument(
+        "--tag",
+        default="merged_gtfs",
+        help="Name for the working/output directories (e.g. merged_gtfs_taipei_station).",
+    )
+    return parser.parse_args()
+
+
 def main() -> None:
     combine_dir = Path(__file__).resolve().parent.parent
     input_dir = combine_dir / "input"
     middle_dir = combine_dir / "middle"
     output_dir = combine_dir / "output"
 
-    feed_dirs = [
-        input_dir / "gtfs_tw_v5",
-        input_dir / "tp_metro_gtfs",
-    ]
-    for feed_dir in feed_dirs:
-        if not feed_dir.exists():
-            raise FileNotFoundError(f"Feed directory missing: {feed_dir}")
+    args = parse_args()
+    tag = args.tag.strip() or "merged_gtfs"
 
-    work_dir = middle_dir / "merged_gtfs"
+    feed_dirs: List[Path] = []
+    for feed_arg in args.feeds:
+        candidate = Path(feed_arg)
+        if not candidate.is_absolute():
+            candidate = combine_dir / candidate
+        if not candidate.exists():
+            raise FileNotFoundError(f"Feed directory missing: {candidate}")
+        feed_dirs.append(candidate)
+
+    work_dir = middle_dir / tag
     if work_dir.exists():
         shutil.rmtree(work_dir)
     work_dir.mkdir(parents=True, exist_ok=True)
@@ -285,12 +306,12 @@ def main() -> None:
 
     filter_invalid_trips(work_dir)
 
-    output_feed_dir = output_dir / "merged_gtfs"
+    output_feed_dir = output_dir / tag
     if output_feed_dir.exists():
         shutil.rmtree(output_feed_dir)
     shutil.copytree(work_dir, output_feed_dir)
 
-    zip_base = output_dir / "merged_gtfs"
+    zip_base = output_dir / tag
     zip_file = zip_base.with_suffix(".zip")
     if zip_file.exists():
         zip_file.unlink()

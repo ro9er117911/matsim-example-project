@@ -1,0 +1,3 @@
+agency_id,agency_name,agency_url,agency_timezone,agency_lang
+TPE_BUS,臺北市公車,https://www.taipei.gov.tw,Asia/Taipei,zh
+TRA,臺灣鐵路,https://www.railway.gov.tw,Asia/Taipei,zh

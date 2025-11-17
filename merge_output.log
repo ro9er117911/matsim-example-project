@@ -1,0 +1,73 @@
+
+
+======================================================================
+Step 3: 合併 TRA 數據到台北市 GTFS
+======================================================================
+
+[1/7] 合併 agency.txt...
+  台北市 agency: 78, TRA agency: 1
+  合併後: 79 家
+
+[2/7] 合併 stops.txt...
+  台北市 stops: 43167, TRA stops: 243
+  去重後 TRA stops: 232
+  合併後: 43399 個
+
+[3/7] 合併 routes.txt...
+  台北市 routes: 2661, TRA routes: 15
+  合併後: 2676 條
+
+  路線類型統計:
+    - 其他(1)   :   47 條
+    - 其他(2)   :   15 條
+    - 其他(3)   : 2614 條
+
+[4/7] 合併 trips.txt...
+  台北市 trips: 208655, TRA trips: 791
+  合併後: 209446 個
+
+[5/7] 合併 calendar.txt...
+  台北市 calendar: 200279, TRA calendar: 0
+  合併後: 200279
+
+[6/7] 合併 calendar_dates.txt...
+  台北市 calendar_dates: 80, TRA calendar_dates: 791
+  合併後: 871
+
+[6.5/7] 合併 stop_times.txt...
+  台北市 stop_times: 88,923, TRA stop_times: 0
+  合併後: 88,923
+
+[7/7] 保存合併後的 GTFS 檔案...
+
+  ✓ 輸出目錄: /Users/ro9air/matsim-example-project/pt2matsim/data/gtfs/gtfs_taipei_filtered_with_tra
+    - agency.txt
+    - stops.txt
+    - routes.txt
+    - trips.txt
+    - calendar.txt
+    - calendar_dates.txt
+    - stop_times.txt ✓ (重要！)
+
+======================================================================
+✓ Step 3 完成！最終 GTFS 統計信息：
+======================================================================
+
+  機構數 (Agency):        79 家
+  路線數 (Routes):        2,676 條
+    └ 捷運 (route_type=1) : 47
+    └ 火車 (route_type=2) : 15
+    └ 公車 (route_type=3) : 2,614
+  行程數 (Trips):         209,446 個
+  車站數 (Stops):         43,399 個
+  停靠時間 (Stop Times):  88,923 筆 ✓
+  服務日期 (Calendar):    200,279 種
+  例外日期 (Calendar Dates): 871 個
+
+  輸出目錄: /Users/ro9air/matsim-example-project/pt2matsim/data/gtfs/gtfs_taipei_filtered_with_tra
+
+✓ 台北市完整 GTFS 已生成！
+  包含: 捷運 + 公車 + 火車
+  ✓ 包含 stop_times.txt - 支援 PT 映射
+
+

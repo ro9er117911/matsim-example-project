@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE transitSchedule SYSTEM "http://www.matsim.org/files/dtd/transitSchedule_v2.dtd">
+
+<transitSchedule>
+
+	<transitStops>
+		<stopFacility id="508487" x="302149.5977611235" y="2770981.3927179426" name="捷運台北車站(M6)" stopAreaId="508367001" isBlocking="false"/>
+		<stopFacility id="BL01_DN" x="292459.2054021727" y="2761426.1458051438" name="頂埔-下行月臺(板南線)" stopAreaId="076" isBlocking="false"/>
+		<stopFacility id="BL02_DN" x="294035.0508794822" y="2762173.23895046" name="永寧-下行月臺(板南線)" stopAreaId="077" isBlocking="false"/>
+		<stopFacility id="BL03_DN" x="294859.6990734095" y="2762874.8386587347" name="土城-下行月臺(板南線)" stopAreaId="078" isBlocking="false"/>
+		<stopFacility id="BL04_DN" x="295300.4898398059" y="2764224.8517480693" name="海山-下行月臺(板南線" stopAreaId="079" isBlocking="false"/>
+		<stopFacility id="BL05_DN" x="295672.75806585717" y="2765663.266213558" name="亞東醫院-下行月臺(板南線)" stopAreaId="080" isBlocking="false"/>
+		<stopFacility id="BL06_DN" x="296356.4617399499" y="2766793.710940271" name="府中-下行月臺(板南線)" stopAreaId="081" isBlocking="false"/>
+		<stopFacility id="BL07_DN" x="296660.1690383145" y="2767388.4471152932" name="板橋-下行月臺(板南線)" stopAreaId="082" isBlocking="false"/>
+		<stopFacility id="BL08_DN" x="297236.90702420456" y="2768436.6099721375" name="新埔-下行月臺(板南線)" stopAreaId="083" isBlocking="false"/>
+		<stopFacility id="BL09_DN" x="297689.8716625933" y="2769212.9908094765" name="江子翠-下行月臺(板南線)" stopAreaId="084" isBlocking="false"/>
+		<stopFacility id="BL10_DN" x="300488.7872939309" y="2769778.5391352274" name="龍山寺-下行月臺(板南線)" stopAreaId="085" isBlocking="false"/>
+		<stopFacility id="BL11_DN" x="301278.15512185276" y="2770528.600776343" name="西門-下行月臺(板南線)" stopAreaId="086" isBlocking="false"/>
+		<stopFacility id="BL12_DN" x="302208.73284823" y="2771006.7627904457" name="台北車站-下行月臺(板南線)" stopAreaId="051" isBlocking="false"/>
+		<stopFacility id="BL13_DN" x="302862.28591230744" y="2770828.7266682894" name="善導寺-下行月臺(板南線)" stopAreaId="088" isBlocking="false"/>
+		<stopFacility id="BL14_DN" x="303804.1887079433" y="2770590.710859173" name="忠孝新生-下行月臺(板南線)" stopAreaId="089" isBlocking="false"/>
+		<stopFacility id="BL15_DN" x="304996.8532790921" y="2770512.496446124" name="忠孝復興-下行月臺(板南線)" stopAreaId="010" isBlocking="false"/>
+		<stopFacility id="BL16_DN" x="305544.2927337069" y="2770487.684429254" name="忠孝敦化-下行月臺(板南線)" stopAreaId="091" isBlocking="false"/>
+		<stopFacility id="BL17_DN" x="306287.5499477385" y="2770475.773540563" name="國父紀念館-下行月臺(板南線)" stopAreaId="092" isBlocking="false"/>
+		<stopFacility id="BL18_DN" x="307081.8149554937" y="2770453.0393493082" name="市政府-下行月臺(板南線)" stopAreaId="093" isBlocking="false"/>
+		<stopFacility id="BL19_DN" x="308143.0114224102" y="2770426.500366562" name="永春-下行月臺(板南線)" stopAreaId="094" isBlocking="false"/>
+		<stopFacility id="BL20_DN" x="308753.6953534854" y="2770856.678763286" name="後山埤-下行月臺(板南線)" stopAreaId="095" isBlocking="false"/>
+		<stopFacility id="BL21_DN" x="309856.694396023" y="2771497.6674138824" name="昆陽-下行月臺(板南線)" stopAreaId="096" isBlocking="false"/>
+		<stopFacility id="BL22_DN" x="311242.4601240803" y="2771678.440148688" name="南港-下行月臺(板南線)" stopAreaId="097" isBlocking="false"/>
+		<stopFacility id="BL23_DN" x="312239.01701073034" y="2772002.4049779843" name="南港展覽館-下行月臺(板南線)" stopAreaId="031" isBlocking="false"/>
+		<stopFacility id="G01_UP" x="304270.32452851" y="2761189.7907217043" name="新店-上行月臺(松山新店線)" stopAreaId="033" isBlocking="false"/>
+		<stopFacility id="G02_UP" x="304653.73682146275" y="2762280.145605365" name="新店區公所-上行月臺(松山新店線)" stopAreaId="034" isBlocking="false"/>
+		<stopFacility id="G03_UP" x="304820.32071267965" y="2763168.049648761" name="七張-上行月臺(松山新店線)" stopAreaId="035" isBlocking="false"/>
+		<stopFacility id="G04_UP" x="304651.02344881825" y="2763972.700820053" name="大坪林-上行月臺(松山新店線)" stopAreaId="036" isBlocking="false"/>
+		<stopFacility id="G05_UP" x="304581.6971944645" y="2765091.5545019577" name="景美-上行月臺(松山新店線)" stopAreaId="037" isBlocking="false"/>
+		<stopFacility id="G06_UP" x="304407.11334074946" y="2766104.8178148097" name="萬隆-上行月臺(松山新店線)" stopAreaId="038" isBlocking="false"/>
+		<stopFacility id="G07_UP" x="303932.14513872826" y="2767521.0844866903" name="公館-上行月臺(松山新店線)" stopAreaId="039" isBlocking="false"/>
+		<stopFacility id="G08_UP" x="303302.3410947753" y="2768177.899187549" name="台電大樓-上行月臺(松山新店線)" stopAreaId="040" isBlocking="false"/>
+		<stopFacility id="G09_UP" x="302767.4955182893" y="2768800.5491248276" name="古亭-上行月臺(松山新店線)" stopAreaId="041" isBlocking="false"/>
+		<stopFacility id="G10_UP" x="302301.0523994686" y="2769506.9992470574" name="中正紀念堂-上行月臺(松山新店線)" stopAreaId="042" isBlocking="false"/>
+		<stopFacility id="G11_UP" x="301553.80384133034" y="2769816.300175694" name="小南門-上行月臺(松山新店線)" stopAreaId="043" isBlocking="false"/>
+		<stopFacility id="G12_UP" x="301278.15512185276" y="2770528.600776343" name="西門-上行月臺(松山新店線)" stopAreaId="086" isBlocking="false"/>
+		<stopFacility id="G13_UP" x="301477.7359584088" y="2771363.315533522" name="北門-上行月臺(松山新店線)" stopAreaId="105" isBlocking="false"/>
+		<stopFacility id="G14_UP" x="302503.61297324795" y="2771706.944751381" name="中山-上行月臺(松山新店線)" stopAreaId="053" isBlocking="false"/>
+		<stopFacility id="G15_UP" x="303763.41540546075" y="2771719.823223702" name="松江南京-上行月臺(松山新店線)" stopAreaId="132" isBlocking="false"/>
+		<stopFacility id="G16_UP" x="304919.30980199634" y="2771652.5361355515" name="南京復興-上行月臺(松山新店線)" stopAreaId="009" isBlocking="false"/>
+		<stopFacility id="G17_UP" x="305751.5716874558" y="2771597.867194637" name="台北小巨蛋-上行月臺(松山新店線)" stopAreaId="109" isBlocking="false"/>
+		<stopFacility id="G18_UP" x="306978.5968419912" y="2771610.465278407" name="南京三民-上行月臺(松山新店線)" stopAreaId="110" isBlocking="false"/>
+		<stopFacility id="G19_UP" x="308290.60202531295" y="2771453.1747215157" name="松山-上行月臺(松山新店線)" stopAreaId="111" isBlocking="false"/>
+		<stopFacility id="O01_DN" x="301406.95125707315" y="2764773.6604636144" name="南勢角-下行月臺(中和新蘆線)" stopAreaId="048" isBlocking="false"/>
+		<stopFacility id="O01_UP" x="301406.95125707315" y="2764773.6604636144" name="南勢角-上行月臺(中和新蘆線)" stopAreaId="048" isBlocking="false"/>
+		<stopFacility id="O02_DN" x="300989.1411832471" y="2765199.100996394" name="景安-下行月臺(中和新蘆線)" stopAreaId="047" isBlocking="false"/>
+		<stopFacility id="O02_UP" x="300989.1411832471" y="2765199.100996394" name="景安-上行月臺(中和新蘆線)" stopAreaId="047" isBlocking="false"/>
+		<stopFacility id="O03_DN" x="301602.28304255445" y="2766195.525461598" name="永安市場-下行月臺(中和新蘆線)" stopAreaId="046" isBlocking="false"/>
+		<stopFacility id="O03_UP" x="301602.28304255445" y="2766195.525461598" name="永安市場-上行月臺(中和新蘆線)" stopAreaId="046" isBlocking="false"/>
+		<stopFacility id="O04_DN" x="302025.3483841501" y="2767411.4599689436" name="頂溪-下行月臺(中和新蘆線)" stopAreaId="045" isBlocking="false"/>
+		<stopFacility id="O04_UP" x="302025.3483841501" y="2767411.4599689436" name="頂溪-上行月臺(中和新蘆線)" stopAreaId="045" isBlocking="false"/>
+		<stopFacility id="O05_DN" x="302767.4955182893" y="2768800.5491248276" name="古亭-下行月臺(中和新蘆線)" stopAreaId="041" isBlocking="false"/>
+		<stopFacility id="O05_UP" x="302767.4955182893" y="2768800.5491248276" name="古亭-上行月臺(中和新蘆線)" stopAreaId="041" isBlocking="false"/>
+		<stopFacility id="O06_DN" x="303359.4757763461" y="2769635.9259388153" name="東門-下行月臺(中和新蘆線)" stopAreaId="134" isBlocking="false"/>
+		<stopFacility id="O06_UP" x="303359.4757763461" y="2769635.9259388153" name="東門-上行月臺(中和新蘆線)" stopAreaId="134" isBlocking="false"/>
+		<stopFacility id="O07_DN" x="303804.1887079433" y="2770590.710859173" name="忠孝新生-下行月臺(中和新蘆線)" stopAreaId="089" isBlocking="false"/>
+		<stopFacility id="O07_UP" x="303804.1887079433" y="2770590.710859173" name="忠孝新生-上行月臺(中和新蘆線)" stopAreaId="089" isBlocking="false"/>
+		<stopFacility id="O08_DN" x="303763.41540546075" y="2771719.823223702" name="松江南京-下行月臺(中和新蘆線)" stopAreaId="132" isBlocking="false"/>
+		<stopFacility id="O08_UP" x="303763.41540546075" y="2771719.823223702" name="松江南京-上行月臺(中和新蘆線)" stopAreaId="132" isBlocking="false"/>
+		<stopFacility id="O09_DN" x="303790.82744149654" y="2772445.1257657353" name="行天宮-下行月臺(中和新蘆線)" stopAreaId="131" isBlocking="false"/>
+		<stopFacility id="O09_UP" x="303790.82744149654" y="2772445.1257657353" name="行天宮-上行月臺(中和新蘆線)" stopAreaId="131" isBlocking="false"/>
+		<stopFacility id="O10_DN" x="303129.4006301296" y="2772821.913256245" name="中山國小-下行月臺(中和新蘆線)" stopAreaId="130" isBlocking="false"/>
+		<stopFacility id="O10_UP" x="303129.4006301296" y="2772821.913256245" name="中山國小-上行月臺(中和新蘆線)" stopAreaId="130" isBlocking="false"/>
+		<stopFacility id="O11_DN" x="302420.87309941766" y="2772784.2812742996" name="民權西路-下行月臺(中和新蘆線)" stopAreaId="055" isBlocking="false"/>
+		<stopFacility id="O11_UP" x="302420.87309941766" y="2772784.2812742996" name="民權西路-上行月臺(中和新蘆線)" stopAreaId="055" isBlocking="false"/>
+		<stopFacility id="O12_DN" x="301756.48925200745" y="2772878.1126536387" name="大橋頭-下行月臺(中和新蘆線)" stopAreaId="128" isBlocking="false"/>
+		<stopFacility id="O12_UP" x="301756.48925200745" y="2772878.1126536387" name="大橋頭-上行月臺(中和新蘆線)" stopAreaId="128" isBlocking="false"/>
+		<stopFacility id="O13_DN" x="300502.6269880295" y="2772857.3531389837" name="台北橋-下行月臺(中和新蘆線)" stopAreaId="127" isBlocking="false"/>
+		<stopFacility id="O13_UP" x="300502.6269880295" y="2772857.3531389837" name="台北橋-上行月臺(中和新蘆線)" stopAreaId="127" isBlocking="false"/>
+		<stopFacility id="O14_DN" x="299580.5306068618" y="2772452.5525964047" name="菜寮-下行月臺(中和新蘆線)" stopAreaId="126" isBlocking="false"/>
+		<stopFacility id="O14_UP" x="299580.5306068618" y="2772452.5525964047" name="菜寮-上行月臺(中和新蘆線)" stopAreaId="126" isBlocking="false"/>
+		<stopFacility id="O15_DN" x="298855.478062289" y="2772035.5597998896" name="三重-下行月臺(中和新蘆線)" stopAreaId="125" isBlocking="false"/>
+		<stopFacility id="O15_UP" x="298855.478062289" y="2772035.5597998896" name="三重-上行月臺(中和新蘆線)" stopAreaId="125" isBlocking="false"/>
+		<stopFacility id="O16_DN" x="297590.8319040713" y="2770990.9960658825" name="先嗇宮-下行月臺(中和新蘆線)" stopAreaId="124" isBlocking="false"/>
+		<stopFacility id="O16_UP" x="297590.8319040713" y="2770990.9960658825" name="先嗇宮-上行月臺(中和新蘆線)" stopAreaId="124" isBlocking="false"/>
+		<stopFacility id="O17_DN" x="296584.78136975283" y="2770258.1324826386" name="頭前庄-下行月臺(中和新蘆線)" stopAreaId="123" isBlocking="false"/>
+		<stopFacility id="O17_UP" x="296584.78136975283" y="2770258.1324826386" name="頭前庄-上行月臺(中和新蘆線)" stopAreaId="123" isBlocking="false"/>
+		<stopFacility id="O18_DN" x="295630.0153113586" y="2769850.060630044" name="新莊-下行月臺(中和新蘆線)" stopAreaId="122" isBlocking="false"/>
+		<stopFacility id="O18_UP" x="295630.0153113586" y="2769850.060630044" name="新莊-上行月臺(中和新蘆線)" stopAreaId="122" isBlocking="false"/>
+		<stopFacility id="O19_DN" x="293971.68272955366" y="2769480.2040050086" name="輔大-下行月臺(中和新蘆線)" stopAreaId="121" isBlocking="false"/>
+		<stopFacility id="O19_UP" x="293971.68272955366" y="2769480.2040050086" name="輔大-上行月臺(中和新蘆線)" stopAreaId="121" isBlocking="false"/>
+		<stopFacility id="O20_DN" x="292629.4854033181" y="2769064.2361075697" name="丹鳳-下行月臺(中和新蘆線)" stopAreaId="180" isBlocking="false"/>
+		<stopFacility id="O20_UP" x="292629.4854033181" y="2769064.2361075697" name="丹鳳-上行月臺(中和新蘆線)" stopAreaId="180" isBlocking="false"/>
+		<stopFacility id="O21_DN" x="291555.5410699239" y="2768289.3389542163" name="迴龍-下行月臺(中和新蘆線)" stopAreaId="179" isBlocking="false"/>
+		<stopFacility id="O21_UP" x="291555.5410699239" y="2768289.3389542163" name="迴龍-上行月臺(中和新蘆線)" stopAreaId="179" isBlocking="false"/>
+		<stopFacility id="R02_DN" x="307533.0220279514" y="2769486.8212965312" name="象山-下行月臺(淡水信義線)" stopAreaId="099" isBlocking="false"/>
+		<stopFacility id="R03_DN" x="306881.9934722977" y="2769536.156485655" name="台北101/世貿-下行月臺(淡水信義線)" stopAreaId="100" isBlocking="false"/>
+		<stopFacility id="R04_DN" x="305737.4348223377" y="2769548.054858509" name="信義安和-下行月臺(淡水信義線)" stopAreaId="101" isBlocking="false"/>
+		<stopFacility id="R05_DN" x="304732.5839693104" y="2769576.779975981" name="大安-下行月臺(淡水信義線)" stopAreaId="011" isBlocking="false"/>
+		<stopFacility id="R06_DN" x="304105.0272435215" y="2769564.7546237297" name="大安森林公園-下行月臺(淡水信義線)" stopAreaId="103" isBlocking="false"/>
+		<stopFacility id="R07_DN" x="303359.4757763461" y="2769635.9259388153" name="東門-下行月臺(淡水信義線)" stopAreaId="134" isBlocking="false"/>
+		<stopFacility id="R08_DN" x="302301.0523994686" y="2769506.9992470574" name="中正紀念堂-下行月臺(淡水信義線)" stopAreaId="042" isBlocking="false"/>
+		<stopFacility id="R09_DN" x="302070.04459293996" y="2770462.2566447454" name="台大醫院-下行月臺(淡水信義線)" stopAreaId="050" isBlocking="false"/>
+		<stopFacility id="R10_DN" x="302208.73284823" y="2771006.7627904457" name="台北車站-下行月臺(淡水信義線)" stopAreaId="051" isBlocking="false"/>
+		<stopFacility id="R11_DN" x="302503.61297324795" y="2771706.944751381" name="中山-下行月臺(淡水信義線)" stopAreaId="053" isBlocking="false"/>
+		<stopFacility id="R12_DN" x="302533.88988664316" y="2772255.802057084" name="雙連-下行月臺(淡水信義線)" stopAreaId="054" isBlocking="false"/>
+		<stopFacility id="R13_DN" x="302420.87309941766" y="2772784.2812742996" name="民權西路-下行月臺(淡水信義線)" stopAreaId="055" isBlocking="false"/>
+		<stopFacility id="R14_DN" x="302466.35034877015" y="2773787.84244833" name="圓山-下行月臺(淡水信義線)" stopAreaId="056" isBlocking="false"/>
+		<stopFacility id="R15_DN" x="302953.21308334323" y="2775206.774237271" name="劍潭-下行月臺(淡水信義線)" stopAreaId="057" isBlocking="false"/>
+		<stopFacility id="R16_DN" x="303077.869687348" y="2776236.402898203" name="士林-下行月臺(淡水信義線)" stopAreaId="058" isBlocking="false"/>
+		<stopFacility id="R17_DN" x="302702.32537706336" y="2777256.8345034127" name="芝山-下行月臺(淡水信義線)" stopAreaId="059" isBlocking="false"/>
+		<stopFacility id="R18_DN" x="302319.9760231329" y="2778041.480633226" name="明德-下行月臺(淡水信義線)" stopAreaId="060" isBlocking="false"/>
+		<stopFacility id="R19_DN" x="301993.973392396" y="2778554.1953491312" name="石牌-下行月臺(淡水信義線)" stopAreaId="061" isBlocking="false"/>
+		<stopFacility id="R20_DN" x="301049.5893206377" y="2779259.148145943" name="唭哩岸-下行月臺(淡水信義線)" stopAreaId="062" isBlocking="false"/>
+		<stopFacility id="R21_DN" x="300533.99231705687" y="2779768.8608460505" name="奇岩-下行月臺(淡水信義線)" stopAreaId="063" isBlocking="false"/>
+		<stopFacility id="R22_DN" x="300280.0505955646" y="2780471.0749962376" name="北投-下行月臺(淡水信義線)" stopAreaId="064" isBlocking="false"/>
+		<stopFacility id="R23_DN" x="298947.6295788136" y="2781095.2102507264" name="復興崗-下行月臺(淡水信義線)" stopAreaId="066" isBlocking="false"/>
+		<stopFacility id="R24_DN" x="297724.24750086345" y="2780362.6203642273" name="忠義-下行月臺(淡水信義線)" stopAreaId="067" isBlocking="false"/>
+		<stopFacility id="R25_DN" x="297091.3144479757" y="2779760.8859477127" name="關渡-下行月臺(淡水信義線)" stopAreaId="068" isBlocking="false"/>
+		<stopFacility id="R26_DN" x="296335.76380668103" y="2781019.932112728" name="竹圍-下行月臺(淡水信義線)" stopAreaId="069" isBlocking="false"/>
+		<stopFacility id="R27_DN" x="296253.7001819691" y="2782912.6701198397" name="紅樹林-下行月臺(淡水信義線)" stopAreaId="070" isBlocking="false"/>
+		<stopFacility id="R28_DN" x="294938.5580232471" y="2784431.865422808" name="淡水-下行月臺(淡水信義線)" stopAreaId="071" isBlocking="false"/>
+		<stopFacility id="THB281514" x="301287.1460939619" y="2770499.059795855" name="捷運西門站" isBlocking="false"/>
+		<stopFacility id="TRA_0990" x="308425.61241381004" y="2771358.712652156" name="松山車站" isBlocking="false"/>
+		<stopFacility id="TRA_1000" x="302177.3474210404" y="2771166.1473728986" name="臺北車站(鐵路)" isBlocking="false"/>
+	</transitStops>
+	<transitLine id="Blue" name="板南線">
+		<transitRoute id="403_1019_DN">
+			<transportMode>subway</transportMode>
+			<routeProfile>
+				<stop refId="BL23_DN" arrivalOffset="00:00:00" departureOffset="00:00:00" awaitDeparture="true"/>
+				<stop refId="BL22_DN" arrivalOffset="00:06:40" departureOffset="00:06:40" awaitDeparture="true"/>
+				<stop refId="BL21_DN" arrivalOffset="00:08:45" departureOffset="00:08:45" awaitDeparture="true"/>
+				<stop refId="BL20_DN" arrivalOffset="00:11:06" departureOffset="00:11:06" awaitDeparture="true"/>
+				<stop refId="BL19_DN" arrivalOffset="00:12:49" departureOffset="00:12:49" awaitDeparture="true"/>
+				<stop refId="BL18_DN" arrivalOffset="00:14:44" departureOffset="00:14:44" awaitDeparture="true"/>
+				<stop refId="BL17_DN" arrivalOffset="00:16:29" departureOffset="00:16:29" awaitDeparture="true"/>
+				<stop refId="BL16_DN" arrivalOffset="00:18:04" departureOffset="00:18:04" awaitDeparture="true"/>
+				<stop refId="BL15_DN" arrivalOffset="00:19:35" departureOffset="00:19:35" awaitDeparture="true"/>
+				<stop refId="BL14_DN" arrivalOffset="00:21:51" departureOffset="00:21:51" awaitDeparture="true"/>
+				<stop refId="BL13_DN" arrivalOffset="00:23:55" departureOffset="00:23:55" awaitDeparture="true"/>
+				<stop refId="BL12_DN" arrivalOffset="00:25:32" departureOffset="00:25:32" awaitDeparture="true"/>
+				<stop refId="BL11_DN" arrivalOffset="00:28:22" departureOffset="00:28:22" awaitDeparture="true"/>
+				<stop refId="BL10_DN" arrivalOffset="00:30:59" departureOffset="00:30:59" awaitDeparture="true"/>
+				<stop refId="BL09_DN" arrivalOffset="00:34:41" departureOffset="00:34:41" awaitDeparture="true"/>
+				<stop refId="BL08_DN" arrivalOffset="00:36:28" departureOffset="00:36:28" awaitDeparture="true"/>
+				<stop refId="BL07_DN" arrivalOffset="00:38:43" departureOffset="00:38:43" awaitDeparture="true"/>
+				<stop refId="BL06_DN" arrivalOffset="00:40:19" departureOffset="00:40:19" awaitDeparture="true"/>
+				<stop refId="BL05_DN" arrivalOffset="00:42:38" departureOffset="00:42:38" awaitDeparture="true"/>
+				<stop refId="BL04_DN" arrivalOffset="00:45:32" departureOffset="00:45:32" awaitDeparture="true"/>
+				<stop refId="BL03_DN" arrivalOffset="00:47:55" departureOffset="00:47:55" awaitDeparture="true"/>
+				<stop refId="BL02_DN" arrivalOffset="00:49:58" departureOffset="00:49:58" awaitDeparture="true"/>
+				<stop refId="BL01_DN" arrivalOffset="00:54:20" departureOffset="00:00:00" awaitDeparture="true"/>
+			</routeProfile>
+			<departures>
+				<departure id="403_1019_DN_20:36:10" departureTime="20:36:10" vehicleRefId="veh_0_subway"/>
+			</departures>
+		</transitRoute>
+		<transitRoute id="403_1007_DN">
+			<transportMode>subway</transportMode>
+			<routeProfile>
+				<stop refId="BL23_DN" arrivalOffset="00:00:00" departureOffset="00:00:00" awaitDeparture="true"/>
+				<stop refId="BL22_DN" arrivalOffset="00:06:10" departureOffset="00:06:10" awaitDeparture="true"/>
+				<stop refId="BL21_DN" arrivalOffset="00:08:15" departureOffset="00:08:15" awaitDeparture="true"/>
+				<stop refId="BL20_DN" arrivalOffset="00:10:36" departureOffset="00:10:36" awaitDeparture="true"/>
+				<stop refId="BL19_DN" arrivalOffset="00:12:19" departureOffset="00:12:19" awaitDeparture="true"/>
+				<stop refId="BL18_DN" arrivalOffset="00:14:14" departureOffset="00:14:14" awaitDeparture="true"/>
+				<stop refId="BL17_DN" arrivalOffset="00:15:59" departureOffset="00:15:59" awaitDeparture="true"/>
+				<stop refId="BL16_DN" arrivalOffset="00:17:34" departureOffset="00:17:34" awaitDeparture="true"/>
+				<stop refId="BL15_DN" arrivalOffset="00:19:05" departureOffset="00:19:05" awaitDeparture="true"/>
+				<stop refId="BL14_DN" arrivalOffset="00:21:21" departureOffset="00:21:21" awaitDeparture="true"/>
+				<stop refId="BL13_DN" arrivalOffset="00:23:25" departureOffset="00:23:25" awaitDeparture="true"/>
+				<stop refId="BL12_DN" arrivalOffset="00:25:02" departureOffset="00:25:02" awaitDeparture="true"/>
+				<stop refId="BL11_DN" arrivalOffset="00:27:52" departureOffset="00:27:52" awaitDeparture="true"/>
+				<stop refId="BL10_DN" arrivalOffset="00:30:29" departureOffset="00:30:29" awaitDeparture="true"/>
+				<stop refId="BL09_DN" arrivalOffset="00:34:11" departureOffset="00:34:11" awaitDeparture="true"/>
+				<stop refId="BL08_DN" arrivalOffset="00:35:58" departureOffset="00:35:58" awaitDeparture="true"/>
+				<stop refId="BL07_DN" arrivalOffset="00:38:13" departureOffset="00:38:13" awaitDeparture="true"/>
+				<stop refId="BL06_DN" arrivalOffset="00:39:49" departureOffset="00:39:49" awaitDeparture="true"/>
+				<stop refId="BL05_DN" arrivalOffset="00:42:08" departureOffset="00:00:00" awaitDeparture="true"/>
+			</routeProfile>
+			<departures>
+				<departure id="403_1007_DN_11:17:51" departureTime="11:17:51" vehicleRefId="veh_1_subway"/>
+			</departures>
+		</transitRoute>
+	</transitLine>
+	<transitLine id="Green" name="松山新店線">
+		<transitRoute id="183_6098_UP">
+			<transportMode>subway</transportMode>
+			<routeProfile>
+				<stop refId="G01_UP" arrivalOffset="00:00:00" departureOffset="00:00:00" awaitDeparture="true"/>
+				<stop refId="G02_UP" arrivalOffset="00:02:40" departureOffset="00:02:40" awaitDeparture="true"/>
+				<stop refId="G03_UP" arrivalOffset="00:04:31" departureOffset="00:04:31" awaitDeparture="true"/>
+				<stop refId="G04_UP" arrivalOffset="00:06:18" departureOffset="00:06:18" awaitDeparture="true"/>
+				<stop refId="G05_UP" arrivalOffset="00:08:20" departureOffset="00:08:20" awaitDeparture="true"/>
+				<stop refId="G06_UP" arrivalOffset="00:10:21" departureOffset="00:10:21" awaitDeparture="true"/>
+				<stop refId="G07_UP" arrivalOffset="00:12:46" departureOffset="00:12:46" awaitDeparture="true"/>
+				<stop refId="G08_UP" arrivalOffset="00:14:41" departureOffset="00:14:41" awaitDeparture="true"/>
+				<stop refId="G09_UP" arrivalOffset="00:16:34" departureOffset="00:16:34" awaitDeparture="true"/>
+				<stop refId="G10_UP" arrivalOffset="00:18:37" departureOffset="00:18:37" awaitDeparture="true"/>
+				<stop refId="G11_UP" arrivalOffset="00:20:29" departureOffset="00:20:29" awaitDeparture="true"/>
+				<stop refId="G12_UP" arrivalOffset="00:22:19" departureOffset="00:22:19" awaitDeparture="true"/>
+				<stop refId="G13_UP" arrivalOffset="00:24:10" departureOffset="00:24:10" awaitDeparture="true"/>
+				<stop refId="G14_UP" arrivalOffset="00:26:43" departureOffset="00:26:43" awaitDeparture="true"/>
+				<stop refId="G15_UP" arrivalOffset="00:29:03" departureOffset="00:29:03" awaitDeparture="true"/>
+				<stop refId="G16_UP" arrivalOffset="00:31:03" departureOffset="00:31:03" awaitDeparture="true"/>
+				<stop refId="G17_UP" arrivalOffset="00:32:58" departureOffset="00:32:58" awaitDeparture="true"/>
+				<stop refId="G18_UP" arrivalOffset="00:35:13" departureOffset="00:35:13" awaitDeparture="true"/>
+				<stop refId="G19_UP" arrivalOffset="00:38:39" departureOffset="00:00:00" awaitDeparture="true"/>
+			</routeProfile>
+			<departures>
+				<departure id="183_6098_UP_13:46:58" departureTime="13:46:58" vehicleRefId="veh_2_subway"/>
+			</departures>
+		</transitRoute>
+		<transitRoute id="183_6080_UP">
+			<transportMode>subway</transportMode>
+			<routeProfile>
+				<stop refId="G01_UP" arrivalOffset="00:00:00" departureOffset="00:00:00" awaitDeparture="true"/>
+				<stop refId="G02_UP" arrivalOffset="00:04:10" departureOffset="00:04:10" awaitDeparture="true"/>
+				<stop refId="G03_UP" arrivalOffset="00:06:01" departureOffset="00:06:01" awaitDeparture="true"/>
+				<stop refId="G04_UP" arrivalOffset="00:07:48" departureOffset="00:07:48" awaitDeparture="true"/>
+				<stop refId="G05_UP" arrivalOffset="00:09:45" departureOffset="00:09:45" awaitDeparture="true"/>
+				<stop refId="G06_UP" arrivalOffset="00:11:41" departureOffset="00:11:41" awaitDeparture="true"/>
+				<stop refId="G07_UP" arrivalOffset="00:14:06" departureOffset="00:14:06" awaitDeparture="true"/>
+				<stop refId="G08_UP" arrivalOffset="00:15:56" departureOffset="00:15:56" awaitDeparture="true"/>
+				<stop refId="G09_UP" arrivalOffset="00:17:49" departureOffset="00:17:49" awaitDeparture="true"/>
+				<stop refId="G10_UP" arrivalOffset="00:19:47" departureOffset="00:19:47" awaitDeparture="true"/>
+				<stop refId="G11_UP" arrivalOffset="00:21:39" departureOffset="00:21:39" awaitDeparture="true"/>
+				<stop refId="G12_UP" arrivalOffset="00:23:29" departureOffset="00:23:29" awaitDeparture="true"/>
+				<stop refId="G13_UP" arrivalOffset="00:25:20" departureOffset="00:25:20" awaitDeparture="true"/>
+				<stop refId="G14_UP" arrivalOffset="00:27:53" departureOffset="00:27:53" awaitDeparture="true"/>
+				<stop refId="G15_UP" arrivalOffset="00:30:13" departureOffset="00:30:13" awaitDeparture="true"/>
+				<stop refId="G16_UP" arrivalOffset="00:32:13" departureOffset="00:32:13" awaitDeparture="true"/>
+				<stop refId="G17_UP" arrivalOffset="00:34:08" departureOffset="00:34:08" awaitDeparture="true"/>
+				<stop refId="G18_UP" arrivalOffset="00:36:21" departureOffset="00:36:21" awaitDeparture="true"/>
+				<stop refId="G19_UP" arrivalOffset="00:39:37" departureOffset="00:00:00" awaitDeparture="true"/>
+			</routeProfile>
+			<departures>
+				<departure id="183_6080_UP_22:01:18" departureTime="22:01:18" vehicleRefId="veh_3_subway"/>
+			</departures>
+		</transitRoute>
+	</transitLine>
+	<transitLine id="Orange" name="中和新蘆線">
+		<transitRoute id="389_1005_DN">
+			<transportMode>subway</transportMode>
+			<routeProfile>
+				<stop refId="O21_DN" arrivalOffset="00:00:00" departureOffset="00:00:00" awaitDeparture="true"/>
+				<stop refId="O20_DN" arrivalOffset="00:11:16" departureOffset="00:11:16" awaitDeparture="true"/>
+				<stop refId="O19_DN" arrivalOffset="00:13:37" departureOffset="00:13:37" awaitDeparture="true"/>
+				<stop refId="O18_DN" arrivalOffset="00:16:22" departureOffset="00:16:22" awaitDeparture="true"/>
+				<stop refId="O17_DN" arrivalOffset="00:18:19" departureOffset="00:18:19" awaitDeparture="true"/>
+				<stop refId="O16_DN" arrivalOffset="00:20:42" departureOffset="00:20:42" awaitDeparture="true"/>
+				<stop refId="O15_DN" arrivalOffset="00:23:29" departureOffset="00:23:29" awaitDeparture="true"/>
+				<stop refId="O14_DN" arrivalOffset="00:25:18" departureOffset="00:25:18" awaitDeparture="true"/>
+				<stop refId="O13_DN" arrivalOffset="00:27:18" departureOffset="00:27:18" awaitDeparture="true"/>
+				<stop refId="O12_DN" arrivalOffset="00:29:55" departureOffset="00:29:55" awaitDeparture="true"/>
+				<stop refId="O11_DN" arrivalOffset="00:31:43" departureOffset="00:31:43" awaitDeparture="true"/>
+				<stop refId="O10_DN" arrivalOffset="00:33:33" departureOffset="00:33:33" awaitDeparture="true"/>
+				<stop refId="O09_DN" arrivalOffset="00:35:32" departureOffset="00:35:32" awaitDeparture="true"/>
+				<stop refId="O08_DN" arrivalOffset="00:37:17" departureOffset="00:37:17" awaitDeparture="true"/>
+				<stop refId="O07_DN" arrivalOffset="00:39:37" departureOffset="00:39:37" awaitDeparture="true"/>
+				<stop refId="O06_DN" arrivalOffset="00:42:57" departureOffset="00:42:57" awaitDeparture="true"/>
+				<stop refId="O05_DN" arrivalOffset="00:47:05" departureOffset="00:47:05" awaitDeparture="true"/>
+				<stop refId="O04_DN" arrivalOffset="00:50:36" departureOffset="00:50:36" awaitDeparture="true"/>
+				<stop refId="O03_DN" arrivalOffset="00:52:42" departureOffset="00:52:42" awaitDeparture="true"/>
+				<stop refId="O02_DN" arrivalOffset="00:54:39" departureOffset="00:54:39" awaitDeparture="true"/>
+				<stop refId="O01_DN" arrivalOffset="00:57:20" departureOffset="00:00:00" awaitDeparture="true"/>
+			</routeProfile>
+			<departures>
+				<departure id="389_1005_DN_10:51:04" departureTime="10:51:04" vehicleRefId="veh_4_subway"/>
+			</departures>
+		</transitRoute>
+		<transitRoute id="389_1024_UP">
+			<transportMode>subway</transportMode>
+			<routeProfile>
+				<stop refId="O01_UP" arrivalOffset="00:00:00" departureOffset="00:00:00" awaitDeparture="true"/>
+				<stop refId="O02_UP" arrivalOffset="00:03:55" departureOffset="00:03:55" awaitDeparture="true"/>
+				<stop refId="O03_UP" arrivalOffset="00:05:45" departureOffset="00:05:45" awaitDeparture="true"/>
+				<stop refId="O04_UP" arrivalOffset="00:07:54" departureOffset="00:07:54" awaitDeparture="true"/>
+				<stop refId="O05_UP" arrivalOffset="00:11:31" departureOffset="00:11:31" awaitDeparture="true"/>
+				<stop refId="O06_UP" arrivalOffset="00:14:31" departureOffset="00:14:31" awaitDeparture="true"/>
+				<stop refId="O07_UP" arrivalOffset="00:17:18" departureOffset="00:17:18" awaitDeparture="true"/>
+				<stop refId="O08_UP" arrivalOffset="00:19:39" departureOffset="00:19:39" awaitDeparture="true"/>
+				<stop refId="O09_UP" arrivalOffset="00:21:29" departureOffset="00:21:29" awaitDeparture="true"/>
+				<stop refId="O10_UP" arrivalOffset="00:23:42" departureOffset="00:23:42" awaitDeparture="true"/>
+				<stop refId="O11_UP" arrivalOffset="00:25:25" departureOffset="00:25:25" awaitDeparture="true"/>
+				<stop refId="O12_UP" arrivalOffset="00:27:15" departureOffset="00:27:15" awaitDeparture="true"/>
+				<stop refId="O13_UP" arrivalOffset="00:29:50" departureOffset="00:29:50" awaitDeparture="true"/>
+				<stop refId="O14_UP" arrivalOffset="00:32:02" departureOffset="00:32:02" awaitDeparture="true"/>
+				<stop refId="O15_UP" arrivalOffset="00:33:50" departureOffset="00:33:50" awaitDeparture="true"/>
+				<stop refId="O16_UP" arrivalOffset="00:36:35" departureOffset="00:36:35" awaitDeparture="true"/>
+				<stop refId="O17_UP" arrivalOffset="00:38:50" departureOffset="00:38:50" awaitDeparture="true"/>
+				<stop refId="O18_UP" arrivalOffset="00:40:54" departureOffset="00:40:54" awaitDeparture="true"/>
+				<stop refId="O19_UP" arrivalOffset="00:43:40" departureOffset="00:43:40" awaitDeparture="true"/>
+				<stop refId="O20_UP" arrivalOffset="00:46:00" departureOffset="00:46:00" awaitDeparture="true"/>
+				<stop refId="O21_UP" arrivalOffset="00:49:32" departureOffset="00:00:00" awaitDeparture="true"/>
+			</routeProfile>
+			<departures>
+				<departure id="389_1024_UP_08:18:22" departureTime="08:18:22" vehicleRefId="veh_5_subway"/>
+			</departures>
+		</transitRoute>
+	</transitLine>
+	<transitLine id="Red" name="淡水信義線">
+		<transitRoute id="377_1023_DN">
+			<transportMode>subway</transportMode>
+			<routeProfile>
+				<stop refId="R28_DN" arrivalOffset="00:00:00" departureOffset="00:00:00" awaitDeparture="true"/>
+				<stop refId="R27_DN" arrivalOffset="00:11:09" departureOffset="00:11:09" awaitDeparture="true"/>
+				<stop refId="R26_DN" arrivalOffset="00:14:12" departureOffset="00:14:12" awaitDeparture="true"/>
+				<stop refId="R25_DN" arrivalOffset="00:17:15" departureOffset="00:17:15" awaitDeparture="true"/>
+				<stop refId="R24_DN" arrivalOffset="00:19:02" departureOffset="00:19:02" awaitDeparture="true"/>
+				<stop refId="R23_DN" arrivalOffset="00:21:11" departureOffset="00:21:11" awaitDeparture="true"/>
+				<stop refId="R22_DN" arrivalOffset="00:24:13" departureOffset="00:24:13" awaitDeparture="true"/>
+				<stop refId="R21_DN" arrivalOffset="00:26:07" departureOffset="00:26:07" awaitDeparture="true"/>
+				<stop refId="R20_DN" arrivalOffset="00:27:46" departureOffset="00:27:46" awaitDeparture="true"/>
+				<stop refId="R19_DN" arrivalOffset="00:29:57" departureOffset="00:29:57" awaitDeparture="true"/>
+				<stop refId="R18_DN" arrivalOffset="00:31:24" departureOffset="00:31:24" awaitDeparture="true"/>
+				<stop refId="R17_DN" arrivalOffset="00:33:03" departureOffset="00:33:03" awaitDeparture="true"/>
+				<stop refId="R16_DN" arrivalOffset="00:35:00" departureOffset="00:35:00" awaitDeparture="true"/>
+				<stop refId="R15_DN" arrivalOffset="00:36:59" departureOffset="00:36:59" awaitDeparture="true"/>
+				<stop refId="R14_DN" arrivalOffset="00:39:22" departureOffset="00:39:22" awaitDeparture="true"/>
+				<stop refId="R13_DN" arrivalOffset="00:41:17" departureOffset="00:41:17" awaitDeparture="true"/>
+				<stop refId="R12_DN" arrivalOffset="00:43:03" departureOffset="00:43:03" awaitDeparture="true"/>
+				<stop refId="R11_DN" arrivalOffset="00:44:34" departureOffset="00:44:34" awaitDeparture="true"/>
+				<stop refId="R10_DN" arrivalOffset="00:46:16" departureOffset="00:46:16" awaitDeparture="true"/>
+				<stop refId="R09_DN" arrivalOffset="00:48:08" departureOffset="00:48:08" awaitDeparture="true"/>
+				<stop refId="R08_DN" arrivalOffset="00:50:04" departureOffset="00:50:04" awaitDeparture="true"/>
+				<stop refId="R07_DN" arrivalOffset="00:53:49" departureOffset="00:53:49" awaitDeparture="true"/>
+				<stop refId="R06_DN" arrivalOffset="00:55:34" departureOffset="00:55:34" awaitDeparture="true"/>
+				<stop refId="R05_DN" arrivalOffset="00:57:19" departureOffset="00:57:19" awaitDeparture="true"/>
+				<stop refId="R04_DN" arrivalOffset="00:59:21" departureOffset="00:59:21" awaitDeparture="true"/>
+				<stop refId="R03_DN" arrivalOffset="01:01:29" departureOffset="01:01:29" awaitDeparture="true"/>
+				<stop refId="R02_DN" arrivalOffset="01:04:07" departureOffset="00:00:00" awaitDeparture="true"/>
+			</routeProfile>
+			<departures>
+				<departure id="377_1023_DN_06:46:36" departureTime="06:46:36" vehicleRefId="veh_6_subway"/>
+			</departures>
+		</transitRoute>
+		<transitRoute id="377_1031_DN">
+			<transportMode>subway</transportMode>
+			<routeProfile>
+				<stop refId="R28_DN" arrivalOffset="00:00:00" departureOffset="00:00:00" awaitDeparture="true"/>
+				<stop refId="R27_DN" arrivalOffset="00:15:29" departureOffset="00:15:29" awaitDeparture="true"/>
+				<stop refId="R26_DN" arrivalOffset="00:18:11" departureOffset="00:18:11" awaitDeparture="true"/>
+				<stop refId="R25_DN" arrivalOffset="00:20:57" departureOffset="00:20:57" awaitDeparture="true"/>
+				<stop refId="R24_DN" arrivalOffset="00:22:41" departureOffset="00:22:41" awaitDeparture="true"/>
+				<stop refId="R23_DN" arrivalOffset="00:24:45" departureOffset="00:24:45" awaitDeparture="true"/>
+				<stop refId="R22_DN" arrivalOffset="00:27:36" departureOffset="00:27:36" awaitDeparture="true"/>
+				<stop refId="R21_DN" arrivalOffset="00:29:35" departureOffset="00:29:35" awaitDeparture="true"/>
+				<stop refId="R20_DN" arrivalOffset="00:31:15" departureOffset="00:31:15" awaitDeparture="true"/>
+				<stop refId="R19_DN" arrivalOffset="00:33:24" departureOffset="00:33:24" awaitDeparture="true"/>
+				<stop refId="R18_DN" arrivalOffset="00:34:51" departureOffset="00:34:51" awaitDeparture="true"/>
+				<stop refId="R17_DN" arrivalOffset="00:36:30" departureOffset="00:36:30" awaitDeparture="true"/>
+				<stop refId="R16_DN" arrivalOffset="00:38:25" departureOffset="00:38:25" awaitDeparture="true"/>
+				<stop refId="R15_DN" arrivalOffset="00:40:22" departureOffset="00:40:22" awaitDeparture="true"/>
+				<stop refId="R14_DN" arrivalOffset="00:42:40" departureOffset="00:42:40" awaitDeparture="true"/>
+				<stop refId="R13_DN" arrivalOffset="00:44:30" departureOffset="00:44:30" awaitDeparture="true"/>
+				<stop refId="R12_DN" arrivalOffset="00:45:57" departureOffset="00:45:57" awaitDeparture="true"/>
+				<stop refId="R11_DN" arrivalOffset="00:47:22" departureOffset="00:47:22" awaitDeparture="true"/>
+				<stop refId="R10_DN" arrivalOffset="00:49:04" departureOffset="00:49:04" awaitDeparture="true"/>
+				<stop refId="R09_DN" arrivalOffset="00:50:46" departureOffset="00:50:46" awaitDeparture="true"/>
+				<stop refId="R08_DN" arrivalOffset="00:52:40" departureOffset="00:52:40" awaitDeparture="true"/>
+				<stop refId="R07_DN" arrivalOffset="00:56:20" departureOffset="00:56:20" awaitDeparture="true"/>
+				<stop refId="R06_DN" arrivalOffset="00:58:05" departureOffset="00:58:05" awaitDeparture="true"/>
+				<stop refId="R05_DN" arrivalOffset="00:59:55" departureOffset="00:59:55" awaitDeparture="true"/>
+				<stop refId="R04_DN" arrivalOffset="01:01:55" departureOffset="01:01:55" awaitDeparture="true"/>
+				<stop refId="R03_DN" arrivalOffset="01:04:07" departureOffset="01:04:07" awaitDeparture="true"/>
+				<stop refId="R02_DN" arrivalOffset="01:06:59" departureOffset="00:00:00" awaitDeparture="true"/>
+			</routeProfile>
+			<departures>
+				<departure id="377_1031_DN_14:56:35" departureTime="14:56:35" vehicleRefId="veh_7_subway"/>
+			</departures>
+		</transitRoute>
+	</transitLine>
+	<transitLine id="TPE_BUS_299" name="299">
+		<transitRoute id="TPE_BUS_299_EB">
+			<transportMode>bus</transportMode>
+			<routeProfile>
+				<stop refId="508487" arrivalOffset="00:00:00" departureOffset="00:00:00" awaitDeparture="true"/>
+				<stop refId="THB281514" arrivalOffset="00:07:00" departureOffset="00:00:00" awaitDeparture="true"/>
+			</routeProfile>
+			<departures>
+				<departure id="TPE_BUS_299_EB_08:00:30" departureTime="08:00:30" vehicleRefId="veh_8_bus"/>
+			</departures>
+		</transitRoute>
+		<transitRoute id="TPE_BUS_299_WB">
+			<transportMode>bus</transportMode>
+			<routeProfile>
+				<stop refId="THB281514" arrivalOffset="00:00:00" departureOffset="00:00:00" awaitDeparture="true"/>
+				<stop refId="508487" arrivalOffset="00:07:00" departureOffset="00:00:00" awaitDeparture="true"/>
+			</routeProfile>
+			<departures>
+				<departure id="TPE_BUS_299_WB_08:30:30" departureTime="08:30:30" vehicleRefId="veh_9_bus"/>
+			</departures>
+		</transitRoute>
+	</transitLine>
+	<transitLine id="TRA_LOCAL" name="區間車">
+		<transitRoute id="TRA_LOCAL_WB">
+			<transportMode>rail</transportMode>
+			<routeProfile>
+				<stop refId="TRA_0990" arrivalOffset="00:00:00" departureOffset="00:00:00" awaitDeparture="true"/>
+				<stop refId="TRA_1000" arrivalOffset="00:05:00" departureOffset="00:00:00" awaitDeparture="true"/>
+			</routeProfile>
+			<departures>
+				<departure id="TRA_LOCAL_WB_08:20:00" departureTime="08:20:00" vehicleRefId="veh_10_rail"/>
+			</departures>
+		</transitRoute>
+		<transitRoute id="TRA_LOCAL_EB">
+			<transportMode>rail</transportMode>
+			<routeProfile>
+				<stop refId="TRA_1000" arrivalOffset="00:00:00" departureOffset="00:00:00" awaitDeparture="true"/>
+				<stop refId="TRA_0990" arrivalOffset="00:05:00" departureOffset="00:00:00" awaitDeparture="true"/>
+			</routeProfile>
+			<departures>
+				<departure id="TRA_LOCAL_EB_08:10:00" departureTime="08:10:00" vehicleRefId="veh_11_rail"/>
+			</departures>
+		</transitRoute>
+	</transitLine>
+</transitSchedule>

@@ -1,0 +1,3 @@
+route_id,agency_id,route_short_name,route_long_name,route_type
+TPE_BUS_299,TPE_BUS,299,臺北車站－捷運西門站,3
+TRA_LOCAL,TRA,區間車,臺北－松山,2

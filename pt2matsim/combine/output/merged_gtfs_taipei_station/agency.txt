@@ -1,0 +1,4 @@
+agency_id,agency_name,agency_url,agency_timezone,agency_lang,agency_phone,agency_fare_url,agency_email
+TPE_BUS,臺北市公車,https://www.taipei.gov.tw,Asia/Taipei,zh,,,
+TRA,臺灣鐵路,https://www.railway.gov.tw,Asia/Taipei,zh,,,
+TRTC,臺北大眾捷運股份有限公司,https://www.metro.taipei,Asia/Taipei,zh,(886)2-27208889,,

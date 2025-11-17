@@ -50,7 +50,14 @@
       "Bash(do)",
       "Bash(head:*)",
       "Bash(for file in ph_modestats.csv pkm_modestats.csv stopwatch.csv traveldistancestats.csv)",
-      "Bash(echo:*)"
+      "Bash(echo:*)",
+      "Bash(git checkout:*)",
+      "Bash(git pull:*)",
+      "Bash(git merge:*)",
+      "Bash(sort:*)",
+      "Bash(git fetch:*)",
+      "Bash(test:*)",
+      "Bash(fd:*)"
     ],
     "deny": [],
     "ask": []

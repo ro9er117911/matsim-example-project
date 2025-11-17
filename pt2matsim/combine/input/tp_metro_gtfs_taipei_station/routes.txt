@@ -1,0 +1,5 @@
+route_id,agency_id,route_short_name,route_long_name,route_desc,route_type,route_color,route_text_color
+Blue,TRTC,板南線,,"南港展覽館－頂埔, 南港展覽館－亞東醫院",1,0070BD,FFFFFF
+Red,TRTC,淡水信義線,,"淡水－象山,北投－大安",1,E3002C,FFFFFF
+Orange,TRTC,中和新蘆線,,"迴龍－南勢角, 蘆洲－南勢角",1,F8B61C,000000
+Green,TRTC,松山新店線,,"松山－新店, 松山－臺電大樓",1,008659,FFFFFF

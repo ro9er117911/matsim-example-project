@@ -57,7 +57,12 @@
       "Bash(sort:*)",
       "Bash(git fetch:*)",
       "Bash(test:*)",
-      "Bash(fd:*)"
+      "Bash(fd:*)",
+      "Bash(command -v osmosis:*)",
+      "Bash(command -v:*)",
+      "Bash(cp:*)",
+      "Bash(timeout 600 java:*)",
+      "Bash(/Users/ro9air/matsim-example-project/pt2matsim/work/)"
     ],
     "deny": [],
     "ask": []

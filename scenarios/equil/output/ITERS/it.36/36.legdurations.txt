@@ -1,0 +1,55 @@
+pattern	0+	5+	10+	15+	20+	25+	30+	35+	40+	45+	50+	55+	60+
+car interaction---car interaction	11	24	6	9	2	1	0	0	0	0	0	0	0
+car interaction---education	10	0	0	0	0	0	0	0	0	0	0	0	1
+car interaction---home	14	0	0	0	0	0	1	0	0	0	0	0	2
+car interaction---leisure	9	0	0	0	0	0	1	0	0	0	0	0	0
+car interaction---shop	6	0	0	0	0	0	0	0	0	0	0	0	1
+car interaction---work	6	0	0	0	0	0	1	0	0	0	0	0	1
+education---car interaction	12	0	0	0	0	0	1	0	0	0	0	0	1
+education---home	1	0	0	1	0	0	0	0	0	0	0	0	1
+education---leisure	0	0	0	1	0	0	0	0	0	0	0	0	1
+education---motorcycle interaction	8	0	0	0	0	0	0	0	0	0	0	0	1
+education---pt interaction	18	0	3	0	0	0	0	0	0	0	0	0	0
+education---shop	0	0	0	0	0	0	0	0	1	0	0	0	1
+education---work	1	0	0	0	0	0	0	0	0	0	0	0	0
+home---car interaction	16	0	0	0	0	0	0	0	0	0	0	0	2
+home---education	2	0	0	1	0	0	0	0	0	0	0	0	2
+home---leisure	2	0	0	0	1	1	0	0	1	0	0	1	3
+home---motorcycle interaction	26	0	1	0	0	2	2	0	0	0	0	0	4
+home---pt interaction	42	4	2	0	0	0	0	0	0	0	0	0	0
+home---shop	0	0	0	0	0	0	0	0	0	0	0	0	1
+home---work	0	0	0	0	0	0	0	2	0	0	0	0	2
+leisure---car interaction	9	0	0	0	0	0	2	0	0	0	0	0	0
+leisure---home	1	0	0	2	1	0	0	0	1	0	0	0	3
+leisure---motorcycle interaction	15	0	0	2	0	0	0	0	0	0	0	0	1
+leisure---pt interaction	22	4	5	0	0	0	0	0	0	0	0	0	0
+leisure---shop	3	0	0	0	1	0	0	0	0	0	0	0	1
+leisure---work	0	0	0	1	0	0	1	0	0	0	0	0	2
+motorcycle interaction---education	10	0	0	0	0	0	0	0	0	0	0	0	1
+motorcycle interaction---home	23	0	1	0	0	2	2	0	0	0	0	0	4
+motorcycle interaction---leisure	16	0	0	2	0	0	0	0	0	0	0	0	1
+motorcycle interaction---motorcycle interaction	36	33	17	11	2	0	0	0	0	0	0	0	0
+motorcycle interaction---shop	9	0	0	0	0	0	1	0	0	0	0	0	2
+motorcycle interaction---work	23	2	0	0	0	0	0	0	0	0	0	0	0
+pt interaction---education	21	2	0	0	0	0	0	0	0	0	0	0	0
+pt interaction---home	39	6	2	0	0	0	0	0	0	0	0	0	0
+pt interaction---leisure	23	7	1	0	0	0	0	0	0	0	0	0	0
+pt interaction---pt interaction	37	64	90	19	14	10	7	7	3	2	0	0	0
+pt interaction---shop	23	7	2	0	0	0	0	0	0	0	0	0	0
+pt interaction---work	30	4	1	1	0	0	0	0	0	0	0	0	0
+shop---car interaction	6	0	0	0	0	0	0	0	0	0	0	0	1
+shop---education	1	0	0	0	0	0	0	0	0	0	0	0	0
+shop---home	0	0	0	2	0	1	0	0	0	0	0	0	1
+shop---leisure	1	0	0	0	0	0	0	1	0	0	0	0	2
+shop---motorcycle interaction	9	0	0	0	0	0	1	0	0	0	0	0	2
+shop---pt interaction	23	8	4	0	0	0	0	0	0	0	0	0	0
+shop---work	0	0	0	0	0	1	0	0	0	0	0	0	0
+work---car interaction	6	0	0	0	0	0	0	0	0	0	0	0	1
+work---education	0	0	0	0	0	0	0	0	0	0	0	0	1
+work---home	0	1	0	0	0	0	0	2	1	0	0	0	0
+work---leisure	0	0	0	0	1	0	0	0	0	0	0	0	1
+work---motorcycle interaction	24	2	0	0	0	0	0	0	0	0	0	0	0
+work---pt interaction	30	4	0	0	0	0	0	0	0	0	0	0	0
+work---shop	2	1	0	0	0	1	0	0	0	0	0	0	1
+
+average leg duration: 648.938282647585 seconds = 00:10:48

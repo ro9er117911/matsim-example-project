@@ -1,0 +1,3 @@
+route_id,agency_id,route_short_name,route_long_name,route_type
+BL,MRT,BL,忠孝新生-忠孝復興,1
+BUS1,MRT,B1,忠孝新生-忠孝復興(公車),3

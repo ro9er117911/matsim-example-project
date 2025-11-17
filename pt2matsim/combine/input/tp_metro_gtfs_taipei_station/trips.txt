@@ -1,0 +1,9 @@
+route_id,service_id,trip_id,trip_headsign,trip_short_name,direction_id,block_id,shape_id,wheelchair_accessible,bikes_allowed
+Blue,403,403_1007_DN,亞東醫院站,,,,,1,
+Blue,403,403_1019_DN,頂埔站,,,,,1,
+Green,183,183_6080_UP,松山站,,,,,1,
+Green,183,183_6098_UP,松山站,,,,,1,
+Orange,389,389_1005_DN,南勢角站,,,,,1,
+Orange,389,389_1024_UP,迴龍站,,,,,1,
+Red,377,377_1023_DN,象山站,,,,,1,
+Red,377,377_1031_DN,象山站,,,,,1,

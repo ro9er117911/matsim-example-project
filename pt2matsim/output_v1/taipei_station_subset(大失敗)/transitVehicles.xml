@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<vehicleDefinitions xmlns="http://www.matsim.org/files/dtd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.matsim.org/files/dtd http://www.matsim.org/files/dtd/vehicleDefinitions_v2.0.xsd">
+
+	<vehicleType id="Bus">
+		<attributes>
+			<attribute name="accessTimeInSecondsPerPerson" class="java.lang.Double">0.5</attribute>
+			<attribute name="doorOperationMode" class="org.matsim.vehicles.VehicleType$DoorOperationMode">serial</attribute>
+			<attribute name="egressTimeInSecondsPerPerson" class="java.lang.Double">0.5</attribute>
+		</attributes>
+		<capacity seats="70" standingRoomInPersons="0">
+
+		</capacity>
+		<length meter="18.0"/>
+		<width meter="2.5"/>
+		<costInformation>
+
+		</costInformation>
+		<passengerCarEquivalents pce="2.8"/>
+		<networkMode networkMode="bus"/>
+		<flowEfficiencyFactor factor="1.0"/>
+	</vehicleType>
+
+	<vehicleType id="Rail">
+		<attributes>
+			<attribute name="accessTimeInSecondsPerPerson" class="java.lang.Double">0.25</attribute>
+			<attribute name="doorOperationMode" class="org.matsim.vehicles.VehicleType$DoorOperationMode">serial</attribute>
+			<attribute name="egressTimeInSecondsPerPerson" class="java.lang.Double">0.25</attribute>
+		</attributes>
+		<capacity seats="400" standingRoomInPersons="0">
+
+		</capacity>
+		<length meter="200.0"/>
+		<width meter="2.8"/>
+		<costInformation>
+
+		</costInformation>
+		<passengerCarEquivalents pce="27.1"/>
+		<networkMode networkMode="rail"/>
+		<flowEfficiencyFactor factor="1.0"/>
+	</vehicleType>
+
+	<vehicleType id="Subway">
+		<attributes>
+			<attribute name="accessTimeInSecondsPerPerson" class="java.lang.Double">0.1</attribute>
+			<attribute name="doorOperationMode" class="org.matsim.vehicles.VehicleType$DoorOperationMode">serial</attribute>
+			<attribute name="egressTimeInSecondsPerPerson" class="java.lang.Double">0.1</attribute>
+		</attributes>
+		<capacity seats="300" standingRoomInPersons="0">
+
+		</capacity>
+		<length meter="30.0"/>
+		<width meter="2.45"/>
+		<costInformation>
+
+		</costInformation>
+		<passengerCarEquivalents pce="4.4"/>
+		<networkMode networkMode="subway"/>
+		<flowEfficiencyFactor factor="1.0"/>
+	</vehicleType>
+
+	<vehicle id="veh_0_subway" type="Subway"/>
+	<vehicle id="veh_10_rail" type="Rail"/>
+	<vehicle id="veh_11_rail" type="Rail"/>
+	<vehicle id="veh_1_subway" type="Subway"/>
+	<vehicle id="veh_2_subway" type="Subway"/>
+	<vehicle id="veh_3_subway" type="Subway"/>
+	<vehicle id="veh_4_subway" type="Subway"/>
+	<vehicle id="veh_5_subway" type="Subway"/>
+	<vehicle id="veh_6_subway" type="Subway"/>
+	<vehicle id="veh_7_subway" type="Subway"/>
+	<vehicle id="veh_8_bus" type="Bus"/>
+	<vehicle id="veh_9_bus" type="Bus"/>
+		
+
+</vehicleDefinitions>

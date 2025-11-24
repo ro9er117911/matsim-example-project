@@ -1,2 +1,0 @@
-transitRoutes: 1309
-stopRefs: 26152

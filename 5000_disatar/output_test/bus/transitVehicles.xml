@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<vehicleDefinitions xmlns="http://www.matsim.org/files/dtd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.matsim.org/files/dtd http://www.matsim.org/files/dtd/vehicleDefinitions_v2.0.xsd">
+
+	<vehicleType id="Bus">
+		<attributes>
+			<attribute name="accessTimeInSecondsPerPerson" class="java.lang.Double">0.5</attribute>
+			<attribute name="doorOperationMode" class="org.matsim.vehicles.VehicleType$DoorOperationMode">serial</attribute>
+			<attribute name="egressTimeInSecondsPerPerson" class="java.lang.Double">0.5</attribute>
+		</attributes>
+		<capacity seats="70" standingRoomInPersons="0">
+
+		</capacity>
+		<length meter="18.0"/>
+		<width meter="2.5"/>
+		<costInformation>
+
+		</costInformation>
+		<passengerCarEquivalents pce="2.8"/>
+		<networkMode networkMode="bus"/>
+		<flowEfficiencyFactor factor="1.0"/>
+	</vehicleType>
+
+	<vehicle id="veh_0_bus" type="Bus"/>
+	<vehicle id="veh_10_bus" type="Bus"/>
+	<vehicle id="veh_11_bus" type="Bus"/>
+	<vehicle id="veh_12_bus" type="Bus"/>
+	<vehicle id="veh_13_bus" type="Bus"/>
+	<vehicle id="veh_14_bus" type="Bus"/>
+	<vehicle id="veh_15_bus" type="Bus"/>
+	<vehicle id="veh_16_bus" type="Bus"/>
+	<vehicle id="veh_17_bus" type="Bus"/>
+	<vehicle id="veh_18_bus" type="Bus"/>
+	<vehicle id="veh_19_bus" type="Bus"/>
+	<vehicle id="veh_1_bus" type="Bus"/>
+	<vehicle id="veh_20_bus" type="Bus"/>
+	<vehicle id="veh_21_bus" type="Bus"/>
+	<vehicle id="veh_22_bus" type="Bus"/>
+	<vehicle id="veh_23_bus" type="Bus"/>
+	<vehicle id="veh_24_bus" type="Bus"/>
+	<vehicle id="veh_25_bus" type="Bus"/>
+	<vehicle id="veh_26_bus" type="Bus"/>
+	<vehicle id="veh_27_bus" type="Bus"/>
+	<vehicle id="veh_28_bus" type="Bus"/>
+	<vehicle id="veh_29_bus" type="Bus"/>
+	<vehicle id="veh_2_bus" type="Bus"/>
+	<vehicle id="veh_30_bus" type="Bus"/>
+	<vehicle id="veh_31_bus" type="Bus"/>
+	<vehicle id="veh_32_bus" type="Bus"/>
+	<vehicle id="veh_33_bus" type="Bus"/>
+	<vehicle id="veh_34_bus" type="Bus"/>
+	<vehicle id="veh_35_bus" type="Bus"/>
+	<vehicle id="veh_36_bus" type="Bus"/>
+	<vehicle id="veh_37_bus" type="Bus"/>
+	<vehicle id="veh_38_bus" type="Bus"/>
+	<vehicle id="veh_39_bus" type="Bus"/>
+	<vehicle id="veh_3_bus" type="Bus"/>
+	<vehicle id="veh_40_bus" type="Bus"/>
+	<vehicle id="veh_41_bus" type="Bus"/>
+	<vehicle id="veh_42_bus" type="Bus"/>
+	<vehicle id="veh_43_bus" type="Bus"/>
+	<vehicle id="veh_44_bus" type="Bus"/>
+	<vehicle id="veh_45_bus" type="Bus"/>
+	<vehicle id="veh_46_bus" type="Bus"/>
+	<vehicle id="veh_47_bus" type="Bus"/>
+	<vehicle id="veh_48_bus" type="Bus"/>
+	<vehicle id="veh_49_bus" type="Bus"/>
+	<vehicle id="veh_4_bus" type="Bus"/>
+	<vehicle id="veh_50_bus" type="Bus"/>
+	<vehicle id="veh_51_bus" type="Bus"/>
+	<vehicle id="veh_52_bus" type="Bus"/>
+	<vehicle id="veh_53_bus" type="Bus"/>
+	<vehicle id="veh_54_bus" type="Bus"/>
+	<vehicle id="veh_55_bus" type="Bus"/>
+	<vehicle id="veh_56_bus" type="Bus"/>
+	<vehicle id="veh_57_bus" type="Bus"/>
+	<vehicle id="veh_58_bus" type="Bus"/>
+	<vehicle id="veh_59_bus" type="Bus"/>
+	<vehicle id="veh_5_bus" type="Bus"/>
+	<vehicle id="veh_60_bus" type="Bus"/>
+	<vehicle id="veh_61_bus" type="Bus"/>
+	<vehicle id="veh_62_bus" type="Bus"/>
+	<vehicle id="veh_63_bus" type="Bus"/>
+	<vehicle id="veh_64_bus" type="Bus"/>
+	<vehicle id="veh_65_bus" type="Bus"/>
+	<vehicle id="veh_66_bus" type="Bus"/>
+	<vehicle id="veh_67_bus" type="Bus"/>
+	<vehicle id="veh_68_bus" type="Bus"/>
+	<vehicle id="veh_69_bus" type="Bus"/>
+	<vehicle id="veh_6_bus" type="Bus"/>
+	<vehicle id="veh_70_bus" type="Bus"/>
+	<vehicle id="veh_71_bus" type="Bus"/>
+	<vehicle id="veh_72_bus" type="Bus"/>
+	<vehicle id="veh_73_bus" type="Bus"/>
+	<vehicle id="veh_74_bus" type="Bus"/>
+	<vehicle id="veh_75_bus" type="Bus"/>
+	<vehicle id="veh_76_bus" type="Bus"/>
+	<vehicle id="veh_77_bus" type="Bus"/>
+	<vehicle id="veh_78_bus" type="Bus"/>
+	<vehicle id="veh_79_bus" type="Bus"/>
+	<vehicle id="veh_7_bus" type="Bus"/>
+	<vehicle id="veh_80_bus" type="Bus"/>
+	<vehicle id="veh_81_bus" type="Bus"/>
+	<vehicle id="veh_82_bus" type="Bus"/>
+	<vehicle id="veh_83_bus" type="Bus"/>
+	<vehicle id="veh_84_bus" type="Bus"/>
+	<vehicle id="veh_8_bus" type="Bus"/>
+	<vehicle id="veh_9_bus" type="Bus"/>
+		
+
+</vehicleDefinitions>

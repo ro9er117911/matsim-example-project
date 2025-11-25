@@ -61,6 +61,13 @@
 			<version>${matsim.version}</version>
 		</dependency>
 
+		<!-- Needed at runtime for matsim 2025 (exec:java fails without CaseFormat) -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>33.3.0-jre</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
@@ -255,6 +262,19 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.11.0</version>
+			</plugin>
+			<plugin>
+				<!-- exec:java misses guava on plugin classpath; add explicitly -->
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>3.6.2</version>
+				<dependencies>
+					<dependency>
+						<groupId>com.google.guava</groupId>
+						<artifactId>guava</artifactId>
+						<version>33.3.0-jre</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 		</plugins>
 	</build>

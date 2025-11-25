@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE population SYSTEM "http://www.matsim.org/files/dtd/population_v6.dtd">
+<population>
+
+	<!-- PT Agent 1: Bus user (捷運萬隆站 -> 捷運景美站) -->
+	<person id="pt_agent_01">
+		<plan selected="yes">
+			<activity type="home" x="304403.51" y="2766071.46" end_time="07:00:00"/>
+			<leg mode="pt"/>
+			<activity type="work" x="304587.33" y="2765108.97" end_time="17:00:00"/>
+			<leg mode="pt"/>
+			<activity type="home" x="304403.51" y="2766071.46"/>
+		</plan>
+	</person>
+
+	<!-- PT Agent 2: Bus user (捷運七張站 -> 捷運景美站) -->
+	<person id="pt_agent_02">
+		<plan selected="yes">
+			<activity type="home" x="304831.98" y="2763155.91" end_time="07:30:00"/>
+			<leg mode="pt"/>
+			<activity type="work" x="304586.84" y="2765054.80" end_time="17:30:00"/>
+			<leg mode="pt"/>
+			<activity type="home" x="304831.98" y="2763155.91"/>
+		</plan>
+	</person>
+
+	<!-- PT Agent 3: Bus user (捷運六張犁站 -> 捷運萬隆站) -->
+	<person id="pt_agent_03">
+		<plan selected="yes">
+			<activity type="home" x="305712.87" y="2768517.49" end_time="08:00:00"/>
+			<leg mode="pt"/>
+			<activity type="work" x="304439.92" y="2766029.85" end_time="18:00:00"/>
+			<leg mode="pt"/>
+			<activity type="home" x="305712.87" y="2768517.49"/>
+		</plan>
+	</person>
+
+	<!-- PT Agent 4: Longer distance (石門 -> 和平橋) -->
+	<person id="pt_agent_04">
+		<plan selected="yes">
+			<activity type="home" x="301282.53" y="2601980.30" end_time="06:30:00"/>
+			<leg mode="pt"/>
+			<activity type="work" x="301809.03" y="2612244.82" end_time="16:30:00"/>
+			<leg mode="pt"/>
+			<activity type="home" x="301282.53" y="2601980.30"/>
+		</plan>
+	</person>
+
+	<!-- PT Agent 5: Cross-city (忠孝橋 -> 信義橋) -->
+	<person id="pt_agent_05">
+		<plan selected="yes">
+			<activity type="home" x="300464.12" y="2615762.94" end_time="07:15:00"/>
+			<leg mode="pt"/>
+			<activity type="work" x="300240.84" y="2614237.20" end_time="17:15:00"/>
+			<leg mode="pt"/>
+			<activity type="home" x="300464.12" y="2615762.94"/>
+		</plan>
+	</person>
+
+	<!-- Car Agent 1: Short trip -->
+	<person id="car_agent_01">
+		<plan selected="yes">
+			<activity type="home" x="290263.62" y="2782083.89" end_time="08:30:00"/>
+			<leg mode="pt"/>
+			<activity type="work" x="290529.54" y="2780137.41" end_time="18:30:00"/>
+			<leg mode="pt"/>
+			<activity type="home" x="290263.62" y="2782083.89"/>
+		</plan>
+	</person>
+
+	<!-- Car Agent 2: Medium trip -->
+	<person id="car_agent_02">
+		<plan selected="yes">
+			<activity type="home" x="290172.52" y="2781181.98" end_time="07:45:00"/>
+			<leg mode="pt"/>
+			<activity type="work" x="290435.34" y="2780278.91" end_time="17:45:00"/>
+			<leg mode="pt"/>
+			<activity type="home" x="290172.52" y="2781181.98"/>
+		</plan>
+	</person>
+
+	<!-- Walk Agent 1: Very short trip -->
+	<person id="walk_agent_01">
+		<plan selected="yes">
+			<activity type="home" x="290170.63" y="2781138.78" end_time="08:45:00"/>
+			<leg mode="walk"/>
+			<activity type="work" x="290177.32" y="2780920.59" end_time="12:00:00"/>
+			<leg mode="walk"/>
+			<activity type="home" x="290170.63" y="2781138.78"/>
+		</plan>
+	</person>
+
+	<!-- Mixed Mode Agent 1: PT morning, car evening -->
+	<person id="mixed_agent_01">
+		<plan selected="yes">
+			<activity type="home" x="304403.51" y="2766071.46" end_time="06:00:00"/>
+			<leg mode="pt"/>
+			<activity type="work" x="304831.98" y="2763155.91" end_time="14:00:00"/>
+			<leg mode="pt"/>
+			<activity type="home" x="304403.51" y="2766071.46"/>
+		</plan>
+	</person>
+
+	<!-- Mixed Mode Agent 2: PT only (simplified) -->
+	<person id="mixed_agent_02">
+		<plan selected="yes">
+			<activity type="home" x="304403.51" y="2766071.46" end_time="08:00:00"/>
+			<leg mode="pt"/>
+			<activity type="work" x="304831.98" y="2763155.91" end_time="18:00:00"/>
+			<leg mode="pt"/>
+			<activity type="home" x="304403.51" y="2766071.46"/>
+		</plan>
+	</person>
+
+</population>

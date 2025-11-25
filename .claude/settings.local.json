@@ -90,7 +90,15 @@
       "Bash(org.matsim.pt2matsim.run.CreateDefaultPTMapperConfig )",
       "Bash(5000_disatar/output_test/ptmapper-config.xml)",
       "Bash(org.matsim.pt2matsim.run.PublicTransitMapper )",
-      "Bash(ptmapper-config.xml)"
+      "Bash(ptmapper-config.xml)",
+      "Bash(pip3 install:*)",
+      "Bash(ps:*)",
+      "Bash(ls:*)",
+      "Bash(top:*)",
+      "Bash(git -C /Users/ro9air/matsim-example-project log --oneline -20 -- 5000_disatar/*)",
+      "Bash(xargs basename:*)",
+      "Bash(lsof:*)",
+      "Bash(pwdx:*)"
     ],
     "deny": [],
     "ask": []

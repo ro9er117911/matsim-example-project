@@ -1,4 +1,21 @@
 {
     "java.configuration.updateBuildConfiguration": "automatic",
-    "java.compile.nullAnalysis.mode": "automatic"
+    "java.compile.nullAnalysis.mode": "automatic",
+
+    "files.exclude": {
+        "**/target/**": true
+    },
+
+    "search.exclude": {
+
+        "**/target/**": true,
+        "**/*.xml.gz": true
+    },
+
+    "files.watcherExclude": {
+        "**/target/**": true,
+        "**/*.log": true
+    },
+
+    "files.maxMemoryForLargeFilesMB": 512
 }

@@ -98,7 +98,11 @@
       "Bash(git -C /Users/ro9air/matsim-example-project log --oneline -20 -- 5000_disatar/*)",
       "Bash(xargs basename:*)",
       "Bash(lsof:*)",
-      "Bash(pwdx:*)"
+      "Bash(pwdx:*)",
+      "Bash(git rm:*)",
+      "Bash(while read f)",
+      "Bash(do [ -f \"$f\" ])",
+      "Bash(xargs ls:*)"
     ],
     "deny": [],
     "ask": []

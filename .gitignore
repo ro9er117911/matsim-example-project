@@ -5,12 +5,19 @@ pt2matsim/out_v0/**       # 舊版輸出
 pt2matsim/output_v1/**    # pt2matsim 輸出日誌
 pt2matsim/output_v2/**    # pt2matsim 輸出 v2
 output/**                 # MATSim run outputs
-output_transfer/**        # Transfer outputs
+output_*/**               # Any output directories
 test_output_pt_only/**    # Test outputs
 scenarios/*/output/**     # Scenario-specific outputs
-scenarios/equil/forVia/** # Via export outputs
-scenarios/equil/forVia_filtered/** # Filtered Via exports
+scenarios/**/output_*/**  # Any output directories in scenarios
+scenarios/**/forVia/**    # Via export outputs
+scenarios/**/forVia_filtered/** # Filtered Via exports
 test/output/**            # Test outputs
+*.backup.*                # Backup files
+
+# 忽略大型場景檔案（保留小型測試檔案）
+scenarios/**/population_*.xml
+scenarios/**/population.xml.gz
+scenarios/**/network-with-pt.xml
 *.geojson
 *.zip
 *.7z
@@ -22,6 +29,44 @@ test/output/**            # Test outputs
 *.log                     # 日誌檔案
 *.pyc                     # Python compiled files
 __pycache__/              # Python cache
+
+# === 5000_disatar 專案：忽略大型生成檔案 ===
+# 忽略所有網路和排程的 XML 檔案（這些都是生成的大檔案）
+5000_disatar/**/networks/*.xml
+5000_disatar/**/networks/*.xml.gz
+5000_disatar/**/schedules/**/*.xml
+5000_disatar/**/schedules/**/*.xml.gz
+5000_disatar/**/population/*.xml
+5000_disatar/**/population/*.xml.gz
+5000_disatar/**/logs/**
+5000_disatar/**/output/**
+5000_disatar/04_archived_experiments/**
+
+# 保留小型配置檔案
+!5000_disatar/**/configs/*.xml
+
+# 忽略原始 OSM 資料（很大）
+5000_disatar/01_raw_data/osm/*.osm
+5000_disatar/01_raw_data/osm/*.pbf
+
+# 忽略大型 ABM 資料檔案
+5000_disatar/01_raw_data/agent_abm/*.json
+5000_disatar/01_raw_data/agent_abm/*.parquet
+
+# 忽略大型 GTFS 檔案（shapes, stop_times, calendar 通常很大）
+5000_disatar/01_raw_data/gtfs_original/**/shapes.txt
+5000_disatar/01_raw_data/gtfs_original/**/stop_times.txt
+5000_disatar/01_raw_data/gtfs_original/**/calendar.txt
+5000_disatar/01_raw_data/gtfs_clipped/**/shapes.txt
+5000_disatar/01_raw_data/gtfs_clipped/**/stop_times.txt
+5000_disatar/01_raw_data/gtfs_clipped/**/stop_times.original*
+5000_disatar/01_raw_data/gtfs_clipped/**/calendar.txt
+5000_disatar/01_raw_data/gtfs_test/**/calendar.txt
+5000_disatar/01_raw_data/gtfs_test/**/shapes.txt
+5000_disatar/01_raw_data/gtfs_test/**/stop_times.txt
+
+# 只保留小型 GTFS 元資料檔案（routes, agency, trips, stops）
+
 # 可保留必要的小型設定檔（視情況白名單）
 # !pt2matsim/data/README.md
 !pt2matsim/work/pt2matsim-25.8-shaded.jar  # 保留這個必要的工具

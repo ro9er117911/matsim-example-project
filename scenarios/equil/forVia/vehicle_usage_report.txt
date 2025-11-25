@@ -1,0 +1,23 @@
+======================================================================
+VEHICLE FILTERING REPORT
+======================================================================
+
+Total vehicles defined:        15445
+Vehicles used by agents:       8
+Vehicles filtered out:         15437
+Compression ratio:             99.9%
+
+AGENT-USED VEHICLES:
+----------------------------------------------------------------------
+Vehicle ID                     Mode       Agents   Time Range
+----------------------------------------------------------------------
+bus_veh_22_bus                 unknown    1        7:15:14 - 7:15:14
+metro_veh_5966_subway          subway     1        7:31:35 - 7:31:35
+metro_veh_6255_subway          subway     1        14:01:35 - 14:01:35
+metro_veh_6385_subway          subway     1        17:00:55 - 17:00:55
+metro_veh_6433_subway          subway     1        18:01:35 - 18:01:35
+metro_veh_6843_subway          subway     1        6:01:26 - 6:01:26
+metro_veh_6932_subway          subway     1        8:01:26 - 8:01:26
+metro_veh_7350_subway          subway     1        17:30:48 - 17:30:48
+
+======================================================================

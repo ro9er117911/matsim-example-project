@@ -1,0 +1,9 @@
+vehicle_id,mode,first_use_time_s,last_use_time_s,first_use_time,last_use_time,agent_count
+bus_veh_22_bus,unknown,26114,26114,7:15:14,7:15:14,1
+metro_veh_5966_subway,subway,27095,27095,7:31:35,7:31:35,1
+metro_veh_6255_subway,subway,50495,50495,14:01:35,14:01:35,1
+metro_veh_6385_subway,subway,61255,61255,17:00:55,17:00:55,1
+metro_veh_6433_subway,subway,64895,64895,18:01:35,18:01:35,1
+metro_veh_6843_subway,subway,21686,21686,6:01:26,6:01:26,1
+metro_veh_6932_subway,subway,28886,28886,8:01:26,8:01:26,1
+metro_veh_7350_subway,subway,63048,63048,17:30:48,17:30:48,1

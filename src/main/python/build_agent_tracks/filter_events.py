@@ -7,6 +7,7 @@ from __future__ import annotations
 import typing as T
 import xml.etree.ElementTree as ET
 from pathlib import Path
+import gzip
 
 from .utils import open_maybe_gz
 
@@ -17,27 +18,31 @@ def filter_events_by_agents(
     agent_ids: set[str],
     vehicle_ids: set[str] | None = None,
     time_ranges: dict[tuple[str, str], list[tuple[int, int]]] | None = None,
+    gzip_output: bool = False,
 ) -> int:
     """
     Filter events XML to keep only events involving specified agents and/or vehicles.
 
     Processes PersonEntersVehicle, PersonLeavesVehicle, vehicle traffic events, and other events.
     Optionally filters vehicle events to specific time ranges when agents use them.
-    Outputs filtered events as XML file.
+    Outputs filtered events as XML file (optionally gzip compressed).
 
     Args:
         input_events_path: Path to input events.xml(.gz)
-        output_events_path: Path to output events.xml (will be created/overwritten)
+        output_events_path: Path to output events.xml (will be created/overwritten).
+                            If gzip_output is True and the path does not end with ".gz",
+                            the suffix is appended automatically.
         agent_ids: Set of agent IDs to keep
         vehicle_ids: Set of vehicle IDs to keep (optional, for including vehicle trajectory events)
         time_ranges: Optional dict {(agent_id, vehicle_id): [(enter_s, leave_s), ...]}
                     If provided, vehicle events outside these ranges are filtered out
+        gzip_output: Compress the output as gzip (.gz)
 
     Returns:
         Number of events written to output file
     """
     input_path = str(input_events_path)
-    output_path = str(output_events_path)
+    output_path = Path(output_events_path)
 
     if not Path(input_path).exists():
         raise FileNotFoundError(f"Input events file not found: {input_path}")
@@ -54,6 +59,14 @@ def filter_events_by_agents(
 
     if time_ranges is None:
         time_ranges = {}
+
+    # Normalize output path and compression flag
+    output_is_gzip = gzip_output or str(output_path).endswith(".gz")
+    if output_is_gzip and not str(output_path).endswith(".gz"):
+        output_path = output_path.with_name(output_path.name + ".gz")
+
+    # Ensure parent directory exists for direct function use
+    output_path.parent.mkdir(parents=True, exist_ok=True)
 
     def is_event_in_timerange(vehicle_id: str, time_s: int) -> bool:
         """Check if vehicle event is within allowed time ranges for any agent."""
@@ -112,7 +125,11 @@ def filter_events_by_agents(
         # Write output XML
         output_tree = ET.ElementTree(output_root)
         ET.indent(output_tree, space="  ")  # Pretty print (Python 3.9+)
-        output_tree.write(output_path, encoding="utf-8", xml_declaration=True)
+        if output_is_gzip:
+            with gzip.open(output_path, "wb") as f:
+                output_tree.write(f, encoding="utf-8", xml_declaration=True)
+        else:
+            output_tree.write(str(output_path), encoding="utf-8", xml_declaration=True)
 
         print(f"Events filtering complete:")
         print(f"  Input: {input_path}")
@@ -135,6 +152,7 @@ def filter_events_for_via(
     output_dir: T.Union[str, Path],
     agent_ids: set[str],
     vehicle_ids: set[str] | None = None,
+    gzip_output: bool = True,
 ) -> str:
     """
     Convenience function to filter events and save to output directory.
@@ -144,6 +162,7 @@ def filter_events_for_via(
         output_dir: Output directory
         agent_ids: Set of agent IDs to keep
         vehicle_ids: Set of vehicle IDs to keep (optional, for vehicle trajectory events)
+        gzip_output: Compress the output as gzip (.gz). Defaults to True for Via export.
 
     Returns:
         Path to output events file
@@ -151,9 +170,16 @@ def filter_events_for_via(
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    output_path = output_dir / "output_events.xml"
+    output_name = "output_events.xml.gz" if gzip_output else "output_events.xml"
+    output_path = output_dir / output_name
 
-    filter_events_by_agents(input_events_path, output_path, agent_ids, vehicle_ids=vehicle_ids)
+    filter_events_by_agents(
+        input_events_path,
+        output_path,
+        agent_ids,
+        vehicle_ids=vehicle_ids,
+        gzip_output=gzip_output,
+    )
 
     return str(output_path)
 
@@ -164,6 +190,7 @@ def filter_events_for_via_with_timeranges(
     agent_ids: set[str],
     vehicle_ids: set[str] | None = None,
     time_ranges: dict[tuple[str, str], list[tuple[int, int]]] | None = None,
+    gzip_output: bool = True,
 ) -> str:
     """
     Filter events with fine-grained time range filtering for Via platform.
@@ -178,6 +205,7 @@ def filter_events_for_via_with_timeranges(
         vehicle_ids: Set of vehicle IDs to keep (optional)
         time_ranges: Dict {(agent_id, vehicle_id): [(enter_s, leave_s), ...]}
                     If provided, vehicle events outside these ranges are filtered out
+        gzip_output: Compress the output as gzip (.gz). Defaults to True for Via export.
 
     Returns:
         Path to output events file
@@ -185,7 +213,8 @@ def filter_events_for_via_with_timeranges(
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    output_path = output_dir / "output_events.xml"
+    output_name = "output_events.xml.gz" if gzip_output else "output_events.xml"
+    output_path = output_dir / output_name
 
     filter_events_by_agents(
         input_events_path,
@@ -193,6 +222,7 @@ def filter_events_for_via_with_timeranges(
         agent_ids,
         vehicle_ids=vehicle_ids,
         time_ranges=time_ranges,
+        gzip_output=gzip_output,
     )
 
     return str(output_path)

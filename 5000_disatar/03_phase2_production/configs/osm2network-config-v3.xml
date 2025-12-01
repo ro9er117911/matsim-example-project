@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
+<config>
+	<module name="global">
+		<param name="coordinateSystem" value="EPSG:3826"/>
+		<param name="numberOfThreads" value="8"/>
+	</module>
+
+	<module name="OsmConverter">
+		<!-- Input OSM file -->
+		<param name="osmFile" value="/Users/ro9air/matsim-example-project/5000_disatar/01_raw_data/osm/disaster_bbox.osm"/>
+
+		<!-- Output coordinate system (Taiwan TWD97) -->
+		<param name="outputCoordinateSystem" value="EPSG:3826"/>
+
+		<!-- Output network file -->
+		<param name="outputNetworkFile" value="/Users/ro9air/matsim-example-project/5000_disatar/03_phase2_production/networks/network_v3.xml"/>
+
+		<!-- CRITICAL: Enable footpaths/walkways to increase network density -->
+		<param name="keepPaths" value="true"/>
+
+		<!-- Reduce max link length to create more granular network -->
+		<param name="maxLinkLength" value="75.0"/>
+
+		<!-- Scale max speed to match real-world conditions -->
+		<param name="scaleMaxSpeed" value="true"/>
+
+		<!-- Keep all ways with public transit tags -->
+		<param name="keepWaysWithPublicTransit" value="true"/>
+
+		<!-- Keep OSM tags as link attributes for debugging -->
+		<param name="keepTagsAsAttributes" value="true"/>
+	</module>
+</config>

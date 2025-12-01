@@ -8,8 +8,7 @@
 
     "search.exclude": {
 
-        "**/target/**": true,
-        "**/*.xml.gz": true
+        "**/target/**": true
     },
 
     "files.watcherExclude": {

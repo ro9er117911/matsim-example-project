@@ -62,8 +62,11 @@ def build_tracks_from_legs(
     """
     pts = []
     include_modes = set(include_modes) if include_modes else DEFAULT_INCLUDED_MODES
+    # Progress tracking by leg group
+    total_groups = len(legs_df[["person_id", "leg_index"]].drop_duplicates())
+    report_every = max(1, total_groups // 20)  # ~5% steps
 
-    for (pid, _), group in legs_df.groupby(["person_id", "leg_index"], sort=False):
+    for idx, ((pid, _), group) in enumerate(legs_df.groupby(["person_id", "leg_index"], sort=False), start=1):
         for _, row in group.iterrows():
             if row["start_time_s"] is None or row["end_time_s"] is None:
                 continue
@@ -101,6 +104,9 @@ def build_tracks_from_legs(
                     "pt_transitRouteId": row.get("pt_transitRouteId"),
                     "pt_transportMode": pt_mode,
                 })
+
+        if idx % report_every == 0:
+            print(f"  [tracks] processed {idx}/{total_groups} leg-groups ({idx/total_groups:.1%})", flush=True)
 
     dfp = pd.DataFrame(pts)
     if not dfp.empty:

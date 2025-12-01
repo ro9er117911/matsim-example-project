@@ -27,7 +27,7 @@
 
   <module name="controller">
     <param name="outputDirectory" value="./output_metro_0300_0618_5000" />
-    <param name="lastIteration" value="20" />
+    <param name="lastIteration" value="2" />
     <param name="writeEventsInterval" value="10" />
     <param name="writePlansInterval" value="10" />
     <param name="overwriteFiles" value="deleteDirectoryIfExists" />

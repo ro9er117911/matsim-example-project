@@ -527,7 +527,7 @@ def export_to_json(agent_data: List[Dict], output_path: str):
 
 def export_to_parquet(agent_data: List[Dict], output_path: str):
     """
-    Export agent trajectories to Parquet format.
+    Export agent trajectories to Parquet format with GeoArrow metadata.
 
     Args:
         agent_data: List of agent trajectory dictionaries
@@ -538,35 +538,76 @@ def export_to_parquet(agent_data: List[Dict], output_path: str):
     # Ensure output directory exists
     Path(output_path).parent.mkdir(parents=True, exist_ok=True)
 
-    # Transform to DataFrame-compatible format
-    records = []
-    for agent in agent_data:
-        agent_id = agent['agent_id']
+    # Prepare arrays
+    agent_ids = []
+    modes_list = []
+    timestamps_list = []
+    geometry_list = []
 
-        # Extract modes and encode to integers
-        mode_codes = np.array([
+    for agent in agent_data:
+        agent_ids.append(agent['agent_id'])
+
+        # Modes
+        m_codes = [
             MODE_ENCODING.get(p['mode'].lower(), (3, "PT"))[0]
             for p in agent['weekday_path']
-        ], dtype=np.int8)
+        ]
+        modes_list.append(m_codes)
 
-        # Extract timestamps
-        timestamps_arr = np.array(agent['weekday_timestamp'], dtype=np.int32)
+        # Timestamps
+        t_stamps = agent['weekday_timestamp']
+        timestamps_list.append(t_stamps)
 
-        # Extract geometry (array of dicts)
-        geometry = np.array([
-            {'x': p['position'][0], 'y': p['position'][1]}
-            for p in agent['weekday_path']
-        ])
+        # Geometry: list of structs
+        geo_points = []
+        for p in agent['weekday_path']:
+            geo_points.append({'x': p['position'][0], 'y': p['position'][1]})
+        geometry_list.append(geo_points)
 
-        records.append({
-            'agent_id': agent_id,
-            'modes': mode_codes,
-            'timestamps': timestamps_arr,
-            'geometry': geometry
-        })
+    # Build PyArrow Arrays
+    agent_id_array = pa.array(agent_ids, type=pa.int64())
+    modes_array = pa.array(modes_list, type=pa.list_(pa.int8()))
+    timestamps_array = pa.array(timestamps_list, type=pa.list_(pa.int32()))
 
-    df = pd.DataFrame(records)
-    df.to_parquet(output_path, engine='pyarrow', compression='snappy')
+    # Geometry Array construction with specific non-null fields for GeoArrow
+    # Inner struct: x, y (both non-null)
+    point_struct_type = pa.struct([
+        pa.field("x", pa.float64(), nullable=False),
+        pa.field("y", pa.float64(), nullable=False)
+    ])
+    
+    # List of points (elements non-null)
+    geometry_array = pa.array(geometry_list, type=pa.list_(pa.field("element", point_struct_type, nullable=False)))
+
+    # Define Metadata for GeoArrow
+    # WGS84 PROJJSON
+    crs_metadata = '{"crs": {"$schema": "https://proj.org/schemas/v0.7/projjson.schema.json", "type": "GeographicCRS", "name": "WGS 84", "datum_ensemble": {"name": "World Geodetic System 1984 ensemble", "members": [{"name": "World Geodetic System 1984 (Transit)", "id": {"authority": "EPSG", "code": 1166}}, {"name": "World Geodetic System 1984 (G730)", "id": {"authority": "EPSG", "code": 1152}}, {"name": "World Geodetic System 1984 (G873)", "id": {"authority": "EPSG", "code": 1153}}, {"name": "World Geodetic System 1984 (G1150)", "id": {"authority": "EPSG", "code": 1154}}, {"name": "World Geodetic System 1984 (G1674)", "id": {"authority": "EPSG", "code": 1155}}, {"name": "World Geodetic System 1984 (G1762)", "id": {"authority": "EPSG", "code": 1156}}, {"name": "World Geodetic System 1984 (G2139)", "id": {"authority": "EPSG", "code": 1309}}, {"name": "World Geodetic System 1984 (G2296)", "id": {"authority": "EPSG", "code": 1383}}], "ellipsoid": {"name": "WGS 84", "semi_major_axis": 6378137, "inverse_flattening": 298.257223563}, "accuracy": "2.0", "id": {"authority": "EPSG", "code": 6326}}, "coordinate_system": {"subtype": "ellipsoidal", "axis": [{"name": "Geodetic latitude", "abbreviation": "Lat", "direction": "north", "unit": "degree"}, {"name": "Geodetic longitude", "abbreviation": "Lon", "direction": "east", "unit": "degree"}]}, "scope": "Horizontal component of 3D system.", "area": "World.", "bbox": {"south_latitude": -90, "west_longitude": -180, "north_latitude": 90, "east_longitude": 180}, "id": {"authority": "EPSG", "code": 4326}}, "crs_type": "projjson"}'
+
+    geometry_field = pa.field(
+        "geometry", 
+        geometry_array.type,
+        metadata={
+            b'ARROW:extension:name': b'geoarrow.linestring',
+            b'ARROW:extension:metadata': crs_metadata.encode('utf-8')
+        }
+    )
+
+    # Construct Schema
+    schema = pa.schema([
+        pa.field("agent_id", pa.int64()),
+        pa.field("modes", pa.list_(pa.int8())),
+        pa.field("timestamps", pa.list_(pa.int32())),
+        geometry_field
+    ])
+
+    # Create Table
+    table = pa.Table.from_arrays(
+        [agent_id_array, modes_array, timestamps_array, geometry_array],
+        schema=schema
+    )
+
+    # Write Parquet
+    pq.write_table(table, output_path, compression='snappy')
 
     # Report file size
     file_size = Path(output_path).stat().st_size

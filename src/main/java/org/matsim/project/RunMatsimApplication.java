@@ -24,6 +24,7 @@ import org.matsim.application.MATSimApplication;
 import org.matsim.core.config.Config;
 import org.matsim.core.controler.Controler;
 import org.matsim.core.controler.OutputDirectoryHierarchy.OverwriteFileSetting;
+import org.matsim.simwrapper.SimWrapperModule;
 
 /**
  * @author nagel
@@ -56,6 +57,21 @@ public class RunMatsimApplication extends MATSimApplication {
 	protected void prepareScenario(Scenario scenario) {
 
 		// possibly modify scenario here
+		// Sanitize network attributes for Avro/SimWrapper compatibility
+		for (org.matsim.api.core.v01.network.Link link : scenario.getNetwork().getLinks().values()) {
+			for (String key : link.getAttributes().getAsMap().keySet().toArray(new String[0])) {
+				if (key.contains(":")) {
+					link.getAttributes().removeAttribute(key);
+				}
+			}
+		}
+		for (org.matsim.api.core.v01.network.Node node : scenario.getNetwork().getNodes().values()) {
+			for (String key : node.getAttributes().getAsMap().keySet().toArray(new String[0])) {
+				if (key.contains(":")) {
+					node.getAttributes().removeAttribute(key);
+				}
+			}
+		}
 
 		// ---
 
@@ -67,7 +83,7 @@ public class RunMatsimApplication extends MATSimApplication {
 		// possibly modify controler here
 
 //		controler.addOverridingModule( new OTFVisLiveModule() ) ;
-//		controler.addOverridingModule( new SimWrapperModule() ) ;
+		controler.addOverridingModule( new SimWrapperModule() ) ;
 
 
 		// ---

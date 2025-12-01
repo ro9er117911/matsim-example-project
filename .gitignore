@@ -4,7 +4,8 @@ pt2matsim/out/**          # 轉檔/模擬輸出
 pt2matsim/out_v0/**       # 舊版輸出
 pt2matsim/output_v1/**    # pt2matsim 輸出日誌
 pt2matsim/output_v2/**    # pt2matsim 輸出 v2
-output/**                 # MATSim run outputs
+
+output/iters/              # MATSim run iterations
 output_*/**               # Any output directories
 test_output_pt_only/**    # Test outputs
 scenarios/*/output/**     # Scenario-specific outputs

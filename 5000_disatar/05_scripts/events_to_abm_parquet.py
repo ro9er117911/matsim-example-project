@@ -26,6 +26,7 @@ from events_to_json_parquet import (
     parse_events_xml,
     parse_network_xml,
     reconstruct_person_trajectory,
+    export_to_parquet,  # Import the unified exporter
 )
 
 
@@ -89,65 +90,6 @@ def export_json(agent_data: List[Dict], json_path: Path):
         json.dump(agent_data, f, ensure_ascii=False, indent=2)
 
 
-def export_parquet(agent_data: List[Dict], parquet_path: Path):
-    """
-    Write Parquet in the template schema:
-      agent_id: int64
-      modes: list<int8>
-      timestamps: list<int32>
-      geometry: list<struct<x: double, y: double>>
-    """
-    parquet_path.parent.mkdir(parents=True, exist_ok=True)
-
-    agent_ids = []
-    modes_col = []
-    timestamps_col = []
-    geometry_col = []
-
-    for rec in agent_data:
-        agent_ids.append(int(rec["agent_id"]))
-        mode_codes = [
-            MODE_ENCODING.get(str(mode).lower(), (3, "PT"))[0]
-            for mode in rec["modes"]
-        ]
-        modes_col.append(mode_codes)
-        timestamps_col.append([int(t) for t in rec["timestamps"]])
-        coords = [{"x": float(lat), "y": float(lon)} for lat, lon in rec["positions"]]
-        geometry_col.append(coords)
-
-    geometry_type = pa.list_(
-        pa.struct(
-            [
-                pa.field("x", pa.float64(), nullable=False),
-                pa.field("y", pa.float64(), nullable=False),
-            ]
-        )
-    )
-
-    schema = pa.schema(
-        [
-            pa.field("agent_id", pa.int64()),
-            pa.field("modes", pa.list_(pa.int8())),
-            pa.field("timestamps", pa.list_(pa.int32())),
-            pa.field("geometry", geometry_type),
-        ]
-    )
-
-    print("Parquet schema to be written:")
-    print(schema)
-
-    table = pa.Table.from_arrays(
-        [
-            pa.array(agent_ids, type=pa.int64()),
-            pa.array(modes_col, type=pa.list_(pa.int8())),
-            pa.array(timestamps_col, type=pa.list_(pa.int32())),
-            pa.array(geometry_col, type=geometry_type),
-        ],
-        schema=schema,
-    )
-    pq.write_table(table, parquet_path, compression="snappy")
-
-
 # --------------------------------------------------------------------------- #
 # CLI
 # --------------------------------------------------------------------------- #
@@ -178,26 +120,29 @@ def main():
     print(f"Parquet: {parquet_path}")
 
     print("\n[1/2] Reconstructing trajectories...")
-    agent_data = build_agent_data(events_path, network_path)
-    print(f"  Got {len(agent_data)} agents")
+    raw_agent_data = build_agent_data(events_path, network_path)
+    print(f"  Got {len(raw_agent_data)} agents")
 
     print("\n[2/2] Writing outputs...")
-    export_json(
-        [
-            {
-                "agent_id": rec["agent_id"],
-                "weekday_path": [
-                    {"position": pos, "mode": mode}
-                    for pos, mode in zip(rec["positions"], rec["modes"])
-                ],
-                "weekday_timestamp": rec["timestamps"],
-            }
-            for rec in agent_data
-        ],
-        json_path,
-    )
+    
+    # Transform to unified format expected by exporters
+    formatted_agent_data = [
+        {
+            "agent_id": rec["agent_id"],
+            "weekday_path": [
+                {"position": pos, "mode": mode}
+                for pos, mode in zip(rec["positions"], rec["modes"])
+            ],
+            "weekday_timestamp": rec["timestamps"],
+        }
+        for rec in raw_agent_data
+    ]
 
-    export_parquet(agent_data, parquet_path)
+    export_json(formatted_agent_data, json_path)
+    
+    # Use the unified exporter from events_to_json_parquet.py
+    export_to_parquet(formatted_agent_data, str(parquet_path))
+    
     print("  ✓ JSON and Parquet written")
 
     print("\nDone.")

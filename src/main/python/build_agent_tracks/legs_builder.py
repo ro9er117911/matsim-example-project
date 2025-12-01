@@ -41,7 +41,10 @@ def build_legs_table(
     route_modes = route_modes or {}
     line_modes = line_modes or {}
 
-    for p in plans:
+    total_plans = len(plans)
+    report_every = max(1, total_plans // 20)  # ~5% steps
+
+    for idx, p in enumerate(plans, start=1):
         seq = 0
         last_act_xy = None
 
@@ -113,6 +116,9 @@ def build_legs_table(
                     )
 
                 seq += 1
+
+        if idx % report_every == 0:
+            print(f"  [legs] processed {idx}/{total_plans} persons ({idx/total_plans:.1%})", flush=True)
 
     df = pd.DataFrame(rows)
     if not df.empty:

@@ -103,11 +103,14 @@ def match_activity_to_tracks(
     df["activity_dist_km"] = None
     df["activity_match_type"] = None
 
-    for idx, row in df.iterrows():
-        person_id = row["person_id"]
-        time_s = row["time_s"]
-        x = row["x"]
-        y = row["y"]
+    total = len(df)
+    report_every = max(1, total // 20)  # ~5% steps
+
+    for i, row in enumerate(df.itertuples(index=True), start=1):
+        person_id = row.person_id
+        time_s = row.time_s
+        x = row.x
+        y = row.y
 
         if person_id not in activities_by_person:
             continue
@@ -117,11 +120,14 @@ def match_activity_to_tracks(
 
         if best_match:
             act_info, match_type, dist_km = best_match
-            df.at[idx, "activity_type"] = act_info.type
-            df.at[idx, "activity_sequence"] = act_info.sequence
-            df.at[idx, "activity_link"] = act_info.link
-            df.at[idx, "activity_dist_km"] = dist_km
-            df.at[idx, "activity_match_type"] = match_type
+            df.at[row.Index, "activity_type"] = act_info.type
+            df.at[row.Index, "activity_sequence"] = act_info.sequence
+            df.at[row.Index, "activity_link"] = act_info.link
+            df.at[row.Index, "activity_dist_km"] = dist_km
+            df.at[row.Index, "activity_match_type"] = match_type
+
+        if i % report_every == 0:
+            print(f"  [activity-match] processed {i}/{total} points ({i/total:.1%})", flush=True)
 
     return df
 

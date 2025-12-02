@@ -1,11 +1,11 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
 <config>
 
   <module name="global">
     <param name="randomSeed" value="4711" />
     <param name="coordinateSystem" value="EPSG:3826" />
-    <param name="numberOfThreads" value="4" />
+    <param name="numberOfThreads" value="12" />
   </module>
 
   <module name="network">
@@ -13,10 +13,9 @@
   </module>
 
   <module name="plans">
-    <param name="inputPlansFile" value="population_500.xml.gz" />
+    <param name="inputPlansFile" value="population_100000.xml.gz" />
   </module>
 
-  <!-- 啟用 PT 模組 -->
   <module name="transit">
     <param name="useTransit" value="true" />
     <param name="transitScheduleFile" value="transitSchedule-mapped-metro-v7.xml.gz" />
@@ -26,14 +25,13 @@
   </module>
 
   <module name="controller">
-    <param name="outputDirectory" value="./output_metro_0300_0618_500" />
-    <param name="lastIteration" value="2" />
-    <param name="writeEventsInterval" value="10" />
-    <param name="writePlansInterval" value="10" />
+    <param name="outputDirectory" value="./100000_output_v3" />
+    <param name="lastIteration" value="100" />
+    <param name="writeEventsInterval" value="50" />
+    <param name="writePlansInterval" value="50" />
     <param name="overwriteFiles" value="deleteDirectoryIfExists" />
   </module>
 
-  <!-- qsim：car 在路網上模擬，PT 也進入 mobsim -->
   <module name="qsim">
     <param name="mainMode" value="car" />
     <param name="vehiclesSource" value="defaultVehicle" />
@@ -41,19 +39,17 @@
     <param name="storageCapacityFactor" value="1.0" />
     <param name="startTime" value="03:00:00" />
     <param name="endTime" value="06:30:00" />
-    <param name="stuckTime" value="3600.0" />
+    <param name="stuckTime" value="7200.0" />
     <param name="removeStuckVehicles" value="true" />
-    <param name="numberOfThreads" value="4" />
+    <param name="numberOfThreads" value="12" />
   </module>
 
-  <!-- routing：car 使用網路路由，PT 由 SwissRailRaptor 處理，walk 使用 teleportation -->
   <module name="routing">
     <param name="networkModes" value="car" />
     <param name="accessEgressType" value="accessEgressModeToLink" />
     <param name="clearDefaultTeleportedModeParams" value="true" />
     <param name="networkRouteConsistencyCheck" value="disable" />
 
-    <!-- Walk 使用 teleportation（access/egress walking） -->
     <parameterset type="teleportedModeParameters">
       <param name="mode" value="walk" />
       <param name="teleportedModeSpeed" value="1.388888888" />
@@ -61,25 +57,18 @@
     </parameterset>
   </module>
 
-  <!-- SwissRailRaptor 處理 PT 路由 -->
   <module name="swissRailRaptor">
-    <!-- 禁用 intermodal：人口計畫中沒有 access_walk/egress_walk legs -->
     <param name="useIntermodalAccessEgress" value="false" />
-
-    <!-- 零轉乘成本 -->
     <param name="transferPenaltyBaseCost" value="0.0" />
     <param name="transferPenaltyCostPerTravelTimeHour" value="0.0" />
-
-    <!-- 簡單乘客路由不需要模式映射 -->
     <param name="useModeMappingForPassengers" value="false" />
+    <param name="useCapacityConstraints" value="true" />
   </module>
 
   <module name="transitRouter">
-    <!-- 轉乘時間餘裕 -->
     <param name="additionalTransferTime" value="900.0" />
   </module>
 
-  <!-- Scoring 參數：disaster evacuation scenario -->
   <module name="scoring">
     <param name="lateArrival" value="-18" />
     <param name="performing" value="+6" />
@@ -87,31 +76,26 @@
     <parameterset type="scoringParameters">
       <param name="marginalUtilityOfMoney" value="1.0" />
 
-      <!-- Home activity: 在家直到災難發生 (03:00:00) -->
       <parameterset type="activityParams">
         <param name="activityType" value="home" />
         <param name="typicalDuration" value="03:00:00" />
       </parameterset>
 
-      <!-- Evacuation activity: 撤離目的地 -->
       <parameterset type="activityParams">
         <param name="activityType" value="evacuation" />
         <param name="typicalDuration" value="06:00:00" />
       </parameterset>
 
-      <!-- Car mode parameters -->
       <parameterset type="modeParams">
         <param name="mode" value="car" />
         <param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
       </parameterset>
 
-      <!-- PT mode parameters -->
       <parameterset type="modeParams">
         <param name="mode" value="pt" />
         <param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
       </parameterset>
 
-      <!-- Walk mode parameters -->
       <parameterset type="modeParams">
         <param name="mode" value="walk" />
         <param name="marginalUtilityOfTraveling_util_hr" value="0.0" />
@@ -119,18 +103,17 @@
     </parameterset>
   </module>
 
-  <!-- Strategy：災難撤離模式下使用簡單策略 -->
   <module name="replanning">
     <param name="maxAgentPlanMemorySize" value="5" />
 
     <parameterset type="strategysettings">
       <param name="strategyName" value="ChangeExpBeta" />
-      <param name="weight" value="0.9" />
+      <param name="weight" value="0.7" />
     </parameterset>
 
     <parameterset type="strategysettings">
       <param name="strategyName" value="ReRoute" />
-      <param name="weight" value="0.1" />
+      <param name="weight" value="0.3" />
     </parameterset>
   </module>
 

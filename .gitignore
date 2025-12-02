@@ -5,11 +5,11 @@ pt2matsim/out_v0/**       # 舊版輸出
 pt2matsim/output_v1/**    # pt2matsim 輸出日誌
 pt2matsim/output_v2/**    # pt2matsim 輸出 v2
 
-output/iters/              # MATSim run iterations
+output_*/ITERS/              # MATSim run iterations
 output_*/**               # Any output directories
 test_output_pt_only/**    # Test outputs
 scenarios/*/output/**     # Scenario-specific outputs
-scenarios/**/output_*/**  # Any output directories in scenarios
+scenarios/**/output_*/ITERS/  # MATSim run iterations in scenario outputs
 scenarios/**/forVia/**    # Via export outputs
 scenarios/**/forVia_filtered/** # Filtered Via exports
 test/output/**            # Test outputs

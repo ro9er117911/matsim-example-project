@@ -96,6 +96,13 @@
 <!--			jan'21-->
 		</dependency>
 
+		<!-- OSM network reader (for custom highway defaults and modes) -->
+		<dependency>
+			<groupId>org.matsim.contrib</groupId>
+			<artifactId>osm</artifactId>
+			<version>${matsim.version}</version>
+		</dependency>
+
 		<!--some contribs:-->
 		<dependency>
 			<groupId>org.matsim.contrib</groupId>

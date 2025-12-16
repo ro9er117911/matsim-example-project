@@ -162,3 +162,33 @@ forVia*/                 # Via export directories
 # === Specific large population files ===
 scenarios/corridor/**/population_*.xml
 !scenarios/corridor/**/population_test*.xml.gz  # Keep test files
+
+# === Additional Large File Excludes ===
+output/
+**/output/
+**/output_*/
+100000_output_v3_clean/
+pt2matsim/tools/封存.zip
+archive/metro_viz*.html
+5000_disatar/evacuation_test/input/*.osm
+5000_disatar/01_raw_data/osm/*.pbf
+5000_disatar/01_raw_data/osm/*.osm
+5000_disatar/03_phase2_production/networks/*.xml
+5000_disatar/03_phase2_production/schedules/**/*.xml
+5000_disatar/03_phase2_production/logs/**/*.log
+output_metro_0300_0618_5000拷貝/
+output_ideal_iter1000.log
+output_ideal_iter1000/
+logs/
+examples/osm_zero_to_matsim/scenario/output/
+scripts/monitor_resources.sh
+scripts/run_100_agents_simulation.sh
+scripts/run_experiment_100k.sh
+scripts/run_pt_test_with_timeout.sh
+scripts/run_simulation_with_via_export.sh
+scripts/EXPORT_VIA_COMMAND.sh
+
+# Specific large output directories
+scenarios/equil/100000_output_v1/
+scenarios/equil/100000_output_v2/
+scenarios/equil/output_metro_*/

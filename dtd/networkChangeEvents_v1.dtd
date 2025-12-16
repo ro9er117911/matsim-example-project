@@ -1,0 +1,15 @@
+<!ELEMENT networkChangeEvents (networkChangeEvent+)>
+<!ELEMENT networkChangeEvent (link*, freespeed?, capacity?, lanes?)>
+<!ATTLIST networkChangeEvent startTime CDATA #REQUIRED>
+
+<!ELEMENT link EMPTY>
+<!ATTLIST link refId CDATA #REQUIRED>
+
+<!ELEMENT freespeed EMPTY>
+<!ATTLIST freespeed type (scaleFactor|absolute) #REQUIRED value CDATA #REQUIRED>
+
+<!ELEMENT capacity EMPTY>
+<!ATTLIST capacity type (scaleFactor|absolute) #REQUIRED value CDATA #REQUIRED>
+
+<!ELEMENT lanes EMPTY>
+<!ATTLIST lanes type (scaleFactor|absolute) #REQUIRED value CDATA #REQUIRED>

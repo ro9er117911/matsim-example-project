@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  MATSim 車輛定義檔案
+  科學化設定：車輛長度 5.0m (符合 4.5-5m 標準轎車長度)
+-->
+<vehicleDefinitions xmlns="http://www.matsim.org/files/dtd" 
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                    xsi:schemaLocation="http://www.matsim.org/files/dtd http://www.matsim.org/files/dtd/vehicleDefinitions_v2.0.xsd">
+
+    <!-- 標準轎車: 5.0m 長度 -->
+    <vehicleType id="car">
+        <capacity seats="5" standingRoomInPersons="0"/>
+        <length meter="5.0"/>
+        <width meter="1.8"/>
+        <passengerCarEquivalents pce="1.0"/>
+        <networkMode networkMode="car"/>
+        <flowEfficiencyFactor factor="1.0"/>
+    </vehicleType>
+
+    <!-- 預設車輛類型 -->
+    <vehicleType id="defaultVehicleType">
+        <capacity seats="5" standingRoomInPersons="0"/>
+        <length meter="5.0"/>
+        <width meter="1.8"/>
+        <passengerCarEquivalents pce="1.0"/>
+        <flowEfficiencyFactor factor="1.0"/>
+    </vehicleType>
+
+</vehicleDefinitions>

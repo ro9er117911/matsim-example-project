@@ -1,0 +1,127 @@
+2025-12-02T18:21:23,589  INFO org.matsim.core.utils.io.IOUtils:224 Resolved /Users/ro9air/matsim-example-project/./scenarios/equil/config_metro_0300_0618_500_v7.xml to /Users/ro9air/matsim-example-project/./scenarios/equil/config_metro_0300_0618_500_v7.xml
+2025-12-02T18:21:23,593  INFO org.matsim.core.config.Config:461 setting context to [file:/Users/ro9air/matsim-example-project/scenarios/equil/]
+2025-12-02T18:21:23,633  INFO org.hibernate.validator.internal.util.Version:21 HV000001: Hibernate Validator 0.0.1-SNAPSHOT
+2025-12-02T18:21:23,682  INFO org.matsim.core.utils.io.MatsimXmlParser:170 starting to parse xml from url file:/Users/ro9air/matsim-example-project/./scenarios/equil/config_metro_0300_0618_500_v7.xml ...
+2025-12-02T18:21:23,695  INFO org.matsim.core.config.ConfigReader:105 using config_v2-reader
+2025-12-02T18:21:23,695  INFO org.matsim.core.utils.io.MatsimXmlParser:296 Trying to load http://www.matsim.org/files/dtd/config_v2.dtd. In some cases (e.g. network interface up but no connection), this may take a bit.
+2025-12-02T18:21:24,478  INFO org.matsim.core.config.groups.GlobalConfigGroup:99 setting number of threads to: 4
+2025-12-02T18:21:24,490  INFO org.matsim.core.config.groups.ScoringConfigGroup:555 scoring parameters for subpopulation null were just replaced.
+2025-12-02T18:21:24,493  INFO org.matsim.core.config.Config:461 setting context to [file:/Users/ro9air/matsim-example-project/./scenarios/equil/config_metro_0300_0618_500_v7.xml]
+2025-12-02T18:21:24,494  INFO org.matsim.core.config.CommandLine:511 Received 0 positional command line arguments:
+2025-12-02T18:21:24,495  INFO org.matsim.core.config.CommandLine:512    
+2025-12-02T18:21:24,495  INFO org.matsim.core.config.CommandLine:534 Received 0 command line options with 0 prefixes:
+2025-12-02T18:21:24,509  INFO org.matsim.core.scenario.ScenarioLoaderImpl:135 loading network from file:/Users/ro9air/matsim-example-project/scenarios/equil/network-with-pt-metro-v7.xml.gz
+2025-12-02T18:21:24,510  INFO org.matsim.core.utils.io.MatsimXmlParser:170 starting to parse xml from url file:/Users/ro9air/matsim-example-project/scenarios/equil/network-with-pt-metro-v7.xml.gz ...
+2025-12-02T18:21:24,550  INFO org.matsim.core.network.io.MatsimNetworkReader:122 using network_v2-reader.
+2025-12-02T18:21:24,550  INFO org.matsim.core.utils.io.MatsimXmlParser:296 Trying to load http://www.matsim.org/files/dtd/network_v2.dtd. In some cases (e.g. network interface up but no connection), this may take a bit.
+2025-12-02T18:21:24,877  INFO org.matsim.core.network.NetworkImpl:165  node # 1
+2025-12-02T18:21:24,878  INFO org.matsim.core.network.NetworkImpl:165  node # 4
+2025-12-02T18:21:24,880  INFO org.matsim.core.network.NetworkImpl:165  node # 16
+2025-12-02T18:21:24,885  INFO org.matsim.core.network.NetworkImpl:165  node # 64
+2025-12-02T18:21:24,895  INFO org.matsim.core.network.NetworkImpl:165  node # 256
+2025-12-02T18:21:24,910  INFO org.matsim.core.network.NetworkImpl:165  node # 1024
+2025-12-02T18:21:24,925  INFO org.matsim.core.network.NetworkImpl:165  node # 4096
+2025-12-02T18:21:24,959  INFO org.matsim.core.network.NetworkImpl:165  node # 16384
+2025-12-02T18:21:25,045  INFO org.matsim.core.network.NetworkImpl:165  node # 65536
+2025-12-02T18:21:25,333  INFO org.matsim.core.network.NetworkImpl:165  node # 262144
+2025-12-02T18:21:25,352  INFO org.matsim.core.network.NetworkImpl:161  link # 1
+2025-12-02T18:21:25,353  INFO org.matsim.core.network.NetworkImpl:161  link # 4
+2025-12-02T18:21:25,356  INFO org.matsim.core.network.NetworkImpl:161  link # 16
+2025-12-02T18:21:25,362  INFO org.matsim.core.network.NetworkImpl:161  link # 64
+2025-12-02T18:21:25,372  INFO org.matsim.core.network.NetworkImpl:161  link # 256
+2025-12-02T18:21:25,389  INFO org.matsim.core.network.NetworkImpl:161  link # 1024
+2025-12-02T18:21:25,411  WARN org.matsim.api.core.v01.network.Link:121 permlanes=0.5 of link id 10026939000000f may cause problems
+2025-12-02T18:21:25,411  WARN org.matsim.api.core.v01.network.Link:123  Future occurences of this logging statement are suppressed.
+2025-12-02T18:21:25,435  INFO org.matsim.core.network.NetworkImpl:161  link # 4096
+2025-12-02T18:21:25,572  INFO org.matsim.core.network.NetworkImpl:161  link # 16384
+2025-12-02T18:21:25,940  WARN org.matsim.api.core.v01.network.Link:130 length=0.0 of link id 11824053020013f may cause problems
+2025-12-02T18:21:25,940  WARN org.matsim.api.core.v01.network.Link:132  Future occurences of this logging statement are suppressed.
+2025-12-02T18:21:25,941  INFO org.matsim.core.network.NetworkImpl:161  link # 65536
+2025-12-02T18:21:27,049  INFO org.matsim.core.network.NetworkImpl:161  link # 262144
+2025-12-02T18:21:27,960  WARN org.matsim.api.core.v01.network.Link:102 capacity=0.0 of link id 4433397840000f may cause problems
+2025-12-02T18:21:27,960  WARN org.matsim.api.core.v01.network.Link:104  Future occurences of this logging statement are suppressed.
+2025-12-02T18:21:29,308  INFO org.matsim.core.scenario.ScenarioLoaderImpl:172 no facilities file set in config, therefore not loading any facilities.  This is not a problem except if you are using facilities
+2025-12-02T18:21:29,308  INFO org.matsim.core.scenario.ScenarioLoaderImpl:188 no facility-attributes file set in config, not loading any facility attributes
+2025-12-02T18:21:29,308  INFO org.matsim.core.scenario.ScenarioLoaderImpl:196 loading population from file:/Users/ro9air/matsim-example-project/scenarios/equil/population_500.xml.gz
+2025-12-02T18:21:29,311  INFO org.matsim.core.utils.io.MatsimXmlParser:170 starting to parse xml from url file:/Users/ro9air/matsim-example-project/scenarios/equil/population_500.xml.gz ...
+2025-12-02T18:21:29,313  INFO org.matsim.core.population.io.PopulationReader:135 using population_v6-reader.
+2025-12-02T18:21:29,313  INFO org.matsim.core.utils.io.MatsimXmlParser:296 Trying to load http://www.matsim.org/files/dtd/population_v6.dtd. In some cases (e.g. network interface up but no connection), this may take a bit.
+2025-12-02T18:21:29,619  INFO org.matsim.core.population.io.ParallelPopulationReaderMatsimV6:168 Start parallel population reading...
+2025-12-02T18:21:29,627  INFO org.matsim.core.population.PopulationImpl:111  person # 1
+2025-12-02T18:21:29,629  INFO org.matsim.core.population.PopulationImpl:111  person # 4
+2025-12-02T18:21:29,632  INFO org.matsim.core.population.PopulationImpl:111  person # 16
+2025-12-02T18:21:29,638  INFO org.matsim.core.population.PopulationImpl:111  person # 64
+2025-12-02T18:21:29,648  INFO org.matsim.core.population.PopulationImpl:111  person # 256
+2025-12-02T18:21:29,654  INFO org.matsim.core.population.io.ParallelPopulationReaderMatsimV6:238 Finished parallel population reading...
+2025-12-02T18:21:29,655  INFO org.matsim.core.population.PopulationUtils:1145  person # 500
+2025-12-02T18:21:29,655  INFO org.matsim.core.scenario.ScenarioLoaderImpl:244 no person-attributes file set in config, not loading any person attributes
+2025-12-02T18:21:29,655  INFO org.matsim.core.scenario.ScenarioLoaderImpl:258 no households file set in config, not loading households
+2025-12-02T18:21:29,656  INFO org.matsim.core.utils.io.MatsimXmlParser:170 starting to parse xml from url file:/Users/ro9air/matsim-example-project/scenarios/equil/transitSchedule-0300-0618.xml.gz ...
+2025-12-02T18:21:29,658  INFO org.matsim.core.utils.io.MatsimXmlParser:296 Trying to load http://www.matsim.org/files/dtd/transitSchedule_v2.dtd. In some cases (e.g. network interface up but no connection), this may take a bit.
+2025-12-02T18:21:30,146  INFO org.matsim.core.scenario.ScenarioLoaderImpl:329 loading transit vehicles from transitVehicles-0300-0618.xml.gz
+2025-12-02T18:21:30,147  INFO org.matsim.core.utils.io.MatsimXmlParser:170 starting to parse xml from url file:/Users/ro9air/matsim-example-project/scenarios/equil/transitVehicles-0300-0618.xml.gz ...
+2025-12-02T18:21:30,176  INFO org.matsim.core.utils.io.MatsimXmlParser:296 Trying to load http://www.matsim.org/files/dtd/vehicleDefinitions_v2.0.xsd. In some cases (e.g. network interface up but no connection), this may take a bit.
+2025-12-02T18:21:30,879  INFO org.matsim.core.utils.io.MatsimXmlParser:296 Trying to load http://www.matsim.org/files/dtd/matsimCommon.xsd. In some cases (e.g. network interface up but no connection), this may take a bit.
+2025-12-02T18:21:31,275  INFO org.matsim.core.utils.io.MatsimXmlParser:296 Trying to load http://www.matsim.org/files/dtd/vehicleDefinitionsEnumTypes.xsd. In some cases (e.g. network interface up but no connection), this may take a bit.
+2025-12-02T18:21:31,590  INFO org.matsim.vehicles.MatsimVehicleReader:77 Found following schemaLocation in vehicle definition file: http://www.matsim.org/files/dtd http://www.matsim.org/files/dtd/vehicleDefinitions_v2.0.xsd
+2025-12-02T18:21:31,591  INFO org.matsim.vehicles.VehicleReaderV2:24 Using org.matsim.vehicles.VehicleReaderV2
+2025-12-02T18:21:31,598  INFO org.matsim.core.utils.misc.Counter:70 [VehiclesImpl] added vehicle # 1
+2025-12-02T18:21:31,599  INFO org.matsim.core.utils.misc.Counter:70 [VehiclesImpl] added vehicle # 2
+2025-12-02T18:21:31,599  INFO org.matsim.core.utils.misc.Counter:70 [VehiclesImpl] added vehicle # 4
+2025-12-02T18:21:31,599  INFO org.matsim.core.utils.misc.Counter:70 [VehiclesImpl] added vehicle # 8
+2025-12-02T18:21:31,600  INFO org.matsim.core.utils.misc.Counter:70 [VehiclesImpl] added vehicle # 16
+2025-12-02T18:21:31,601  INFO org.matsim.core.utils.misc.Counter:70 [VehiclesImpl] added vehicle # 32
+2025-12-02T18:21:31,603  INFO org.matsim.core.utils.misc.Counter:70 [VehiclesImpl] added vehicle # 64
+2025-12-02T18:21:31,606  INFO org.matsim.core.utils.misc.Counter:70 [VehiclesImpl] added vehicle # 128
+2025-12-02T18:21:31,610  INFO org.matsim.core.utils.misc.Counter:70 [VehiclesImpl] added vehicle # 256
+2025-12-02T18:21:31,617  INFO org.matsim.core.utils.misc.Counter:70 [VehiclesImpl] added vehicle # 512
+2025-12-02T18:21:31,624  INFO org.matsim.core.utils.misc.Counter:70 [VehiclesImpl] added vehicle # 1024
+2025-12-02T18:21:31,632  INFO org.matsim.core.utils.misc.Counter:70 [VehiclesImpl] added vehicle # 2048
+2025-12-02T18:21:31,755  INFO org.matsim.core.config.groups.ScoringConfigGroup:1607 NO OPENING OR CLOSING TIMES DEFINED!
+
+There is no activity type that has an opening *and* closing time (or opening time and late penalty) defined.
+This usually means that the activity chains can be shifted by an arbitrary
+number of hours without having an effect on the score of the plans, and thus
+resulting in wrong results / traffic patterns.
+If you are using MATSim without time adaptation, you can ignore this warning.
+
+
+2025-12-02T18:21:31,756  INFO org.matsim.core.config.consistency.VspConfigConsistencyCheckerImpl:62 NOT running vsp config consistency check because vsp defaults checking level is set to IGNORE
+2025-12-02T18:21:32,168  INFO org.matsim.core.events.SimStepParallelEventsManagerImpl:83 number of threads=1
+2025-12-02T18:21:32,170  INFO org.matsim.core.events.EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-12-02T18:21:32,170  INFO org.matsim.core.events.EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-12-02T18:21:32,171  INFO org.matsim.core.events.EventsManagerImpl:210     > org.matsim.api.core.v01.events.LinkEnterEvent
+2025-12-02T18:21:32,171  INFO org.matsim.core.events.EventsManagerImpl:210     > org.matsim.api.core.v01.events.LinkLeaveEvent
+2025-12-02T18:21:32,171  INFO org.matsim.core.events.EventsManagerImpl:210     > org.matsim.api.core.v01.events.VehicleEntersTrafficEvent
+2025-12-02T18:21:32,171  INFO org.matsim.core.events.EventsManagerImpl:210     > org.matsim.api.core.v01.events.VehicleLeavesTrafficEvent
+2025-12-02T18:21:32,171  INFO org.matsim.core.events.EventsManagerImpl:210     > org.matsim.core.api.experimental.events.VehicleArrivesAtFacilityEvent
+2025-12-02T18:21:32,171  INFO org.matsim.core.events.EventsManagerImpl:210     > org.matsim.api.core.v01.events.VehicleAbortsEvent
+2025-12-02T18:21:32,171  INFO org.matsim.core.events.EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-12-02T18:21:32,172  INFO org.matsim.core.events.EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-12-02T18:21:32,172  INFO org.matsim.core.events.EventsManagerImpl:210     > org.matsim.api.core.v01.events.LinkEnterEvent
+2025-12-02T18:21:32,172  INFO org.matsim.core.events.EventsManagerImpl:210     > org.matsim.api.core.v01.events.LinkLeaveEvent
+2025-12-02T18:21:32,172  INFO org.matsim.core.events.EventsManagerImpl:210     > org.matsim.api.core.v01.events.VehicleEntersTrafficEvent
+2025-12-02T18:21:32,172  INFO org.matsim.core.events.EventsManagerImpl:210     > org.matsim.api.core.v01.events.VehicleLeavesTrafficEvent
+2025-12-02T18:21:32,172  INFO org.matsim.core.events.EventsManagerImpl:210     > org.matsim.core.api.experimental.events.VehicleArrivesAtFacilityEvent
+2025-12-02T18:21:32,172  INFO org.matsim.core.events.EventsManagerImpl:210     > org.matsim.api.core.v01.events.VehicleAbortsEvent
+2025-12-02T18:21:32,175  INFO org.matsim.core.replanning.StrategyManager:77 global innovation switch off after iteration: 2147483647
+2025-12-02T18:21:32,177  INFO org.matsim.core.replanning.GenericStrategyManagerImpl:332 added change request:  iteration=-2147483648 newWeight=0.0 strategy=RandomPlanSelector_ReRoute
+2025-12-02T18:21:32,177  INFO org.matsim.core.replanning.GenericStrategyManagerImpl:364 setting PlanSelectorForRemoval to class org.matsim.core.replanning.selectors.WorstPlanForRemovalSelector
+2025-12-02T18:21:32,179  INFO org.matsim.core.events.EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-12-02T18:21:32,179  INFO org.matsim.core.events.EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-12-02T18:21:32,179  INFO org.matsim.core.events.EventsManagerImpl:210     > org.matsim.api.core.v01.events.Event
+2025-12-02T18:21:32,179  INFO org.matsim.core.events.EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-12-02T18:21:32,179  INFO org.matsim.core.events.EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-12-02T18:21:32,180  INFO org.matsim.core.events.EventsManagerImpl:210     > org.matsim.api.core.v01.events.Event
+2025-12-02T18:21:32,185  INFO org.matsim.analysis.CalcLinkStats:151  resetting `count' to zero.  This info is here since we want to check when this is happening during normal simulation runs.  kai, jan'11
+2025-12-02T18:21:34,525  INFO org.matsim.analysis.CalcLinkStats:151  resetting `count' to zero.  This info is here since we want to check when this is happening during normal simulation runs.  kai, jan'11
+2025-12-02T18:21:37,137  INFO org.matsim.analysis.CalcLinkStats:151  resetting `count' to zero.  This info is here since we want to check when this is happening during normal simulation runs.  kai, jan'11
+2025-12-02T18:21:40,563  INFO org.matsim.analysis.CalcLinkStats:151  resetting `count' to zero.  This info is here since we want to check when this is happening during normal simulation runs.  kai, jan'11
+2025-12-02T18:21:43,583  INFO org.matsim.core.events.EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-12-02T18:21:43,583  INFO org.matsim.core.events.EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-12-02T18:21:43,583  INFO org.matsim.core.events.EventsManagerImpl:210     > org.matsim.api.core.v01.events.LinkLeaveEvent
+2025-12-02T18:21:43,583  INFO org.matsim.core.events.EventsManagerImpl:210     > org.matsim.api.core.v01.events.VehicleEntersTrafficEvent
+2025-12-02T18:21:43,584  INFO org.matsim.core.events.EventsManagerImpl:139 === Logging of event-handlers skipped ===
+2025-12-02T18:21:43,584  INFO org.matsim.core.events.EventsManagerImpl:140 To enable debug output, set an environment variable i.e. export LOG_LEVEL='debug', or set log.setLogLevel(Level.DEBUG) in your run class.
+2025-12-02T18:21:43,584  INFO org.matsim.core.events.EventsManagerImpl:210     > org.matsim.api.core.v01.events.LinkLeaveEvent
+2025-12-02T18:21:43,584  INFO org.matsim.core.events.EventsManagerImpl:210     > org.matsim.api.core.v01.events.VehicleEntersTrafficEvent

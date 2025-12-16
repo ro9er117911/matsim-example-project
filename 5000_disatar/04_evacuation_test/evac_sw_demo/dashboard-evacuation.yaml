@@ -1,0 +1,71 @@
+header:
+  title: "淡水海嘯撤離儀表板 (Tsunami Evacuation)"
+  description: "Phase 3: Within-Day Replanning Analysis"
+
+layout:
+  overview:
+    - type: text
+      title: "關鍵指標"
+      file: summary.md
+
+    - type: map
+      title: "撤離動態"
+      description: "使用 Avro 格式路網"
+      height: 5.0
+      center: [121.49, 25.09]
+      zoom: 11
+      network: network.avro
+      events: output_events.xml.gz
+      datasets:
+        zones: zones.csv
+      display:
+        lines:
+          dataset: zones
+          format: wkt
+          lineColor: "#ff0000"
+          lineWidth: 2.0
+
+  charts:
+    - type: line
+      title: "累積撤離進度"
+      dataset: evacuation_progress.csv
+      x: time_min
+      columns: [percentage]
+      axis:
+        x: "Time (min)"
+        y: "Evacuated (%)"
+      legend: false
+
+    - type: bar
+      title: "出發時間分佈"
+      dataset: departure_profile.csv
+      x: time_min
+      columns: [departures]
+      axis:
+        x: "Time (min)"
+        y: "Count"
+
+  advanced:
+    - type: map
+      title: "路段流量 (Link Volumes)"
+      description: "Based on Avro Network"
+      height: 7.5
+      width: 2.0
+      center: [121.49, 25.09]
+      zoom: 12
+      network: network.avro
+      datasets:
+        traffic: link_volumes.csv
+      display:
+        lineWidth:
+          dataset: traffic
+          columnName: volume
+          join: linkId
+          scaleFactor: 5.0
+        lineColor:
+          dataset: traffic
+          columnName: volume
+          join: linkId
+          colorRamp:
+            steps: 5
+            ramp: Inferno

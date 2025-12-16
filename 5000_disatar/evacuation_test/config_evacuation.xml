@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<grips_config xsi:noNamespaceSchemaLocation="http://www.matsim.org/files/dtd/grips_config_v0.1.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<networkFile>
+		<inputFile>/Users/ro9air/matsim-example-project/5000_disatar/evacuation_test/input/tamsui_small.osm</inputFile>
+	</networkFile>
+
+	<mainTrafficType>vehicular</mainTrafficType>
+
+	<evacuationAreaFile>
+		<inputFile>/Users/ro9air/matsim-example-project/5000_disatar/evacuation_test/input/hazard_circle.shp</inputFile>
+	</evacuationAreaFile>
+
+	<populationFile>
+		<inputFile>/Users/ro9air/matsim-example-project/5000_disatar/evacuation_test/input/population_wgs84.shp</inputFile>
+	</populationFile>
+
+	<outputDir>
+		<inputFile>/Users/ro9air/matsim-example-project/5000_disatar/evacuation_test/output/</inputFile>
+	</outputDir>
+
+	<sampleSize>0.01</sampleSize>
+
+	<departureTimeDistribution>
+		<distribution>normal</distribution>
+		<sigma>600.0</sigma>
+		<mu>600.0</mu>
+		<earliest>300.0</earliest>
+		<latest>1200.0</latest>
+	</departureTimeDistribution>
+
+</grips_config>

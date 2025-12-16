@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
+<config>
+    <!-- Phase 3: Within-Day Replanning with NetworkChangeEvents -->
+    
+    <module name="global">
+        <param name="coordinateSystem" value="EPSG:3826" />
+        <param name="numberOfThreads" value="4" />
+        <param name="randomSeed" value="4711" />
+    </module>
+    
+    <module name="network">
+        <param name="inputNetworkFile" value="input/network_large.xml.gz" />
+        <param name="inputChangeEventsFile" value="input/changeEvents.xml" />
+        <param name="timeVariantNetwork" value="true" />
+    </module>
+    
+    <module name="plans">
+        <param name="inputPlansFile" value="input/evacuation_population.xml" />
+    </module>
+    
+    <module name="controller">
+        <param name="outputDirectory" value="output/phase3_withinday" />
+        <param name="firstIteration" value="0" />
+        <param name="lastIteration" value="0" />
+        <param name="writeEventsInterval" value="1" />
+        <param name="writePlansInterval" value="1" />
+        <param name="overwriteFiles" value="deleteDirectoryIfExists" />
+    </module>
+    
+    <module name="qsim">
+        <param name="startTime" value="00:00:00" />
+        <param name="endTime" value="05:00:00" />
+        <param name="flowCapacityFactor" value="1.0" />
+        <param name="storageCapacityFactor" value="1.0" />
+        <param name="numberOfThreads" value="4" />
+        <param name="mainMode" value="car" />
+        <param name="stuckTime" value="600" />
+    </module>
+    
+    <module name="routing">
+        <param name="networkModes" value="car" />
+        <param name="networkRouteConsistencyCheck" value="disable" />
+    </module>
+    
+    <!-- No replanning strategies for Phase 3 - within-day handles it -->
+    <module name="replanning">
+        <parameterset type="strategysettings">
+            <param name="strategyName" value="KeepLastSelected" />
+            <param name="weight" value="1.0" />
+        </parameterset>
+    </module>
+    
+    <module name="scoring">
+        <parameterset type="scoringParameters">
+            <param name="performing" value="6.0" />
+            <param name="marginalUtilityOfMoney" value="1.0" />
+            <param name="waitingPt" value="-6.0" />
+            
+            <parameterset type="activityParams">
+                <param name="activityType" value="pre-evac" />
+                <param name="typicalDuration" value="00:01:00" />
+            </parameterset>
+            <parameterset type="activityParams">
+                <param name="activityType" value="post-evac" />
+                <param name="typicalDuration" value="00:01:00" />
+            </parameterset>
+            
+            <parameterset type="modeParams">
+                <param name="mode" value="car" />
+                <param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
+            </parameterset>
+            <parameterset type="modeParams">
+                <param name="mode" value="pt" />
+                <param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
+            </parameterset>
+            <parameterset type="modeParams">
+                <param name="mode" value="walk" />
+                <param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
+            </parameterset>
+        </parameterset>
+    </module>
+</config>

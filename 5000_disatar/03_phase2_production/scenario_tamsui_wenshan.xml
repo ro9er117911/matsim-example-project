@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<grips_config xsi:schemaLocation="http://www.matsim.org/files/dtd http://matsim.org/files/dtd/grips_config_v0.1.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <networkFile>
+        <inputFile>/Users/ro9air/matsim-example-project/5000_disatar/01_raw_data/osm/tamsui_to_wenshan.osm</inputFile>
+    </networkFile>
+    <mainTrafficType>vehicular</mainTrafficType>
+    <evacuationAreaFile>
+        <inputFile>/Users/ro9air/matsim-example-project/5000_disatar/03_phase2_production/evacuation_shp_tamsui/disaster_zone_tamsui.shp</inputFile>
+    </evacuationAreaFile>
+    <populationFile>
+        <inputFile>/Users/ro9air/matsim-example-project/5000_disatar/03_phase2_production/evacuation_shp_tamsui/safe_zone_wenshan.shp</inputFile>
+    </populationFile>
+    <outputDir>
+        <inputFile>/Users/ro9air/matsim-example-project/5000_disatar/04_simulation_output/</inputFile>
+    </outputDir>
+    <sampleSize>0.0227</sampleSize>
+    <departureTimeDistribution>
+        <distribution>normal</distribution>
+        <sigma>1800</sigma>
+        <mu>1800</mu>
+        <earliest>0.0</earliest>
+        <latest>10800.0</latest>
+    </departureTimeDistribution>
+</grips_config>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
+<config>
+	<module name="global">
+		<param name="coordinateSystem" value="EPSG:3826"/>
+		<param name="numberOfThreads" value="8"/>
+	</module>
+
+	<module name="OsmConverter">
+		<!-- Input OSM XML covering the disaster bbox -->
+		<param name="osmFile" value="/Users/ro9air/matsim-example-project/5000_disatar/01_raw_data/osm/disaster_bbox.osm"/>
+
+		<!-- Output in Taiwan TWD97 -->
+		<param name="outputCoordinateSystem" value="EPSG:3826"/>
+
+		<!-- Raw, uncleaned, high-detail network -->
+		<param name="outputNetworkFile" value="/Users/ro9air/matsim-example-project/5000_disatar/03_phase2_production/networks/network_full_raw.xml"/>
+
+		<!-- Keep walk/bike/pt paths and tags for debugging -->
+		<param name="keepPaths" value="true"/>
+		<param name="keepWaysWithPublicTransit" value="true"/>
+		<param name="keepTagsAsAttributes" value="true"/>
+
+		<!-- Shorter segments to preserve local streets and turns -->
+		<param name="maxLinkLength" value="75.0"/>
+
+		<!-- Scale speeds from OSM defaults -->
+		<param name="scaleMaxSpeed" value="true"/>
+	</module>
+</config>

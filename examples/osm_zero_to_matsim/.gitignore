@@ -1,0 +1,11 @@
+# Generated inputs/outputs for the example scenario
+scenario/input/*.xml
+scenario/input/*.xml.gz
+scenario/input/*.pbf
+scenario/output/
+scenario/output_*/
+
+# Python caches
+__pycache__/
+*.pyc
+

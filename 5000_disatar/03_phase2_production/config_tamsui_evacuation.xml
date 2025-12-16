@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
+<config>
+
+	<!-- ======= GLOBAL ======= -->
+	<module name="global">
+		<param name="randomSeed" value="4711"/>
+		<param name="coordinateSystem" value="EPSG:3826"/>
+		<param name="numberOfThreads" value="4"/>
+	</module>
+
+	<!-- ======= NETWORK ======= -->
+	<module name="network">
+		<param name="inputNetworkFile" value="network/tamsui_wenshan_network.xml.gz"/>
+	</module>
+
+	<!-- ======= PLANS ======= -->
+	<module name="plans">
+		<param name="inputPlansFile" value="population/evacuation_tamsui_5000.xml"/>
+	</module>
+
+	<!-- ======= CONTROLLER ======= -->
+	<module name="controller">
+		<param name="outputDirectory" value="./output_tamsui_evacuation"/>
+		<param name="firstIteration" value="0"/>
+		<param name="lastIteration" value="5"/>
+		<param name="writeEventsInterval" value="5"/>
+		<param name="writePlansInterval" value="5"/>
+		<param name="overwriteFiles" value="deleteDirectoryIfExists"/>
+		<param name="runId" value="tamsui_evacuation"/>
+	</module>
+
+	<!-- ======= QSIM ======= -->
+	<module name="qsim">
+		<param name="startTime" value="00:00:00"/>
+		<param name="endTime" value="12:00:00"/>
+		<param name="flowCapacityFactor" value="0.0227"/>
+		<param name="storageCapacityFactor" value="0.0227"/>
+		<param name="numberOfThreads" value="4"/>
+		<param name="mainMode" value="car"/>
+		<param name="vehiclesSource" value="defaultVehicle"/>
+	</module>
+
+	<!-- ======= ROUTING ======= -->
+	<module name="routing">
+		<param name="networkModes" value="car"/>
+		<parameterset type="teleportedModeParameters">
+			<param name="mode" value="walk"/>
+			<param name="beelineDistanceFactor" value="1.3"/>
+			<param name="teleportedModeSpeed" value="1.4"/>
+		</parameterset>
+		<parameterset type="teleportedModeParameters">
+			<param name="mode" value="pt"/>
+			<param name="beelineDistanceFactor" value="1.3"/>
+			<param name="teleportedModeSpeed" value="7.5"/>
+		</parameterset>
+	</module>
+
+	<!-- ======= REPLANNING (STRATEGIES) ======= -->
+	<module name="replanning">
+		<param name="maxAgentPlanMemorySize" value="5"/>
+		<parameterset type="strategysettings">
+			<param name="strategyName" value="ChangeExpBeta"/>
+			<param name="weight" value="0.7"/>
+		</parameterset>
+		<parameterset type="strategysettings">
+			<param name="strategyName" value="ReRoute"/>
+			<param name="weight" value="0.3"/>
+		</parameterset>
+	</module>
+
+	<!-- ======= SCORING ======= -->
+	<module name="scoring">
+		<param name="learningRate" value="1.0"/>
+		<param name="BrainExpBeta" value="2.0"/>
+
+		<parameterset type="scoringParameters">
+			<param name="lateArrival" value="-18"/>
+			<param name="earlyDeparture" value="-0"/>
+			<param name="performing" value="+6"/>
+			<param name="waiting" value="-0"/>
+			<param name="waitingPt" value="-2"/>
+
+			<parameterset type="modeParams">
+				<param name="mode" value="car"/>
+				<param name="marginalUtilityOfTraveling_util_hr" value="-6.0"/>
+				<param name="monetaryDistanceRate" value="-0.0002"/>
+				<param name="constant" value="0.0"/>
+			</parameterset>
+			<parameterset type="modeParams">
+				<param name="mode" value="pt"/>
+				<param name="marginalUtilityOfTraveling_util_hr" value="-3.0"/>
+				<param name="monetaryDistanceRate" value="-0.0"/>
+				<param name="constant" value="-1.0"/>
+			</parameterset>
+			<parameterset type="modeParams">
+				<param name="mode" value="walk"/>
+				<param name="marginalUtilityOfTraveling_util_hr" value="-12.0"/>
+				<param name="monetaryDistanceRate" value="-0.0"/>
+				<param name="constant" value="0.0"/>
+			</parameterset>
+
+			<parameterset type="activityParams">
+				<param name="activityType" value="home"/>
+				<param name="typicalDuration" value="12:00:00"/>
+			</parameterset>
+			<parameterset type="activityParams">
+				<param name="activityType" value="evacuation"/>
+				<param name="typicalDuration" value="08:00:00"/>
+			</parameterset>
+		</parameterset>
+	</module>
+
+</config>

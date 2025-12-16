@@ -1,0 +1,17 @@
+2025-12-16T07:36:19.843694Z main INFO Starting configuration XmlConfiguration[location=jar:file:/Users/ro9air/matsim-example-project/matsim-example-project-0.0.1-SNAPSHOT.jar!/log4j2.xml, lastModified=2025-12-16T07:36:06.308Z]...
+2025-12-16T07:36:19.844238Z main INFO Start watching for changes to jar:file:/Users/ro9air/matsim-example-project/matsim-example-project-0.0.1-SNAPSHOT.jar!/log4j2.xml every 0 seconds
+2025-12-16T07:36:19.844346Z main INFO Configuration XmlConfiguration[location=jar:file:/Users/ro9air/matsim-example-project/matsim-example-project-0.0.1-SNAPSHOT.jar!/log4j2.xml, lastModified=2025-12-16T07:36:06.308Z] started.
+2025-12-16T07:36:19.845198Z main INFO Stopping configuration org.apache.logging.log4j.core.config.DefaultConfiguration@1ad282e0...
+2025-12-16T07:36:19.845378Z main INFO Configuration org.apache.logging.log4j.core.config.DefaultConfiguration@1ad282e0 stopped.
+2025-12-16T07:36:19.889895Z main INFO Starting configuration XmlConfiguration[location=jar:file:/Users/ro9air/matsim-example-project/matsim-example-project-0.0.1-SNAPSHOT.jar!/log4j2.xml, lastModified=2025-12-16T07:36:06.308Z]...
+2025-12-16T07:36:19.889990Z main INFO Start watching for changes to jar:file:/Users/ro9air/matsim-example-project/matsim-example-project-0.0.1-SNAPSHOT.jar!/log4j2.xml every 0 seconds
+2025-12-16T07:36:19.890069Z main INFO Configuration XmlConfiguration[location=jar:file:/Users/ro9air/matsim-example-project/matsim-example-project-0.0.1-SNAPSHOT.jar!/log4j2.xml, lastModified=2025-12-16T07:36:06.308Z] started.
+2025-12-16T07:36:19.890152Z main INFO Stopping configuration org.apache.logging.log4j.core.config.DefaultConfiguration@15f47664...
+2025-12-16T07:36:19.890233Z main INFO Configuration org.apache.logging.log4j.core.config.DefaultConfiguration@15f47664 stopped.
+2025-12-16T15:36:20,478  WARN org.matsim.core.controler.PrepareForSim:265 'usePersonIdForMissingVehicleId' is deprecated. It will be removed soon.
+2025-12-16T15:36:20,491  WARN org.matsim.core.router.costcalculators.RandomizingTimeDistanceTravelDisutilityFactory:113 There will be no routing randomness. The randomization of the travel disutility requires the monetary distance rate to be different than zero. Continuing anyway.
+2025-12-16T15:36:20,491  WARN org.matsim.core.router.costcalculators.RandomizingTimeDistanceTravelDisutilityFactory:118 There will be no routing randomness. The randomization of the travel disutility requires the travel time cost rate to be different than zero. Continuing anyway.
+2025-12-16T15:36:20,495  WARN org.matsim.core.router.NetworkRoutingProvider:137 [mode: car; routingMode: car] Using deprecated routing module without access/egress. Consider using AccessEgressNetworkRouter instead.
+2025-12-16T15:36:20,496  WARN org.matsim.core.router.NetworkRoutingProvider:137 [mode: car; routingMode: car] Using deprecated routing module without access/egress. Consider using AccessEgressNetworkRouter instead.
+2025-12-16T15:36:20,524  WARN org.matsim.core.router.NetworkRoutingProvider:137 [mode: car; routingMode: car] Using deprecated routing module without access/egress. Consider using AccessEgressNetworkRouter instead.
+2025-12-16T15:36:20,525  WARN org.matsim.core.router.NetworkRoutingProvider:137 [mode: car; routingMode: car] Using deprecated routing module without access/egress. Consider using AccessEgressNetworkRouter instead.

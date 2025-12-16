@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
+<config>
+	<module name="global">
+		<param name="coordinateSystem" value="EPSG:3395" />
+		<param name="numberOfThreads" value="2" />
+		<param name="randomSeed" value="4711" />
+	</module>
+
+	<module name="network">
+		<param name="inputNetworkFile" value="network_clean.xml.gz" />
+	</module>
+
+	<module name="plans">
+		<param name="inputPlansFile" value="population_clean.xml" />
+	</module>
+
+	<module name="controller">
+		<param name="outputDirectory" value="./output" />
+		<param name="firstIteration" value="0" />
+		<param name="lastIteration" value="1" />
+		<param name="overwriteFiles" value="deleteDirectoryIfExists" />
+		<param name="writeEventsInterval" value="1" />
+		<param name="writePlansInterval" value="1" />
+	</module>
+
+	<module name="qsim">
+		<param name="startTime" value="00:00:00" />
+		<param name="endTime" value="06:00:00" />
+		<param name="flowCapacityFactor" value="1.0" />
+		<param name="storageCapacityFactor" value="1.0" />
+		<param name="mainMode" value="car" />
+		<param name="numberOfThreads" value="2" />
+		<param name="stuckTime" value="120.0" />
+	</module>
+
+	<module name="scoring">
+		<parameterset type="scoringParameters">
+			<param name="performing" value="6.0" />
+			<parameterset type="activityParams">
+				<param name="activityType" value="dummy" />
+				<param name="typicalDuration" value="02:00:00" />
+			</parameterset>
+			<parameterset type="modeParams">
+				<param name="mode" value="car" />
+				<param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
+			</parameterset>
+			<parameterset type="modeParams">
+				<param name="mode" value="pt" />
+				<param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
+			</parameterset>
+			<parameterset type="modeParams">
+				<param name="mode" value="walk" />
+				<param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
+			</parameterset>
+		</parameterset>
+	</module>
+
+	<module name="routing">
+		<param name="networkModes" value="car" />
+	</module>
+
+	<module name="replanning">
+		<param name="maxAgentPlanMemorySize" value="5" />
+		<parameterset type="strategysettings">
+			<param name="strategyName" value="ChangeExpBeta" />
+			<param name="weight" value="0.8" />
+		</parameterset>
+		<parameterset type="strategysettings">
+			<param name="strategyName" value="ReRoute" />
+			<param name="weight" value="0.2" />
+		</parameterset>
+	</module>
+</config>

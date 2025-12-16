@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
+<config>
+	<module name="PublicTransitMapping" >
+		<!-- Full PT mapping on high-detail network_v3_full (75m, keepPaths=true) -->
+
+		<param name="candidateDistanceMultiplier" value="3.0" />
+
+		<param name="inputNetworkFile" value="/Users/ro9air/matsim-example-project/5000_disatar/03_phase2_production/networks/network_v3_full.xml" />
+		<param name="inputScheduleFile" value="/Users/ro9air/matsim-example-project/5000_disatar/03_phase2_production/schedules/merged/transitSchedule-snapped.xml" />
+
+		<param name="maxLinkCandidateDistance" value="1000.0" />
+		<param name="maxTravelCostFactor" value="20.0" />
+		<param name="modeSpecificRules" value="true" />
+		<param name="modesToKeepOnCleanUp" value="car" />
+		<param name="nLinkThreshold" value="15" />
+		<param name="networkRouter" value="SpeedyALT" />
+		<param name="numOfThreads" value="8" />
+
+		<param name="outputNetworkFile" value="/Users/ro9air/matsim-example-project/5000_disatar/03_phase2_production/networks/network-with-pt-v3-full.xml" />
+		<param name="outputScheduleFile" value="/Users/ro9air/matsim-example-project/5000_disatar/03_phase2_production/schedules/merged/transitSchedule-mapped-v3-full.xml.gz" />
+		<param name="outputStreetNetworkFile" value="" />
+
+		<param name="removeNotUsedStopFacilities" value="true" />
+		<param name="routingWithCandidateDistance" value="true" />
+		<param name="scheduleFreespeedModes" value="artificial" />
+		<param name="threadChunkSize" value="100" />
+		<param name="travelCostType" value="linkLength" />
+
+		<!-- Bus -->
+		<parameterset type="transportModeAssignment" >
+			<param name="maxLinkCandidateDistance" value="1200.0" />
+			<param name="nLinkThreshold" value="15" />
+			<param name="networkModes" value="car,bus,pt" />
+			<param name="scheduleMode" value="bus" />
+			<param name="strictLinkRule" value="true" />
+		</parameterset>
+
+		<!-- Rail -->
+		<parameterset type="transportModeAssignment" >
+			<param name="maxLinkCandidateDistance" value="800.0" />
+			<param name="nLinkThreshold" value="15" />
+			<param name="networkModes" value="car,rail,light_rail" />
+			<param name="scheduleMode" value="rail" />
+			<param name="strictLinkRule" value="false" />
+		</parameterset>
+
+		<!-- Subway -->
+		<parameterset type="transportModeAssignment" >
+			<param name="maxLinkCandidateDistance" value="800.0" />
+			<param name="nLinkThreshold" value="15" />
+			<param name="networkModes" value="car,pt" />
+			<param name="scheduleMode" value="subway" />
+			<param name="strictLinkRule" value="false" />
+		</parameterset>
+	</module>
+</config>

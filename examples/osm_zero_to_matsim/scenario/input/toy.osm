@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="osm_zero_to_matsim">
+  <!--
+    極小「虛擬」OSM 範例：只為了讓 OSM→network→simulation 跑通。
+    範圍：台北附近（WGS84），會由建網工具轉到 EPSG:3826。
+  -->
+
+  <node id="1" lat="25.0330" lon="121.5654" />
+  <node id="2" lat="25.0330" lon="121.5664" />
+  <node id="3" lat="25.0340" lon="121.5664" />
+  <node id="4" lat="25.0340" lon="121.5654" />
+  <node id="5" lat="25.0345" lon="121.5670" />
+
+  <!-- 一個小矩形 + 一段延伸，標記 residential 讓 car 可行 -->
+  <way id="100">
+    <nd ref="1"/>
+    <nd ref="2"/>
+    <nd ref="3"/>
+    <nd ref="4"/>
+    <nd ref="1"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="Toy Street"/>
+  </way>
+
+  <way id="101">
+    <nd ref="3"/>
+    <nd ref="5"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="Toy Extension"/>
+  </way>
+</osm>
+

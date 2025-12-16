@@ -1,0 +1,45 @@
+header:
+  tab: "My Custom View"
+  title: "Traffic & Mode Share Analysis"
+  description: "A custom dashboard combining traffic maps and mode share pie charts."
+
+layout:
+  row1:
+    - type: map
+      title: "Congestion Map"
+      height: 600
+      center: [121.5, 25.05] # Approx Taipei coordinates
+      zoom: 11
+      display:
+        # Overlay traffic volume on the network
+        lineWidth:
+          dataset: "analysis/traffic/traffic_stats_by_link_daily.csv"
+          columnName: "simulated_traffic_volume"
+          join: "link_id"
+          scaleFactor: 10000
+        lineColor:
+          dataset: "analysis/traffic/traffic_stats_by_link_daily.csv"
+          columnName: "congestion_index"
+          join: "link_id"
+          colorRamp:
+            ramp: "RdYlGn" # Red-Yellow-Green
+            steps: 5
+            reverse: true # Green is low congestion, Red is high
+      shapes:
+        file: "analysis/network/network.avro"
+        join: "linkId"
+
+  row2:
+    - type: pie
+      title: "Mode Share"
+      dataset: "modestats.csv"
+      useLastRow: true
+      ignoreColumns: ["iteration"]
+      width: 1
+
+    - type: bar
+      title: "Trip Distances"
+      dataset: "analysis/population/trip_stats.csv"
+      x: "dist_group"
+      columns: ["number_of_trips"]
+      width: 2

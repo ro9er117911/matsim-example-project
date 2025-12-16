@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
+<config>
+  <module name="global">
+    <param name="randomSeed" value="4711" />
+    <param name="coordinateSystem" value="EPSG:3826" />
+    <param name="numberOfThreads" value="4" />
+  </module>
+
+  <module name="network">
+    <param name="inputNetworkFile" value="network-with-pt-metro-v7.xml.gz" />
+  </module>
+
+  <module name="plans">
+    <param name="inputPlansFile" value="population_500.xml.gz" />
+  </module>
+
+  <module name="transit">
+    <param name="useTransit" value="true" />
+    <param name="transitScheduleFile" value="transitSchedule-mapped-metro-v7.xml.gz" />
+    <param name="vehiclesFile" value="transitVehicles.xml" />
+    <param name="transitModes" value="pt" />
+    <param name="usingTransitInMobsim" value="true" />
+  </module>
+
+  <module name="controller">
+    <param name="outputDirectory" value="./output_metro_walk_network_500_v2" />
+    <param name="lastIteration" value="0" />
+    <param name="writeEventsInterval" value="1" />
+    <param name="writePlansInterval" value="1" />
+    <param name="overwriteFiles" value="deleteDirectoryIfExists" />
+  </module>
+
+  <module name="qsim">
+    <param name="mainMode" value="car,walk" />
+    <param name="vehiclesSource" value="defaultVehicle" />
+    <param name="startTime" value="03:00:00" />
+    <param name="endTime" value="06:30:00" />
+    <param name="removeStuckVehicles" value="true" />
+  </module>
+
+  <module name="routing">
+    <param name="networkModes" value="car,walk" />
+    <param name="accessEgressType" value="accessEgressModeToLink" />
+    <param name="clearDefaultTeleportedModeParams" value="true" />
+  </module>
+
+  <module name="swissRailRaptor">
+    <param name="useIntermodalAccessEgress" value="true" />
+    <parameterset type="intermodalAccessEgress">
+        <param name="mode" value="walk" />
+        <param name="maxRadius" value="2000.0" />
+        <param name="initialSearchRadius" value="1000.0" />
+        <param name="searchExtensionRadius" value="500.0" />
+    </parameterset>
+  </module>
+
+  <module name="scoring">
+    <parameterset type="scoringParameters">
+        <parameterset type="modeParams">
+            <param name="mode" value="car"/>
+        </parameterset>
+        <parameterset type="modeParams">
+            <param name="mode" value="pt"/>
+        </parameterset>
+        <parameterset type="modeParams">
+            <param name="mode" value="walk"/>
+        </parameterset>
+        <parameterset type="activityParams">
+            <param name="activityType" value="home"/>
+            <param name="typicalDuration" value="12:00:00"/>
+        </parameterset>
+        <parameterset type="activityParams">
+            <param name="activityType" value="evacuation"/>
+            <param name="typicalDuration" value="02:00:00"/>
+        </parameterset>
+    </parameterset>
+  </module>
+</config>

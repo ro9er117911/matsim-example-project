@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "matsim-tools"
+version = "0.1.0"
+description = "MATSim Python analysis and population generation tools for Taipei evacuation simulation"
+authors = ["MATSim Project Team"]
+readme = "README.md"
+license = "GPL-3.0"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.13"
+pandas = "^2.2.0"
+geopandas = "^0.14.0"
+shapely = "^2.0.0"
+pyproj = "^3.6.0"
+pyyaml = "^6.0"
+numpy = "^1.26.0"
+matplotlib = "^3.8.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+black = "^24.0.0"
+ruff = "^0.1.0"
+
+[tool.poetry.scripts]
+analyze-speeds = "tools.analyze_agent_speeds:main"
+generate-dashboard = "tools.generate_dashboard_yamls:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120
+target-version = ['py311']
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"

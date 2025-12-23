@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
+<config>
+    <module name="PublicTransitMapping">
+        <!-- 
+            Phase 2: 主幹公車路線整合配置
+            基於科學化裁剪後的 GTFS 資料
+            優化參數以適應公車站點位置精度
+        -->
+        
+        <!-- 全域設定: 放寬容限以適應公車站點 -->
+        <param name="candidateDistanceMultiplier" value="3.0" />
+        <param name="inputNetworkFile" value="/Users/ro9air/matsim-example-project/5000_disatar/03_phase2_production/networks/network_v7_car_walk_clean.xml.gz" />
+        <param name="inputScheduleFile" value="/Users/ro9air/matsim-example-project/5000_disatar/03_phase2_production/schedules/merged/transitSchedule-phase2.xml" />
+        
+        <param name="maxLinkCandidateDistance" value="800.0" />
+        <param name="maxTravelCostFactor" value="30.0" />
+        <param name="modeSpecificRules" value="true" />
+        <param name="modesToKeepOnCleanUp" value="car,walk" />
+        <param name="nLinkThreshold" value="15" />
+        <param name="networkRouter" value="AStarLandmarks" />
+        <param name="numOfThreads" value="8" />
+        
+        <param name="outputNetworkFile" value="/Users/ro9air/matsim-example-project/5000_disatar/03_phase2_production/networks/network-with-pt-phase2.xml" />
+        <param name="outputScheduleFile" value="/Users/ro9air/matsim-example-project/5000_disatar/03_phase2_production/schedules/merged/transitSchedule-mapped-phase2.xml.gz" />
+        <param name="outputStreetNetworkFile" value="" />
+        
+        <param name="removeNotUsedStopFacilities" value="true" />
+        <param name="routingWithCandidateDistance" value="true" />
+        <param name="scheduleFreespeedModes" value="artificial" />
+        <param name="threadChunkSize" value="100" />
+        <param name="travelCostType" value="linkLength" />
+        
+        <!-- Bus 模式: 放寬規則，使用 car 路網 -->
+        <parameterset type="transportModeAssignment">
+            <param name="maxLinkCandidateDistance" value="600.0" />
+            <param name="nLinkThreshold" value="15" />
+            <param name="networkModes" value="car" />
+            <param name="scheduleMode" value="bus" />
+            <param name="strictLinkRule" value="false" />
+        </parameterset>
+        
+        <!-- Subway 模式: 維持原有成功配置 -->
+        <parameterset type="transportModeAssignment">
+            <param name="maxLinkCandidateDistance" value="1500.0" />
+            <param name="nLinkThreshold" value="12" />
+            <param name="networkModes" value="car,walk" />
+            <param name="scheduleMode" value="subway" />
+            <param name="strictLinkRule" value="false" />
+        </parameterset>
+    </module>
+</config>

@@ -14,6 +14,14 @@
 - **出發策略**：staggered 出發（例如 02:50–03:20）
 - **運具**：car + pt + walk（部分 config 有 car-only）
 
+## 大規模（28萬人）靜態情境
+
+- **Config**：`5000_disatar/05_combined_evac/config_optimized_iter1000_280k.xml`
+- **人口**：`5000_disatar/05_combined_evac/input/population_280k.xml.gz`（待生成）
+- **容量係數**：flow/storage = 1.0（全量，不抽樣）
+- **封路事件**：不使用 change events（靜態網路）
+- **PT**：目前沿用 metro v7，公車+捷運整合完成後切換 merged schedule
+
 ## 核心檔案與目錄
 
 - **Config**：`5000_disatar/05_combined_evac/config_*.xml`

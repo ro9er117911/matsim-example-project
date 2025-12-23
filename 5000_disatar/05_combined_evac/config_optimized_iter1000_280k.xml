@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
 <config>
-    <!-- Combined 5000-agent Evacuation with Disaster Events -->
-    <!-- Based on config_metro_0300_0618_5000.xml + config_phase3.xml -->
+    <!-- 280k baseline 1000-iter: static network, no change events -->
+    <!-- 5m車輛尺寸 + full capacity factors + queue dynamics -->
 
     <module name="global">
         <param name="randomSeed" value="4711" />
@@ -11,32 +11,35 @@
     </module>
 
     <module name="network">
-        <!-- Use metro network for PT support -->
+        <!-- 使用原始網路 (PT schedule 需要對應的 links) -->
         <param name="inputNetworkFile" value="../../scenarios/corridor/500_300-618/network-with-pt-metro-v7-carscc.xml.gz" />
-        <!-- Enable time-variant network for disaster events -->
-        <param name="inputChangeEventsFile" value="input/tsunami_changeEvents_staggered.xml" />
-        <param name="timeVariantNetwork" value="true" />
+        <!-- Static network (no change events) -->
+    </module>
+
+    <!-- 車輛定義: 5m 車長 (科學化) -->
+    <module name="vehicles">
+        <param name="vehiclesFile" value="input/vehicles_5m.xml" />
     </module>
 
     <module name="plans">
-        <!-- Use 5000-agent population with diverse OD -->
-        <param name="inputPlansFile" value="input/population_5000_staggered.xml" />
+        <param name="inputPlansFile" value="input/population_280k.xml.gz" />
     </module>
 
-    <!-- PT Support - Using teleportation mode (not simulated on network) -->
+    <!-- PT Support - Using teleportation mode -->
     <module name="transit">
         <param name="useTransit" value="true" />
+        <!-- TODO: replace with merged bus+metro schedule/vehicles after v8 mapping -->
         <param name="transitScheduleFile" value="../../scenarios/equil/transitSchedule-mapped-metro-v7.xml.gz" />
         <param name="vehiclesFile" value="../../scenarios/equil/transitVehicles.xml" />
         <param name="transitModes" value="pt" />
-        <!-- TELEPORTATION MODE: PT passengers teleport based on schedule, not simulated on network -->
         <param name="usingTransitInMobsim" value="false" />
     </module>
 
     <module name="controller">
-        <param name="outputDirectory" value="output_staggered" />
-        <!-- Single iteration - no replanning needed for evacuation scenario -->
-        <param name="lastIteration" value="10" />
+        <param name="outputDirectory" value="output_optimized_iter1000_280k" />
+        <param name="lastIteration" value="1000" />
+        <!-- writeInterval=1 搭配 cleanup_iters.sh 滑動窗口清理 -->
+        <!-- 保留: iter.0 + 最新 3 個 iteration -->
         <param name="writeEventsInterval" value="1" />
         <param name="writePlansInterval" value="1" />
         <param name="overwriteFiles" value="deleteDirectoryIfExists" />
@@ -44,15 +47,28 @@
 
     <module name="qsim">
         <param name="mainMode" value="car" />
-        <param name="vehiclesSource" value="defaultVehicle" />
+        <!-- 使用車輛定義檔案中的尺寸 (5m) -->
+        <param name="vehiclesSource" value="modeVehicleTypesFromVehiclesData" />
+        <!-- 
+          Full population run:
+          - 總人口: 280,000
+          - 無抽樣，capacity factors = 1.0
+        -->
         <param name="flowCapacityFactor" value="1.0" />
         <param name="storageCapacityFactor" value="1.0" />
         <param name="startTime" value="00:00:00" />
-        <param name="endTime" value="36:00:00" />
+        <param name="endTime" value="24:00:00" />
+        <!-- stuck time: 給車輛合理的等待時間 -->
         <param name="stuckTime" value="300.0" />
-        <param name="removeStuckVehicles" value="true" />
+        <param name="removeStuckVehicles" value="false" />
         <param name="linkDynamics" value="PassingQ" />
-        <param name="trafficDynamics" value="kinematicWaves" />
+        <!-- 
+          trafficDynamics 選擇:
+          - queue: 對短link更穩健，不會因storage<1卡住
+          - kinematicWaves: 更精確但對短link敏感
+          使用 queue 避免短link問題，同時保持科學性
+        -->
+        <param name="trafficDynamics" value="queue" />
         <param name="numberOfThreads" value="4" />
     </module>
 
@@ -90,31 +106,40 @@
         <parameterset type="scoringParameters">
             <param name="marginalUtilityOfMoney" value="1.0" />
 
-            <!-- Home activity: wait until disaster (03:00:00) -->
             <parameterset type="activityParams">
                 <param name="activityType" value="home" />
                 <param name="typicalDuration" value="03:00:00" />
             </parameterset>
 
-            <!-- Evacuation destination -->
             <parameterset type="activityParams">
                 <param name="activityType" value="evacuation" />
                 <param name="typicalDuration" value="06:00:00" />
             </parameterset>
 
-            <!-- Car mode -->
+            <!-- Interaction activities (not scored) -->
+            <parameterset type="activityParams">
+                <param name="activityType" value="car interaction" />
+                <param name="scoringThisActivityAtAll" value="false" />
+            </parameterset>
+            <parameterset type="activityParams">
+                <param name="activityType" value="pt interaction" />
+                <param name="scoringThisActivityAtAll" value="false" />
+            </parameterset>
+            <parameterset type="activityParams">
+                <param name="activityType" value="walk interaction" />
+                <param name="scoringThisActivityAtAll" value="false" />
+            </parameterset>
+
             <parameterset type="modeParams">
                 <param name="mode" value="car" />
                 <param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
             </parameterset>
 
-            <!-- PT mode -->
             <parameterset type="modeParams">
                 <param name="mode" value="pt" />
                 <param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
             </parameterset>
 
-            <!-- Walk mode -->
             <parameterset type="modeParams">
                 <param name="mode" value="walk" />
                 <param name="marginalUtilityOfTraveling_util_hr" value="-12.0" />
@@ -125,22 +150,28 @@
     <!-- Replanning strategies -->
     <module name="replanning">
         <param name="maxAgentPlanMemorySize" value="5" />
+        <!-- 80% of 100 = iteration 80; innovation stops at iter 80 for convergence -->
         <param name="fractionOfIterationsToDisableInnovation" value="0.8" />
 
         <parameterset type="strategysettings">
             <param name="strategyName" value="ChangeExpBeta" />
-            <param name="weight" value="0.45" />
+            <param name="weight" value="0.5" />
         </parameterset>
 
         <parameterset type="strategysettings">
             <param name="strategyName" value="ReRoute" />
-            <param name="weight" value="0.45" />
+            <param name="weight" value="0.3" />
         </parameterset>
 
         <parameterset type="strategysettings">
             <param name="strategyName" value="SubtourModeChoice" />
-            <param name="weight" value="0.1" />
+            <param name="weight" value="0.0" />
         </parameterset>
+    </module>
+
+    <!-- SimWrapper -->
+    <module name="simwrapper">
+        <param name="defaultDashboards" value="enabled" />
     </module>
 
 </config>

@@ -173,6 +173,8 @@ archive/metro_viz*.html
 5000_disatar/evacuation_test/input/*.osm
 5000_disatar/01_raw_data/osm/*.pbf
 5000_disatar/01_raw_data/osm/*.osm
+archive/5000_disatar/01_raw_data/osm/*.pbf
+archive/5000_disatar/01_raw_data/osm/*.osm
 5000_disatar/03_phase2_production/networks/*.xml
 5000_disatar/03_phase2_production/schedules/**/*.xml
 5000_disatar/03_phase2_production/logs/**/*.log

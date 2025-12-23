@@ -8,7 +8,7 @@
 
 	<module name="OsmConverter">
 		<!-- Taiwan extract clipped to Taipei bbox+buffer (includes alleys/paths) -->
-		<param name="osmFile" value="/Users/ro9air/matsim-example-project/5000_disatar/01_raw_data/osm/taipei_bbox_plus.osm"/>
+		<param name="osmFile" value="/Users/ro9air/matsim-example-project/5000_disatar/01_raw_data/osm/taiwan_latest.osm.pbf"/>
 
 		<!-- Output coordinate system (TWD97) -->
 		<param name="outputCoordinateSystem" value="EPSG:3826"/>

@@ -176,4 +176,4 @@ ls output/ITERS/ | grep -c 'it\.'
 - CLAUDE.md: Lines 15-111 (Build & Run), 267-323 (Configuration)
 - Default config: `defaultConfig.xml`
 - Entry points: `src/main/java/org/matsim/project/RunMatsim*.java`
-- Troubleshooting: `docs/6-troubleshooting.md`
+- Troubleshooting: `docs/10-troubleshooting/troubleshooting.md`

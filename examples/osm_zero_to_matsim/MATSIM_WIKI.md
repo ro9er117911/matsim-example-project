@@ -317,8 +317,8 @@ Java 工具（可直接用 jar 呼叫）：
 
 入口文件與工具：
 
-- `docs/MATSim_Pipeline_完整指南.md`
-- `docs/3-public-transit.md`
+- `docs/12-notes/matsim-pipeline-complete-guide.md`
+- `docs/03-public-transit/public-transit-guide.md`
 - `CLAUDE.md`（SwissRailRaptor/pt2matsim 指令與除錯）
 
 ### 6.3 災難封路 / 撤離
@@ -388,5 +388,5 @@ Java 工具（可直接用 jar 呼叫）：
 
 1. 跑通本範例：`examples/osm_zero_to_matsim/README.md`
 2. 看懂 config：`routing/qsim/controller/replanning/scoring`
-3. 再上 PT：`docs/MATSim_Pipeline_完整指南.md` + `CLAUDE.md`
+3. 再上 PT：`docs/12-notes/matsim-pipeline-complete-guide.md` + `CLAUDE.md`
 4. 最後上災難封路與可視化：3 份 `.agent/workflows/disaster.*.md`

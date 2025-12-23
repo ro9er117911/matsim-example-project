@@ -202,7 +202,7 @@ curl -X GET "https://ptx.transportdata.tw/MOTC/v2/Bus/GTFS/City/Taipei" \
 ## 2025-11-17 追加记录：PT 映射排查（今天的工作）
 
 ### 今日产出
-- 复习 `PT_MAPPING_QUICK_START.md`、`docs/GTFS_MAPPING_GUIDE.md`、`docs/PT_MAPPING_STRATEGY.md` 与 `docs/early-stop-strategy.md`，整理执行顺序与资源要求。
+- 复习 `PT_MAPPING_QUICK_START.md`、`docs/03-public-transit/gtfs-mapping-guide.md`、`docs/03-public-transit/pt-mapping-strategy.md` 与 `docs/05-simulation/early-stop-strategy.md`，整理执行顺序与资源要求。
 - 重新验证 `pt2matsim/data/gtfs/gtfs_taipei_filtered_with_tra`：共 8,375 条路线、6,513 个 trips、100,015 笔 stop_times，但只有 **87.9%** trips 出现在 stop_times 中，缺少 791 条（全是 TRA 行程，见 `pt2matsim/output_v1/gtfs_validation_summary.txt`）。已记录命令与结果供后续修复。
 - 检查 Phase 2 输出 (`pt2matsim/output_v1/transitSchedule.xml`)：`ScheduleCleaner` 合并后仅剩 1,309 条 `<transitRoute>` 与 26,152 个 `<stop refId>`，远低于目标 2,000+/40,000+，需注意这会限制后续映射。
 - 两次以 `ptmapper-config-merged.xml` 运行 `PublicTransitMapper`（`java -Xmx12g …`），均因 CLI 10 分钟限制被迫中断，日志显示 mapper 正常启动、开始计算 pseudoTransitRoutes。确认需要更长 timeout 才能完成。

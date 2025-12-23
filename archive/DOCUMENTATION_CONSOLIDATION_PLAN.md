@@ -18,14 +18,14 @@ This document outlines the plan to consolidate and streamline all `.md` files in
 4. **SIMULATION_SUMMARY.md** (6.5K) - General summary
 
 **Issue**: Overlapping content, multiple versions of similar information
-**Recommendation**: Consolidate into single `docs/simulation-guide.md` with sections for different population sizes
+**Recommendation**: Consolidate into single `docs/05-simulation/simulation-guide.md` with sections for different population sizes
 
 #### Via Export Guides (Duplicative - 2 files)
 1. **VIA_EXPORT_SETUP.md** (6.0K) - Setup instructions
 2. **VIA_EXPORT_WORKFLOW.md** (9.2K) - Workflow details
 
 **Issue**: Split content that should be unified
-**Recommendation**: Merge into single `docs/via-export.md`
+**Recommendation**: Merge into single `docs/05-simulation/via-export.md`
 
 #### Implementation Summaries (Potentially Redundant - 3 files)
 1. **IMPLEMENTATION_SUMMARY.md** (11K)
@@ -41,9 +41,9 @@ This document outlines the plan to consolidate and streamline all `.md` files in
 3. **SIMULATION_OUTPUT_GUIDE.md** (21K) - Output analysis
 
 **Recommendation**: Move to `docs/` with clearer names:
-- `docs/agent-generation.md`
-- `docs/early-stop-strategy.md`
-- `docs/output-analysis.md`
+- `docs/04-population/agent-generation.md`
+- `docs/05-simulation/early-stop-strategy.md`
+- `docs/07-analysis/output-analysis.md`
 
 #### Core Documentation (Keep - 2 files)
 1. **README.md** (4.5K) - Project entry point ✅
@@ -75,8 +75,8 @@ This document outlines the plan to consolidate and streamline all `.md` files in
 **Recommendation**:
 - Keep dated entries (2025-11-*.md) in `archive/working_journal/`
 - Move timeless guides to `docs/`:
-  - `Agent-Journey-Building-Guide.md` → `docs/agent-journey-guide.md`
-  - `population_explain.md` → merge into `docs/4-agent-development.md`
+  - `Agent-Journey-Building-Guide.md` → `docs/04-population/agent-journey-guide.md`
+  - `population_explain.md` → merge into `docs/04-population/agent-development.md`
   - `Via-Export-Quick-Start.md` → merge into consolidated Via guide
 
 ## Proposed New Structure
@@ -118,15 +118,15 @@ matsim-example-project/
 ## Consolidation Tasks
 
 ### Phase 1: Merge Duplicate Content
-- [ ] Create `docs/simulation-guide.md` from 4 simulation guides
-- [ ] Create `docs/via-export.md` from 2 Via guides
-- [ ] Review and merge population explanation into `docs/4-agent-development.md`
+- [ ] Create `docs/05-simulation/simulation-guide.md` from 4 simulation guides
+- [ ] Create `docs/05-simulation/via-export.md` from 2 Via guides
+- [ ] Review and merge population explanation into `docs/04-population/agent-development.md`
 
 ### Phase 2: Relocate Files
-- [ ] Move AGENT_GENERATION_README.md → docs/agent-generation.md
-- [ ] Move EARLY_STOP_STRATEGY.md → docs/early-stop-strategy.md
-- [ ] Move SIMULATION_OUTPUT_GUIDE.md → docs/output-analysis.md
-- [ ] Move Agent-Journey-Building-Guide.md → docs/agent-journey-guide.md
+- [ ] Move AGENT_GENERATION_README.md → docs/04-population/agent-generation.md
+- [ ] Move EARLY_STOP_STRATEGY.md → docs/05-simulation/early-stop-strategy.md
+- [ ] Move SIMULATION_OUTPUT_GUIDE.md → docs/07-analysis/output-analysis.md
+- [ ] Move Agent-Journey-Building-Guide.md → docs/04-population/agent-journey-guide.md
 
 ### Phase 3: Archive Historical Content
 - [ ] Move summaries to archive/summaries/

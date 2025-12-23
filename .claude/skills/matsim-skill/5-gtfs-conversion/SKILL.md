@@ -153,4 +153,4 @@ After GTFS conversion:
 - Tool: `src/main/java/org/matsim/project/tools/GtfsToMatsim.java`
 - Coordinate converter: `src/main/java/org/matsim/project/tools/ConvertGtfsCoordinates.java`
 - CLAUDE.md: Lines 145-161
-- Documentation: `docs/3-public-transit.md`
+- Documentation: `docs/03-public-transit/public-transit-guide.md`

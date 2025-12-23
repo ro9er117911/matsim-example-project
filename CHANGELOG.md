@@ -10,8 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Documentation
 - Consolidated duplicate documentation files into organized structure
-- Created comprehensive [Simulation Guide](docs/simulation-guide.md) from 4 separate guides
-- Created comprehensive [Via Export Guide](docs/via-export.md) from 2 separate guides
+- Created comprehensive [Simulation Guide](docs/05-simulation/simulation-guide.md) from 4 separate guides
+- Created comprehensive [Via Export Guide](docs/05-simulation/via-export.md) from 2 separate guides
 - Moved specialized guides to `docs/` directory for better organization
 - Archived historical summaries to `archive/summaries/`
 
@@ -20,12 +20,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [2025-11-17] - Documentation Consolidation
 
 ### Added
-- `docs/simulation-guide.md` - Comprehensive guide for running MATSim simulations (46 & 100 agents)
-- `docs/via-export.md` - Complete Via platform export pipeline guide
-- `docs/agent-generation.md` - Agent population generation guide (moved from root)
-- `docs/early-stop-strategy.md` - Early stopping implementation (moved from root)
-- `docs/output-analysis.md` - Simulation output analysis guide (moved from root)
-- `docs/agent-journey-guide.md` - Agent journey building guide (moved from archive)
+- `docs/05-simulation/simulation-guide.md` - Comprehensive guide for running MATSim simulations (46 & 100 agents)
+- `docs/05-simulation/via-export.md` - Complete Via platform export pipeline guide
+- `docs/04-population/agent-generation.md` - Agent population generation guide (moved from root)
+- `docs/05-simulation/early-stop-strategy.md` - Early stopping implementation (moved from root)
+- `docs/07-analysis/output-analysis.md` - Simulation output analysis guide (moved from root)
+- `docs/04-population/agent-journey-guide.md` - Agent journey building guide (moved from archive)
 - `CHANGELOG.md` - This file
 
 ### Changed
@@ -33,12 +33,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Archived historical summaries to `archive/summaries/`
 
 ### Removed
-- `SIMULATION_GUIDE_V2.md` - Content merged into `docs/simulation-guide.md`
-- `SIMULATION_GUIDE_IMPROVED_POPULATION.md` - Content merged into `docs/simulation-guide.md`
-- `RUN_100_AGENTS_SIMULATION.md` - Content merged into `docs/simulation-guide.md`
-- `SIMULATION_SUMMARY.md` - Content merged into `docs/simulation-guide.md`
-- `VIA_EXPORT_SETUP.md` - Content merged into `docs/via-export.md`
-- `VIA_EXPORT_WORKFLOW.md` - Content merged into `docs/via-export.md`
+- `SIMULATION_GUIDE_V2.md` - Content merged into `docs/05-simulation/simulation-guide.md`
+- `SIMULATION_GUIDE_IMPROVED_POPULATION.md` - Content merged into `docs/05-simulation/simulation-guide.md`
+- `RUN_100_AGENTS_SIMULATION.md` - Content merged into `docs/05-simulation/simulation-guide.md`
+- `SIMULATION_SUMMARY.md` - Content merged into `docs/05-simulation/simulation-guide.md`
+- `VIA_EXPORT_SETUP.md` - Content merged into `docs/05-simulation/via-export.md`
+- `VIA_EXPORT_WORKFLOW.md` - Content merged into `docs/05-simulation/via-export.md`
 
 ---
 
@@ -110,18 +110,18 @@ For historical implementation summaries and weekly reports, see:
 matsim-example-project/
 ├── docs/                       # Consolidated documentation
 │   ├── README.md              # Documentation index
-│   ├── 1-quick-start.md
-│   ├── 2-architecture.md
-│   ├── 3-public-transit.md
-│   ├── 4-agent-development.md
-│   ├── 5-configuration.md
-│   ├── 6-troubleshooting.md
-│   ├── simulation-guide.md    # NEW: Consolidated simulation guide
-│   ├── via-export.md          # NEW: Consolidated Via export guide
-│   ├── agent-generation.md    # MOVED from root
-│   ├── early-stop-strategy.md # MOVED from root
-│   ├── output-analysis.md     # MOVED from root
-│   └── agent-journey-guide.md # MOVED from archive
+│   ├── 01-getting-started/quick-start.md
+│   ├── 02-architecture/architecture-overview.md
+│   ├── 03-public-transit/public-transit-guide.md
+│   ├── 04-population/agent-development.md
+│   ├── 05-simulation/simulation-guide.md
+│   ├── 06-disaster-evacuation/evacuation-guide.md
+│   ├── 07-analysis/output-analysis.md
+│   ├── 08-configuration/configuration-reference.md
+│   ├── 09-operations/remote-server-setup.md
+│   ├── 10-troubleshooting/troubleshooting.md
+│   ├── 11-modes/motorcycle/motorcycle-quick-start.md
+│   └── 12-notes/matsim-pipeline-complete-guide.md
 │
 ├── archive/
 │   ├── summaries/             # Historical summaries
@@ -140,10 +140,10 @@ matsim-example-project/
 ## Links
 
 - **Documentation Index**: [docs/README.md](docs/README.md)
-- **Quick Start**: [docs/1-quick-start.md](docs/1-quick-start.md)
-- **Simulation Guide**: [docs/simulation-guide.md](docs/simulation-guide.md)
-- **Via Export Guide**: [docs/via-export.md](docs/via-export.md)
-- **Troubleshooting**: [docs/6-troubleshooting.md](docs/6-troubleshooting.md)
+- **Quick Start**: [docs/01-getting-started/quick-start.md](docs/01-getting-started/quick-start.md)
+- **Simulation Guide**: [docs/05-simulation/simulation-guide.md](docs/05-simulation/simulation-guide.md)
+- **Via Export Guide**: [docs/05-simulation/via-export.md](docs/05-simulation/via-export.md)
+- **Troubleshooting**: [docs/10-troubleshooting/troubleshooting.md](docs/10-troubleshooting/troubleshooting.md)
 
 ---
 

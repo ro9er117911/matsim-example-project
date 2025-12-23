@@ -10,9 +10,9 @@ Old documentation has been **reorganized and improved** in the new `docs/` direc
 
 | Old Location | New Location | Notes |
 |-------------|--------------|-------|
-| `AGENT.md` | `docs/4-agent-development.md` | Simplified and updated |
-| `PT_ERROR_HANDLING.md` | `docs/3-public-transit.md` + `docs/6-troubleshooting.md` | Merged and expanded |
-| `PT_SETUP_REPORT.md` | `docs/3-public-transit.md` | Complete PT guide |
+| `AGENT.md` | `docs/04-population/agent-development.md` | Simplified and updated |
+| `PT_ERROR_HANDLING.md` | `docs/03-public-transit/public-transit-guide.md` + `docs/10-troubleshooting/troubleshooting.md` | Merged and expanded |
+| `PT_SETUP_REPORT.md` | `docs/03-public-transit/public-transit-guide.md` | Complete PT guide |
 | `REFACTORING_SUMMARY.md` | `changelog/2025-11.md` | Now in changelog |
 | `working_journal/*.md` | `archive/working_journal/` | Historical logs |
 
@@ -21,9 +21,9 @@ Old documentation has been **reorganized and improved** in the new `docs/` direc
 ### `/archive/old_docs/`
 
 Original root-level documentation files:
-- `AGENT.md` - Original agent guide (superseded by `docs/4-agent-development.md`)
-- `PT_ERROR_HANDLING.md` - PT error handling (merged into `docs/3-public-transit.md`)
-- `PT_SETUP_REPORT.md` - PT setup report (merged into `docs/3-public-transit.md`)
+- `AGENT.md` - Original agent guide (superseded by `docs/04-population/agent-development.md`)
+- `PT_ERROR_HANDLING.md` - PT error handling (merged into `docs/03-public-transit/public-transit-guide.md`)
+- `PT_SETUP_REPORT.md` - PT setup report (merged into `docs/03-public-transit/public-transit-guide.md`)
 - `REFACTORING_SUMMARY.md` - Refactoring notes (moved to `changelog/2025-11.md`)
 
 ### `/archive/working_journal/`

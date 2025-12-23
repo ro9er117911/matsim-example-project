@@ -123,4 +123,4 @@ comm -23 plan_links.txt network_links.txt
 
 - Tool: `src/main/java/org/matsim/project/tools/PrepareNetworkForPTMapping.java`
 - CLAUDE.md: Lines 214-261, 325-375
-- Troubleshooting guide: `docs/6-troubleshooting.md`
+- Troubleshooting guide: `docs/10-troubleshooting/troubleshooting.md`

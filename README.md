@@ -60,7 +60,7 @@ matsim-example-project/
 
 | 文件 | 說明 |
 |------|------|
-| [`PROJECT_WIKI.md`](PROJECT_WIKI.md) | 🆕 **專案導覽地圖** - 新手必讀 |
+| [`PROJECT_WIKI.md`](PROJECT_WIKI.md) | 🧭 **唯一真相/活文檔** - 新手必讀 |
 | [`CLAUDE.md`](CLAUDE.md) | AI 助手專用指引 |
 | [`CHANGELOG.md`](CHANGELOG.md) | 變更紀錄 |
 

@@ -235,8 +235,8 @@ python3 examples/osm_zero_to_matsim/scripts/20_build_network.py \
 
 入口文件：
 
-- `docs/3-public-transit.md`
-- `docs/MATSim_Pipeline_完整指南.md`
+- `docs/03-public-transit/public-transit-guide.md`
+- `docs/12-notes/matsim-pipeline-complete-guide.md`
 - `CLAUDE.md`（pt2matsim 指令、SwissRailRaptor 除錯 checklist）
 
 ### 4.2 災難封路（Time-Variant Network Change Events）
@@ -266,4 +266,4 @@ python3 examples/osm_zero_to_matsim/scripts/20_build_network.py \
 ## 5) 你接下來應該先讀哪份？
 
 - 先讀「百科」：`examples/osm_zero_to_matsim/MATSIM_WIKI.md`
-- 你要跑 PT：從 `docs/MATSim_Pipeline_完整指南.md` 開始
+- 你要跑 PT：從 `docs/12-notes/matsim-pipeline-complete-guide.md` 開始

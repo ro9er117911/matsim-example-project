@@ -366,10 +366,14 @@ gunzip -c output/output_events.xml.gz | \
 ### 4. Visualize Output
 
 ```bash
-# Use MATSim VIA (built-in visualizer)
-java -cp matsim.jar org.matsim.contrib.otfvis.OTFVis \
-  output/output_network.xml.gz \
-  output/output_events.xml.gz
+# [DEPRECATED] MATSim VIA/OTFVis - use SimWrapper instead
+# java -cp matsim.jar org.matsim.contrib.otfvis.OTFVis \
+#   output/output_network.xml.gz \
+#   output/output_events.xml.gz
+
+# Use SimWrapper for modern visualization
+npx simwrapper serve --port 8000
+# Then open http://localhost:8000 and navigate to output directory
 ```
 
 ### 5. Analyze Statistics

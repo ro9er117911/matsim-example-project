@@ -120,7 +120,8 @@ matsim-example-project/
 
 ### Step 8 — 執行模擬
 - 快速執行（含 SimWrapper 分析）：
-  - `scripts/run_simulation_with_via_export.sh <config.xml>`
+  - `scripts/run_simulation.sh <config.xml>`
+  - [DEPRECATED] ~~`scripts/run_simulation_with_via_export.sh <config.xml>`~~
 - 背景長跑：
   - `scripts/run_simulation.sh <config.xml>`
 - 災難專案 baseline：
@@ -130,7 +131,7 @@ matsim-example-project/
 ### Step 9 — 產出分析與視覺化
 - SimWrapper dashboard：`tools/run_dashboard_pipeline.sh <output_dir>`
 - 壅塞瓶頸：`python -m src.main.python.bottleneck_analysis.analyze_bottlenecks --output-dir <output>`
-- Via / 軌跡輸出：`src/main/python/build_agent_tracks.py`
+- [DEPRECATED] ~~Via / 軌跡輸出：`src/main/python/build_agent_tracks.py`~~ (use SimWrapper)
 - 速度 / stuck：`tools/analyze_agent_speeds.py`, `tools/generate_stuck_agents_csv.py`
 - Flowmap：`tools/generate_flowmap_data.py`
 
@@ -150,7 +151,8 @@ java -jar matsim-example-project-0.0.1-SNAPSHOT.jar scenarios/equil/config.xml
 
 **災難撤離 (5000 agents)**
 ```bash
-scripts/run_simulation_with_via_export.sh 5000_disatar/05_combined_evac/config_optimized_iter10.xml
+# [DEPRECATED] scripts/run_simulation_with_via_export.sh - use run_simulation.sh + SimWrapper
+scripts/run_simulation.sh 5000_disatar/05_combined_evac/config_optimized_iter10.xml
 ```
 
 ---
@@ -158,14 +160,14 @@ scripts/run_simulation_with_via_export.sh 5000_disatar/05_combined_evac/config_o
 ## 5) 腳本 / 工具總覽（何時用）
 
 ### scripts/（執行與實驗）
-- `scripts/run_simulation_with_via_export.sh`：推薦主入口，含 SimWrapper 後處理
-- `scripts/run_simulation.sh`：背景跑（可搭配 `MATSIM_MEMORY=16g`）
+- `scripts/run_simulation.sh`：推薦主入口，背景跑（可搭配 `MATSIM_MEMORY=16g`）
+- [DEPRECATED] ~~`scripts/run_simulation_with_via_export.sh`~~：已棄用，改用 SimWrapper
 - `scripts/run_analysis.sh`：對 output 進行速度分析 + dashboard YAML
 - `scripts/run_experiment_100k.sh`：100k 情境變體實驗
-- `scripts/run_100_agents_simulation.sh`：小型 smoke test + Via export
+- `scripts/run_100_agents_simulation.sh`：小型 smoke test
 - `scripts/run_pt_test_with_timeout.sh`：PT pipeline 快速檢查
 - `scripts/monitor_resources.sh`：記錄 CPU / RAM
-- `scripts/EXPORT_VIA_COMMAND.sh`：Via 輸出
+- [DEPRECATED] ~~`scripts/EXPORT_VIA_COMMAND.sh`~~：已棄用 Via 輸出
 - `scripts/clip_gtfs_scientific.py`：災難場景 GTFS 裁剪 + 無效 trips 過濾
 - `scripts/merge_populations.py`：產生更豐富的 population（equil）
 - `scripts/fix_network_capacity.py`：修正 0 capacity

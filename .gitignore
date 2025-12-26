@@ -26,7 +26,10 @@ scenarios/**/network-with-pt.xml
 *.tar.gz
 *.tgz
 *.jar
-*.osm                     # OSM XML 檔案通常很大
+*.osm
+*.osm.pb
+*.osm.pbf
+
 *.log                     # 日誌檔案
 *.pyc                     # Python compiled files
 __pycache__/              # Python cache
@@ -49,6 +52,9 @@ __pycache__/              # Python cache
 # 忽略原始 OSM 資料（很大）
 5000_disatar/01_raw_data/osm/*.osm
 5000_disatar/01_raw_data/osm/*.pbf
+5000_disatar/01_raw_data/chayi_map/**
+5000_disatar/02_phase1_test/osm/**
+
 
 # 忽略大型 ABM 資料檔案
 5000_disatar/01_raw_data/agent_abm/*.json
@@ -135,6 +141,7 @@ archive/                 # Archived files
 5000_disatar/01_raw_data/**  # Raw OSM/GTFS data
 5000_disatar/06_simulation/**  # Simulation runs (large files)
 5000_disatar/02_phase1_test/networks/**
+5000_disatar/02_phase1_test/**/network*.xml.gz
 5000_disatar/02_phase1_test/population/**
 5000_disatar/03_phase2_production/networks/**
 5000_disatar/03_phase2_production/schedules/**/*.xml

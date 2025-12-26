@@ -41,6 +41,10 @@
 			<id>matsim</id>
 			<url>https://repo.matsim.org/repository/matsim</url>
 		</repository>
+		<repository>
+			<id>pt2matsim</id>
+			<url>https://repo.matsim.org/repository/matsim/</url>
+		</repository>
 		<!-- for dependencies of osm-network-reader -->
 		<repository>
 			<id>topobyte</id>
@@ -197,9 +201,7 @@
 		<dependency>
 			<groupId>org.matsim</groupId>
 			<artifactId>pt2matsim</artifactId>
-			<version>25.8</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/pt2matsim/work/pt2matsim-25.8-shaded.jar</systemPath>
+			<version>25.12</version>
 		</dependency>
 <!--		<dependency>-->
 <!--			<groupId>org.matsim.contrib</groupId>-->

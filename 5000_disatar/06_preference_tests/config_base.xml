@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
+<config>
+    <!-- Baseline 280k: Transfer Penalty = 0, Mode Preference = Neutral -->
+
+    <module name="global">
+        <param name="randomSeed" value="4711" />
+        <param name="coordinateSystem" value="EPSG:3826" />
+        <param name="numberOfThreads" value="8" />
+    </module>
+
+    <module name="network">
+        <param name="inputNetworkFile" value="../../scenarios/corridor/500_300-618/network-with-pt-metro-v7-carscc.xml.gz" />
+    </module>
+
+    <module name="vehicles">
+        <param name="vehiclesFile" value="../05_combined_evac/input/vehicles_5m.xml" />
+    </module>
+
+    <module name="plans">
+        <param name="inputPlansFile" value="../05_combined_evac/input/population_280k.xml.gz" />
+    </module>
+
+    <module name="transit">
+        <param name="useTransit" value="true" />
+        <param name="transitScheduleFile" value="../../scenarios/equil/transitSchedule-mapped-metro-v7.xml.gz" />
+        <param name="vehiclesFile" value="../../scenarios/equil/transitVehicles.xml" />
+        <param name="transitModes" value="pt,bus,subway" />
+        <param name="usingTransitInMobsim" value="false" />
+    </module>
+
+    <module name="controller">
+        <param name="outputDirectory" value="output_base" />
+        <param name="lastIteration" value="0" />
+        <param name="writeEventsInterval" value="10" />
+        <param name="writePlansInterval" value="10" />
+        <param name="overwriteFiles" value="deleteDirectoryIfExists" />
+    </module>
+
+    <module name="qsim">
+        <param name="mainMode" value="car" />
+        <param name="vehiclesSource" value="modeVehicleTypesFromVehiclesData" />
+        <param name="flowCapacityFactor" value="1.0" />
+        <param name="storageCapacityFactor" value="1.0" />
+        <param name="startTime" value="00:00:00" />
+        <param name="endTime" value="24:00:00" />
+        <param name="stuckTime" value="300.0" />
+        <param name="removeStuckVehicles" value="false" />
+        <param name="linkDynamics" value="PassingQ" />
+        <param name="trafficDynamics" value="queue" />
+        <param name="numberOfThreads" value="8" />
+    </module>
+
+    <module name="routing">
+        <param name="networkModes" value="car" />
+        <param name="accessEgressType" value="accessEgressModeToLink" />
+        <param name="clearDefaultTeleportedModeParams" value="true" />
+        <parameterset type="teleportedModeParameters">
+            <param name="mode" value="walk" />
+            <param name="teleportedModeSpeed" value="1.2" />
+            <param name="beelineDistanceFactor" value="1.3" />
+        </parameterset>
+    </module>
+
+    <module name="swissRailRaptor">
+        <param name="useIntermodalAccessEgress" value="false" />
+        <param name="transferPenaltyBaseCost" value="0.0" />
+        <param name="transferPenaltyCostPerTravelTimeHour" value="0.0" />
+    </module>
+
+    <module name="scoring">
+        <param name="lateArrival" value="-18" />
+        <param name="performing" value="+6" />
+        <parameterset type="scoringParameters">
+            <parameterset type="activityParams">
+                <param name="activityType" value="home" />
+                <param name="typicalDuration" value="03:00:00" />
+            </parameterset>
+            <parameterset type="activityParams">
+                <param name="activityType" value="evacuation" />
+                <param name="typicalDuration" value="06:00:00" />
+            </parameterset>
+            <parameterset type="modeParams">
+                <param name="mode" value="car" />
+                <param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
+            </parameterset>
+            <parameterset type="modeParams">
+                <param name="mode" value="pt" />
+                <param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
+            </parameterset>
+            <parameterset type="modeParams">
+                <param name="mode" value="bus" />
+                <param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
+            </parameterset>
+            <parameterset type="modeParams">
+                <param name="mode" value="subway" />
+                <param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
+            </parameterset>
+            <parameterset type="modeParams">
+                <param name="mode" value="walk" />
+                <param name="marginalUtilityOfTraveling_util_hr" value="-12.0" />
+            </parameterset>
+        </parameterset>
+    </module>
+
+    <module name="replanning">
+        <param name="maxAgentPlanMemorySize" value="5" />
+        <param name="fractionOfIterationsToDisableInnovation" value="0.8" />
+        <parameterset type="strategysettings">
+            <param name="strategyName" value="ChangeExpBeta" />
+            <param name="weight" value="0.7" />
+        </parameterset>
+        <parameterset type="strategysettings">
+            <param name="strategyName" value="ReRoute" />
+            <param name="weight" value="0.3" />
+        </parameterset>
+    </module>
+
+</config>

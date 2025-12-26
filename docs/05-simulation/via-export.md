@@ -1,7 +1,13 @@
 # Via Platform Export Guide
 
+> [!CAUTION]
+> **DEPRECATED**: This documentation is for the Via Platform which is no longer the primary visualization framework. 
+> **SimWrapper** is now the current visualization tool. See [SimWrapper Documentation](../07-analysis/output-analysis.md) for current guidance.
+> 
+> Use: `npx simwrapper serve --port 8000`
+
 **Last Updated**: 2025-11-17
-**Status**: Production Ready
+**Status**: ~~Production Ready~~ **DEPRECATED - Use SimWrapper**
 
 ---
 

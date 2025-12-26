@@ -74,7 +74,10 @@ public class RunMatsim{
 
 //		controler.addOverridingModule( new OTFVisLiveModule() ) ;
 
-		controler.addOverridingModule( new SimWrapperModule() );
+		String disableSimWrapper = System.getenv("DISABLE_SIMWRAPPER");
+		if (!"1".equals(disableSimWrapper)) {
+			controler.addOverridingModule(new SimWrapperModule());
+		}
 		
 		// ---
 		

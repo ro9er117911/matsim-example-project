@@ -1,6 +1,10 @@
 # MATSim Events to JSON/Parquet Converter
 
-自動化轉換 MATSim `output_events.xml` 為 Via 平台相容的 JSON 和 Parquet 格式。
+> [!NOTE]
+> 原始設計為 Via 平台相容格式，但 Via 已被 **SimWrapper** 取代為主要可視化框架。
+> 此轉換器仍可用於生成 JSON/Parquet 格式供其他分析工具使用。
+
+自動化轉換 MATSim `output_events.xml` 為 JSON 和 Parquet 格式（原為 Via 平台相容格式）。
 
 ## 功能特色
 

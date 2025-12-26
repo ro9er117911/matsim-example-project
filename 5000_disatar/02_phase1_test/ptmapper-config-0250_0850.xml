@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
+<config>
+  <module name="PublicTransitMapping">
+    <param name="inputNetworkFile" value="5000_disatar/02_phase1_test/networks/network_v7_car_walk_clean_pt.xml.gz" />
+    <param name="inputScheduleFile" value="5000_disatar/02_phase1_test/pt2matsim_0250_0850/transitSchedule.xml" />
+    <param name="outputNetworkFile" value="5000_disatar/02_phase1_test/pt2matsim_0250_0850/network-with-pt.xml.gz" />
+    <param name="outputScheduleFile" value="5000_disatar/02_phase1_test/pt2matsim_0250_0850/transitSchedule-mapped.xml.gz" />
+
+    <param name="candidateDistanceMultiplier" value="3.0" />
+    <param name="maxLinkCandidateDistance" value="300.0" />
+    <param name="nLinkThreshold" value="12" />
+    <param name="maxTravelCostFactor" value="15.0" />
+
+    <param name="networkRouter" value="AStarLandmarks" />
+    <param name="numOfThreads" value="4" />
+    <param name="modesToKeepOnCleanUp" value="car,walk" />
+  </module>
+</config>

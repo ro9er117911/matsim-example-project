@@ -13,7 +13,9 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 CONFIG="${CONFIG_FILE:-${ROOT}/5000_disatar/05_combined_evac/config_combined_5000_staggered_iter10.xml}"
-RUNNER="${ROOT}/run_simulation_with_via_export.sh"
+# [DEPRECATED] VIA export - now using SimWrapper for visualization
+# RUNNER="${ROOT}/run_simulation_with_via_export.sh"
+RUNNER="${ROOT}/scripts/run_simulation.sh"
 DASH_PIPELINE="${ROOT}/tools/run_dashboard_pipeline.sh"
 # Hazard polygons (buffered zones) and line closures (moderate 0-3km)
 HAZARD_POLY_SRC="${ROOT}/output/inundation_zones_buffered.geojson"

@@ -76,8 +76,8 @@ def generate_yamls(output_dir):
                     "width": 2,
                     "title": "平均撤離時間地圖",
                     "description": "Average Evacuation Time",
-                    "center": [121.43, 25.18],
-                    "zoom": 12,
+                    "center": [121.666, 25.08],
+                    "zoom": 13,
                     "datasets": {
                          "grid": "evac_time_grid.csv"
                     },

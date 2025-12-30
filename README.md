@@ -19,7 +19,7 @@
 java -jar matsim-example-project-0.0.1-SNAPSHOT.jar
 
 # 執行特定場景
-java -jar matsim-example-project-0.0.1-SNAPSHOT.jar scenarios/equil/config_min.xml
+java -jar matsim-example-project-0.0.1-SNAPSHOT.jar scenarios/corridor/taipei_test/config.xml
 ```
 
 ## 技術棧
@@ -44,7 +44,6 @@ matsim-example-project/
 │       ├── evacuation/          # 🆕 災難撤離模組
 │       └── tools/               # 路網建置工具
 ├── 5000_disatar/                # 🆕 災難模擬專案 (5000 代理人)
-│   ├── 00_docs/                 # 專案文件
 │   ├── 03_phase2_production/    # 生產級路網
 │   └── 05_combined_evac/        # 綜合撤離場景
 ├── scenarios/                   # 場景設定檔
@@ -60,12 +59,13 @@ matsim-example-project/
 
 | 文件 | 說明 |
 |------|------|
-| [`PROJECT_WIKI.md`](PROJECT_WIKI.md) | 🧭 **唯一真相/活文檔** - 新手必讀 |
+| [`docs/README.md`](docs/README.md) | 專案文件總覽與索引 |
+| [`PROJECT_WIKI.md`](PROJECT_WIKI.md) | 專案導覽與流程圖 |
 | [`CLAUDE.md`](CLAUDE.md) | AI 助手專用指引 |
 | [`CHANGELOG.md`](CHANGELOG.md) | 變更紀錄 |
 
 ### 災難模擬文件
-- [`5000_disatar/00_docs/NETWORK_README.md`](5000_disatar/00_docs/NETWORK_README.md) - 災難路網建置指南
+- [`docs/06-disaster-evacuation/evacuation-guide.md`](docs/06-disaster-evacuation/evacuation-guide.md) - 撤離情境說明
 - [`5000_disatar/05_combined_evac/WORKFLOW.md`](5000_disatar/05_combined_evac/WORKFLOW.md) - 撤離模擬工作流
 
 ## 功能特色
@@ -105,6 +105,8 @@ open http://localhost:8000
 - `network.avro` - 路網視覺化
 - `*.csv` - 統計資料
 
+流程與檔案說明請見 `docs/05-simulation/simwrapper.md`。
+
 ## 開發設定
 
 ### 前置需求
@@ -122,7 +124,7 @@ open http://localhost:8000
 
 ### 基本測試
 ```bash
-java -jar matsim-example-project-0.0.1-SNAPSHOT.jar scenarios/equil/config_min.xml
+java -jar matsim-example-project-0.0.1-SNAPSHOT.jar scenarios/corridor/taipei_test/config.xml
 ```
 
 ### 災難撤離模擬 (5000 代理人)

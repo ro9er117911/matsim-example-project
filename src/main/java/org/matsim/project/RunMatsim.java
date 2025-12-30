@@ -24,30 +24,31 @@ import org.matsim.core.config.ConfigUtils;
 import org.matsim.core.controler.Controler;
 import org.matsim.core.controler.OutputDirectoryHierarchy.OverwriteFileSetting;
 import org.matsim.core.scenario.ScenarioUtils;
+import org.matsim.core.network.algorithms.NetworkCleaner;
 import org.matsim.simwrapper.SimWrapperModule;
 
 /**
  * @author nagel
  *
  */
-public class RunMatsim{
+public class RunMatsim {
 
 	public static void main(String[] args) {
 
 		Config config;
-		if ( args==null || args.length==0 || args[0]==null ){
-			config = ConfigUtils.loadConfig( "scenarios/equil/config.xml" );
+		if (args == null || args.length == 0 || args[0] == null) {
+			config = ConfigUtils.loadConfig("scenarios/equil/config.xml");
 		} else {
-			config = ConfigUtils.loadConfig( args );
+			config = ConfigUtils.loadConfig(args);
 		}
 
-		config.controller().setOverwriteFileSetting( OverwriteFileSetting.deleteDirectoryIfExists );
+		config.controller().setOverwriteFileSetting(OverwriteFileSetting.deleteDirectoryIfExists);
 
 		// possibly modify config here
 
 		// ---
-		
-		Scenario scenario = ScenarioUtils.loadScenario(config) ;
+
+		Scenario scenario = ScenarioUtils.loadScenario(config);
 
 		// possibly modify scenario here
 		// Sanitize network attributes for Avro/SimWrapper compatibility
@@ -65,23 +66,25 @@ public class RunMatsim{
 				}
 			}
 		}
-		
+
+		new NetworkCleaner().run(scenario.getNetwork());
+
 		// ---
-		
-		Controler controler = new Controler( scenario ) ;
-		
+
+		Controler controler = new Controler(scenario);
+
 		// possibly modify controler here
 
-//		controler.addOverridingModule( new OTFVisLiveModule() ) ;
+		// controler.addOverridingModule( new OTFVisLiveModule() ) ;
 
 		String disableSimWrapper = System.getenv("DISABLE_SIMWRAPPER");
 		if (!"1".equals(disableSimWrapper)) {
 			controler.addOverridingModule(new SimWrapperModule());
 		}
-		
+
 		// ---
-		
+
 		controler.run();
 	}
-	
+
 }

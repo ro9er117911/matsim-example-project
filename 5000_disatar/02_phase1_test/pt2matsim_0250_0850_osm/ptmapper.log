@@ -1,410 +1,420 @@
-2025-12-26T10:30:10,233  INFO IOUtils:212 Resolved 5000_disatar/02_phase1_test/ptmapper-config-0250_0850-osm.xml to 5000_disatar/02_phase1_test/ptmapper-config-0250_0850-osm.xml
-2025-12-26T10:30:10,236  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
-2025-12-26T10:30:10,269  INFO Version:18 HV000001: Hibernate Validator 9.0.1.Final
-2025-12-26T10:30:10,311  INFO MatsimXmlParser:172 starting to parse xml from url file:/Users/ro9air/matsim-example-project/5000_disatar/02_phase1_test/ptmapper-config-0250_0850-osm.xml ...
-2025-12-26T10:30:10,326  INFO ConfigReader:105 using config_v2-reader
-2025-12-26T10:30:10,326  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/config_v2.dtd. In some cases (e.g. network interface up but no connection), this may take a while.
-2025-12-26T10:30:10,334  INFO MatsimXmlParser:314 java.net.UnknownHostException: www.matsim.org. May not be fatal, will try to load it locally.
-2025-12-26T10:30:10,334  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/config_v2.dtd
-2025-12-26T10:30:10,345  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/5000_disatar/02_phase1_test/ptmapper-config-0250_0850-osm.xml]
-2025-12-26T10:30:10,345  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
-2025-12-26T10:30:10,357  INFO MatsimXmlParser:155 starting to parse xml from file 5000_disatar/02_phase1_test/pt2matsim_0250_0850_osm/transitSchedule.xml ...
-2025-12-26T10:30:10,357  INFO IOUtils:212 Resolved 5000_disatar/02_phase1_test/pt2matsim_0250_0850_osm/transitSchedule.xml to 5000_disatar/02_phase1_test/pt2matsim_0250_0850_osm/transitSchedule.xml
-2025-12-26T10:30:10,388  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/transitSchedule_v2.dtd. In some cases (e.g. network interface up but no connection), this may take a while.
-2025-12-26T10:30:10,388  INFO MatsimXmlParser:314 java.net.UnknownHostException: www.matsim.org. May not be fatal, will try to load it locally.
-2025-12-26T10:30:10,388  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/transitSchedule_v2.dtd
-2025-12-26T10:30:10,429  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
-2025-12-26T10:30:10,431  INFO MatsimXmlParser:155 starting to parse xml from file 5000_disatar/02_phase1_test/networks/network_osm_multimodal_0250_0850_clean_pt.xml.gz ...
-2025-12-26T10:30:10,431  INFO IOUtils:212 Resolved 5000_disatar/02_phase1_test/networks/network_osm_multimodal_0250_0850_clean_pt.xml.gz to 5000_disatar/02_phase1_test/networks/network_osm_multimodal_0250_0850_clean_pt.xml.gz
-2025-12-26T10:30:10,432  INFO MatsimNetworkReader:122 using network_v2-reader.
-2025-12-26T10:30:10,432  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/network_v2.dtd. In some cases (e.g. network interface up but no connection), this may take a while.
-2025-12-26T10:30:10,432  INFO MatsimXmlParser:314 java.net.UnknownHostException: www.matsim.org. May not be fatal, will try to load it locally.
-2025-12-26T10:30:10,432  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/network_v2.dtd
-2025-12-26T10:30:10,434  INFO NetworkImpl:165  node # 1
-2025-12-26T10:30:10,434  INFO NetworkImpl:165  node # 4
-2025-12-26T10:30:10,434  INFO NetworkImpl:165  node # 16
-2025-12-26T10:30:10,435  INFO NetworkImpl:165  node # 64
-2025-12-26T10:30:10,439  INFO NetworkImpl:165  node # 256
-2025-12-26T10:30:10,444  INFO NetworkImpl:165  node # 1024
-2025-12-26T10:30:10,452  INFO NetworkImpl:165  node # 4096
-2025-12-26T10:30:10,479  INFO NetworkImpl:165  node # 16384
-2025-12-26T10:30:10,549  INFO NetworkImpl:165  node # 65536
-2025-12-26T10:30:10,796  INFO NetworkImpl:165  node # 262144
-2025-12-26T10:30:11,031  INFO NetworkImpl:161  link # 1
-2025-12-26T10:30:11,032  INFO NetworkImpl:161  link # 4
-2025-12-26T10:30:11,033  INFO NetworkImpl:161  link # 16
-2025-12-26T10:30:11,037  INFO NetworkImpl:161  link # 64
-2025-12-26T10:30:11,044  INFO NetworkImpl:161  link # 256
-2025-12-26T10:30:11,065  INFO NetworkImpl:161  link # 1024
-2025-12-26T10:30:11,095  INFO NetworkImpl:161  link # 4096
-2025-12-26T10:30:11,196  INFO NetworkImpl:161  link # 16384
-2025-12-26T10:30:11,472  INFO NetworkImpl:161  link # 65536
-2025-12-26T10:30:12,468  INFO NetworkImpl:161  link # 262144
-2025-12-26T10:30:15,256  INFO LinkCandidateCreatorStandard:82 ===========================
-2025-12-26T10:30:15,256  INFO LinkCandidateCreatorStandard:83 Creating link candidates...
-2025-12-26T10:30:15,256  INFO LinkCandidateCreatorStandard:85    Note: loop links for stop facilities are created if no link candidate can be found.
-2025-12-26T10:30:15,259  INFO Progress:40 Getting closest links ... 0/174 (0.00%)
-2025-12-26T10:30:15,278  INFO NetworkImpl:419 building QuadTree for nodes: xrange(168870.00790453044,351290.2972462141); yrange(2456092.8126288014,2798887.548973083)
-2025-12-26T10:30:15,383  INFO NetworkImpl:428 Building QuadTree took 0.122 seconds.
-2025-12-26T10:30:16,279  INFO Progress:40 Getting closest links ... 43/174 (24.71%)
-2025-12-26T10:30:17,279  INFO Progress:40 Getting closest links ... 118/174 (67.82%)
-2025-12-26T10:30:18,288  INFO Progress:40 Getting closest links ... 147/174 (84.48%)
-2025-12-26T10:30:18,765  INFO Progress:40 Getting closest links ... 174/174 (100.00%)
-2025-12-26T10:30:18,766  INFO Progress:40 Creating link candidates ... 0/400 (0.00%)
-2025-12-26T10:30:18,796  INFO Progress:40 Creating link candidates ... 400/400 (100.00%)
-2025-12-26T10:30:18,796  INFO Progress:40 Setting candidate priorities ... 0/400 (0.00%)
-2025-12-26T10:30:18,798  INFO LinkCandidateCreatorStandard:233 Average number of link candidates: 18
-2025-12-26T10:30:18,802  INFO PTMapper:153 ======================================
-2025-12-26T10:30:18,802  INFO PTMapper:154 Mapping transit schedule to network...
-2025-12-26T10:30:18,802  INFO PTMapper:170 ==================================
-2025-12-26T10:30:18,804  INFO PTMapper:171 Calculating pseudoTransitRoutes... (174 transit routes in 172 transit lines)
-2025-12-26T10:30:18,804  INFO Progress:40 Calculating pseudoTransitRoutes ... 0/174 (0.00%)
-2025-12-26T10:30:18,804  INFO ScheduleRoutersStandard:85 ==============================================
-2025-12-26T10:30:18,805  INFO ScheduleRoutersStandard:86 Creating network routers for transit routes...
-2025-12-26T10:30:18,805  INFO ScheduleRoutersStandard:87 Initiating network and router for transit routes...
-2025-12-26T10:30:18,805  INFO ScheduleRoutersStandard:106 New router for schedule mode bus
-2025-12-26T10:30:18,805  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
-2025-12-26T10:30:18,807  INFO NetworkImpl:165  node # 1
-2025-12-26T10:30:18,807  INFO NetworkImpl:165  node # 4
-2025-12-26T10:30:18,807  INFO NetworkImpl:165  node # 16
-2025-12-26T10:30:18,807  INFO NetworkImpl:165  node # 64
-2025-12-26T10:30:18,807  INFO NetworkImpl:165  node # 256
-2025-12-26T10:30:18,807  INFO NetworkImpl:165  node # 1024
-2025-12-26T10:30:18,808  INFO NetworkImpl:165  node # 4096
-2025-12-26T10:30:18,810  INFO NetworkImpl:165  node # 16384
-2025-12-26T10:30:18,816  INFO NetworkImpl:165  node # 65536
-2025-12-26T10:30:18,827  INFO NetworkImpl:165  node # 262144
-2025-12-26T10:30:18,834  INFO NetworkImpl:161  link # 1
-2025-12-26T10:30:18,834  INFO NetworkImpl:161  link # 4
-2025-12-26T10:30:18,834  INFO NetworkImpl:161  link # 16
-2025-12-26T10:30:18,834  INFO NetworkImpl:161  link # 64
-2025-12-26T10:30:18,835  INFO NetworkImpl:161  link # 256
-2025-12-26T10:30:18,836  INFO NetworkImpl:161  link # 1024
-2025-12-26T10:30:18,840  INFO NetworkImpl:161  link # 4096
-2025-12-26T10:30:18,853  INFO NetworkImpl:161  link # 16384
-2025-12-26T10:30:18,879  INFO NetworkImpl:161  link # 65536
-2025-12-26T10:30:18,972  INFO NetworkImpl:161  link # 262144
-2025-12-26T10:30:19,656  INFO PreProcessDijkstra:119 nodes in dead ends: 83739 (total nodes: 422259). Done in 350 ms
-2025-12-26T10:30:19,725  INFO PreProcessLandmarks:113 Putting landmarks on network...
-2025-12-26T10:30:19,749  INFO LandmarkerPieSlices:97 Filling sectors...
-2025-12-26T10:30:20,029  INFO LandmarkerPieSlices:108 Refining landmarks...
-2025-12-26T10:30:20,055  INFO LandmarkerPieSlices:110 done
-2025-12-26T10:30:20,056  INFO PreProcessLandmarks:116 done in 330 ms
-2025-12-26T10:30:20,056  INFO PreProcessLandmarks:118 Initializing landmarks data
-2025-12-26T10:30:20,202  INFO PreProcessLandmarks:130 Calculating distance from each node to each of the 16 landmarks using 8 threads...
-2025-12-26T10:30:20,207  INFO PreProcessLandmarks:140 wait for landmarks Calculator to finish...
-2025-12-26T10:30:22,873  INFO PreProcessLandmarks:164 done in 2671 ms
-2025-12-26T10:30:22,875  INFO ScheduleRoutersStandard:106 New router for schedule mode subway
-2025-12-26T10:30:22,875  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
-2025-12-26T10:30:22,876  INFO NetworkImpl:165  node # 1
-2025-12-26T10:30:22,876  INFO NetworkImpl:165  node # 4
-2025-12-26T10:30:22,877  INFO NetworkImpl:165  node # 16
-2025-12-26T10:30:22,877  INFO NetworkImpl:165  node # 64
-2025-12-26T10:30:22,877  INFO NetworkImpl:165  node # 256
-2025-12-26T10:30:22,877  INFO NetworkImpl:165  node # 1024
-2025-12-26T10:30:22,877  INFO NetworkImpl:165  node # 4096
-2025-12-26T10:30:22,878  INFO NetworkImpl:165  node # 16384
-2025-12-26T10:30:22,880  INFO NetworkImpl:165  node # 65536
-2025-12-26T10:30:22,891  INFO NetworkImpl:165  node # 262144
-2025-12-26T10:30:22,904  INFO NetworkImpl:161  link # 1
-2025-12-26T10:30:22,904  INFO NetworkImpl:161  link # 4
-2025-12-26T10:30:22,904  INFO NetworkImpl:161  link # 16
-2025-12-26T10:30:22,914  INFO NetworkImpl:161  link # 64
-2025-12-26T10:30:22,915  INFO NetworkImpl:161  link # 256
-2025-12-26T10:30:22,935  INFO NetworkImpl:161  link # 1024
-2025-12-26T10:30:23,018  INFO NetworkImpl:161  link # 4096
-2025-12-26T10:30:23,117  INFO PreProcessDijkstra:119 nodes in dead ends: 1066 (total nodes: 4625). Done in 4 ms
-2025-12-26T10:30:23,120  INFO PreProcessLandmarks:113 Putting landmarks on network...
-2025-12-26T10:30:23,120  INFO LandmarkerPieSlices:97 Filling sectors...
-2025-12-26T10:30:23,122  INFO LandmarkerPieSlices:108 Refining landmarks...
-2025-12-26T10:30:23,123  INFO LandmarkerPieSlices:110 done
-2025-12-26T10:30:23,123  INFO PreProcessLandmarks:116 done in 3 ms
-2025-12-26T10:30:23,123  INFO PreProcessLandmarks:118 Initializing landmarks data
-2025-12-26T10:30:23,124  INFO PreProcessLandmarks:130 Calculating distance from each node to each of the 16 landmarks using 8 threads...
-2025-12-26T10:30:23,128  INFO PreProcessLandmarks:140 wait for landmarks Calculator to finish...
-2025-12-26T10:30:23,140  INFO PreProcessLandmarks:164 done in 16 ms
-2025-12-26T10:30:23,140  INFO ScheduleRoutersStandard:85 ==============================================
-2025-12-26T10:30:23,140  INFO ScheduleRoutersStandard:86 Creating network routers for transit routes...
-2025-12-26T10:30:23,140  INFO ScheduleRoutersStandard:87 Initiating network and router for transit routes...
-2025-12-26T10:30:23,140  INFO ScheduleRoutersStandard:106 New router for schedule mode bus
-2025-12-26T10:30:23,140  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
-2025-12-26T10:30:23,141  INFO NetworkImpl:165  node # 1
-2025-12-26T10:30:23,141  INFO NetworkImpl:165  node # 4
-2025-12-26T10:30:23,141  INFO NetworkImpl:165  node # 16
-2025-12-26T10:30:23,141  INFO NetworkImpl:165  node # 64
-2025-12-26T10:30:23,141  INFO NetworkImpl:165  node # 256
-2025-12-26T10:30:23,141  INFO NetworkImpl:165  node # 1024
-2025-12-26T10:30:23,141  INFO NetworkImpl:165  node # 4096
-2025-12-26T10:30:23,142  INFO NetworkImpl:165  node # 16384
-2025-12-26T10:30:23,145  INFO NetworkImpl:165  node # 65536
-2025-12-26T10:30:23,152  INFO NetworkImpl:165  node # 262144
-2025-12-26T10:30:23,160  INFO NetworkImpl:161  link # 1
-2025-12-26T10:30:23,160  INFO NetworkImpl:161  link # 4
-2025-12-26T10:30:23,160  INFO NetworkImpl:161  link # 16
-2025-12-26T10:30:23,160  INFO NetworkImpl:161  link # 64
-2025-12-26T10:30:23,161  INFO NetworkImpl:161  link # 256
-2025-12-26T10:30:23,161  INFO NetworkImpl:161  link # 1024
-2025-12-26T10:30:23,163  INFO NetworkImpl:161  link # 4096
-2025-12-26T10:30:23,169  INFO NetworkImpl:161  link # 16384
-2025-12-26T10:30:23,200  INFO NetworkImpl:161  link # 65536
-2025-12-26T10:30:23,332  INFO NetworkImpl:161  link # 262144
-2025-12-26T10:30:23,971  INFO PreProcessDijkstra:119 nodes in dead ends: 83739 (total nodes: 422259). Done in 327 ms
-2025-12-26T10:30:24,038  INFO PreProcessLandmarks:113 Putting landmarks on network...
-2025-12-26T10:30:24,054  INFO LandmarkerPieSlices:97 Filling sectors...
-2025-12-26T10:30:24,289  INFO LandmarkerPieSlices:108 Refining landmarks...
-2025-12-26T10:30:24,316  INFO LandmarkerPieSlices:110 done
-2025-12-26T10:30:24,316  INFO PreProcessLandmarks:116 done in 277 ms
-2025-12-26T10:30:24,316  INFO PreProcessLandmarks:118 Initializing landmarks data
-2025-12-26T10:30:24,397  INFO PreProcessLandmarks:130 Calculating distance from each node to each of the 16 landmarks using 8 threads...
-2025-12-26T10:30:24,451  INFO PreProcessLandmarks:140 wait for landmarks Calculator to finish...
-2025-12-26T10:30:26,452  INFO PreProcessLandmarks:164 done in 2055 ms
-2025-12-26T10:30:26,452  INFO ScheduleRoutersStandard:106 New router for schedule mode subway
-2025-12-26T10:30:26,453  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
-2025-12-26T10:30:26,455  INFO NetworkImpl:165  node # 1
-2025-12-26T10:30:26,455  INFO NetworkImpl:165  node # 4
-2025-12-26T10:30:26,455  INFO NetworkImpl:165  node # 16
-2025-12-26T10:30:26,455  INFO NetworkImpl:165  node # 64
-2025-12-26T10:30:26,455  INFO NetworkImpl:165  node # 256
-2025-12-26T10:30:26,455  INFO NetworkImpl:165  node # 1024
-2025-12-26T10:30:26,455  INFO NetworkImpl:165  node # 4096
-2025-12-26T10:30:26,455  INFO NetworkImpl:165  node # 16384
-2025-12-26T10:30:26,457  INFO NetworkImpl:165  node # 65536
-2025-12-26T10:30:26,465  INFO NetworkImpl:165  node # 262144
-2025-12-26T10:30:26,473  INFO NetworkImpl:161  link # 1
-2025-12-26T10:30:26,473  INFO NetworkImpl:161  link # 4
-2025-12-26T10:30:26,473  INFO NetworkImpl:161  link # 16
-2025-12-26T10:30:26,479  INFO NetworkImpl:161  link # 64
-2025-12-26T10:30:26,479  INFO NetworkImpl:161  link # 256
-2025-12-26T10:30:26,492  INFO NetworkImpl:161  link # 1024
-2025-12-26T10:30:26,553  INFO NetworkImpl:161  link # 4096
-2025-12-26T10:30:26,644  INFO PreProcessDijkstra:119 nodes in dead ends: 1066 (total nodes: 4625). Done in 4 ms
-2025-12-26T10:30:26,647  INFO PreProcessLandmarks:113 Putting landmarks on network...
-2025-12-26T10:30:26,647  INFO LandmarkerPieSlices:97 Filling sectors...
-2025-12-26T10:30:26,651  INFO LandmarkerPieSlices:108 Refining landmarks...
-2025-12-26T10:30:26,651  INFO LandmarkerPieSlices:110 done
-2025-12-26T10:30:26,651  INFO PreProcessLandmarks:116 done in 4 ms
-2025-12-26T10:30:26,651  INFO PreProcessLandmarks:118 Initializing landmarks data
-2025-12-26T10:30:26,653  INFO PreProcessLandmarks:130 Calculating distance from each node to each of the 16 landmarks using 8 threads...
-2025-12-26T10:30:26,659  INFO PreProcessLandmarks:140 wait for landmarks Calculator to finish...
-2025-12-26T10:30:26,669  INFO PreProcessLandmarks:164 done in 16 ms
-2025-12-26T10:30:26,669  INFO ScheduleRoutersStandard:85 ==============================================
-2025-12-26T10:30:26,669  INFO ScheduleRoutersStandard:86 Creating network routers for transit routes...
-2025-12-26T10:30:26,669  INFO ScheduleRoutersStandard:87 Initiating network and router for transit routes...
-2025-12-26T10:30:26,669  INFO ScheduleRoutersStandard:106 New router for schedule mode bus
-2025-12-26T10:30:26,669  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
-2025-12-26T10:30:26,670  INFO NetworkImpl:165  node # 1
-2025-12-26T10:30:26,670  INFO NetworkImpl:165  node # 4
-2025-12-26T10:30:26,670  INFO NetworkImpl:165  node # 16
-2025-12-26T10:30:26,670  INFO NetworkImpl:165  node # 64
-2025-12-26T10:30:26,670  INFO NetworkImpl:165  node # 256
-2025-12-26T10:30:26,670  INFO NetworkImpl:165  node # 1024
-2025-12-26T10:30:26,670  INFO NetworkImpl:165  node # 4096
-2025-12-26T10:30:26,671  INFO NetworkImpl:165  node # 16384
-2025-12-26T10:30:26,673  INFO NetworkImpl:165  node # 65536
-2025-12-26T10:30:26,681  INFO NetworkImpl:165  node # 262144
-2025-12-26T10:30:26,697  INFO NetworkImpl:161  link # 1
-2025-12-26T10:30:26,697  INFO NetworkImpl:161  link # 4
-2025-12-26T10:30:26,698  INFO NetworkImpl:161  link # 16
-2025-12-26T10:30:26,698  INFO NetworkImpl:161  link # 64
-2025-12-26T10:30:26,698  INFO NetworkImpl:161  link # 256
-2025-12-26T10:30:26,698  INFO NetworkImpl:161  link # 1024
-2025-12-26T10:30:26,700  INFO NetworkImpl:161  link # 4096
-2025-12-26T10:30:26,706  INFO NetworkImpl:161  link # 16384
-2025-12-26T10:30:26,733  INFO NetworkImpl:161  link # 65536
-2025-12-26T10:30:26,843  INFO NetworkImpl:161  link # 262144
-2025-12-26T10:30:27,475  INFO PreProcessDijkstra:119 nodes in dead ends: 83739 (total nodes: 422259). Done in 266 ms
-2025-12-26T10:30:27,527  INFO PreProcessLandmarks:113 Putting landmarks on network...
-2025-12-26T10:30:27,539  INFO LandmarkerPieSlices:97 Filling sectors...
-2025-12-26T10:30:27,777  INFO LandmarkerPieSlices:108 Refining landmarks...
-2025-12-26T10:30:27,800  INFO LandmarkerPieSlices:110 done
-2025-12-26T10:30:27,800  INFO PreProcessLandmarks:116 done in 273 ms
-2025-12-26T10:30:27,801  INFO PreProcessLandmarks:118 Initializing landmarks data
-2025-12-26T10:30:27,938  INFO PreProcessLandmarks:130 Calculating distance from each node to each of the 16 landmarks using 8 threads...
-2025-12-26T10:30:27,943  INFO PreProcessLandmarks:140 wait for landmarks Calculator to finish...
-2025-12-26T10:30:30,418  INFO PreProcessLandmarks:164 done in 2480 ms
-2025-12-26T10:30:30,418  INFO ScheduleRoutersStandard:106 New router for schedule mode subway
-2025-12-26T10:30:30,418  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
-2025-12-26T10:30:30,419  INFO NetworkImpl:165  node # 1
-2025-12-26T10:30:30,419  INFO NetworkImpl:165  node # 4
-2025-12-26T10:30:30,419  INFO NetworkImpl:165  node # 16
-2025-12-26T10:30:30,419  INFO NetworkImpl:165  node # 64
-2025-12-26T10:30:30,419  INFO NetworkImpl:165  node # 256
-2025-12-26T10:30:30,419  INFO NetworkImpl:165  node # 1024
-2025-12-26T10:30:30,419  INFO NetworkImpl:165  node # 4096
-2025-12-26T10:30:30,420  INFO NetworkImpl:165  node # 16384
-2025-12-26T10:30:30,422  INFO NetworkImpl:165  node # 65536
-2025-12-26T10:30:30,432  INFO NetworkImpl:165  node # 262144
-2025-12-26T10:30:30,442  INFO NetworkImpl:161  link # 1
-2025-12-26T10:30:30,442  INFO NetworkImpl:161  link # 4
-2025-12-26T10:30:30,442  INFO NetworkImpl:161  link # 16
-2025-12-26T10:30:30,448  INFO NetworkImpl:161  link # 64
-2025-12-26T10:30:30,448  INFO NetworkImpl:161  link # 256
-2025-12-26T10:30:30,461  INFO NetworkImpl:161  link # 1024
-2025-12-26T10:30:30,529  INFO NetworkImpl:161  link # 4096
-2025-12-26T10:30:30,612  INFO PreProcessDijkstra:119 nodes in dead ends: 1066 (total nodes: 4625). Done in 3 ms
-2025-12-26T10:30:30,615  INFO PreProcessLandmarks:113 Putting landmarks on network...
-2025-12-26T10:30:30,615  INFO LandmarkerPieSlices:97 Filling sectors...
-2025-12-26T10:30:30,618  INFO LandmarkerPieSlices:108 Refining landmarks...
-2025-12-26T10:30:30,618  INFO LandmarkerPieSlices:110 done
-2025-12-26T10:30:30,618  INFO PreProcessLandmarks:116 done in 3 ms
-2025-12-26T10:30:30,618  INFO PreProcessLandmarks:118 Initializing landmarks data
-2025-12-26T10:30:30,619  INFO PreProcessLandmarks:130 Calculating distance from each node to each of the 16 landmarks using 8 threads...
-2025-12-26T10:30:30,622  INFO PreProcessLandmarks:140 wait for landmarks Calculator to finish...
-2025-12-26T10:30:30,628  INFO PreProcessLandmarks:164 done in 9 ms
-2025-12-26T10:30:30,629  INFO ScheduleRoutersStandard:85 ==============================================
-2025-12-26T10:30:30,629  INFO ScheduleRoutersStandard:86 Creating network routers for transit routes...
-2025-12-26T10:30:30,629  INFO ScheduleRoutersStandard:87 Initiating network and router for transit routes...
-2025-12-26T10:30:30,629  INFO ScheduleRoutersStandard:106 New router for schedule mode bus
-2025-12-26T10:30:30,629  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
-2025-12-26T10:30:30,629  INFO NetworkImpl:165  node # 1
-2025-12-26T10:30:30,629  INFO NetworkImpl:165  node # 4
-2025-12-26T10:30:30,630  INFO NetworkImpl:165  node # 16
-2025-12-26T10:30:30,630  INFO NetworkImpl:165  node # 64
-2025-12-26T10:30:30,630  INFO NetworkImpl:165  node # 256
-2025-12-26T10:30:30,630  INFO NetworkImpl:165  node # 1024
-2025-12-26T10:30:30,630  INFO NetworkImpl:165  node # 4096
-2025-12-26T10:30:30,630  INFO NetworkImpl:165  node # 16384
-2025-12-26T10:30:30,632  INFO NetworkImpl:165  node # 65536
-2025-12-26T10:30:30,641  INFO NetworkImpl:165  node # 262144
-2025-12-26T10:30:30,649  INFO NetworkImpl:161  link # 1
-2025-12-26T10:30:30,649  INFO NetworkImpl:161  link # 4
-2025-12-26T10:30:30,649  INFO NetworkImpl:161  link # 16
-2025-12-26T10:30:30,649  INFO NetworkImpl:161  link # 64
-2025-12-26T10:30:30,649  INFO NetworkImpl:161  link # 256
-2025-12-26T10:30:30,650  INFO NetworkImpl:161  link # 1024
-2025-12-26T10:30:30,651  INFO NetworkImpl:161  link # 4096
-2025-12-26T10:30:30,657  INFO NetworkImpl:161  link # 16384
-2025-12-26T10:30:30,679  INFO NetworkImpl:161  link # 65536
-2025-12-26T10:30:30,769  INFO NetworkImpl:161  link # 262144
-2025-12-26T10:30:31,363  INFO PreProcessDijkstra:119 nodes in dead ends: 83739 (total nodes: 422259). Done in 241 ms
-2025-12-26T10:30:31,414  INFO PreProcessLandmarks:113 Putting landmarks on network...
-2025-12-26T10:30:31,428  INFO LandmarkerPieSlices:97 Filling sectors...
-2025-12-26T10:30:31,687  INFO LandmarkerPieSlices:108 Refining landmarks...
-2025-12-26T10:30:31,710  INFO LandmarkerPieSlices:110 done
-2025-12-26T10:30:31,711  INFO PreProcessLandmarks:116 done in 296 ms
-2025-12-26T10:30:31,711  INFO PreProcessLandmarks:118 Initializing landmarks data
-2025-12-26T10:30:31,782  INFO PreProcessLandmarks:130 Calculating distance from each node to each of the 16 landmarks using 8 threads...
-2025-12-26T10:30:31,783  INFO PreProcessLandmarks:140 wait for landmarks Calculator to finish...
-2025-12-26T10:30:33,681  INFO PreProcessLandmarks:164 done in 1899 ms
-2025-12-26T10:30:33,682  INFO ScheduleRoutersStandard:106 New router for schedule mode subway
-2025-12-26T10:30:33,682  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
-2025-12-26T10:30:33,682  INFO NetworkImpl:165  node # 1
-2025-12-26T10:30:33,683  INFO NetworkImpl:165  node # 4
-2025-12-26T10:30:33,683  INFO NetworkImpl:165  node # 16
-2025-12-26T10:30:33,683  INFO NetworkImpl:165  node # 64
-2025-12-26T10:30:33,683  INFO NetworkImpl:165  node # 256
-2025-12-26T10:30:33,683  INFO NetworkImpl:165  node # 1024
-2025-12-26T10:30:33,683  INFO NetworkImpl:165  node # 4096
-2025-12-26T10:30:33,683  INFO NetworkImpl:165  node # 16384
-2025-12-26T10:30:33,685  INFO NetworkImpl:165  node # 65536
-2025-12-26T10:30:33,694  INFO NetworkImpl:165  node # 262144
-2025-12-26T10:30:33,703  INFO NetworkImpl:161  link # 1
-2025-12-26T10:30:33,703  INFO NetworkImpl:161  link # 4
-2025-12-26T10:30:33,703  INFO NetworkImpl:161  link # 16
-2025-12-26T10:30:33,708  INFO NetworkImpl:161  link # 64
-2025-12-26T10:30:33,709  INFO NetworkImpl:161  link # 256
-2025-12-26T10:30:33,720  INFO NetworkImpl:161  link # 1024
-2025-12-26T10:30:33,777  INFO NetworkImpl:161  link # 4096
-2025-12-26T10:30:33,866  INFO PreProcessDijkstra:119 nodes in dead ends: 1066 (total nodes: 4625). Done in 4 ms
-2025-12-26T10:30:33,868  INFO PreProcessLandmarks:113 Putting landmarks on network...
-2025-12-26T10:30:33,869  INFO LandmarkerPieSlices:97 Filling sectors...
-2025-12-26T10:30:33,871  INFO LandmarkerPieSlices:108 Refining landmarks...
-2025-12-26T10:30:33,871  INFO LandmarkerPieSlices:110 done
-2025-12-26T10:30:33,871  INFO PreProcessLandmarks:116 done in 3 ms
-2025-12-26T10:30:33,871  INFO PreProcessLandmarks:118 Initializing landmarks data
-2025-12-26T10:30:33,872  INFO PreProcessLandmarks:130 Calculating distance from each node to each of the 16 landmarks using 8 threads...
-2025-12-26T10:30:33,875  INFO PreProcessLandmarks:140 wait for landmarks Calculator to finish...
-2025-12-26T10:30:33,881  INFO PreProcessLandmarks:164 done in 9 ms
-2025-12-26T10:30:34,020  INFO Progress:40 Calculating pseudoTransitRoutes ... 1/174 (0.57%)
-2025-12-26T10:30:35,215  INFO Progress:40 Calculating pseudoTransitRoutes ... 17/174 (9.77%)
-2025-12-26T10:30:39,690  INFO Progress:40 Calculating pseudoTransitRoutes ... 25/174 (14.37%)
-2025-12-26T10:30:40,751  INFO Progress:40 Calculating pseudoTransitRoutes ... 40/174 (22.99%)
-2025-12-26T10:30:42,121  INFO Progress:40 Calculating pseudoTransitRoutes ... 47/174 (27.01%)
-2025-12-26T10:30:43,371  INFO Progress:40 Calculating pseudoTransitRoutes ... 51/174 (29.31%)
-2025-12-26T10:30:44,505  INFO Progress:40 Calculating pseudoTransitRoutes ... 56/174 (32.18%)
-2025-12-26T10:30:45,804  INFO Progress:40 Calculating pseudoTransitRoutes ... 59/174 (33.91%)
-2025-12-26T10:30:48,107  INFO Progress:40 Calculating pseudoTransitRoutes ... 66/174 (37.93%)
-2025-12-26T10:30:49,222  INFO Progress:40 Calculating pseudoTransitRoutes ... 70/174 (40.23%)
-2025-12-26T10:30:50,480  INFO Progress:40 Calculating pseudoTransitRoutes ... 71/174 (40.80%)
-2025-12-26T10:30:51,714  INFO Progress:40 Calculating pseudoTransitRoutes ... 81/174 (46.55%)
-2025-12-26T10:30:52,756  INFO Progress:40 Calculating pseudoTransitRoutes ... 95/174 (54.60%)
-2025-12-26T10:30:53,776  INFO Progress:40 Calculating pseudoTransitRoutes ... 119/174 (68.39%)
-2025-12-26T10:30:55,133  INFO Progress:40 Calculating pseudoTransitRoutes ... 121/174 (69.54%)
-2025-12-26T10:30:56,510  INFO Progress:40 Calculating pseudoTransitRoutes ... 123/174 (70.69%)
-2025-12-26T10:30:57,556  INFO Progress:40 Calculating pseudoTransitRoutes ... 127/174 (72.99%)
-2025-12-26T10:30:58,914  INFO Progress:40 Calculating pseudoTransitRoutes ... 136/174 (78.16%)
-2025-12-26T10:31:02,039  INFO Progress:40 Calculating pseudoTransitRoutes ... 139/174 (79.89%)
-2025-12-26T10:31:03,400  INFO Progress:40 Calculating pseudoTransitRoutes ... 141/174 (81.03%)
-2025-12-26T10:31:05,394  INFO Progress:40 Calculating pseudoTransitRoutes ... 144/174 (82.76%)
-2025-12-26T10:31:07,038  INFO Progress:40 Calculating pseudoTransitRoutes ... 150/174 (86.21%)
-2025-12-26T10:31:09,129  INFO Progress:40 Calculating pseudoTransitRoutes ... 155/174 (89.08%)
-2025-12-26T10:31:10,291  INFO Progress:40 Calculating pseudoTransitRoutes ... 158/174 (90.80%)
-2025-12-26T10:31:12,047  INFO Progress:40 Calculating pseudoTransitRoutes ... 162/174 (93.10%)
-2025-12-26T10:31:14,791  INFO Progress:40 Calculating pseudoTransitRoutes ... 172/174 (98.85%)
-2025-12-26T10:31:16,521  INFO Progress:40 Calculating pseudoTransitRoutes ... 173/174 (99.43%)
-2025-12-26T10:31:18,027  INFO Progress:40 Calculating pseudoTransitRoutes ... 174/174 (100.00%)
-2025-12-26T10:31:18,027  INFO PTMapper:206 =====================================
-2025-12-26T10:31:18,027  INFO PTMapper:207 Adding artificial links to network...
-2025-12-26T10:31:18,027  INFO PTMapper:218 ==========================================================================================
-2025-12-26T10:31:18,027  INFO PTMapper:219 Replacing parent StopFacilities in schedule, creating link sequences for transit routes...
-2025-12-26T10:31:18,041  INFO PseudoScheduleImpl:229 createFacilitiesAndLinkSequences done.
-2025-12-26T10:31:18,041  INFO PTMapper:226 ================================
-2025-12-26T10:31:18,041  INFO PTMapper:227 Pulling child stop facilities...
-2025-12-26T10:31:18,103  INFO PTMapper:234 ==========================================
-2025-12-26T10:31:18,103  INFO PTMapper:235 Add transfers for child stop facilities...
-2025-12-26T10:31:18,106  INFO PTMapper:243 =============================
-2025-12-26T10:31:18,106  INFO PTMapper:244 Clean schedule and network...
-2025-12-26T10:31:18,245  INFO ScheduleCleaner:188 ... Removing links that are not used by public transit
-2025-12-26T10:31:19,253  INFO ScheduleCleaner:227     38322 links removed
-2025-12-26T10:31:19,253  INFO ScheduleCleaner:89 ... Removing not used stop facilities
-2025-12-26T10:31:19,255  INFO ScheduleCleaner:117    762 stop facilities removed
-2025-12-26T10:31:19,255  INFO ScheduleCleaner:126 ... Removing not used minimal transfer times
-2025-12-26T10:31:19,257  INFO ScheduleCleaner:142     4664 not used minimal transfer times facilities removed
-2025-12-26T10:31:19,257  INFO ScheduleTools:336 ... Assigning schedule transport mode to network
-2025-12-26T10:31:19,311  INFO PTMapper:250 ======================
-2025-12-26T10:31:19,311  INFO PTMapper:251 Validating schedule...
-2025-12-26T10:31:19,346  INFO PTMapper:290 Schedule appears valid!
-2025-12-26T10:31:19,346  INFO PTMapper:301 Validation warnings:
-2025-12-26T10:31:19,346  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_TPE57531.link:77606 toStop BUS_TPE57531.link:78196 with transferTime = 0.0
-2025-12-26T10:31:19,346  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_NWT199021.link:490280 toStop BUS_NWT199021.link:837974 with transferTime = 0.0
-2025-12-26T10:31:19,346  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_NWT199021.link:837974 toStop BUS_NWT199021.link:490280 with transferTime = 0.0
-2025-12-26T10:31:19,346  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_NWT157373.link:624607 toStop BUS_NWT157373.link:490279 with transferTime = 0.0
-2025-12-26T10:31:19,346  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_NWT157021.link:490280 toStop BUS_NWT157021.link:837974 with transferTime = 0.0
-2025-12-26T10:31:19,346  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_NWT157373.link:490279 toStop BUS_NWT157373.link:624607 with transferTime = 0.0
-2025-12-26T10:31:19,346  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_NWT216915.link:737619 toStop BUS_NWT216915.link:737618 with transferTime = 0.0
-2025-12-26T10:31:19,347  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_NWT216915.link:737618 toStop BUS_NWT216915.link:737619 with transferTime = 0.0
-2025-12-26T10:31:19,347  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_TPE57531.link:78196 toStop BUS_TPE57531.link:77606 with transferTime = 0.0
-2025-12-26T10:31:19,347  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_NWT132901.link:100844 toStop BUS_NWT132901.link:796467 with transferTime = 0.0
-2025-12-26T10:31:19,347  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_NWT156527.link:796467 toStop BUS_NWT156527.link:483309 with transferTime = 0.0
-2025-12-26T10:31:19,347  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_NWT132901.link:796467 toStop BUS_NWT132901.link:100844 with transferTime = 0.0
-2025-12-26T10:31:19,347  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_NWT156527.link:483309 toStop BUS_NWT156527.link:796467 with transferTime = 0.0
-2025-12-26T10:31:19,347  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_NWT157021.link:837974 toStop BUS_NWT157021.link:490280 with transferTime = 0.0
-2025-12-26T10:31:19,347  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_NWT156634.link:483309 toStop BUS_NWT156634.link:796467 with transferTime = 0.0
-2025-12-26T10:31:19,347  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_NWT156634.link:796467 toStop BUS_NWT156634.link:483309 with transferTime = 0.0
-2025-12-26T10:31:19,347  INFO PTMapper:254 ==================================================
-2025-12-26T10:31:19,347  INFO PTMapper:255 = Mapping transit schedule to network completed! =
-2025-12-26T10:31:19,347  INFO PTMapper:256 ==================================================
-2025-12-26T10:31:19,395  INFO PTMapper:338 
-2025-12-26T10:31:19,395  INFO PTMapper:339     Artificial Links:
-2025-12-26T10:31:19,395  INFO PTMapper:340        created  147
-2025-12-26T10:31:19,395  INFO PTMapper:341     Stop Facilities:
-2025-12-26T10:31:19,395  INFO PTMapper:342        total input   317
-2025-12-26T10:31:19,395  INFO PTMapper:343        total output  325
-2025-12-26T10:31:19,395  INFO PTMapper:344        diff.         8
-2025-12-26T10:31:19,395  INFO PTMapper:345     Child Stop Facilities:
-2025-12-26T10:31:19,396  INFO PTMapper:346        median nr created   1
-2025-12-26T10:31:19,396  INFO PTMapper:347        average nr created  1.03
-2025-12-26T10:31:19,396  INFO PTMapper:348        max nr created      2
-2025-12-26T10:31:19,396  INFO PTMapper:349     Transit Routes:
-2025-12-26T10:31:19,396  INFO PTMapper:350        total routes in schedule         174
-2025-12-26T10:31:19,396  INFO PTMapper:351        routes without artificial links  142
-2025-12-26T10:31:19,396  INFO PTMapper:352 
-2025-12-26T10:31:19,396  INFO PTMapper:353     Run PlausibilityCheck for further analysis
-2025-12-26T10:31:19,396  INFO PTMapper:354 
-2025-12-26T10:31:19,396  INFO PTMapper:355 ==================================================
-2025-12-26T10:31:19,396  INFO PublicTransitMapper:95 Writing schedule and network to file...
-2025-12-26T10:31:19,396  INFO ScheduleTools:78 Writing transit schedule to file 5000_disatar/02_phase1_test/pt2matsim_0250_0850_osm/transitSchedule-mapped.xml.gz
-2025-12-26T10:31:19,396  INFO TransitScheduleWriter:89 about to write transit schedule to: 5000_disatar/02_phase1_test/pt2matsim_0250_0850_osm/transitSchedule-mapped.xml.gz
-2025-12-26T10:31:19,467  INFO ScheduleTools:80 done.
-2025-12-26T10:31:19,468  INFO NetworkWriter:70 Writing network to file: 5000_disatar/02_phase1_test/pt2matsim_0250_0850_osm/network-with-pt.xml.gz...
-2025-12-26T10:31:24,455  INFO NetworkWriter:73 done.
+2025-12-26T17:27:59,217  INFO IOUtils:212 Resolved 5000_disatar/02_phase1_test/ptmapper-config-0250_0850-osm.xml to 5000_disatar/02_phase1_test/ptmapper-config-0250_0850-osm.xml
+2025-12-26T17:27:59,220  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
+2025-12-26T17:27:59,255  INFO Version:18 HV000001: Hibernate Validator 9.0.1.Final
+2025-12-26T17:27:59,297  INFO MatsimXmlParser:172 starting to parse xml from url file:/Users/ro9air/matsim-example-project/5000_disatar/02_phase1_test/ptmapper-config-0250_0850-osm.xml ...
+2025-12-26T17:27:59,313  INFO ConfigReader:105 using config_v2-reader
+2025-12-26T17:27:59,314  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/config_v2.dtd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-12-26T17:27:59,323  INFO MatsimXmlParser:314 java.net.UnknownHostException: www.matsim.org. May not be fatal, will try to load it locally.
+2025-12-26T17:27:59,323  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/config_v2.dtd
+2025-12-26T17:27:59,334  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/5000_disatar/02_phase1_test/ptmapper-config-0250_0850-osm.xml]
+2025-12-26T17:27:59,335  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
+2025-12-26T17:27:59,347  INFO MatsimXmlParser:155 starting to parse xml from file 5000_disatar/02_phase1_test/pt2matsim_0250_0850_osm/transitSchedule.xml ...
+2025-12-26T17:27:59,347  INFO IOUtils:212 Resolved 5000_disatar/02_phase1_test/pt2matsim_0250_0850_osm/transitSchedule.xml to 5000_disatar/02_phase1_test/pt2matsim_0250_0850_osm/transitSchedule.xml
+2025-12-26T17:27:59,379  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/transitSchedule_v2.dtd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-12-26T17:27:59,380  INFO MatsimXmlParser:314 java.net.UnknownHostException: www.matsim.org. May not be fatal, will try to load it locally.
+2025-12-26T17:27:59,380  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/transitSchedule_v2.dtd
+2025-12-26T17:27:59,430  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
+2025-12-26T17:27:59,432  INFO MatsimXmlParser:155 starting to parse xml from file 5000_disatar/02_phase1_test/networks/network_osm_multimodal_0250_0850_clean_pt.xml.gz ...
+2025-12-26T17:27:59,433  INFO IOUtils:212 Resolved 5000_disatar/02_phase1_test/networks/network_osm_multimodal_0250_0850_clean_pt.xml.gz to 5000_disatar/02_phase1_test/networks/network_osm_multimodal_0250_0850_clean_pt.xml.gz
+2025-12-26T17:27:59,433  INFO MatsimNetworkReader:122 using network_v2-reader.
+2025-12-26T17:27:59,433  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/network_v2.dtd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-12-26T17:27:59,433  INFO MatsimXmlParser:314 java.net.UnknownHostException: www.matsim.org. May not be fatal, will try to load it locally.
+2025-12-26T17:27:59,434  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/network_v2.dtd
+2025-12-26T17:27:59,435  INFO NetworkImpl:165  node # 1
+2025-12-26T17:27:59,435  INFO NetworkImpl:165  node # 4
+2025-12-26T17:27:59,435  INFO NetworkImpl:165  node # 16
+2025-12-26T17:27:59,436  INFO NetworkImpl:165  node # 64
+2025-12-26T17:27:59,438  INFO NetworkImpl:165  node # 256
+2025-12-26T17:27:59,442  INFO NetworkImpl:165  node # 1024
+2025-12-26T17:27:59,450  INFO NetworkImpl:165  node # 4096
+2025-12-26T17:27:59,474  INFO NetworkImpl:165  node # 16384
+2025-12-26T17:27:59,538  INFO NetworkImpl:165  node # 65536
+2025-12-26T17:27:59,789  INFO NetworkImpl:165  node # 262144
+2025-12-26T17:28:00,029  INFO NetworkImpl:161  link # 1
+2025-12-26T17:28:00,030  INFO NetworkImpl:161  link # 4
+2025-12-26T17:28:00,031  INFO NetworkImpl:161  link # 16
+2025-12-26T17:28:00,034  INFO NetworkImpl:161  link # 64
+2025-12-26T17:28:00,040  INFO NetworkImpl:161  link # 256
+2025-12-26T17:28:00,063  INFO NetworkImpl:161  link # 1024
+2025-12-26T17:28:00,097  INFO NetworkImpl:161  link # 4096
+2025-12-26T17:28:00,178  INFO NetworkImpl:161  link # 16384
+2025-12-26T17:28:00,456  INFO NetworkImpl:161  link # 65536
+2025-12-26T17:28:01,474  INFO NetworkImpl:161  link # 262144
+2025-12-26T17:28:04,261  INFO LinkCandidateCreatorStandard:82 ===========================
+2025-12-26T17:28:04,262  INFO LinkCandidateCreatorStandard:83 Creating link candidates...
+2025-12-26T17:28:04,262  INFO LinkCandidateCreatorStandard:85    Note: loop links for stop facilities are created if no link candidate can be found.
+2025-12-26T17:28:04,264  INFO Progress:40 Getting closest links ... 0/186 (0.00%)
+2025-12-26T17:28:04,284  INFO NetworkImpl:419 building QuadTree for nodes: xrange(168870.00790453044,351290.2972462141); yrange(2456092.8126288014,2798887.548973083)
+2025-12-26T17:28:04,393  INFO NetworkImpl:428 Building QuadTree took 0.127 seconds.
+2025-12-26T17:28:05,407  INFO Progress:40 Getting closest links ... 9/186 (4.84%)
+2025-12-26T17:28:06,458  INFO Progress:40 Getting closest links ... 24/186 (12.90%)
+2025-12-26T17:28:07,576  INFO Progress:40 Getting closest links ... 34/186 (18.28%)
+2025-12-26T17:28:08,589  INFO Progress:40 Getting closest links ... 44/186 (23.66%)
+2025-12-26T17:28:09,597  INFO Progress:40 Getting closest links ... 54/186 (29.03%)
+2025-12-26T17:28:10,678  INFO Progress:40 Getting closest links ... 73/186 (39.25%)
+2025-12-26T17:28:11,712  INFO Progress:40 Getting closest links ... 92/186 (49.46%)
+2025-12-26T17:28:12,791  INFO Progress:40 Getting closest links ... 116/186 (62.37%)
+2025-12-26T17:28:13,868  INFO Progress:40 Getting closest links ... 123/186 (66.13%)
+2025-12-26T17:28:14,998  INFO Progress:40 Getting closest links ... 129/186 (69.35%)
+2025-12-26T17:28:16,129  INFO Progress:40 Getting closest links ... 135/186 (72.58%)
+2025-12-26T17:28:17,211  INFO Progress:40 Getting closest links ... 140/186 (75.27%)
+2025-12-26T17:28:18,232  INFO Progress:40 Getting closest links ... 146/186 (78.49%)
+2025-12-26T17:28:19,372  INFO Progress:40 Getting closest links ... 153/186 (82.26%)
+2025-12-26T17:28:20,423  INFO Progress:40 Getting closest links ... 162/186 (87.10%)
+2025-12-26T17:28:21,023  INFO Progress:40 Getting closest links ... 186/186 (100.00%)
+2025-12-26T17:28:21,024  INFO Progress:40 Creating link candidates ... 0/612 (0.00%)
+2025-12-26T17:28:21,060  INFO Progress:40 Creating link candidates ... 612/612 (100.00%)
+2025-12-26T17:28:21,060  INFO Progress:40 Setting candidate priorities ... 0/612 (0.00%)
+2025-12-26T17:28:21,061  INFO LinkCandidateCreatorStandard:233 Average number of link candidates: 11
+2025-12-26T17:28:21,065  INFO PTMapper:153 ======================================
+2025-12-26T17:28:21,065  INFO PTMapper:154 Mapping transit schedule to network...
+2025-12-26T17:28:21,065  INFO PTMapper:170 ==================================
+2025-12-26T17:28:21,066  INFO PTMapper:171 Calculating pseudoTransitRoutes... (186 transit routes in 177 transit lines)
+2025-12-26T17:28:21,066  INFO Progress:40 Calculating pseudoTransitRoutes ... 0/186 (0.00%)
+2025-12-26T17:28:21,066  INFO ScheduleRoutersStandard:85 ==============================================
+2025-12-26T17:28:21,067  INFO ScheduleRoutersStandard:86 Creating network routers for transit routes...
+2025-12-26T17:28:21,067  INFO ScheduleRoutersStandard:87 Initiating network and router for transit routes...
+2025-12-26T17:28:21,067  INFO ScheduleRoutersStandard:106 New router for schedule mode bus
+2025-12-26T17:28:21,067  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
+2025-12-26T17:28:21,069  INFO NetworkImpl:165  node # 1
+2025-12-26T17:28:21,069  INFO NetworkImpl:165  node # 4
+2025-12-26T17:28:21,069  INFO NetworkImpl:165  node # 16
+2025-12-26T17:28:21,069  INFO NetworkImpl:165  node # 64
+2025-12-26T17:28:21,069  INFO NetworkImpl:165  node # 256
+2025-12-26T17:28:21,069  INFO NetworkImpl:165  node # 1024
+2025-12-26T17:28:21,070  INFO NetworkImpl:165  node # 4096
+2025-12-26T17:28:21,071  INFO NetworkImpl:165  node # 16384
+2025-12-26T17:28:21,079  INFO NetworkImpl:165  node # 65536
+2025-12-26T17:28:21,091  INFO NetworkImpl:165  node # 262144
+2025-12-26T17:28:21,099  INFO NetworkImpl:161  link # 1
+2025-12-26T17:28:21,099  INFO NetworkImpl:161  link # 4
+2025-12-26T17:28:21,099  INFO NetworkImpl:161  link # 16
+2025-12-26T17:28:21,099  INFO NetworkImpl:161  link # 64
+2025-12-26T17:28:21,100  INFO NetworkImpl:161  link # 256
+2025-12-26T17:28:21,102  INFO NetworkImpl:161  link # 1024
+2025-12-26T17:28:21,105  INFO NetworkImpl:161  link # 4096
+2025-12-26T17:28:21,116  INFO NetworkImpl:161  link # 16384
+2025-12-26T17:28:21,147  INFO NetworkImpl:161  link # 65536
+2025-12-26T17:28:21,245  INFO NetworkImpl:161  link # 262144
+2025-12-26T17:28:21,919  INFO PreProcessDijkstra:119 nodes in dead ends: 83614 (total nodes: 425608). Done in 339 ms
+2025-12-26T17:28:21,986  INFO PreProcessLandmarks:113 Putting landmarks on network...
+2025-12-26T17:28:22,013  INFO LandmarkerPieSlices:97 Filling sectors...
+2025-12-26T17:28:22,307  INFO LandmarkerPieSlices:108 Refining landmarks...
+2025-12-26T17:28:22,334  INFO LandmarkerPieSlices:110 done
+2025-12-26T17:28:22,334  INFO PreProcessLandmarks:116 done in 348 ms
+2025-12-26T17:28:22,334  INFO PreProcessLandmarks:118 Initializing landmarks data
+2025-12-26T17:28:22,415  INFO PreProcessLandmarks:130 Calculating distance from each node to each of the 16 landmarks using 8 threads...
+2025-12-26T17:28:22,416  INFO PreProcessLandmarks:140 wait for landmarks Calculator to finish...
+2025-12-26T17:28:25,087  INFO PreProcessLandmarks:164 done in 2672 ms
+2025-12-26T17:28:25,090  INFO ScheduleRoutersStandard:106 New router for schedule mode subway
+2025-12-26T17:28:25,090  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
+2025-12-26T17:28:25,091  INFO NetworkImpl:165  node # 1
+2025-12-26T17:28:25,091  INFO NetworkImpl:165  node # 4
+2025-12-26T17:28:25,091  INFO NetworkImpl:165  node # 16
+2025-12-26T17:28:25,091  INFO NetworkImpl:165  node # 64
+2025-12-26T17:28:25,091  INFO NetworkImpl:165  node # 256
+2025-12-26T17:28:25,091  INFO NetworkImpl:165  node # 1024
+2025-12-26T17:28:25,092  INFO NetworkImpl:165  node # 4096
+2025-12-26T17:28:25,093  INFO NetworkImpl:165  node # 16384
+2025-12-26T17:28:25,096  INFO NetworkImpl:165  node # 65536
+2025-12-26T17:28:25,110  INFO NetworkImpl:165  node # 262144
+2025-12-26T17:28:25,127  INFO NetworkImpl:161  link # 1
+2025-12-26T17:28:25,127  INFO NetworkImpl:161  link # 4
+2025-12-26T17:28:25,127  INFO NetworkImpl:161  link # 16
+2025-12-26T17:28:25,136  INFO NetworkImpl:161  link # 64
+2025-12-26T17:28:25,136  INFO NetworkImpl:161  link # 256
+2025-12-26T17:28:25,155  INFO NetworkImpl:161  link # 1024
+2025-12-26T17:28:25,244  INFO NetworkImpl:161  link # 4096
+2025-12-26T17:28:25,365  INFO PreProcessDijkstra:119 nodes in dead ends: 1066 (total nodes: 4625). Done in 5 ms
+2025-12-26T17:28:25,368  INFO PreProcessLandmarks:113 Putting landmarks on network...
+2025-12-26T17:28:25,369  INFO LandmarkerPieSlices:97 Filling sectors...
+2025-12-26T17:28:25,371  INFO LandmarkerPieSlices:108 Refining landmarks...
+2025-12-26T17:28:25,371  INFO LandmarkerPieSlices:110 done
+2025-12-26T17:28:25,371  INFO PreProcessLandmarks:116 done in 3 ms
+2025-12-26T17:28:25,371  INFO PreProcessLandmarks:118 Initializing landmarks data
+2025-12-26T17:28:25,372  INFO PreProcessLandmarks:130 Calculating distance from each node to each of the 16 landmarks using 8 threads...
+2025-12-26T17:28:25,375  INFO PreProcessLandmarks:140 wait for landmarks Calculator to finish...
+2025-12-26T17:28:25,386  INFO PreProcessLandmarks:164 done in 14 ms
+2025-12-26T17:28:25,386  INFO ScheduleRoutersStandard:85 ==============================================
+2025-12-26T17:28:25,386  INFO ScheduleRoutersStandard:86 Creating network routers for transit routes...
+2025-12-26T17:28:25,386  INFO ScheduleRoutersStandard:87 Initiating network and router for transit routes...
+2025-12-26T17:28:25,386  INFO ScheduleRoutersStandard:106 New router for schedule mode bus
+2025-12-26T17:28:25,386  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
+2025-12-26T17:28:25,387  INFO NetworkImpl:165  node # 1
+2025-12-26T17:28:25,387  INFO NetworkImpl:165  node # 4
+2025-12-26T17:28:25,387  INFO NetworkImpl:165  node # 16
+2025-12-26T17:28:25,387  INFO NetworkImpl:165  node # 64
+2025-12-26T17:28:25,387  INFO NetworkImpl:165  node # 256
+2025-12-26T17:28:25,387  INFO NetworkImpl:165  node # 1024
+2025-12-26T17:28:25,388  INFO NetworkImpl:165  node # 4096
+2025-12-26T17:28:25,388  INFO NetworkImpl:165  node # 16384
+2025-12-26T17:28:25,390  INFO NetworkImpl:165  node # 65536
+2025-12-26T17:28:25,397  INFO NetworkImpl:165  node # 262144
+2025-12-26T17:28:25,405  INFO NetworkImpl:161  link # 1
+2025-12-26T17:28:25,405  INFO NetworkImpl:161  link # 4
+2025-12-26T17:28:25,405  INFO NetworkImpl:161  link # 16
+2025-12-26T17:28:25,405  INFO NetworkImpl:161  link # 64
+2025-12-26T17:28:25,405  INFO NetworkImpl:161  link # 256
+2025-12-26T17:28:25,406  INFO NetworkImpl:161  link # 1024
+2025-12-26T17:28:25,407  INFO NetworkImpl:161  link # 4096
+2025-12-26T17:28:25,413  INFO NetworkImpl:161  link # 16384
+2025-12-26T17:28:25,438  INFO NetworkImpl:161  link # 65536
+2025-12-26T17:28:25,587  INFO NetworkImpl:161  link # 262144
+2025-12-26T17:28:26,340  INFO PreProcessDijkstra:119 nodes in dead ends: 83614 (total nodes: 425608). Done in 422 ms
+2025-12-26T17:28:26,396  INFO PreProcessLandmarks:113 Putting landmarks on network...
+2025-12-26T17:28:26,410  INFO LandmarkerPieSlices:97 Filling sectors...
+2025-12-26T17:28:26,624  INFO LandmarkerPieSlices:108 Refining landmarks...
+2025-12-26T17:28:26,651  INFO LandmarkerPieSlices:110 done
+2025-12-26T17:28:26,651  INFO PreProcessLandmarks:116 done in 255 ms
+2025-12-26T17:28:26,651  INFO PreProcessLandmarks:118 Initializing landmarks data
+2025-12-26T17:28:26,740  INFO PreProcessLandmarks:130 Calculating distance from each node to each of the 16 landmarks using 8 threads...
+2025-12-26T17:28:26,755  INFO PreProcessLandmarks:140 wait for landmarks Calculator to finish...
+2025-12-26T17:28:29,588  INFO PreProcessLandmarks:164 done in 2848 ms
+2025-12-26T17:28:29,588  INFO ScheduleRoutersStandard:106 New router for schedule mode subway
+2025-12-26T17:28:29,589  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
+2025-12-26T17:28:29,590  INFO NetworkImpl:165  node # 1
+2025-12-26T17:28:29,590  INFO NetworkImpl:165  node # 4
+2025-12-26T17:28:29,590  INFO NetworkImpl:165  node # 16
+2025-12-26T17:28:29,590  INFO NetworkImpl:165  node # 64
+2025-12-26T17:28:29,590  INFO NetworkImpl:165  node # 256
+2025-12-26T17:28:29,590  INFO NetworkImpl:165  node # 1024
+2025-12-26T17:28:29,590  INFO NetworkImpl:165  node # 4096
+2025-12-26T17:28:29,591  INFO NetworkImpl:165  node # 16384
+2025-12-26T17:28:29,593  INFO NetworkImpl:165  node # 65536
+2025-12-26T17:28:29,602  INFO NetworkImpl:165  node # 262144
+2025-12-26T17:28:29,613  INFO NetworkImpl:161  link # 1
+2025-12-26T17:28:29,613  INFO NetworkImpl:161  link # 4
+2025-12-26T17:28:29,613  INFO NetworkImpl:161  link # 16
+2025-12-26T17:28:29,618  INFO NetworkImpl:161  link # 64
+2025-12-26T17:28:29,618  INFO NetworkImpl:161  link # 256
+2025-12-26T17:28:29,629  INFO NetworkImpl:161  link # 1024
+2025-12-26T17:28:29,690  INFO NetworkImpl:161  link # 4096
+2025-12-26T17:28:29,791  INFO PreProcessDijkstra:119 nodes in dead ends: 1066 (total nodes: 4625). Done in 4 ms
+2025-12-26T17:28:29,794  INFO PreProcessLandmarks:113 Putting landmarks on network...
+2025-12-26T17:28:29,794  INFO LandmarkerPieSlices:97 Filling sectors...
+2025-12-26T17:28:29,797  INFO LandmarkerPieSlices:108 Refining landmarks...
+2025-12-26T17:28:29,798  INFO LandmarkerPieSlices:110 done
+2025-12-26T17:28:29,798  INFO PreProcessLandmarks:116 done in 4 ms
+2025-12-26T17:28:29,798  INFO PreProcessLandmarks:118 Initializing landmarks data
+2025-12-26T17:28:29,799  INFO PreProcessLandmarks:130 Calculating distance from each node to each of the 16 landmarks using 8 threads...
+2025-12-26T17:28:29,802  INFO PreProcessLandmarks:140 wait for landmarks Calculator to finish...
+2025-12-26T17:28:29,810  INFO PreProcessLandmarks:164 done in 11 ms
+2025-12-26T17:28:29,810  INFO ScheduleRoutersStandard:85 ==============================================
+2025-12-26T17:28:29,810  INFO ScheduleRoutersStandard:86 Creating network routers for transit routes...
+2025-12-26T17:28:29,810  INFO ScheduleRoutersStandard:87 Initiating network and router for transit routes...
+2025-12-26T17:28:29,810  INFO ScheduleRoutersStandard:106 New router for schedule mode bus
+2025-12-26T17:28:29,810  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
+2025-12-26T17:28:29,811  INFO NetworkImpl:165  node # 1
+2025-12-26T17:28:29,811  INFO NetworkImpl:165  node # 4
+2025-12-26T17:28:29,811  INFO NetworkImpl:165  node # 16
+2025-12-26T17:28:29,811  INFO NetworkImpl:165  node # 64
+2025-12-26T17:28:29,811  INFO NetworkImpl:165  node # 256
+2025-12-26T17:28:29,811  INFO NetworkImpl:165  node # 1024
+2025-12-26T17:28:29,811  INFO NetworkImpl:165  node # 4096
+2025-12-26T17:28:29,811  INFO NetworkImpl:165  node # 16384
+2025-12-26T17:28:29,813  INFO NetworkImpl:165  node # 65536
+2025-12-26T17:28:29,820  INFO NetworkImpl:165  node # 262144
+2025-12-26T17:28:29,827  INFO NetworkImpl:161  link # 1
+2025-12-26T17:28:29,827  INFO NetworkImpl:161  link # 4
+2025-12-26T17:28:29,827  INFO NetworkImpl:161  link # 16
+2025-12-26T17:28:29,827  INFO NetworkImpl:161  link # 64
+2025-12-26T17:28:29,827  INFO NetworkImpl:161  link # 256
+2025-12-26T17:28:29,828  INFO NetworkImpl:161  link # 1024
+2025-12-26T17:28:29,830  INFO NetworkImpl:161  link # 4096
+2025-12-26T17:28:29,836  INFO NetworkImpl:161  link # 16384
+2025-12-26T17:28:29,860  INFO NetworkImpl:161  link # 65536
+2025-12-26T17:28:29,981  INFO NetworkImpl:161  link # 262144
+2025-12-26T17:28:30,666  INFO PreProcessDijkstra:119 nodes in dead ends: 83614 (total nodes: 425608). Done in 350 ms
+2025-12-26T17:28:30,723  INFO PreProcessLandmarks:113 Putting landmarks on network...
+2025-12-26T17:28:30,737  INFO LandmarkerPieSlices:97 Filling sectors...
+2025-12-26T17:28:31,044  INFO LandmarkerPieSlices:108 Refining landmarks...
+2025-12-26T17:28:31,069  INFO LandmarkerPieSlices:110 done
+2025-12-26T17:28:31,070  INFO PreProcessLandmarks:116 done in 347 ms
+2025-12-26T17:28:31,070  INFO PreProcessLandmarks:118 Initializing landmarks data
+2025-12-26T17:28:31,163  INFO PreProcessLandmarks:130 Calculating distance from each node to each of the 16 landmarks using 8 threads...
+2025-12-26T17:28:31,183  INFO PreProcessLandmarks:140 wait for landmarks Calculator to finish...
+2025-12-26T17:28:33,512  INFO PreProcessLandmarks:164 done in 2349 ms
+2025-12-26T17:28:33,512  INFO ScheduleRoutersStandard:106 New router for schedule mode subway
+2025-12-26T17:28:33,513  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
+2025-12-26T17:28:33,513  INFO NetworkImpl:165  node # 1
+2025-12-26T17:28:33,514  INFO NetworkImpl:165  node # 4
+2025-12-26T17:28:33,514  INFO NetworkImpl:165  node # 16
+2025-12-26T17:28:33,514  INFO NetworkImpl:165  node # 64
+2025-12-26T17:28:33,514  INFO NetworkImpl:165  node # 256
+2025-12-26T17:28:33,514  INFO NetworkImpl:165  node # 1024
+2025-12-26T17:28:33,514  INFO NetworkImpl:165  node # 4096
+2025-12-26T17:28:33,514  INFO NetworkImpl:165  node # 16384
+2025-12-26T17:28:33,516  INFO NetworkImpl:165  node # 65536
+2025-12-26T17:28:33,523  INFO NetworkImpl:165  node # 262144
+2025-12-26T17:28:33,531  INFO NetworkImpl:161  link # 1
+2025-12-26T17:28:33,531  INFO NetworkImpl:161  link # 4
+2025-12-26T17:28:33,531  INFO NetworkImpl:161  link # 16
+2025-12-26T17:28:33,535  INFO NetworkImpl:161  link # 64
+2025-12-26T17:28:33,536  INFO NetworkImpl:161  link # 256
+2025-12-26T17:28:33,546  INFO NetworkImpl:161  link # 1024
+2025-12-26T17:28:33,593  INFO NetworkImpl:161  link # 4096
+2025-12-26T17:28:33,677  INFO PreProcessDijkstra:119 nodes in dead ends: 1066 (total nodes: 4625). Done in 4 ms
+2025-12-26T17:28:33,679  INFO PreProcessLandmarks:113 Putting landmarks on network...
+2025-12-26T17:28:33,680  INFO LandmarkerPieSlices:97 Filling sectors...
+2025-12-26T17:28:33,682  INFO LandmarkerPieSlices:108 Refining landmarks...
+2025-12-26T17:28:33,682  INFO LandmarkerPieSlices:110 done
+2025-12-26T17:28:33,682  INFO PreProcessLandmarks:116 done in 3 ms
+2025-12-26T17:28:33,682  INFO PreProcessLandmarks:118 Initializing landmarks data
+2025-12-26T17:28:33,683  INFO PreProcessLandmarks:130 Calculating distance from each node to each of the 16 landmarks using 8 threads...
+2025-12-26T17:28:33,686  INFO PreProcessLandmarks:140 wait for landmarks Calculator to finish...
+2025-12-26T17:28:33,693  INFO PreProcessLandmarks:164 done in 10 ms
+2025-12-26T17:28:33,693  INFO ScheduleRoutersStandard:85 ==============================================
+2025-12-26T17:28:33,693  INFO ScheduleRoutersStandard:86 Creating network routers for transit routes...
+2025-12-26T17:28:33,693  INFO ScheduleRoutersStandard:87 Initiating network and router for transit routes...
+2025-12-26T17:28:33,693  INFO ScheduleRoutersStandard:106 New router for schedule mode bus
+2025-12-26T17:28:33,693  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
+2025-12-26T17:28:33,694  INFO NetworkImpl:165  node # 1
+2025-12-26T17:28:33,694  INFO NetworkImpl:165  node # 4
+2025-12-26T17:28:33,694  INFO NetworkImpl:165  node # 16
+2025-12-26T17:28:33,694  INFO NetworkImpl:165  node # 64
+2025-12-26T17:28:33,694  INFO NetworkImpl:165  node # 256
+2025-12-26T17:28:33,694  INFO NetworkImpl:165  node # 1024
+2025-12-26T17:28:33,694  INFO NetworkImpl:165  node # 4096
+2025-12-26T17:28:33,695  INFO NetworkImpl:165  node # 16384
+2025-12-26T17:28:33,696  INFO NetworkImpl:165  node # 65536
+2025-12-26T17:28:33,703  INFO NetworkImpl:165  node # 262144
+2025-12-26T17:28:33,710  INFO NetworkImpl:161  link # 1
+2025-12-26T17:28:33,710  INFO NetworkImpl:161  link # 4
+2025-12-26T17:28:33,710  INFO NetworkImpl:161  link # 16
+2025-12-26T17:28:33,711  INFO NetworkImpl:161  link # 64
+2025-12-26T17:28:33,711  INFO NetworkImpl:161  link # 256
+2025-12-26T17:28:33,711  INFO NetworkImpl:161  link # 1024
+2025-12-26T17:28:33,713  INFO NetworkImpl:161  link # 4096
+2025-12-26T17:28:33,719  INFO NetworkImpl:161  link # 16384
+2025-12-26T17:28:33,757  INFO NetworkImpl:161  link # 65536
+2025-12-26T17:28:33,856  INFO NetworkImpl:161  link # 262144
+2025-12-26T17:28:34,512  INFO PreProcessDijkstra:119 nodes in dead ends: 83614 (total nodes: 425608). Done in 262 ms
+2025-12-26T17:28:34,572  INFO PreProcessLandmarks:113 Putting landmarks on network...
+2025-12-26T17:28:34,587  INFO LandmarkerPieSlices:97 Filling sectors...
+2025-12-26T17:28:34,878  INFO LandmarkerPieSlices:108 Refining landmarks...
+2025-12-26T17:28:34,903  INFO LandmarkerPieSlices:110 done
+2025-12-26T17:28:34,904  INFO PreProcessLandmarks:116 done in 332 ms
+2025-12-26T17:28:34,904  INFO PreProcessLandmarks:118 Initializing landmarks data
+2025-12-26T17:28:35,051  INFO PreProcessLandmarks:130 Calculating distance from each node to each of the 16 landmarks using 8 threads...
+2025-12-26T17:28:35,055  INFO PreProcessLandmarks:140 wait for landmarks Calculator to finish...
+2025-12-26T17:28:37,484  INFO PreProcessLandmarks:164 done in 2433 ms
+2025-12-26T17:28:37,484  INFO ScheduleRoutersStandard:106 New router for schedule mode subway
+2025-12-26T17:28:37,485  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/]
+2025-12-26T17:28:37,485  INFO NetworkImpl:165  node # 1
+2025-12-26T17:28:37,485  INFO NetworkImpl:165  node # 4
+2025-12-26T17:28:37,485  INFO NetworkImpl:165  node # 16
+2025-12-26T17:28:37,485  INFO NetworkImpl:165  node # 64
+2025-12-26T17:28:37,485  INFO NetworkImpl:165  node # 256
+2025-12-26T17:28:37,486  INFO NetworkImpl:165  node # 1024
+2025-12-26T17:28:37,486  INFO NetworkImpl:165  node # 4096
+2025-12-26T17:28:37,486  INFO NetworkImpl:165  node # 16384
+2025-12-26T17:28:37,488  INFO NetworkImpl:165  node # 65536
+2025-12-26T17:28:37,495  INFO NetworkImpl:165  node # 262144
+2025-12-26T17:28:37,503  INFO NetworkImpl:161  link # 1
+2025-12-26T17:28:37,503  INFO NetworkImpl:161  link # 4
+2025-12-26T17:28:37,503  INFO NetworkImpl:161  link # 16
+2025-12-26T17:28:37,508  INFO NetworkImpl:161  link # 64
+2025-12-26T17:28:37,508  INFO NetworkImpl:161  link # 256
+2025-12-26T17:28:37,518  INFO NetworkImpl:161  link # 1024
+2025-12-26T17:28:37,571  INFO NetworkImpl:161  link # 4096
+2025-12-26T17:28:37,671  INFO PreProcessDijkstra:119 nodes in dead ends: 1066 (total nodes: 4625). Done in 4 ms
+2025-12-26T17:28:37,673  INFO PreProcessLandmarks:113 Putting landmarks on network...
+2025-12-26T17:28:37,674  INFO LandmarkerPieSlices:97 Filling sectors...
+2025-12-26T17:28:37,676  INFO LandmarkerPieSlices:108 Refining landmarks...
+2025-12-26T17:28:37,676  INFO LandmarkerPieSlices:110 done
+2025-12-26T17:28:37,676  INFO PreProcessLandmarks:116 done in 3 ms
+2025-12-26T17:28:37,676  INFO PreProcessLandmarks:118 Initializing landmarks data
+2025-12-26T17:28:37,677  INFO PreProcessLandmarks:130 Calculating distance from each node to each of the 16 landmarks using 8 threads...
+2025-12-26T17:28:37,679  INFO PreProcessLandmarks:140 wait for landmarks Calculator to finish...
+2025-12-26T17:28:37,687  INFO PreProcessLandmarks:164 done in 10 ms
+2025-12-26T17:28:37,829  INFO Progress:40 Calculating pseudoTransitRoutes ... 1/186 (0.54%)
+2025-12-26T17:28:38,885  INFO Progress:40 Calculating pseudoTransitRoutes ... 13/186 (6.99%)
+2025-12-26T17:28:40,075  INFO Progress:40 Calculating pseudoTransitRoutes ... 24/186 (12.90%)
+2025-12-26T17:28:42,749  INFO Progress:40 Calculating pseudoTransitRoutes ... 25/186 (13.44%)
+2025-12-26T17:28:45,277  INFO Progress:40 Calculating pseudoTransitRoutes ... 31/186 (16.67%)
+2025-12-26T17:28:46,400  INFO Progress:40 Calculating pseudoTransitRoutes ... 34/186 (18.28%)
+2025-12-26T17:28:47,683  INFO Progress:40 Calculating pseudoTransitRoutes ... 47/186 (25.27%)
+2025-12-26T17:28:49,457  INFO Progress:40 Calculating pseudoTransitRoutes ... 52/186 (27.96%)
+2025-12-26T17:28:50,700  INFO Progress:40 Calculating pseudoTransitRoutes ... 58/186 (31.18%)
+2025-12-26T17:28:51,984  INFO Progress:40 Calculating pseudoTransitRoutes ... 62/186 (33.33%)
+2025-12-26T17:28:54,134  INFO Progress:40 Calculating pseudoTransitRoutes ... 67/186 (36.02%)
+2025-12-26T17:28:55,361  INFO Progress:40 Calculating pseudoTransitRoutes ... 71/186 (38.17%)
+2025-12-26T17:28:56,657  INFO Progress:40 Calculating pseudoTransitRoutes ... 83/186 (44.62%)
+2025-12-26T17:28:57,708  INFO Progress:40 Calculating pseudoTransitRoutes ... 116/186 (62.37%)
+2025-12-26T17:28:59,319  INFO Progress:40 Calculating pseudoTransitRoutes ... 120/186 (64.52%)
+2025-12-26T17:29:01,416  INFO Progress:40 Calculating pseudoTransitRoutes ... 124/186 (66.67%)
+2025-12-26T17:29:02,604  INFO Progress:40 Calculating pseudoTransitRoutes ... 134/186 (72.04%)
+2025-12-26T17:29:03,731  INFO Progress:40 Calculating pseudoTransitRoutes ... 138/186 (74.19%)
+2025-12-26T17:29:06,168  INFO Progress:40 Calculating pseudoTransitRoutes ... 139/186 (74.73%)
+2025-12-26T17:29:08,940  INFO Progress:40 Calculating pseudoTransitRoutes ... 141/186 (75.81%)
+2025-12-26T17:29:10,080  INFO Progress:40 Calculating pseudoTransitRoutes ... 144/186 (77.42%)
+2025-12-26T17:29:11,219  INFO Progress:40 Calculating pseudoTransitRoutes ... 152/186 (81.72%)
+2025-12-26T17:29:13,111  INFO Progress:40 Calculating pseudoTransitRoutes ... 158/186 (84.95%)
+2025-12-26T17:29:14,265  INFO Progress:40 Calculating pseudoTransitRoutes ... 163/186 (87.63%)
+2025-12-26T17:29:17,216  INFO Progress:40 Calculating pseudoTransitRoutes ... 184/186 (98.92%)
+2025-12-26T17:29:24,771  INFO Progress:40 Calculating pseudoTransitRoutes ... 186/186 (100.00%)
+2025-12-26T17:29:24,771  INFO PTMapper:206 =====================================
+2025-12-26T17:29:24,771  INFO PTMapper:207 Adding artificial links to network...
+2025-12-26T17:29:24,772  INFO PTMapper:218 ==========================================================================================
+2025-12-26T17:29:24,772  INFO PTMapper:219 Replacing parent StopFacilities in schedule, creating link sequences for transit routes...
+2025-12-26T17:29:24,791  INFO PseudoScheduleImpl:229 createFacilitiesAndLinkSequences done.
+2025-12-26T17:29:24,791  INFO PTMapper:226 ================================
+2025-12-26T17:29:24,791  INFO PTMapper:227 Pulling child stop facilities...
+2025-12-26T17:29:24,938  INFO PTMapper:234 ==========================================
+2025-12-26T17:29:24,938  INFO PTMapper:235 Add transfers for child stop facilities...
+2025-12-26T17:29:24,942  INFO PTMapper:243 =============================
+2025-12-26T17:29:24,942  INFO PTMapper:244 Clean schedule and network...
+2025-12-26T17:29:25,117  INFO ScheduleCleaner:188 ... Removing links that are not used by public transit
+2025-12-26T17:29:26,512  INFO ScheduleCleaner:227     38322 links removed
+2025-12-26T17:29:26,513  INFO ScheduleCleaner:89 ... Removing not used stop facilities
+2025-12-26T17:29:26,515  INFO ScheduleCleaner:117    905 stop facilities removed
+2025-12-26T17:29:26,515  INFO ScheduleCleaner:126 ... Removing not used minimal transfer times
+2025-12-26T17:29:26,517  INFO ScheduleCleaner:142     4264 not used minimal transfer times facilities removed
+2025-12-26T17:29:26,517  INFO ScheduleTools:336 ... Assigning schedule transport mode to network
+2025-12-26T17:29:26,598  INFO PTMapper:250 ======================
+2025-12-26T17:29:26,599  INFO PTMapper:251 Validating schedule...
+2025-12-26T17:29:26,636  INFO PTMapper:290 Schedule appears valid!
+2025-12-26T17:29:26,636  INFO PTMapper:301 Validation warnings:
+2025-12-26T17:29:26,636  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_TPE57531.link:77606 toStop BUS_TPE57531.link:78196 with transferTime = 0.0
+2025-12-26T17:29:26,637  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_NWT199021.link:490280 toStop BUS_NWT199021.link:837974 with transferTime = 0.0
+2025-12-26T17:29:26,637  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_NWT199021.link:837974 toStop BUS_NWT199021.link:490280 with transferTime = 0.0
+2025-12-26T17:29:26,637  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_NWT157373.link:624607 toStop BUS_NWT157373.link:490279 with transferTime = 0.0
+2025-12-26T17:29:26,637  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_NWT157021.link:490280 toStop BUS_NWT157021.link:837974 with transferTime = 0.0
+2025-12-26T17:29:26,637  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_NWT157373.link:490279 toStop BUS_NWT157373.link:624607 with transferTime = 0.0
+2025-12-26T17:29:26,637  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_NWT216915.link:737619 toStop BUS_NWT216915.link:737618 with transferTime = 0.0
+2025-12-26T17:29:26,637  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_NWT216915.link:737618 toStop BUS_NWT216915.link:737619 with transferTime = 0.0
+2025-12-26T17:29:26,637  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_TPE57531.link:78196 toStop BUS_TPE57531.link:77606 with transferTime = 0.0
+2025-12-26T17:29:26,637  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_NWT132901.link:100844 toStop BUS_NWT132901.link:483309 with transferTime = 0.0
+2025-12-26T17:29:26,637  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_NWT156527.link:796467 toStop BUS_NWT156527.link:483309 with transferTime = 0.0
+2025-12-26T17:29:26,637  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_NWT156527.link:483309 toStop BUS_NWT156527.link:796467 with transferTime = 0.0
+2025-12-26T17:29:26,637  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_NWT157021.link:837974 toStop BUS_NWT157021.link:490280 with transferTime = 0.0
+2025-12-26T17:29:26,637  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_NWT132901.link:483309 toStop BUS_NWT132901.link:100844 with transferTime = 0.0
+2025-12-26T17:29:26,637  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_NWT156634.link:483309 toStop BUS_NWT156634.link:796467 with transferTime = 0.0
+2025-12-26T17:29:26,637  INFO PTMapper:303 Minimal Transfer Times: fromStop BUS_NWT156634.link:796467 toStop BUS_NWT156634.link:483309 with transferTime = 0.0
+2025-12-26T17:29:26,637  INFO PTMapper:254 ==================================================
+2025-12-26T17:29:26,637  INFO PTMapper:255 = Mapping transit schedule to network completed! =
+2025-12-26T17:29:26,637  INFO PTMapper:256 ==================================================
+2025-12-26T17:29:26,689  INFO PTMapper:338 
+2025-12-26T17:29:26,689  INFO PTMapper:339     Artificial Links:
+2025-12-26T17:29:26,689  INFO PTMapper:340        created  505
+2025-12-26T17:29:26,689  INFO PTMapper:341     Stop Facilities:
+2025-12-26T17:29:26,689  INFO PTMapper:342        total input   503
+2025-12-26T17:29:26,689  INFO PTMapper:343        total output  511
+2025-12-26T17:29:26,689  INFO PTMapper:344        diff.         8
+2025-12-26T17:29:26,689  INFO PTMapper:345     Child Stop Facilities:
+2025-12-26T17:29:26,689  INFO PTMapper:346        median nr created   1
+2025-12-26T17:29:26,689  INFO PTMapper:347        average nr created  1.02
+2025-12-26T17:29:26,690  INFO PTMapper:348        max nr created      2
+2025-12-26T17:29:26,690  INFO PTMapper:349     Transit Routes:
+2025-12-26T17:29:26,690  INFO PTMapper:350        total routes in schedule         186
+2025-12-26T17:29:26,690  INFO PTMapper:351        routes without artificial links  145
+2025-12-26T17:29:26,690  INFO PTMapper:352 
+2025-12-26T17:29:26,690  INFO PTMapper:353     Run PlausibilityCheck for further analysis
+2025-12-26T17:29:26,690  INFO PTMapper:354 
+2025-12-26T17:29:26,690  INFO PTMapper:355 ==================================================
+2025-12-26T17:29:26,690  INFO PublicTransitMapper:95 Writing schedule and network to file...
+2025-12-26T17:29:26,690  INFO ScheduleTools:78 Writing transit schedule to file 5000_disatar/02_phase1_test/pt2matsim_0250_0850_osm/transitSchedule-mapped.xml.gz
+2025-12-26T17:29:26,691  INFO TransitScheduleWriter:89 about to write transit schedule to: 5000_disatar/02_phase1_test/pt2matsim_0250_0850_osm/transitSchedule-mapped.xml.gz
+2025-12-26T17:29:26,771  INFO ScheduleTools:80 done.
+2025-12-26T17:29:26,772  INFO NetworkWriter:70 Writing network to file: 5000_disatar/02_phase1_test/pt2matsim_0250_0850_osm/network-with-pt.xml.gz...
+2025-12-26T17:29:32,186  INFO NetworkWriter:73 done.

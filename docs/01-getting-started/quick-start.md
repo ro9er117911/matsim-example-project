@@ -1,55 +1,40 @@
-# Quick Start Guide
+# 快速開始
 
-## Prerequisites
-
-- Java 21
-- Maven 3.6+
-
-## Build & Run
+## 建置與執行
 
 ```bash
-# Build the project
 ./mvnw clean package
 
-# Run MATSim GUI
+# GUI
 java -jar matsim-example-project-0.0.1-SNAPSHOT.jar
 
-# Run with example scenario
-java -jar matsim-example-project-0.0.1-SNAPSHOT.jar scenarios/equil/config_min.xml
-
-# Run with more memory (for large scenarios)
-java -Xmx8g -jar matsim-example-project-0.0.1-SNAPSHOT.jar config.xml
+# 指定場景
+java -jar matsim-example-project-0.0.1-SNAPSHOT.jar scenarios/corridor/taipei_test/config.xml
 ```
 
-## Test Your Setup
+## 測試
 
 ```bash
-# Run all tests
 ./mvnw test
-
-# Run specific test
 ./mvnw test -Dtest=RunMatsimTest
 ```
 
-## Project Structure
+## 專案結構
 
 ```
 matsim-example-project/
-├── src/main/java/               # Java source code
-│   └── org/matsim/project/
-│       ├── RunMatsim.java       # Basic entry point
-│       ├── RunMatsimApplication.java  # CLI entry point
-│       └── tools/               # PT conversion tools
-├── scenarios/                   # Scenario configurations
-│   ├── equil/                  # Example scenario
-│   └── corridor/taipei_test/   # Taipei metro test
-├── pt2matsim/                   # GTFS conversion pipeline
-└── output/                      # Simulation results
+├── src/main/java/               # Java 主程式與工具
+├── src/main/python/             # Python 工具
+├── scenarios/                   # 場景設定檔
+├── pt2matsim/                   # GTFS 轉換工具
+├── docs/                        # 文件
+└── output/                      # 模擬輸出
 ```
 
-## Next Steps
+## 延伸閱讀
 
-- [Architecture Overview](../02-architecture/architecture-overview.md) - Understand the system design
-- [Public Transit Setup](../03-public-transit/public-transit-guide.md) - Work with PT networks
-- [Agent Development](../04-population/agent-development.md) - Create custom agents
-- [Configuration Reference](../08-configuration/configuration-reference.md) - Configure scenarios
+- `docs/01-getting-started/architecture-overview.md`
+- `docs/02-osm-network/network-guide.md`
+- `docs/03-gtfs-public-transit/public-transit-guide.md`
+- `docs/04-population/population-guide.md`
+- `docs/08-configuration/configuration-reference.md`

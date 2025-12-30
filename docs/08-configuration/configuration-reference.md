@@ -1,360 +1,145 @@
-# Configuration Reference
+# 設定檔參考（Network 與 Simulation 分離）
 
-## Overview
+本文件區分 **路網建置設定** 與 **模擬設定**，避免把 network 轉換參數混進 simulation config。完整參考可見專案根目錄的 `defaultConfig.xml`。
 
-MATSim uses XML-based configuration files. The complete reference is in `defaultConfig.xml` at project root.
+---
 
-## Config File Structure
+## 一、設定檔類型總覽
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
+| 類型 | 用途 | 典型檔案 | 執行時機 |
+|---|---|---|---|
+| 路網建置設定 | OSM/SHP → network | `osm2network-config*.xml` | 一次性建置 |
+| PT 映射設定 | schedule → network | `ptmapper-config*.xml` | 每次映射時 |
+| 模擬設定 | MATSim 執行 | `config.xml` / `defaultConfig.xml` | 每次模擬 |
 
-<config>
-    <module name="controller">
-        <param name="lastIteration" value="100"/>
-        <param name="outputDirectory" value="./output"/>
-    </module>
+---
 
-    <module name="plans">
-        <param name="inputPlansFile" value="population.xml"/>
-    </module>
+## 二、路網建置設定（Network Build Config）
 
-    <!-- More modules... -->
-</config>
+### 1) OSM → Network
+
+由 `Osm2MultimodalNetwork` 使用的設定檔控制：
+- **道路分類與模式**（car / walk / rail 等）
+- **自由流速、容量、車道數**
+- **允許的 highway 標籤與過濾條件**
+
+範例執行：
+
+```bash
+java -cp pt2matsim/work/pt2matsim-25.8-shaded.jar \
+  org.matsim.pt2matsim.run.Osm2MultimodalNetwork \
+  input.osm.pbf output/network.xml.gz EPSG:3826 osm2network-config.xml
 ```
 
-## Essential Modules
+### 2) SHP → Network
 
-### Controller Module
+`5000_disatar/05_scripts/convert_shapefile_to_network.py` 內的 `ROAD_CLASS_PARAMS` 決定：
+- `freespeed`
+- `capacity`
+- `lanes`
 
-Controls simulation execution:
+若道路分類不一致，可在腳本內調整對應表。
 
+---
+
+## 三、PT 映射設定（PublicTransitMapper Config）
+
+PT 映射的核心參數放在 `ptmapper-config.xml`：
+- `maxLinkCandidateDistance`
+- `nLinkThreshold`
+- `maxTravelCostFactor`
+- `networkRouter`
+
+詳細參數請見 `docs/03-gtfs-public-transit/public-transit-guide.md`。
+
+---
+
+## 四、模擬設定（config.xml）
+
+`config.xml` 用於 MATSim 執行，核心模組如下：
+
+### 1) Controller
 ```xml
 <module name="controller">
-    <!-- Number of iterations (line 31 in defaultConfig.xml) -->
-    <param name="lastIteration" value="100"/>
-
-    <!-- Output directory (line 42) -->
-    <param name="outputDirectory" value="./output"/>
-
-    <!-- Overwrite behavior (line 44) -->
-    <param name="overwriteFiles" value="deleteDirectoryIfExists"/>
-
-    <!-- Write output every N iterations (line 58) -->
-    <param name="writeEventsInterval" value="10"/>
-    <param name="writePlansInterval" value="10"/>
+  <param name="lastIteration" value="100"/>
+  <param name="outputDirectory" value="./output"/>
+  <param name="overwriteFiles" value="deleteDirectoryIfExists"/>
 </module>
 ```
 
-**Recommended for testing**: `lastIteration="10"`, `overwriteFiles="deleteDirectoryIfExists"`
-
-### Global Settings
-
+### 2) Global
 ```xml
 <module name="global">
-    <!-- Coordinate system (line 106) -->
-    <param name="coordinateSystem" value="EPSG:3826"/>
-
-    <!-- Number of threads (line 110) -->
-    <param name="numberOfThreads" value="4"/>
-
-    <!-- Random seed for reproducibility (line 111) -->
-    <param name="randomSeed" value="4711"/>
+  <param name="coordinateSystem" value="EPSG:3826"/>
+  <param name="numberOfThreads" value="4"/>
 </module>
 ```
 
-### Network & Plans
-
+### 3) Network / Plans
 ```xml
 <module name="network">
-    <param name="inputNetworkFile" value="network.xml.gz"/>
+  <param name="inputNetworkFile" value="network.xml.gz"/>
 </module>
 
 <module name="plans">
-    <param name="inputPlansFile" value="population.xml"/>
-</module>
-
-<module name="facilities">
-    <param name="inputFacilitiesFile" value="facilities.xml"/>
+  <param name="inputPlansFile" value="population.xml.gz"/>
 </module>
 ```
 
-### Routing Configuration
-
+### 4) Routing
 ```xml
 <module name="routing">
-    <!-- Modes routed on network (line 242) -->
-    <param name="networkModes" value="car"/>
-
-    <!-- Access/egress mode (line 243) -->
-    <param name="accessEgressType" value="accessEgressModeToLink"/>
-
-    <!-- Teleported modes (lines 247-278) -->
-    <parameterset type="teleportedModeParameters">
-        <param name="mode" value="walk"/>
-        <param name="teleportedModeSpeed" value="1.388888888"/>
-        <param name="beelineDistanceFactor" value="1.3"/>
-    </parameterset>
-
-    <!-- DO NOT add PT to teleported modes! -->
+  <param name="networkModes" value="car"/>
+  <parameterset type="teleportedModeParameters">
+    <param name="mode" value="walk"/>
+    <param name="teleportedModeSpeed" value="1.388888888"/>
+  </parameterset>
 </module>
 ```
 
-**Critical**: PT should **NOT** be in `networkModes` or `teleportedModeParameters`
-
-### QSim (Queue Simulation)
-
+### 5) QSim
 ```xml
 <module name="qsim">
-    <!-- Main congested modes (line 180) -->
-    <param name="mainMode" value="car,pt"/>
-
-    <!-- Number of threads (line 186) -->
-    <param name="numberOfThreads" value="4"/>
-
-    <!-- Start/end time -->
-    <param name="startTime" value="00:00:00"/>
-    <param name="endTime" value="30:00:00"/>
-
-    <!-- Stuck agent timeout (line 203) -->
-    <param name="stuckTime" value="10.0"/>
-
-    <!-- Use transit in mobsim -->
-    <param name="usingTransitInMobsim" value="true"/>
+  <param name="mainMode" value="car,pt"/>
+  <param name="usingTransitInMobsim" value="true"/>
+  <param name="stuckTime" value="10.0"/>
 </module>
 ```
 
-### Transit Module
-
+### 6) Transit + SwissRailRaptor
 ```xml
 <module name="transit">
-    <!-- Enable transit (line 504) -->
-    <param name="useTransit" value="true"/>
-
-    <!-- Transit modes (line 498) -->
-    <param name="transitModes" value="pt"/>
-
-    <!-- Routing algorithm (line 494) -->
-    <param name="routingAlgorithmType" value="SwissRailRaptor"/>
-
-    <!-- Input files (lines 500-502) -->
-    <param name="transitScheduleFile" value="transitSchedule.xml"/>
-    <param name="vehiclesFile" value="transitVehicles.xml"/>
+  <param name="useTransit" value="true"/>
+  <param name="transitModes" value="pt"/>
+  <param name="transitScheduleFile" value="transitSchedule.xml.gz"/>
+  <param name="vehiclesFile" value="transitVehicles.xml"/>
 </module>
-```
 
-### Transit Router
-
-```xml
-<module name="transitRouter">
-    <!-- Max walk distance (line 517) -->
-    <param name="maxBeelineWalkConnectionDistance" value="1000.0"/>
-
-    <!-- Search radius (line 519) -->
-    <param name="searchRadius" value="1500.0"/>
-
-    <!-- Transfer time (line 511) -->
-    <param name="additionalTransferTime" value="60.0"/>
-</module>
-```
-
-### SwissRailRaptor
-
-```xml
 <module name="swissRailRaptor">
-    <!-- Disable intermodal for simple scenarios -->
-    <param name="useIntermodalAccessEgress" value="false"/>
-
-    <!-- Transfer penalties (set to 0 for direct paths) -->
-    <param name="transferPenaltyBaseCost" value="0.0"/>
-    <param name="transferPenaltyCostPerTravelTimeHour" value="0.0"/>
-
-    <!-- Mode mapping -->
-    <param name="useModeMappingForPassengers" value="false"/>
+  <param name="useIntermodalAccessEgress" value="false"/>
+  <param name="transferPenaltyBaseCost" value="0.0"/>
 </module>
 ```
 
-### Scoring Parameters
+### 7) Scoring（效用函數）
+- 調整 `modeParams` 與 `activityParams`
+- 若需細部效用解釋，請見 `docs/01-getting-started/algorithm-notes.md`
 
-Controls agent behavior through utility functions (lines 303-460):
+---
 
-```xml
-<module name="scoring">
-    <!-- General settings -->
-    <param name="fractionOfIterationsToStartScoreMSA" value="0.8"/>
-
-    <!-- Activity types -->
-    <parameterset type="activityParams">
-        <param name="activityType" value="home"/>
-        <param name="typicalDuration" value="12:00:00"/>
-    </parameterset>
-
-    <parameterset type="activityParams">
-        <param name="activityType" value="work"/>
-        <param name="typicalDuration" value="08:00:00"/>
-    </parameterset>
-
-    <!-- Mode utilities (lines 401-460) -->
-    <parameterset type="modeParams">
-        <param name="mode" value="car"/>
-        <param name="constant" value="-0.0"/>
-        <param name="dailyMonetaryConstant" value="-0.0"/>
-        <param name="dailyUtilityConstant" value="0.0"/>
-        <param name="marginalUtilityOfDistance_util_m" value="-0.0"/>
-        <param name="marginalUtilityOfTraveling_util_hr" value="-6.0"/>
-        <param name="monetaryDistanceRate" value="-0.0002"/>
-    </parameterset>
-
-    <parameterset type="modeParams">
-        <param name="mode" value="pt"/>
-        <param name="constant" value="0.0"/>
-        <param name="marginalUtilityOfTraveling_util_hr" value="-6.0"/>
-    </parameterset>
-
-    <parameterset type="modeParams">
-        <param name="mode" value="walk"/>
-        <param name="marginalUtilityOfTraveling_util_hr" value="-6.0"/>
-    </parameterset>
-</module>
-```
-
-## Command-Line Override
-
-Override any parameter via CLI:
+## 五、命令列覆寫範例
 
 ```bash
-java -jar matsim.jar config.xml \
-  --config:controller.lastIteration 50 \
-  --config:controller.outputDirectory ./my-output \
-  --config:qsim.numberOfThreads 8
+java -Xmx8g -jar matsim-example-project-0.0.1-SNAPSHOT.jar \
+  config.xml \
+  --config:controller.lastIteration 10 \
+  --config:controller.outputDirectory output_test
 ```
 
-Format: `--config:moduleName.parameterName value`
+---
 
-## Common Configuration Patterns
+## 六、常見配置問題
 
-### Quick Test Run
-
-```xml
-<module name="controller">
-    <param name="lastIteration" value="10"/>
-    <param name="overwriteFiles" value="deleteDirectoryIfExists"/>
-    <param name="writeEventsInterval" value="10"/>
-    <param name="writePlansInterval" value="10"/>
-</module>
-```
-
-### PT-Only Scenario
-
-```xml
-<module name="routing">
-    <param name="networkModes" value="car"/>
-    <!-- PT NOT here -->
-
-    <parameterset type="teleportedModeParameters">
-        <param name="mode" value="walk"/>
-        <!-- PT NOT here -->
-    </parameterset>
-</module>
-
-<module name="transit">
-    <param name="useTransit" value="true"/>
-    <param name="transitModes" value="pt"/>
-    <param name="routingAlgorithmType" value="SwissRailRaptor"/>
-</module>
-
-<module name="qsim">
-    <param name="mainMode" value="pt"/>
-    <param name="usingTransitInMobsim" value="true"/>
-</module>
-```
-
-### Multimodal Scenario
-
-```xml
-<module name="routing">
-    <param name="networkModes" value="car"/>
-
-    <parameterset type="teleportedModeParameters">
-        <param name="mode" value="walk"/>
-    </parameterset>
-
-    <parameterset type="teleportedModeParameters">
-        <param name="mode" value="bike"/>
-        <param name="teleportedModeSpeed" value="4.166666667"/>
-    </parameterset>
-</module>
-
-<module name="transit">
-    <param name="useTransit" value="true"/>
-    <param name="transitModes" value="pt"/>
-</module>
-
-<module name="qsim">
-    <param name="mainMode" value="car,pt,bike"/>
-</module>
-```
-
-## Configuration Validation
-
-Check your config before running:
-
-```bash
-# Validate XML syntax
-xmllint --noout config.xml
-
-# Check required files exist
-ls -lh $(grep -oP 'value="\K[^"]*\.xml[^"]*' config.xml)
-```
-
-## Critical Parameters Checklist
-
-Before running simulations:
-
-- [ ] `controller.lastIteration` - Set appropriately (10-50 for tests, 100+ for production)
-- [ ] `controller.outputDirectory` - Unique per run
-- [ ] `global.coordinateSystem` - Matches network/population CRS
-- [ ] `routing.networkModes` - Includes all network-routed modes
-- [ ] `transit.useTransit` - `true` for PT scenarios
-- [ ] PT **NOT** in teleported modes
-- [ ] `qsim.usingTransitInMobsim` - `true` for PT scenarios
-- [ ] All file paths exist and are correct
-
-## Performance Tuning
-
-### Multi-Threading
-
-```xml
-<module name="global">
-    <param name="numberOfThreads" value="8"/>
-</module>
-
-<module name="qsim">
-    <param name="numberOfThreads" value="8"/>
-</module>
-```
-
-### Memory Management
-
-```bash
-# Increase heap size for large scenarios
-java -Xmx16g -jar matsim.jar config.xml
-```
-
-### Output Frequency
-
-```xml
-<module name="controller">
-    <!-- Write less frequently to save I/O -->
-    <param name="writeEventsInterval" value="50"/>
-    <param name="writePlansInterval" value="50"/>
-</module>
-```
-
-## Reference
-
-- **Complete reference**: `defaultConfig.xml` in project root
-- **Line numbers** in comments refer to defaultConfig.xml
-- See [Public Transit Guide](../03-public-transit/public-transit-guide.md) for PT-specific config
-- See [Troubleshooting](../10-troubleshooting/troubleshooting.md) for config-related issues
+- **CRS 不一致**：確保 network / population / GTFS 都是 EPSG:3826
+- **PT 被 teleported**：`routing` 不要加入 `pt` 的 teleportedMode
+- **PT 不應出現在 networkModes**：PT 路由由 SwissRailRaptor 處理

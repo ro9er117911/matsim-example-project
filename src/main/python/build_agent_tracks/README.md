@@ -154,17 +154,31 @@ print(f"PT trips from work: {len(pt_after_work)} points")
 
 ```java
 // 例：RunMatsim.java
+// imports: java.io.BufferedReader, java.io.InputStreamReader, java.nio.charset.StandardCharsets
 String pyscript = "src/main/python/build_agent_tracks.py";
-String cmd = String.format(
-    "python %s --plans %s/plans.xml.gz --schedule %s --out %s/analysis",
-    pyscript,
-    outputDir,
-    scheduleFile,
-    outputDir
+ProcessBuilder pb = new ProcessBuilder(
+    "python", "-u", pyscript,
+    "--plans", outputDir + "/plans.xml.gz",
+    "--schedule", scheduleFile,
+    "--out", outputDir + "/analysis"
 );
-Process p = Runtime.getRuntime().exec(cmd);
+pb.redirectErrorStream(true); // 合并 stderr，避免阻塞且更容易看到日志
+Process p = pb.start();
+
+try (BufferedReader reader = new BufferedReader(
+        new InputStreamReader(p.getInputStream(), StandardCharsets.UTF_8))) {
+    String line;
+    while ((line = reader.readLine()) != null) {
+        System.out.println(line);
+    }
+}
+
 int exitCode = p.waitFor();
+if (exitCode != 0) {
+    throw new RuntimeException("build_agent_tracks failed, exit code=" + exitCode);
+}
 ```
+> 提示：`-u` 可关闭 Python 的输出缓冲，确保 stdout/stderr 及时回传。
 
 ## 🐛 故障排除
 
@@ -206,6 +220,17 @@ python build_agent_tracks.py --plans /absolute/path/to/plans.xml.gz --out ...
 ```bash
 # 跳过Activity匹配
 python build_agent_tracks.py --skip-activity-matching --plans ... --out ...
+```
+
+### Java调用没有 stdout/stderr 输出
+
+**原因**：未读取子进程的 stdout/stderr，导致缓冲区阻塞或输出被丢弃
+
+**解决**：
+```text
+- 使用 ProcessBuilder 并读取 getInputStream() 的内容
+- 必要时加上 `python -u` 或在 Python 中使用 flush
+- 如需分开 stdout/stderr，请使用两个线程分别读取，避免死锁
 ```
 
 ## 📊 性能指标

@@ -24,13 +24,14 @@ import org.matsim.application.MATSimApplication;
 import org.matsim.core.config.Config;
 import org.matsim.core.controler.Controler;
 import org.matsim.core.controler.OutputDirectoryHierarchy.OverwriteFileSetting;
+import org.matsim.core.network.algorithms.NetworkCleaner;
 import org.matsim.simwrapper.SimWrapperModule;
 
 /**
  * @author nagel
  *
  */
-@CommandLine.Command( header = ":: MyScenario ::", version = "1.0")
+@CommandLine.Command(header = ":: MyScenario ::", version = "1.0")
 public class RunMatsimApplication extends MATSimApplication {
 
 	public RunMatsimApplication() {
@@ -44,7 +45,7 @@ public class RunMatsimApplication extends MATSimApplication {
 	@Override
 	protected Config prepareConfig(Config config) {
 
-		config.controller().setOverwriteFileSetting( OverwriteFileSetting.deleteDirectoryIfExists );
+		config.controller().setOverwriteFileSetting(OverwriteFileSetting.deleteDirectoryIfExists);
 
 		// possibly modify config here
 
@@ -73,6 +74,8 @@ public class RunMatsimApplication extends MATSimApplication {
 			}
 		}
 
+		new NetworkCleaner().run(scenario.getNetwork());
+
 		// ---
 
 	}
@@ -82,12 +85,11 @@ public class RunMatsimApplication extends MATSimApplication {
 
 		// possibly modify controler here
 
-//		controler.addOverridingModule( new OTFVisLiveModule() ) ;
+		// controler.addOverridingModule( new OTFVisLiveModule() ) ;
 		String disableSimWrapper = System.getenv("DISABLE_SIMWRAPPER");
 		if (!"1".equals(disableSimWrapper)) {
 			controler.addOverridingModule(new SimWrapperModule());
 		}
-
 
 		// ---
 	}

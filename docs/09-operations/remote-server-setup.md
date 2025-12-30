@@ -1,8 +1,6 @@
 # MATSim 遠端伺服器環境建置教學
 
-> **目標**: 從零開始在 Ubuntu 24.04 LTS 伺服器上建置完整的 MATSim 模擬環境  
-> **適用系統**: Ubuntu 24.04 LTS (DataServer01)  
-> **預計時間**: 約 30-60 分鐘
+本文件說明在 Ubuntu 24.04 LTS 伺服器上建置完整的 MATSim 模擬環境。
 
 ---
 

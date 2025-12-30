@@ -21,6 +21,8 @@ def load_whitelist(csv_files):
                 ids.update(df['linkId'].astype(str))
             elif 'link_id' in df.columns:
                 ids.update(df['link_id'].astype(str))
+            elif 'id' in df.columns:
+                ids.update(df['id'].astype(str))
             print(f"Loaded {len(df)} links from {fpath}")
         except Exception as e:
             print(f"Warning: Could not read whitelist file {fpath}: {e}")

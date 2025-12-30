@@ -20,8 +20,8 @@
 
     <parameterset type="transportModeAssignment" >
       <param name="scheduleMode" value="bus" />
-      <param name="networkModes" value="bus" />
-      <param name="maxLinkCandidateDistance" value="300.0" />
+      <param name="networkModes" value="car,bus" />
+      <param name="maxLinkCandidateDistance" value="600.0" />
       <param name="nLinkThreshold" value="12" />
       <param name="strictLinkRule" value="false" />
     </parameterset>

@@ -138,6 +138,7 @@ test_output*/            # Test output directories
 archive/                 # Archived files
 
 # === 5000_disatar Project Specific ===
+5000_disatar/01_raw_data/taipei_shp_map/A_ROAD.dbf  # Large SHP dbf file
 5000_disatar/01_raw_data/**  # Raw OSM/GTFS data
 5000_disatar/06_simulation/**  # Simulation runs (large files)
 5000_disatar/02_phase1_test/networks/**
@@ -195,9 +196,18 @@ scripts/run_100_agents_simulation.sh
 scripts/run_experiment_100k.sh
 scripts/run_pt_test_with_timeout.sh
 scripts/run_simulation_with_via_export.sh
-scripts/EXPORT_VIA_COMMAND.sh
-
-# Specific large output directories
-scenarios/equil/100000_output_v1/
-scenarios/equil/100000_output_v2/
 scenarios/equil/output_metro_*/
+
+# === 5000_disatar New Rules ===
+5000_disatar/06_taipei_test/output_vis/
+5000_disatar/99_output_process/
+5000_disatar/01_raw_data/GTFS_pt_mapping/*.xml
+5000_disatar/01_raw_data/GTFS_pt_mapping/*.xml.gz
+5000_disatar/01_raw_data/GTFS_pt_mapping/*.jar
+
+# === Environment ===
+.venv/
+poetry.lock
+
+# === Archive ===
+archive/*.html

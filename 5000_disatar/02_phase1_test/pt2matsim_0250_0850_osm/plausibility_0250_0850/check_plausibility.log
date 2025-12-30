@@ -1,0 +1,58 @@
+2025-12-26T17:07:24,551  INFO CheckMappedSchedulePlausibility:85 Reading schedule...
+2025-12-26T17:07:24,555  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/5000_disatar/02_phase1_test/pt2matsim_0250_0850_osm/]
+2025-12-26T17:07:24,588  INFO Version:18 HV000001: Hibernate Validator 9.0.1.Final
+2025-12-26T17:07:24,644  INFO MatsimXmlParser:155 starting to parse xml from file transitSchedule-mapped.xml.gz ...
+2025-12-26T17:07:24,646  INFO IOUtils:212 Resolved transitSchedule-mapped.xml.gz to transitSchedule-mapped.xml.gz
+2025-12-26T17:07:24,702  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/transitSchedule_v2.dtd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-12-26T17:07:24,716  INFO MatsimXmlParser:314 java.net.UnknownHostException: www.matsim.org. May not be fatal, will try to load it locally.
+2025-12-26T17:07:24,716  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/transitSchedule_v2.dtd
+2025-12-26T17:07:24,838  INFO CheckMappedSchedulePlausibility:87 Reading network...
+2025-12-26T17:07:24,840  INFO Config:461 setting context to [file:/Users/ro9air/matsim-example-project/5000_disatar/02_phase1_test/pt2matsim_0250_0850_osm/]
+2025-12-26T17:07:24,842  INFO MatsimXmlParser:155 starting to parse xml from file network-with-pt.xml.gz ...
+2025-12-26T17:07:24,842  INFO IOUtils:212 Resolved network-with-pt.xml.gz to network-with-pt.xml.gz
+2025-12-26T17:07:24,843  INFO MatsimNetworkReader:122 using network_v2-reader.
+2025-12-26T17:07:24,843  INFO MatsimXmlParser:299 Trying to load http://www.matsim.org/files/dtd/network_v2.dtd. In some cases (e.g. network interface up but no connection), this may take a while.
+2025-12-26T17:07:24,843  INFO MatsimXmlParser:314 java.net.UnknownHostException: www.matsim.org. May not be fatal, will try to load it locally.
+2025-12-26T17:07:24,843  INFO MatsimXmlParser:336 Using local DTD from classpath:dtd/network_v2.dtd
+2025-12-26T17:07:24,845  INFO NetworkImpl:165  node # 1
+2025-12-26T17:07:24,845  INFO NetworkImpl:165  node # 4
+2025-12-26T17:07:24,845  INFO NetworkImpl:165  node # 16
+2025-12-26T17:07:24,845  INFO NetworkImpl:165  node # 64
+2025-12-26T17:07:24,847  INFO NetworkImpl:165  node # 256
+2025-12-26T17:07:24,850  INFO NetworkImpl:165  node # 1024
+2025-12-26T17:07:24,858  INFO NetworkImpl:165  node # 4096
+2025-12-26T17:07:24,889  INFO NetworkImpl:165  node # 16384
+2025-12-26T17:07:24,995  INFO NetworkImpl:165  node # 65536
+2025-12-26T17:07:25,295  INFO NetworkImpl:165  node # 262144
+2025-12-26T17:07:25,704  INFO NetworkImpl:161  link # 1
+2025-12-26T17:07:25,705  INFO NetworkImpl:161  link # 4
+2025-12-26T17:07:25,706  INFO NetworkImpl:161  link # 16
+2025-12-26T17:07:25,710  INFO NetworkImpl:161  link # 64
+2025-12-26T17:07:25,722  INFO NetworkImpl:161  link # 256
+2025-12-26T17:07:25,759  INFO NetworkImpl:161  link # 1024
+2025-12-26T17:07:25,811  INFO NetworkImpl:161  link # 4096
+2025-12-26T17:07:25,950  INFO NetworkImpl:161  link # 16384
+2025-12-26T17:07:26,316  INFO NetworkImpl:161  link # 65536
+2025-12-26T17:07:27,650  INFO NetworkImpl:161  link # 262144
+2025-12-26T17:07:30,747  INFO CheckMappedSchedulePlausibility:90 Run TransitScheduleValidator...
+Schedule appears valid!
+Validation warnings:
+Minimal Transfer Times: fromStop BUS_NWT199021.link:490280 toStop BUS_NWT199021.link:837974 with transferTime = 0.0
+Minimal Transfer Times: fromStop BUS_NWT157021.link:490280 toStop BUS_NWT157021.link:837974 with transferTime = 0.0
+Minimal Transfer Times: fromStop BUS_NWT156527.link:796467 toStop BUS_NWT156527.link:483309 with transferTime = 0.0
+Minimal Transfer Times: fromStop BUS_NWT157373.link:490279 toStop BUS_NWT157373.link:624607 with transferTime = 0.0
+Minimal Transfer Times: fromStop BUS_TPE57531.link:78196 toStop BUS_TPE57531.link:77606 with transferTime = 0.0
+Minimal Transfer Times: fromStop BUS_NWT132901.link:796467 toStop BUS_NWT132901.link:100844 with transferTime = 0.0
+Minimal Transfer Times: fromStop BUS_NWT132901.link:100844 toStop BUS_NWT132901.link:796467 with transferTime = 0.0
+Minimal Transfer Times: fromStop BUS_NWT156634.link:483309 toStop BUS_NWT156634.link:796467 with transferTime = 0.0
+Minimal Transfer Times: fromStop BUS_NWT157373.link:624607 toStop BUS_NWT157373.link:490279 with transferTime = 0.0
+Minimal Transfer Times: fromStop BUS_NWT216915.link:737619 toStop BUS_NWT216915.link:737618 with transferTime = 0.0
+Minimal Transfer Times: fromStop BUS_NWT216915.link:737618 toStop BUS_NWT216915.link:737619 with transferTime = 0.0
+Minimal Transfer Times: fromStop BUS_NWT156527.link:483309 toStop BUS_NWT156527.link:796467 with transferTime = 0.0
+Minimal Transfer Times: fromStop BUS_NWT157021.link:837974 toStop BUS_NWT157021.link:490280 with transferTime = 0.0
+Minimal Transfer Times: fromStop BUS_NWT199021.link:837974 toStop BUS_NWT199021.link:490280 with transferTime = 0.0
+Minimal Transfer Times: fromStop BUS_TPE57531.link:77606 toStop BUS_TPE57531.link:78196 with transferTime = 0.0
+Minimal Transfer Times: fromStop BUS_NWT156634.link:796467 toStop BUS_NWT156634.link:483309 with transferTime = 0.0
+2025-12-26T17:07:31,095  INFO CheckMappedSchedulePlausibility:94 Start plausibility check...
+2025-12-26T17:07:31,264  INFO PlausibilityCheck:259 Writing warnings to csv file plausibility_0250_0850/allPlausibilityWarnings.csv ...
+2025-12-26T17:07:31,411  INFO PlausibilityCheck:267 Writing warnings geojson file plausibility_0250_0850/plausibilityWarnings.geojson ...

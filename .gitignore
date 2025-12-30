@@ -138,8 +138,18 @@ test_output*/            # Test output directories
 archive/                 # Archived files
 
 # === 5000_disatar Project Specific ===
-5000_disatar/01_raw_data/taipei_shp_map/A_ROAD.dbf  # Large SHP dbf file
-5000_disatar/01_raw_data/**  # Raw OSM/GTFS data
+5000_disatar/01_raw_data/taipei_shp_map/
+5000_disatar/01_raw_data/newTPE_shp_map/
+5000_disatar/01_raw_data/GTFS_pt_mapping/
+5000_disatar/01_raw_data/combined_network*.xml.gz
+5000_disatar/01_raw_data/**/*.shp
+5000_disatar/01_raw_data/**/*.dbf
+5000_disatar/01_raw_data/**/*.shx
+5000_disatar/01_raw_data/**/*.prj
+5000_disatar/01_raw_data/**/*.cpg
+5000_disatar/01_raw_data/**/*.json
+5000_disatar/01_raw_data/**/A_*
+5000_disatar/01_raw_data/**/F_*
 5000_disatar/06_simulation/**  # Simulation runs (large files)
 5000_disatar/02_phase1_test/networks/**
 5000_disatar/02_phase1_test/**/network*.xml.gz

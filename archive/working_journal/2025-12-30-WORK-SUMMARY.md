@@ -18,7 +18,9 @@
 
 ### 3. Project Maintenance
 - **Data Integration Research**: Investigated the absence of PT modes in `combined_network_clean.xml.gz` and clarified that it serves as a clean input for the mapping process.
-- **Git Hygiene**: Updated `.gitignore` to exclude large untracked raw data files and generated outputs in `5000_disatar/` and `archive/`.
+- **Git Hygiene**: 
+    - Updated `.gitignore` to exclude large untracked raw data files and generated outputs.
+    - Added specific rules for `A_*` and `F_*` SHP files in `01_raw_data` to ensure a clean repository.
 
 ## Next Steps
 - Execute `run_mapping.sh` to generate the PT-integrated network with `bus` and `subway` modes.

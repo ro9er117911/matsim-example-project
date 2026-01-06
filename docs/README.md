@@ -58,3 +58,4 @@
 
 ### 研究筆記
 - `docs/12-notes/data-science-strategy.md`
+- `docs/12-notes/large-files.md`

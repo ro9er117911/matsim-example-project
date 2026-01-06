@@ -4,20 +4,27 @@
 
 本 workflow 用於建立淡水沿海海嘯撤離模擬，包含分階段道路封閉和 5000 代理人多模態交通。
 
+## 資料來源與人口規模（觀測紀錄）
+
+- 28 萬人口代表淡水 + 八里的可能居民規模（災害情境與封路參數另有假設文件，待補連結）。
+- GTFS（台北 + 新北公車）：`5000_disatar/01_raw_data/bus_disaster_gtfs`
+- 底圖/路網來源（國土測繪圖資）：`5000_disatar/01_raw_data/taipei_shp_map`
+- 人口放大腳本：`5000_disatar/05_scripts/04_population/augment_population.py`（clone + jitter；不改變原模式比例）
+
 ## 最新快速流程（staggered iter10 baseline）
 
 調整內容：分散出發時間（02:50–03:20）、延後/降速封路（`input/tsunami_changeEvents_staggered.xml`）、10 iter 學習（`config_combined_5000_staggered_iter10.xml`，stuck=0），視覺濾鏡只保留 `volume>=20` 且 `tt_ratio>=2` 的 link。
 
 一鍵執行（含 SimWrapper 資料產出）：
 ```bash
-./5000_disatar/05_combined_evac/run_staggered_iter10_pipeline.sh
+./5000_disatar/05_scripts/06_disaster_evacuation/run_staggered_iter10_pipeline.sh
 # 不重跑模擬，只重生視覺與 YAML
-SKIP_SIM=1 ./5000_disatar/05_combined_evac/run_staggered_iter10_pipeline.sh
+SKIP_SIM=1 ./5000_disatar/05_scripts/06_disaster_evacuation/run_staggered_iter10_pipeline.sh
 # 調整濾鏡門檻（預設 MIN_VOLUME=20, MIN_TT_RATIO=2）
-MIN_VOLUME=10 MIN_TT_RATIO=1.5 SKIP_SIM=1 ./5000_disatar/05_combined_evac/run_staggered_iter10_pipeline.sh
+MIN_VOLUME=10 MIN_TT_RATIO=1.5 SKIP_SIM=1 ./5000_disatar/05_scripts/06_disaster_evacuation/run_staggered_iter10_pipeline.sh
 # 跑 100 iter 版本（輸出：output_staggered_iter100）
 CONFIG_FILE=5000_disatar/05_combined_evac/config_combined_5000_staggered_iter100.xml \
-  ./5000_disatar/05_combined_evac/run_staggered_iter10_pipeline.sh
+  ./5000_disatar/05_scripts/06_disaster_evacuation/run_staggered_iter10_pipeline.sh
 ```
 
 輸出：`output_staggered_iter10/`（包含濾過後的 `network_wgs84.geojson` 與 dashboard YAML）。
@@ -71,7 +78,7 @@ osmium export riverbank.osm.pbf -o riverbank_10km.geojson -u type_id
 使用 2025 年海嘯溢淹潛勢圖的 `Max_depth` 欄位來分類道路：
 
 ```bash
-python3 tools/generate_change_events_depth.py \
+python3 5000_disatar/05_scripts/06_disaster_evacuation/generate_change_events_depth.py \
   --network ../../scenarios/corridor/500_300-618/network-with-pt-metro-v7-carscc.xml.gz \
   --inundation ../evacuation_shp/2025年海嘯溢淹潛勢圖資/2025年海嘯溢淹潛勢更新模擬.shp \
   --output input/tsunami_changeEvents_2025.xml \
@@ -93,7 +100,7 @@ python3 tools/generate_change_events_depth.py \
 ### 方法 B: 基於海岸線距離 (舊方法)
 
 ```bash
-python3 tools/generate_change_events.py \
+python3 5000_disatar/05_scripts/06_disaster_evacuation/generate_change_events.py \
   --network ../../scenarios/corridor/500_300-618/network-with-pt-metro-v7-carscc.xml.gz \
   --shoreline input/tamsui_shoreline.geojson \
   --output input/tsunami_changeEvents.xml \

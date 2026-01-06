@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # run_overnight_iter1000.sh - Overnight 1000-iteration simulation with automatic ITERS cleanup
 # Keeps: iter.0 (baseline) + latest 3 iterations to save disk space
-# Usage: ./5000_disatar/05_combined_evac/run_overnight_iter1000.sh
+# Usage: ./5000_disatar/05_scripts/06_disaster_evacuation/run_overnight_iter1000.sh
 
 set -euo pipefail
 
-ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
 CONFIG="${ROOT}/5000_disatar/05_combined_evac/config_optimized_iter1000.xml"
 OUTPUT_DIR="output_ideal_iter1000"
 ITERS_DIR="${ROOT}/${OUTPUT_DIR}/ITERS"
@@ -99,7 +99,7 @@ ls "$ITERS_DIR" 2>/dev/null | sort -t. -k2 -n || echo "(none)"
 echo ""
 echo "=== Building Dashboard ==="
 export INPUT_NETWORK="${ROOT}/scenarios/corridor/500_300-618/network-with-pt-metro-v7-carscc.xml.gz"
-bash "${ROOT}/tools/run_dashboard_pipeline.sh" "$OUTPUT_DIR"
+bash "${ROOT}/5000_disatar/05_scripts/07_analysis/run_dashboard_pipeline.sh" "$OUTPUT_DIR"
 
 echo ""
 echo "========================================"

@@ -25,8 +25,7 @@ matsim-example-project/
 ├── docs/                          # 主要文件
 ├── src/main/java/                 # Java 入口與工具
 ├── src/main/python/               # Python 工具
-├── scripts/                       # 執行與分析腳本
-├── tools/                         # SimWrapper 與分析工具
+├── tools/                         # 輔助資源與模板
 ├── scenarios/                     # 範例場景
 ├── pt2matsim/                     # GTFS 轉換工具
 └── 5000_disatar/                  # 災難撤離專案
@@ -57,7 +56,7 @@ matsim-example-project/
 - 文件：`docs/04-population/population-guide.md`
 
 ### Step 4 — 產生災害封路（選用）
-- `5000_disatar/05_combined_evac/tools/generate_change_events_*.py`
+- `5000_disatar/05_scripts/06_disaster_evacuation/generate_change_events_*.py`
 
 ### Step 5 — 組好 config
 - 模擬設定請見 `docs/08-configuration/configuration-reference.md`
@@ -73,16 +72,14 @@ matsim-example-project/
 
 ## 4) 常用腳本索引
 
-### scripts/
-- `scripts/run_simulation.sh`：主執行入口
-- `scripts/run_analysis.sh`：產生分析與 YAML
-- `scripts/clip_gtfs_scientific.py`：GTFS 裁切
-
-### tools/
-- `tools/run_dashboard_pipeline.sh`：SimWrapper pipeline
-- `tools/validate-agent-journey.sh`：人口/路網驗證
-- `tools/analyze_agent_speeds.py`：速度診斷
-- `tools/generate_stuck_agents_csv.py`：卡住代理人統計
+### 5000_disatar/05_scripts/
+- `5000_disatar/05_scripts/05_simulation/run_simulation.sh`：主執行入口
+- `5000_disatar/05_scripts/07_analysis/run_analysis.sh`：產生分析與 YAML
+- `5000_disatar/05_scripts/03_gtfs_public_transit/clip_gtfs_scientific.py`：GTFS 裁切
+- `5000_disatar/05_scripts/07_analysis/run_dashboard_pipeline.sh`：SimWrapper pipeline
+- `5000_disatar/05_scripts/04_population/validation/validate-agent-journey.sh`：人口/路網驗證
+- `5000_disatar/05_scripts/07_analysis/analyze_agent_speeds.py`：速度診斷
+- `5000_disatar/05_scripts/07_analysis/generate_stuck_agents_csv.py`：卡住代理人統計
 
 ---
 
@@ -93,7 +90,7 @@ matsim-example-project/
 java -jar matsim-example-project-0.0.1-SNAPSHOT.jar scenarios/corridor/taipei_test/config.xml
 
 # 災難撤離
-scripts/run_simulation.sh 5000_disatar/05_combined_evac/config_optimized_iter10.xml
+5000_disatar/05_scripts/05_simulation/run_simulation.sh 5000_disatar/05_combined_evac/config_optimized_iter10.xml
 ```
 
 ---

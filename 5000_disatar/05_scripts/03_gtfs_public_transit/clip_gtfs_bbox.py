@@ -3,7 +3,7 @@
 Clip a GTFS feed to a corridor defined by an EPSG:3826 bounding box.
 
 Example:
-    python3 tools/clip_gtfs_bbox.py \
+    python3 5000_disatar/05_scripts/03_gtfs_public_transit/clip_gtfs_bbox.py \
         --source src/test/resources/gtfs/source/source.gtfs.zip \
         --bbox3826 "303898.776,2770250.712,305064.492,2770996.136" \
         --out src/test/resources/gtfs/bl_corridor/bl_corridor.gtfs.zip

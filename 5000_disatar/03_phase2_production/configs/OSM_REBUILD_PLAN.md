@@ -49,7 +49,7 @@ Keep both raw and clean files; if cleaners drop neighborhoods, revert to the raw
 
 - Highway coverage (raw or clean):
   ```bash
-  python3 5000_disatar/05_scripts/count_highway.py 5000_disatar/03_phase2_production/networks/network_v7_car_walk_raw.xml | head -n 30
+  python3 5000_disatar/05_scripts/02_osm_network/count_highway.py 5000_disatar/03_phase2_production/networks/network_v7_car_walk_raw.xml | head -n 30
   ```
   Expect non-zero counts for `residential,service,unclassified,living_street,track,path,footway,pedestrian`.
 

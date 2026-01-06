@@ -38,10 +38,10 @@ java -Xmx4g -cp pt2matsim/work/pt2matsim-25.8-shaded.jar \
 ```
 
 常用修正工具（依需求擇一）：
-- `scripts/fix_network_capacity.py`：修正 0 capacity
-- `tools/merge_short_links.py`：合併極短 link
-- `scripts/clean_car_components.py`：保留最大 car SCC
-- `scripts/make_subway_exclusive.py`：建立 subway-only network
+- `5000_disatar/05_scripts/02_osm_network/fix_network_capacity.py`：修正 0 capacity
+- `5000_disatar/05_scripts/02_osm_network/merge_short_links.py`：合併極短 link
+- `5000_disatar/05_scripts/02_osm_network/clean_car_components.py`：保留最大 car SCC
+- `5000_disatar/05_scripts/02_osm_network/make_subway_exclusive.py`：建立 subway-only network
 
 ### 3) 驗證
 
@@ -59,7 +59,7 @@ gunzip -c output_network_clean.xml.gz | grep -o 'modes="[^"]*"' | sort | uniq -c
 ### 1) 先檢查欄位與 CRS
 
 ```bash
-python3 5000_disatar/05_scripts/inspect_shapefile_schema.py \
+python3 5000_disatar/05_scripts/02_osm_network/inspect_shapefile_schema.py \
   5000_disatar/01_raw_data/taipei_shp_map
 ```
 
@@ -68,7 +68,7 @@ python3 5000_disatar/05_scripts/inspect_shapefile_schema.py \
 ### 2) 轉換指令
 
 ```bash
-python3 5000_disatar/05_scripts/convert_shapefile_to_network.py \
+python3 5000_disatar/05_scripts/02_osm_network/convert_shapefile_to_network.py \
   --input 5000_disatar/01_raw_data/taipei_shp_map \
   --output 5000_disatar/01_raw_data/taipei_shp_map/output/network.xml.gz \
   --road-file A_ROAD.shp \
@@ -97,7 +97,7 @@ zcat 5000_disatar/01_raw_data/taipei_shp_map/output/network.xml.gz | grep -c '<l
 新北市資料編碼為 `cp950`，需指定編碼轉換：
 
 ```bash
-python3 5000_disatar/05_scripts/build_combined_network.py \
+python3 5000_disatar/05_scripts/02_osm_network/build_combined_network.py \
   -i 5000_disatar/01_raw_data/newTPE_shp_map \
   -o 5000_disatar/01_raw_data/newTPE_shp_map/output/network.xml.gz \
   --encoding cp950
@@ -107,7 +107,7 @@ python3 5000_disatar/05_scripts/build_combined_network.py \
 使用 `build_combined_network.py` 同時輸入多個目錄：
 
 ```bash
-python3 5000_disatar/05_scripts/build_combined_network.py \
+python3 5000_disatar/05_scripts/02_osm_network/build_combined_network.py \
   -i 5000_disatar/01_raw_data/taipei_shp_map 5000_disatar/01_raw_data/newTPE_shp_map \
   -o 5000_disatar/01_raw_data/combined_network.xml.gz
 ```

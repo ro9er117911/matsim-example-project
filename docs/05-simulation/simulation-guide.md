@@ -40,13 +40,13 @@ java -Xmx8g -jar matsim-example-project-0.0.1-SNAPSHOT.jar \
 
 ```bash
 # 含 SimWrapper 分析的完整流程
-./5000_disatar/05_combined_evac/run_staggered_iter10_pipeline.sh
+./5000_disatar/05_scripts/06_disaster_evacuation/run_staggered_iter10_pipeline.sh
 ```
 
 ### 2) 直接執行
 
 ```bash
-scripts/run_simulation.sh 5000_disatar/05_combined_evac/config_optimized_iter10.xml
+5000_disatar/05_scripts/05_simulation/run_simulation.sh 5000_disatar/05_combined_evac/config_optimized_iter10.xml
 ```
 
 相關工作流請見 `5000_disatar/05_combined_evac/WORKFLOW.md`。

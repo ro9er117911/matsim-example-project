@@ -18,7 +18,7 @@ echo ""
 # 速度分析
 if [ -f "${OUTPUT_DIR}/output_events.xml.gz" ]; then
     echo "[1/2] 分析 agent 速度..."
-    poetry run python tools/analyze_agent_speeds.py \
+    poetry run python 5000_disatar/05_scripts/07_analysis/analyze_agent_speeds.py \
         --events ${OUTPUT_DIR}/output_events.xml.gz \
         --network ${OUTPUT_DIR}/output_network.xml.gz \
         --out ${OUTPUT_DIR}/slow_links_analysis.csv
@@ -26,7 +26,7 @@ fi
 
 # Dashboard 生成
 echo "[2/2] 生成 Dashboard..."
-poetry run python tools/generate_dashboard_yamls.py \
+poetry run python 5000_disatar/05_scripts/07_analysis/generate_dashboard_yamls.py \
     --output_dir ${OUTPUT_DIR}
 
 echo ""

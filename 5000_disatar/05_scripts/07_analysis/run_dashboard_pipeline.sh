@@ -1,7 +1,7 @@
 #!/bin/bash
 # Master pipeline to generate SimWrapper Dashboard for a MATSim output folder
-# Usage: ./tools/run_dashboard_pipeline.sh <output_dir>
-# Example: ./tools/run_dashboard_pipeline.sh output_staggered
+# Usage: ./5000_disatar/05_scripts/07_analysis/run_dashboard_pipeline.sh <output_dir>
+# Example: ./5000_disatar/05_scripts/07_analysis/run_dashboard_pipeline.sh output_staggered
 
 OUTPUT_DIR=$1
 MIN_VOLUME=${MIN_VOLUME:-0}
@@ -106,7 +106,7 @@ echo "Using whitelist files: $CSV1_USE $CSV2_USE"
 # 2. Convert Network to Optimized GeoJSON
 # Filter by the congestion CSVs generated in Step 1
 echo "[2/3] Converting and Filtering Network..."
-python3 5000_disatar/05_combined_evac/tools/network_to_geojson.py \
+python3 5000_disatar/05_scripts/06_disaster_evacuation/network_to_geojson.py \
   --network "$OUTPUT_DIR/output_network.xml.gz" \
   --output "$OUTPUT_DIR/${NETWORK_GEOJSON}" \
   --whitelist "$CSV1_USE" "$CSV2_USE"
@@ -114,7 +114,7 @@ if [ $? -ne 0 ]; then echo "Network conversion failed."; exit 1; fi
 
 # 3. Generate Dashboard YAML Configuration
 echo "[3/3] Generating Dashboard Configuration..."
-python3 tools/generate_dashboard_yamls.py --output_dir "$OUTPUT_DIR"
+python3 5000_disatar/05_scripts/07_analysis/generate_dashboard_yamls.py --output_dir "$OUTPUT_DIR"
 if [ $? -ne 0 ]; then echo "YAML generation failed."; exit 1; fi
 
 echo "=== Pipeline Complete! ==="

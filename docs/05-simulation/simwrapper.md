@@ -15,7 +15,7 @@
 ### 1) 一鍵產生（推薦）
 
 ```bash
-./tools/run_dashboard_pipeline.sh <output_dir>
+./5000_disatar/05_scripts/07_analysis/run_dashboard_pipeline.sh <output_dir>
 ```
 
 常用環境變數：

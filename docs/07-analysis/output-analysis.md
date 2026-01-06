@@ -48,7 +48,7 @@ gunzip -c output/output_events.xml.gz | \
 ## 四、瓶頸與速度分析
 
 ```bash
-python3 tools/analyze_agent_speeds.py \
+python3 5000_disatar/05_scripts/07_analysis/analyze_agent_speeds.py \
   --events output/output_events.xml.gz \
   --network output/output_network.xml.gz \
   --out output/slow_links_analysis.csv

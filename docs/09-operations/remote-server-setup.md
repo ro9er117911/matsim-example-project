@@ -377,7 +377,7 @@ tail -f simulation.log
 
 ```bash
 # 測試分析腳本 (需要先完成模擬)
-poetry run python tools/analyze_agent_speeds.py \
+poetry run python 5000_disatar/05_scripts/07_analysis/analyze_agent_speeds.py \
     --events 5000_disatar/05_combined_evac/output_optimized_iter10/output_events.xml.gz \
     --network 5000_disatar/05_combined_evac/output_optimized_iter10/output_network.xml.gz \
     --out slow_links_analysis.csv
@@ -396,13 +396,13 @@ java -Xmx8g -jar matsim-example-project-0.0.1-SNAPSHOT.jar \
     5000_disatar/05_combined_evac/config_optimized_iter10.xml
 
 echo "=== Step 2: 分析結果 ==="
-poetry run python tools/analyze_agent_speeds.py \
+poetry run python 5000_disatar/05_scripts/07_analysis/analyze_agent_speeds.py \
     --events 5000_disatar/05_combined_evac/output_optimized_iter10/output_events.xml.gz \
     --network 5000_disatar/05_combined_evac/output_optimized_iter10/output_network.xml.gz \
     --out 5000_disatar/05_combined_evac/output_optimized_iter10/slow_links_analysis.csv
 
 echo "=== Step 3: 生成 Dashboard ==="
-poetry run python tools/generate_dashboard_yamls.py \
+poetry run python 5000_disatar/05_scripts/07_analysis/generate_dashboard_yamls.py \
     --output_dir 5000_disatar/05_combined_evac/output_optimized_iter10
 
 echo "=== 完成! ==="
@@ -558,8 +558,7 @@ matsim-example-project/
 │       ├── input/
 │       └── output_optimized_iter10/
 ├── scenarios/                       # 其他情境
-├── tools/                          # Python 分析工具
-├── scripts/                        # Shell/Python 腳本
+├── 5000_disatar/05_scripts/        # Python/Shell 腳本（依專案階段分類）
 ├── src/                           # Java 原始碼
 ├── pom.xml                        # Maven 配置
 ├── pyproject.toml                 # Poetry 配置
@@ -575,7 +574,7 @@ matsim-example-project/
 ```bash
 # 下載並執行自動安裝腳本
 cd ~/projects/matsim-example-project
-./scripts/setup_remote_server.sh
+./5000_disatar/05_scripts/09_operations/setup_remote_server.sh
 ```
 
 或者複製貼上以下指令：

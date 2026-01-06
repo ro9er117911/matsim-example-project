@@ -90,7 +90,7 @@ GeoJSON 純粹是給 **SimWrapper** (人類) 看的「濾鏡」。
 
 ## 3. 關鍵檔案關聯
 
-*   **生成者**: `tools/generate_change_events.py`
+*   **生成者**: `5000_disatar/05_scripts/06_disaster_evacuation/generate_change_events.py`
     *   同時產出 `input/tsunami_changeEvents.xml` (物理)
     *   同時產出 `output/coastal_closure.geojson` (視覺)
 *   **使用者**:

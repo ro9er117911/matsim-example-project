@@ -4,7 +4,7 @@ Remove car mode from all components except the largest car-connected component.
 Keeps other modes (subway, walk, etc.) untouched and preserves the MATSim DTD.
 
 Usage:
-  python scripts/clean_car_components.py \
+  python 5000_disatar/05_scripts/02_osm_network/clean_car_components.py \
     --input-network scenarios/equil/network-with-pt-metro-v7-subway-only.xml.gz \
     --output-network scenarios/equil/network-with-pt-metro-v7-subway-only-carclean.xml.gz
 """

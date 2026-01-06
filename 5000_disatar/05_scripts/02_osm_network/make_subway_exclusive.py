@@ -3,7 +3,7 @@
 Convert metro/subway links to subway-only (remove car) and optionally lower subway PCE.
 
 Examples:
-  python scripts/make_subway_exclusive.py \
+  python 5000_disatar/05_scripts/02_osm_network/make_subway_exclusive.py \
     --input-network scenarios/equil/network-with-pt-metro-v7-carscc.xml.gz \
     --output-network scenarios/equil/network-with-pt-metro-v7-subway-only.xml.gz \
     --input-vehicles scenarios/equil/transitVehicles.xml \

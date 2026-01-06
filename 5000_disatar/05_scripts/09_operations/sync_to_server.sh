@@ -12,8 +12,8 @@ echo ""
 
 rsync -avz --progress \
     --include='src/***' \
+    --include='5000_disatar/05_scripts/***' \
     --include='tools/***' \
-    --include='scripts/***' \
     --include='docs/***' \
     --include='額外模組/***' \
     --include='pom.xml' \

@@ -33,7 +33,7 @@ java -cp pt2matsim/work/pt2matsim-25.8-shaded.jar \
 
 ### 2) SHP → Network
 
-`5000_disatar/05_scripts/convert_shapefile_to_network.py` 內的 `ROAD_CLASS_PARAMS` 決定：
+`5000_disatar/05_scripts/02_osm_network/convert_shapefile_to_network.py` 內的 `ROAD_CLASS_PARAMS` 決定：
 - `freespeed`
 - `capacity`
 - `lanes`

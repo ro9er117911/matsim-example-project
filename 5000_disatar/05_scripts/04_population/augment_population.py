@@ -11,6 +11,11 @@ Usage:
         --dep-window 1200 \
         --seed 42
 
+Project note (Tamsui + Bali):
+- The 280k target represents the full possible resident scale.
+- This script only clones/jitters a base population; it does not change mode split.
+- Record the exact base file and parameters used for reproducibility.
+
 Notes:
 - Designed for simple plans with two activities (home -> evacuation) and one leg.
 - Departure times are 03:00:00 in the source; we randomize within dep-window seconds.

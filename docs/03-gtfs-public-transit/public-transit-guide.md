@@ -30,7 +30,7 @@
 ### Python 工具
 - `src/main/python/validate_gtfs.py`：GTFS 完整性驗證
 - `src/main/python/merge_gtfs.py`：GTFS 合併（含 ID 前綴）
-- `tools/clip_gtfs_bbox.py`、`scripts/clip_gtfs_scientific.py`：範圍裁切與過濾
+- `5000_disatar/05_scripts/03_gtfs_public_transit/clip_gtfs_bbox.py`、`5000_disatar/05_scripts/03_gtfs_public_transit/clip_gtfs_scientific.py`：範圍裁切與過濾
 
 ---
 
@@ -130,7 +130,7 @@ java -cp pt2matsim/work/pt2matsim-25.8-shaded.jar \
 | 參數 | 捷運建議 | 公車建議 | 作用 |
 |---|---|---|---|
 | `maxLinkCandidateDistance` | 300 | 600 | 站點找 link 的最大距離 (m) |
-| `nLinkThreshold` | 12 | 15 | 每站候選 link 數 |
+| `nLinkThreshold` | 6| 12 | 每站候選 link 數 |
 | `maxTravelCostFactor` | 15 | 30 | 找不到路徑時允許繞行倍數 |
 | `strictLinkRule` | true | false | 公車可走 car link（避免 OSM 標籤缺失） |
 | `networkRouter` | AStarLandmarks | AStarLandmarks | 路由穩定性較佳 |

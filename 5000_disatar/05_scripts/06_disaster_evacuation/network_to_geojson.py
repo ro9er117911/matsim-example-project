@@ -79,11 +79,18 @@ def main():
                 coords = [nodes[from_node], nodes[to_node]]
                 geom = LineString(coords)
                 
+                # Try to get road name from attributes
+                road_name = ""
+                attr_node = elem.find(".//attribute[@name='osm:way:name']")
+                if attr_node is not None:
+                    road_name = attr_node.text if attr_node.text else ""
+
                 features.append({
                     "type": "Feature",
                     "geometry": mapping(geom),
                     "properties": {
                         "id": lid,
+                        "road_name": road_name
                     }
                 })
             

@@ -45,10 +45,10 @@ matsim-example-project/
 │       └── tools/               # 路網建置工具
 ├── 5000_disatar/                # 🆕 災難模擬專案 (5000 代理人)
 │   ├── 03_phase2_production/    # 生產級路網
-│   └── 05_combined_evac/        # 綜合撤離場景
+│   ├── 05_combined_evac/        # 綜合撤離場景
+│   └── 05_scripts/              # 🆕 主要腳本（依專案階段分類）
 ├── scenarios/                   # 場景設定檔
-├── scripts/                     # 🆕 自動化腳本
-├── tools/                       # 🆕 分析工具
+├── tools/                       # 輔助資源與模板
 ├── examples/                    # 🆕 範例專案
 └── PROJECT_WIKI.md              # 🆕 專案導覽地圖
 ```
@@ -151,4 +151,4 @@ java -Xmx8g -jar matsim-example-project-0.0.1-SNAPSHOT.jar \
 
 ---
 
-**Built with MATSim** | [matsim.org](https://matsim.org) | Version 2025.0
+**使用 MATSim 打造** | [matsim.org](https://matsim.org) | 版本 2025.0

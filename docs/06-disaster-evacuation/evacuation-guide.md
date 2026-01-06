@@ -30,22 +30,22 @@
 
 1) 產生人口
 ```bash
-python3 5000_disatar/05_scripts/json_to_population.py
+python3 5000_disatar/05_scripts/04_population/json_to_population.py
 ```
 
 2) 產生封路事件
 ```bash
-python3 5000_disatar/05_combined_evac/tools/generate_change_events_depth.py
+python3 5000_disatar/05_scripts/06_disaster_evacuation/generate_change_events_depth.py
 ```
 
 3) 執行模擬
 ```bash
-scripts/run_simulation.sh 5000_disatar/05_combined_evac/config_optimized_iter10.xml
+5000_disatar/05_scripts/05_simulation/run_simulation.sh 5000_disatar/05_combined_evac/config_optimized_iter10.xml
 ```
 
 4) SimWrapper 分析
 ```bash
-tools/run_dashboard_pipeline.sh output_staggered_iter10
+5000_disatar/05_scripts/07_analysis/run_dashboard_pipeline.sh output_staggered_iter10
 ```
 
 ---
@@ -75,7 +75,7 @@ tools/run_dashboard_pipeline.sh output_staggered_iter10
 
 ### 指令範例
 ```bash
-python3 scripts/filter_bus_routes.py \
+python3 5000_disatar/05_scripts/03_gtfs_public_transit/filter_bus_routes.py \
   --input <GTFS> \
   --output <filtered_gtfs> \
   --priority 2 \
@@ -87,8 +87,8 @@ python3 scripts/filter_bus_routes.py \
 ## 六、輸出與分析
 
 - 事件流：`output_*/output_events.xml.gz`
-- 瓶頸與速度：`tools/analyze_agent_speeds.py`
-- 儀表板：`tools/run_dashboard_pipeline.sh`
+- 瓶頸與速度：`5000_disatar/05_scripts/07_analysis/analyze_agent_speeds.py`
+- 儀表板：`5000_disatar/05_scripts/07_analysis/run_dashboard_pipeline.sh`
 
 ---
 

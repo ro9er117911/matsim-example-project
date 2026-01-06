@@ -54,7 +54,7 @@ def generate_yamls(output_dir):
                     "title": "撤離完成率 (Cumulative)",
                     "dataset": "evac_cumulative.csv",
                     "x": "minute",
-                    "columns": ["cumulative_agents"],
+                    "columns": ["agents"],
                     "legendName": ["Agents"],
                     "xAxisName": "Time (min)",
                     "yAxisName": "Count"
@@ -76,8 +76,8 @@ def generate_yamls(output_dir):
                     "width": 2,
                     "title": "平均撤離時間地圖",
                     "description": "Average Evacuation Time",
-                    "center": [121.666, 25.08],
-                    "zoom": 13,
+                    "center": [121.448, 25.174],
+                    "zoom": 14,
                     "datasets": {
                          "grid": "evac_time_grid.csv"
                     },
@@ -145,8 +145,15 @@ def generate_yamls(output_dir):
                             "join": "linkId",
                             "scaleFactor": 10
                         },
+                        "tooltip": [
+                            {"dataset": "congestion", "columnName": "road_name", "title": "路名"},
+                            {"dataset": "congestion", "columnName": "v_c", "title": "V/C"},
+                            {"dataset": "congestion", "columnName": "volume", "title": "車流量"}
+                        ],
                         "fill": {}, "fillHeight": {}, "radius": {}
                     },
+                    "center": [121.448, 25.174],
+                    "zoom": 14,
                     "shapes": {"file": NETWORK_GEOJSON, "join": "id"}
                 }
             ],
@@ -161,16 +168,25 @@ def generate_yamls(output_dir):
                             "dataset": "congestion",
                             "columnName": "v_c",
                             "join": "linkId",
-                            "colorRamp": {"ramp": "Magma", "steps": 5}
+                            "colorRamp": {"ramp": "Magma", "steps": 5},
+                            "legendName": "壅塞程度 (V/C)"
                         },
                         "lineWidth": {
                             "dataset": "congestion",
-                            "columnName": "v_c",
+                            "columnName": "volume",
                             "join": "linkId",
-                            "scaleFactor": 10
+                            "scaleFactor": 0.1,
+                            "legendName": "車流量 (Volume)"
                         },
+                        "tooltip": [
+                            {"dataset": "congestion", "columnName": "road_name", "title": "路名"},
+                            {"dataset": "congestion", "columnName": "v_c", "title": "V/C"},
+                            {"dataset": "congestion", "columnName": "volume", "title": "車流量"}
+                        ],
                         "fill": {}, "fillHeight": {}, "radius": {}
                     },
+                    "center": [121.448, 25.174],
+                    "zoom": 14,
                     "shapes": {"file": NETWORK_GEOJSON, "join": "id"}
                 }
             ]

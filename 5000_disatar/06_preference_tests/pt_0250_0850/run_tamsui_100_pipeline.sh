@@ -58,7 +58,7 @@ DISABLE_SIMWRAPPER=1 MAVEN_OPTS="${JAVA_OPTS:--Xms4g -Xmx4g}" \
 echo "Simulation log: ${SIM_LOG}"
 
 echo "=== [4/4] Build SimWrapper dashboard assets ==="
-INPUT_NETWORK="${NETWORK}" bash "${ROOT}/tools/run_dashboard_pipeline.sh" "${OUTPUT_DIR}"
+INPUT_NETWORK="${NETWORK}" bash "${ROOT}/5000_disatar/05_scripts/07_analysis/run_dashboard_pipeline.sh" "${OUTPUT_DIR}"
 
 echo "=== Pipeline complete ==="
 echo "Output: ${OUTPUT_DIR}"

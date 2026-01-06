@@ -75,9 +75,9 @@
 - 輸出：`scenarios/corridor/taipei_test/test_population_50.xml`
 
 ### 5000 災難撤離
-- `5000_disatar/05_scripts/json_to_population.py`
-- `5000_disatar/05_scripts/generate_evacuation_population.py`
-- `5000_disatar/05_scripts/augment_population.py`
+- `5000_disatar/05_scripts/04_population/json_to_population.py`
+- `5000_disatar/05_scripts/04_population/generate_evacuation_population.py`
+- `5000_disatar/05_scripts/04_population/augment_population.py`
 
 ---
 
@@ -133,9 +133,9 @@ MODE_SPEEDS_M_PER_MIN = {
 ```bash
 python src/main/python/validate_population.py <population.xml>
 
-tools/validate-agent-journey.sh <population.xml> <network.xml.gz>
+5000_disatar/05_scripts/04_population/validation/validate-agent-journey.sh <population.xml> <network.xml.gz>
 
-python3 5000_disatar/05_scripts/validation/validate_population_routes.py \
+python3 5000_disatar/05_scripts/04_population/validation/validate_population_routes.py \
   --plans <population.xml.gz> \
   --network <network.xml.gz>
 ```

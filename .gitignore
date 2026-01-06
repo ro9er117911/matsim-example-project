@@ -154,6 +154,11 @@ archive/                 # Archived files
 5000_disatar/01_raw_data/**/A_*
 5000_disatar/01_raw_data/**/F_*
 5000_disatar/06_simulation/**  # Simulation runs (large files)
+5000_disatar/06_taipei_test/**/output/**
+5000_disatar/06_taipei_test/**/ITERS/**
+5000_disatar/06_taipei_test/**/input/*.xml.gz
+5000_disatar/06_taipei_test/**/*.xml.gz
+5000_disatar/06_taipei_test/**/*.log
 5000_disatar/02_phase1_test/networks/**
 5000_disatar/02_phase1_test/**/network*.xml.gz
 5000_disatar/02_phase1_test/population/**
@@ -171,6 +176,7 @@ archive/                 # Archived files
 *.csv                    # CSV exports (usually large)
 *.geojson                # GeoJSON exports
 forVia*/                 # Via export directories
+5000_disatar/05_scripts/*.csv
 
 # === Claude Settings (local only) ===
 .claude/settings.local.json
@@ -191,6 +197,8 @@ output/
 **/output_*/
 100000_output_v3_clean/
 pt2matsim/tools/封存.zip
+pt2matsim/pt2matsim-25.8-shaded.jar
+pt2matsim/pt2matsim_code/test/*.zip
 archive/metro_viz*.html
 5000_disatar/evacuation_test/input/*.osm
 5000_disatar/01_raw_data/osm/*.pbf

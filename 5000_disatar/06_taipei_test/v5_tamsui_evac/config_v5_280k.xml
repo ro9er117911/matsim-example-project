@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
+<config>
+    <!-- ================================================================== -->
+    <!-- v5 淡水撤離情境 - 280K 人口模擬                                     -->
+    <!-- 場景: 政府徵召淡水公車 + 市區公車協助撤離                            -->
+    <!-- PT: 7條捷運 + 801條公車 (淡水客運/指南客運/大都會/首都/三重)          -->
+    <!-- ================================================================== -->
+
+    <module name="global">
+        <param name="randomSeed" value="4711" />
+        <param name="coordinateSystem" value="EPSG:3826" />
+        <param name="numberOfThreads" value="24" />
+    </module>
+
+    <module name="network">
+        <!-- v5 含 PT 的完整路網 (7 MRT + 801 Bus) -->
+        <param name="inputNetworkFile" value="input/network_with_pt_v5.xml.gz" />
+    </module>
+
+    <module name="plans">
+        <param name="inputPlansFile" value="input/population_280k.xml.gz" />
+    </module>
+
+    <module name="transit">
+        <param name="useTransit" value="true" />
+        <param name="transitScheduleFile" value="input/transitSchedule_mapped_v5.xml.gz" />
+        <param name="vehiclesFile" value="input/transitVehicles_v5.xml" />
+        <param name="transitModes" value="pt" />
+        <param name="usingTransitInMobsim" value="true" />
+    </module>
+
+    <module name="controller">
+        <param name="outputDirectory" value="output" />
+        <param name="lastIteration" value="1" />
+        <param name="writeEventsInterval" value="5" />
+        <param name="writePlansInterval" value="10" />
+        <param name="overwriteFiles" value="deleteDirectoryIfExists" />
+    </module>
+
+    <module name="qsim">
+        <param name="mainMode" value="car" />
+        <param name="flowCapacityFactor" value="1.0" />
+        <param name="storageCapacityFactor" value="1.0" />
+        <param name="startTime" value="03:00:00" />
+        <param name="endTime" value="12:00:00" />
+        <param name="stuckTime" value="600.0" />
+        <param name="removeStuckVehicles" value="false" />
+        <param name="linkDynamics" value="PassingQ" />
+        <param name="trafficDynamics" value="queue" />
+        <param name="numberOfThreads" value="24" />
+    </module>
+
+    <module name="routing">
+        <param name="networkModes" value="car" />
+        <param name="accessEgressType" value="accessEgressModeToLink" />
+        <param name="clearDefaultTeleportedModeParams" value="true" />
+        <param name="networkRouteConsistencyCheck" value="disable" />
+        
+        <parameterset type="teleportedModeParameters">
+            <param name="mode" value="walk" />
+            <param name="teleportedModeSpeed" value="1.2" />
+            <param name="beelineDistanceFactor" value="1.3" />
+        </parameterset>
+    </module>
+
+    <module name="swissRailRaptor">
+        <param name="useIntermodalAccessEgress" value="true" />
+        <param name="transferPenaltyBaseCost" value="0.0" />
+        <param name="transferPenaltyCostPerTravelTimeHour" value="0.0" />
+    </module>
+
+    <module name="transitRouter">
+        <!-- 轉乘時間較短，反映政府徵召效率 -->
+        <param name="additionalTransferTime" value="300.0" />
+    </module>
+
+    <module name="scoring">
+        <param name="lateArrival" value="-18" />
+        <param name="performing" value="+6" />
+        <param name="fractionOfIterationsToStartScoreMSA" value="0.9" />
+        
+        <parameterset type="scoringParameters">
+            <param name="marginalUtilityOfMoney" value="1.0" />
+
+            <parameterset type="activityParams">
+                <param name="activityType" value="home" />
+                <param name="typicalDuration" value="03:00:00" />
+            </parameterset>
+            <parameterset type="activityParams">
+                <param name="activityType" value="evacuation" />
+                <param name="typicalDuration" value="06:00:00" />
+            </parameterset>
+
+            <parameterset type="activityParams">
+                <param name="activityType" value="car interaction" />
+                <param name="scoringThisActivityAtAll" value="false" />
+            </parameterset>
+            <parameterset type="activityParams">
+                <param name="activityType" value="pt interaction" />
+                <param name="scoringThisActivityAtAll" value="false" />
+            </parameterset>
+
+            <parameterset type="modeParams">
+                <param name="mode" value="car" />
+                <param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
+            </parameterset>
+            <parameterset type="modeParams">
+                <param name="mode" value="pt" />
+                <!-- PT 成本較低，鼓勵使用大眾運輸撤離 -->
+                <param name="marginalUtilityOfTraveling_util_hr" value="-3.0" />
+            </parameterset>
+            <parameterset type="modeParams">
+                <param name="mode" value="walk" />
+                <param name="marginalUtilityOfTraveling_util_hr" value="-12.0" />
+            </parameterset>
+        </parameterset>
+    </module>
+
+    <module name="replanning">
+        <param name="maxAgentPlanMemorySize" value="5" />
+        <param name="fractionOfIterationsToDisableInnovation" value="0.8" />
+        
+        <parameterset type="strategysettings">
+            <param name="strategyName" value="ChangeExpBeta" />
+            <param name="weight" value="0.7" />
+        </parameterset>
+        <parameterset type="strategysettings">
+            <param name="strategyName" value="ReRoute" />
+            <param name="weight" value="0.2" />
+        </parameterset>
+        <parameterset type="strategysettings">
+            <param name="strategyName" value="SubtourModeChoice" />
+            <param name="weight" value="0.1" />
+        </parameterset>
+    </module>
+
+    <module name="simwrapper">
+        <param name="defaultDashboards" value="enabled" />
+    </module>
+
+</config>

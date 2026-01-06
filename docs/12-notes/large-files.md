@@ -8,6 +8,8 @@
 - 原始 SHP / GPKG 與相關 GIS 輔助檔案
 - ABM 原始輸出與大型中間資料
 - 模擬輸出與分析產物
+- Taipei 測試場景產物（`06_taipei_test` 內的 `output/`、`ITERS/`、`*.xml.gz`、`*.log`）
+- pt2matsim 測試資料（`pt2matsim/pt2matsim_code/test/*.zip`）
 
 ## 此次未推送的大型檔案（範例）
 
@@ -19,6 +21,8 @@
 - `5000_disatar/01_raw_data/GTFS/` (其他 GTFS 相關大型檔案)
 - `5000_disatar/01_raw_data/MAP_SHP/` (SHP/GIS 原始資料)
 - `5000_disatar/01_raw_data/templete_agent_abm/` (ABM 原始資料)
+- `5000_disatar/06_taipei_test/**/output/`、`5000_disatar/06_taipei_test/**/ITERS/`、`5000_disatar/06_taipei_test/**/*.xml.gz`
+- `pt2matsim/pt2matsim_code/test/*.zip`
 
 ## 追蹤規則
 

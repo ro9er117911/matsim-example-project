@@ -72,15 +72,16 @@ def convert_streaming(congestion_file, network_file, output_file):
                         road_name = "Unknown"
                         road_class = "Unknown"
                         road_id = "Unknown"
-                        
-                        attr_node = elem.find(".//attribute[@name='osm:way:name']")
-                        if attr_node is not None: road_name = attr_node.text if attr_node.text else "Unknown"
-                        
-                        attr_node = elem.find(".//attribute[@name='osm:way:highway']")
-                        if attr_node is not None: road_class = attr_node.text if attr_node.text else "Unknown"
-                        
-                        attr_node = elem.find(".//attribute[@name='osm:way:id']")
-                        if attr_node is not None: road_id = attr_node.text if attr_node.text else "Unknown"
+                        attrs_elem = elem.find('attributes')
+                        if attrs_elem is not None:
+                            for attr in attrs_elem.findall('attribute'):
+                                name = attr.get('name')
+                                if name == 'osm:way:name':
+                                    road_name = attr.text if attr.text else "Unknown"
+                                elif name == 'osm:way:highway':
+                                    road_class = attr.text if attr.text else "Unknown"
+                                elif name == 'osm:way:id':
+                                    road_id = attr.text if attr.text else "Unknown"
                         
                         vc = round(flow / capacity, 2) if capacity > 0 else 0
                         length_km = round(length / 1000, 4)

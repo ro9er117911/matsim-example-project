@@ -41,16 +41,16 @@ matsim-example-project/
 │   └── org/matsim/project/
 │       ├── RunMatsim.java       # 基本進入點
 │       ├── RunMatsimApplication.java  # CLI 進入點
-│       ├── evacuation/          # 🆕 災難撤離模組
+│       ├── evacuation/          # 災難撤離模組
 │       └── tools/               # 路網建置工具
-├── 5000_disatar/                # 🆕 災難模擬專案 (5000 代理人)
+├── 5000_disatar/                # 災難模擬專案 (5000 代理人)
 │   ├── 03_phase2_production/    # 生產級路網
 │   ├── 05_combined_evac/        # 綜合撤離場景
-│   └── 05_scripts/              # 🆕 主要腳本（依專案階段分類）
+│   └── 05_scripts/              # 主要腳本（依專案階段分類）
 ├── scenarios/                   # 場景設定檔
 ├── tools/                       # 輔助資源與模板
-├── examples/                    # 🆕 範例專案
-└── PROJECT_WIKI.md              # 🆕 專案導覽地圖
+├── examples/                    # 範例專案
+└── PROJECT_WIKI.md              # 專案導覽地圖
 ```
 
 ## 文件說明

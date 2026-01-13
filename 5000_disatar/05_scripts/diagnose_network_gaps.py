@@ -1,56 +1,61 @@
 import re
 import pandas as pd
 from pathlib import Path
+import argparse
 
-def extract_gaps(file_path):
+def parse_pt_log_gaps(log_path, output_csv):
+    """
+    Parses PT Mapping log for 'No route was found' warnings.
+    Extracts from_link -> to_link pairs and counts occurrences.
+    """
+    print(f"Scanning log: {log_path} ...")
+    
+    # ... regex patterns ...
+    pattern_gap = re.compile(r"No route was found from link (link_[0-9_a-zA-Z]+) to link (link_[0-9_a-zA-Z]+|pt_bridge_[0-9_a-zA-Z]+)")
+    pattern_route = re.compile(r"TransitRoute: [0-9]+_([0-9]+)") # Captures route_num
+    
     gaps = []
-    current_route = "Unknown"
+    current_route = None
     
-    # Pattern for route start: 2026-01-06T15:41:56,306  INFO Counter:70  route # 1
-    # Or maybe it shows the actual ID later?
-    # In PTMapper: 2026-01-06T15:41:56,241  INFO Progress:40 Calculating pseudoTransitRoutes ... 0/8 (0.00%)
-    
-    route_pattern = re.compile(r"route # (\d+)")
-    gap_pattern = re.compile(r"No route was found from link ([\w_]+) to link ([\w_]+)")
-    
-    if not file_path.exists():
-        print(f"Log file {file_path} not found.")
-        return
-    
-    with open(file_path, 'r') as f:
+    with open(log_path, 'r', encoding='utf-8', errors='ignore') as f:
         for line in f:
-            route_match = route_pattern.search(line)
-            if route_match:
-                current_route = route_match.group(1)
+            # Track current route being processed
+            m_route = pattern_route.search(line)
+            if m_route:
+                current_route = m_route.group(1)
             
-            gap_match = gap_pattern.search(line)
-            if gap_match:
+            # Detect gaps
+            m_gap = pattern_gap.search(line)
+            if m_gap:
+                from_link = m_gap.group(1)
+                to_link = m_gap.group(2)
                 gaps.append({
-                    'route_num': current_route,
-                    'from_link': gap_match.group(1), 
-                    'to_link': gap_match.group(2)
+                    'route_num': current_route if current_route else "unknown",
+                    'from_link': from_link,
+                    'to_link': to_link
                 })
-    
-    df = pd.DataFrame(gaps)
-    if df.empty:
-        print("No routing gaps found in log.")
+
+    if not gaps:
+        print("No gaps found!")
+        # Create empty CSV with headers
+        pd.DataFrame(columns=['route_num', 'from_link', 'to_link', 'count']).to_csv(output_csv, index=False)
         return
-    
-    # Summary by route and link pair
+
+    df = pd.DataFrame(gaps)
+    # Group by link pair to count frequency
     summary = df.groupby(['route_num', 'from_link', 'to_link']).size().reset_index(name='count')
-    summary = summary.sort_values(['route_num', 'count'], ascending=[True, False])
     
-    print(f"Total Gaps detected: {len(df)}")
-    print(f"Unique Gaps (Route + Link Pair): {len(summary)}")
+    print(f"Total Gaps detected: {len(gaps)}")
+    print(f"Unique Gaps: {len(summary)}")
     
-    print("\nGaps per Route:")
-    print(df.groupby('route_num').size())
-    
-    output_csv = "network_gaps_detailed.csv"
     summary.to_csv(output_csv, index=False)
-    print(f"\nSaved detailed summary to {output_csv}")
+    print(f"Saved summary to {output_csv}")
 
 if __name__ == "__main__":
-    # Test with the large log file
-    log_file = Path("/Users/ro9air/matsim-example-project/5000_disatar/01_raw_data/GTFS_pt_mapping/GTFS_pt_mapping_v6/test_5routes/pt_mapping_final.log")
-    extract_gaps(log_file)
+    parser = argparse.ArgumentParser(description="Diagnose PT Mapping Gaps")
+    parser.add_argument("log_file", help="Path to PTMapper log file")
+    parser.add_argument("output_csv", help="Path to output CSV")
+    
+    args = parser.parse_args()
+    
+    parse_pt_log_gaps(args.log_file, args.output_csv)

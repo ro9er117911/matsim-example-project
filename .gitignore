@@ -177,6 +177,9 @@ archive/                 # Archived files
 *.geojson                # GeoJSON exports
 forVia*/                 # Via export directories
 5000_disatar/05_scripts/*.csv
+5000_disatar/05_scripts/*.log
+5000_disatar/05_scripts/link_samples.txt
+5000_disatar/06_taipei_test/v5_tamsui_evac_v2/output
 
 # === Claude Settings (local only) ===
 .claude/settings.local.json

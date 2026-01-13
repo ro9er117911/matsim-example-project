@@ -2,9 +2,9 @@
 <!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
 <config>
     <!-- ================================================================== -->
-    <!-- v5 淡水撤離情境 - 280K 人口模擬                                     -->
+    <!-- v5 淡水撤離情境 - 91K 人口模擬                                     -->
     <!-- 場景: 政府徵召淡水公車 + 市區公車協助撤離                            -->
-    <!-- PT: 7條捷運 + 801條公車 (淡水客運/指南客運/大都會/首都/三重)          -->
+    <!-- PT: 7條捷運 + 365條公車 (淡水客運/指南客運/大都會/首都/三重 ，並且有包含GTFS shpape.txt)          -->
     <!-- ================================================================== -->
 
     <module name="global">
@@ -19,7 +19,7 @@
     </module>
 
     <module name="plans">
-        <param name="inputPlansFile" value="input/population_280k.xml.gz" />
+        <param name="inputPlansFile" value="input/population_91k.xml.gz" />
     </module>
 
     <module name="transit">

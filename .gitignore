@@ -153,10 +153,11 @@ archive/                 # Archived files
 5000_disatar/01_raw_data/**/*.json
 5000_disatar/01_raw_data/**/A_*
 5000_disatar/01_raw_data/**/F_*
-5000_disatar/06_simulation/**  # Simulation runs (large files)
-5000_disatar/06_taipei_test/**/output/**
-5000_disatar/06_taipei_test/**/ITERS/**
-5000_disatar/06_taipei_test/**/input/*.xml.gz
+5000_disatar/06_simulation/
+5000_disatar/06_taipei_test/v5_tamsui_evac_v2/91k_100iter/
+5000_disatar/06_taipei_test/v5_tamsui_evac_v2/91k_1iter/
+5000_disatar/06_taipei_test/v5_tamsui_evac_v2/91k_20iter/
+5000_disatar/06_taipei_test/v5_tamsui_evac_v2/91k_500iter/
 5000_disatar/06_taipei_test/**/*.xml.gz
 5000_disatar/06_taipei_test/**/*.log
 5000_disatar/02_phase1_test/networks/**

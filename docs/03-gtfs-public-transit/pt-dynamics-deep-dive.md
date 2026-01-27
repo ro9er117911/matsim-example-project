@@ -1,3 +1,7 @@
+> [!IMPORTANT]
+> **本文件內容已於 2026-01-14 整合至 [PT_Mapping_Workflow_Guide.md](PT_Mapping_Workflow_Guide.md)**
+> 請優先參考該文件以獲得最新、最完整的流程說明。
+
 # MATSim 大眾運輸深究：動態調度與轉乘懲罰的科學分析
 
 在 MATSim 中，大眾運輸並非簡單的背景流，而是與車流、路網強耦合的動態系統。本文件探討「動態車輛調度」與「轉乘懲罰 (Transfer Penalty)」對模擬穩定性的數值影響。
